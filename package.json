@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "scripts": {},
+  "dependencies": {
+    "jquery": "^3.6.0",
+    "mindmap": "^0.0.8"
+  },
+  "name": "public_html_laravel",
+  "version": "1.0.0",
+  "main": "webpack.mix.js",
+  "directories": {},
+  "license": "ISC"
+}
