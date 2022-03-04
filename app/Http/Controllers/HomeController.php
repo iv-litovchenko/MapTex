@@ -19,7 +19,7 @@ class HomeController extends Controller
     {
         return view('home', [
             'pageTitle' => 'Главная',
-            'pageHeader' => 'IT-заметки',
+            'pageHeader' => 'IT-заметки <br />(над кодом, как это работает)',
             'row' => [
                 'id' => 0,
                 'parent_id' => 0,
