@@ -67,6 +67,7 @@ class HomeController extends Controller
             $model->description = $request->input('description');
             $model->branch_stop_flag = intval($request->input('branch_stop_flag'));
             $model->is_page_flag = intval($request->input('is_page_flag'));
+            $model->is_draft_flag = intval($request->input('is_draft_flag'));
             $model->sorting = intval($request->input('sorting'));
             $model->save();
         }

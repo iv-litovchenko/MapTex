@@ -31,6 +31,9 @@ $rows = TechnologyModel::where('parent_id', '=', $parentId)
                          data-parent-id="{{ $row->parent_id }}"
                          data-sorting="{{ $loop->iteration }}"
                     >
+                        @if($row->is_draft_flag == 1)
+                            [Черновик]
+                        @endif
                         @if($row->branch_stop_flag == 1 || $row->is_page_flag == 1)
                             <a href="{{ route('tech', ['id'=>$row->id]) }}">{{ Str::limit($row->name, 32) }}</a>
                         @else

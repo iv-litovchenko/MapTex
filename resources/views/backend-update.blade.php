@@ -38,6 +38,11 @@
                     {{ $model->is_page_flag == 1 ? 'checked=checked' : '' }}></td>
         </tr>
         <tr>
+            <td>Черновик?</td>
+            <td><input type="checkbox" name="is_draft_flag" value="1"
+                    {{ $model->is_draft_flag == 1 ? 'checked=checked' : '' }}></td>
+        </tr>
+        <tr>
             <td colspan="2">
                 <input type="submit">
             </td>

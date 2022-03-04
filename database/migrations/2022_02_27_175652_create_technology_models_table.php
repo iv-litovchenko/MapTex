@@ -18,6 +18,7 @@ class CreateTechnologyModelsTable extends Migration
             $table->integer('branch_type')->default(0);
             $table->integer('branch_stop_flag')->default(0);
             $table->integer('is_page_flag')->default(0);
+            $table->integer('is_draft_flag')->default(0);
             $table->integer('parent_id')->default(0);
             $table->string('name')->nullable();
             $table->string('slug')->nullable();
