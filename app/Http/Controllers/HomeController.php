@@ -47,6 +47,7 @@ class HomeController extends Controller
             $model->name = $request->input('name');
             $model->branch_stop_flag = intval($request->input('branch_stop_flag'));
             $model->is_page_flag = intval($request->input('is_page_flag'));
+            $model->is_draft_flag = 0;
             $model->save();
             if ($parent_id > 0) {
                 return redirect()->route('tech', ['id' => $parent_id])
@@ -72,5 +73,19 @@ class HomeController extends Controller
             $model->save();
         }
         return view('backend-update', ['model' => $model]);
+    }
+
+    public function updateSorting(int $id = 0, Request $request)
+    {
+        $model = TechnologyModel::find($id);
+        if (is_array($request->input('sort_list'))) {
+            foreach ($request->input('sort_list') as $postId => $postNewSort){
+                $modelUpdate = TechnologyModel::find($postId);
+                $modelUpdate->sorting = intval($postNewSort);
+                $modelUpdate->save();
+            }
+        }
+        $rows = TechnologyModel::where('parent_id', '=', $model->id)->orderBy('sorting')->get();
+        return view('backend-update-sorting', ['model' => $model, 'rows' => $rows]);
     }
 }

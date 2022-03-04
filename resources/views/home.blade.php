@@ -93,11 +93,19 @@
                     httpLink = httpLink.replace(100, dataId);
                     window.location.href = httpLink;
                 }
+                // Редактирование сортировки
+                if (key == 'edit_sorting') {
+                    var httpLink = '{{ route('backend-update-sorting', ['id'=>100]) }}';
+                    var dataId = $(this).data("id");
+                    httpLink = httpLink.replace(100, dataId);
+                    window.location.href = httpLink;
+                }
             },
             items: {
                 "insertAfter": {name: "Вставить элемент после"},
                 "createBrunch": {name: "Создать ветку элементов"},
-                "edit": {name: "Редактировать"}
+                "edit": {name: "Редактировать"},
+                "edit_sorting": {name: "Редактировать сортировку"}
             }
         });
         $.contextMenu({
@@ -119,10 +127,18 @@
                     httpLink = httpLink.replace(100, dataId);
                     window.location.href = httpLink;
                 }
+                // Редактирование сортировки
+                if (key == 'edit_sorting') {
+                    var httpLink = '{{ route('backend-update-sorting', ['id'=>100]) }}';
+                    var dataId = $(this).data("id");
+                    httpLink = httpLink.replace(100, dataId);
+                    window.location.href = httpLink;
+                }
             },
             items: {
                 "insert": {name: "Добавить элемент"},
-                "edit": {name: "Редактировать"}
+                "edit": {name: "Редактировать"},
+                "edit_sorting": {name: "Редактировать сортировку"}
             }
         });
     });
