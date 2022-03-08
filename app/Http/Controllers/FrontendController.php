@@ -8,6 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\View;
 use App\Models\TechnologyModel;
@@ -62,5 +63,27 @@ class FrontendController extends BaseController
             }
         }
         return view('frontend-login');
+    }
+
+    public function pics()
+    {
+        $path = public_path('images/pics');
+        $files = File::files($path);
+
+        return view('frontend-pics', [
+            'pageTitle' => 'Разные картинки',
+            'files' => $files
+        ]);
+    }
+
+    public function books()
+    {
+        $path = public_path('images/books');
+        $files = File::files($path);
+
+        return view('frontend-books', [
+            'pageTitle' => 'Книги',
+            'files' => $files
+        ]);
     }
 }

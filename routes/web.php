@@ -5,14 +5,11 @@ use App\Http\Middleware\IsMe;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\BackendController;
 
-Route::get('/', [FrontendController::class, 'index'])
-    ->name('home');
-
-Route::get('/tech/{id}', [FrontendController::class, 'tech'])
-    ->name('tech');
-
-Route::any('/login', [FrontendController::class, 'login'])
-    ->name('login');
+Route::get('/', [FrontendController::class, 'index'])->name('home');
+Route::get('/pics', [FrontendController::class, 'pics'])->name('pics');
+Route::get('/books', [FrontendController::class, 'books'])->name('books');
+Route::get('/tech/{id}', [FrontendController::class, 'tech'])->name('tech');
+Route::any('/login', [FrontendController::class, 'login'])->name('login');
 /**
  * Закрытая часть
  */

@@ -12,6 +12,8 @@
     {{ session('success') }}
 @endif
 
+@include('inc/menu')
+
 <div class="mindmap">
     {{--    @include('inc/rowChildren', ['brunch_type' => \App\Models\TechnologyModel::BRUNCH_LEFT_CODE])--}}
     @if(isset($back_id))
