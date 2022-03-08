@@ -6,11 +6,13 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use App\Models\TechnologyModel;
 
 class HomeController extends Controller
 {
+
 //    use AuthorizesRequests;
 //    use DispatchesJobs;
 //    use ValidatesRequests;
@@ -79,7 +81,7 @@ class HomeController extends Controller
     {
         $model = TechnologyModel::find($id);
         if (is_array($request->input('sort_list'))) {
-            foreach ($request->input('sort_list') as $postId => $postNewSort){
+            foreach ($request->input('sort_list') as $postId => $postNewSort) {
                 $modelUpdate = TechnologyModel::find($postId);
                 $modelUpdate->sorting = intval($postNewSort);
                 $modelUpdate->save();
