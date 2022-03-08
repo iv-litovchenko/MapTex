@@ -6,11 +6,14 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\View;
 use App\Models\TechnologyModel;
+use App\Models\UserModel;
 
-class HomeController extends Controller
+class FrontendController extends BaseController
 {
 
 //    use AuthorizesRequests;
@@ -19,7 +22,7 @@ class HomeController extends Controller
 
     public function index(Request $request)
     {
-        return view('home', [
+        return view('frontend', [
             'pageTitle' => 'Главная',
             'pageHeader' => 'IT-заметки <br />(над кодом, как это работает)',
             'row' => [
@@ -33,7 +36,7 @@ class HomeController extends Controller
     public function tech(int $id = 0)
     {
         $model = TechnologyModel::find($id);
-        return view('home', [
+        return view('frontend', [
             'pageTitle' => $model->name,
             'pageHeader' => $model->name,
             'back_id' => $model->parent_id,
@@ -41,53 +44,23 @@ class HomeController extends Controller
         ]);
     }
 
-    public function add(int $parent_id = 0, int $sorting = 0, Request $request)
+    public function login(Request $request)
     {
-        if ($request->input('name') !== null) {
-            $model = new TechnologyModel;
-            $model->parent_id = $parent_id;
-            $model->name = $request->input('name');
-            $model->branch_stop_flag = intval($request->input('branch_stop_flag'));
-            $model->is_page_flag = intval($request->input('is_page_flag'));
-            $model->is_draft_flag = 0;
-            $model->save();
-            if ($parent_id > 0) {
-                return redirect()->route('tech', ['id' => $parent_id])
-                    ->with('success', 'Добавлено: ' . $request->input('name'));
-            } else {
-                return redirect()->route('home')
-                    ->with('success', 'Добавлено: ' . $request->input('name'));
+        $postUserId = $request->input('user_id');
+        $postUserEmail = $request->input('user_email');
+        $postUserPassword = $request->input('user_password');
+        if ($postUserId > 0) {
+            $row = UserModel::find($postUserId);
+            if ($row->user_email == $postUserEmail
+                &&
+                $row->user_password == md5($postUserPassword)
+            ) {
+                $cookie = Cookie::forever('BACKEND_OPEN', 'yes');
+                return response()
+                    ->view('frontend-login-successfully')
+                    ->withCookie($cookie);
             }
         }
-        return view('backend-add');
-    }
-
-    public function update(int $id = 0, Request $request)
-    {
-        $model = TechnologyModel::find($id);
-        if ($request->input('name') !== null) {
-            $model->name = $request->input('name');
-            $model->description = $request->input('description');
-            $model->branch_stop_flag = intval($request->input('branch_stop_flag'));
-            $model->is_page_flag = intval($request->input('is_page_flag'));
-            $model->is_draft_flag = intval($request->input('is_draft_flag'));
-            $model->sorting = intval($request->input('sorting'));
-            $model->save();
-        }
-        return view('backend-update', ['model' => $model]);
-    }
-
-    public function updateSorting(int $id = 0, Request $request)
-    {
-        $model = TechnologyModel::find($id);
-        if (is_array($request->input('sort_list'))) {
-            foreach ($request->input('sort_list') as $postId => $postNewSort) {
-                $modelUpdate = TechnologyModel::find($postId);
-                $modelUpdate->sorting = intval($postNewSort);
-                $modelUpdate->save();
-            }
-        }
-        $rows = TechnologyModel::where('parent_id', '=', $model->id)->orderBy('sorting')->get();
-        return view('backend-update-sorting', ['model' => $model, 'rows' => $rows]);
+        return view('frontend-login');
     }
 }

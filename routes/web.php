@@ -1,20 +1,30 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\TechController;
+use App\Http\Middleware\IsMe;
+use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\BackendController;
 
-Route::get('/',  [HomeController::class, 'index'])
+Route::get('/', [FrontendController::class, 'index'])
     ->name('home');
 
-Route::get('/tech/{id}',  [HomeController::class, 'tech'])
+Route::get('/tech/{id}', [FrontendController::class, 'tech'])
     ->name('tech');
 
-Route::any('/backend-add/{parent_id}/{sorting}',  [HomeController::class, 'add'])
-    ->name('backend-add');
+Route::any('/login', [FrontendController::class, 'login'])
+    ->name('login');
+/**
+ * Закрытая часть
+ */
+Route::middleware([IsMe::class])->group(function () {
 
-Route::any('/backend-update/{id}',  [HomeController::class, 'update'])
-    ->name('backend-update');
+    Route::any('/backend-add/{parent_id}/{sorting}', [BackendController::class, 'add'])
+        ->name('backend-add');
 
-Route::any('/backend-update-sorting/{id}',  [HomeController::class, 'updateSorting'])
-    ->name('backend-update-sorting');
+    Route::any('/backend-update/{id}', [BackendController::class, 'update'])
+        ->name('backend-update');
+
+    Route::any('/backend-update-sorting/{id}', [BackendController::class, 'updateSorting'])
+        ->name('backend-update-sorting');
+
+});
