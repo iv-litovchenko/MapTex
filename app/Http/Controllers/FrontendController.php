@@ -16,7 +16,6 @@ use App\Models\UserModel;
 
 class FrontendController extends BaseController
 {
-
 //    use AuthorizesRequests;
 //    use DispatchesJobs;
 //    use ValidatesRequests;
@@ -25,7 +24,7 @@ class FrontendController extends BaseController
     {
         return view('frontend', [
             'pageTitle' => 'Главная',
-            'pageHeader' => 'IT-заметки <br />- код пишется для людей (над кодом, как это работает)',
+            'pageHeader' => 'Roadmap backend',
             'row' => [
                 'id' => 0,
                 'parent_id' => 0,
@@ -92,6 +91,26 @@ class FrontendController extends BaseController
         return view('frontend-books', [
             'pageTitle' => 'Книги',
             'files' => $files
+        ]);
+    }
+
+    public function search(Request $request)
+    {
+        $inputQuerySearch = $request->input('q');
+        $queryLike = $inputQuerySearch;
+        $queryLike = '%' . str_ireplace(' ', '_', $queryLike) . '%';
+
+        $rows = [];
+        if ($inputQuerySearch != '') {
+            $rows = TechnologyModel::where('name', 'like', $queryLike)
+                ->orWhere('description', 'like', $queryLike)
+                ->get();
+        }
+
+        return view('frontend-search', [
+            'pageTitle' => 'Поиск по сайту',
+            'q' => $inputQuerySearch,
+            'searchResult' => $rows
         ]);
     }
 }

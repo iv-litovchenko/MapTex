@@ -4,26 +4,22 @@ use App\Models\TechnologyModel;
 
 /** @var $parentId */
 $row = TechnologyModel::find($parentId);
-
 ?>
 
-<ol class="children">
-    @php $cssStyleBrunchStop = '' @endphp
-    @if($row->branch_stop_flag == 1)
-        @php $cssStyleBrunchStop = 'background: #8bc34a' @endphp
-    @elseif($row->is_page_flag == 1)
-        @php $cssStyleBrunchStop = 'background: #ff9800' @endphp
-    @endif
+@if($row->parent_id > 0)
+    @include('inc/rowParent', ['parentId'=>$row->parent_id])
+@endif
+
+<ol class="children children_leftbranch">
     <li class="children__item">
-        <div class="node" style="{{ $cssStyleBrunchStop }}">
-            <div class="node__text context-menu-one btn btn-neutral"
-                 data-id="{{ $row->id }}"
-                 data-parent-id="{{ $row->parent_id }}"
-            >
+        <div class="node" style="">
+            <div class="node__text btn btn-neutral">
                 @if($row->branch_stop_flag == 1 || $row->is_page_flag == 1)
-                    <a href="{{ route('tech', ['id'=>$row->id]) }}">{{ $row->name }}</a>
+                    <a href="{{ route('tech', ['id'=>$row->id]) }}">
+                        {{ Str::limit($row->name, 14) }}
+                    </a>
                 @else
-                    {{ $row->name }}
+                    {{ Str::limit($row->name, 14) }}
                 @endif
             </div>
         </div>
