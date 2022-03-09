@@ -38,8 +38,11 @@ class FrontendController extends BaseController
     {
         $model = TechnologyModel::find($id);
 
-        $path = public_path('images/posts/'.$model->id);
-        $files = File::files($path);
+        $files = [];
+        $path = public_path('images/posts/' . $model->id);
+        if (!File::exists($path)) {
+            $files = File::files($path);
+        }
 
         return view('frontend', [
             'pageTitle' => $model->name,
