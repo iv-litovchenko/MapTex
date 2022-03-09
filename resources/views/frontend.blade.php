@@ -52,6 +52,13 @@
     <div style="margin: 0 auto; margin-top: 100px; padding-bottom: 300px; width: 50%;">
         <h1>{{ $row->name }}</h1>
         <hr/>
+        <center>
+            @foreach($files as $file)
+                <img src="/images/posts/{{ $row->id }}/{{ $file->getBasename() }}" style="width: auto; max-width: 50%; border: gray 3px solid;"/>
+                <br/>
+                <hr/>
+            @endforeach
+        </center>
         <pre>{{ $row->description }}</pre>
     </div>
 @endif

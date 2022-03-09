@@ -25,7 +25,7 @@ class FrontendController extends BaseController
     {
         return view('frontend', [
             'pageTitle' => 'Главная',
-            'pageHeader' => 'IT-заметки <br />(над кодом, как это работает)',
+            'pageHeader' => 'IT-заметки <br />- код пишется для людей (над кодом, как это работает)',
             'row' => [
                 'id' => 0,
                 'parent_id' => 0,
@@ -37,11 +37,16 @@ class FrontendController extends BaseController
     public function tech(int $id = 0)
     {
         $model = TechnologyModel::find($id);
+
+        $path = public_path('images/posts/'.$model->id);
+        $files = File::files($path);
+
         return view('frontend', [
             'pageTitle' => $model->name,
             'pageHeader' => $model->name,
             'back_id' => $model->parent_id,
-            'row' => $model
+            'row' => $model,
+            'files' => $files
         ]);
     }
 
