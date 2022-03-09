@@ -40,7 +40,7 @@ class FrontendController extends BaseController
 
         $files = [];
         $path = public_path('images/posts/' . $model->id);
-        if (!File::exists($path)) {
+        if (File::exists($path)) {
             $files = File::files($path);
         }
 
