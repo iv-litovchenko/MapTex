@@ -35,6 +35,6 @@ class CreateTechnologiesTable extends Migration
      */
     public function down()
     {
-//        Schema::dropIfExists('technology_models');
+        Schema::dropIfExists('technologies');
     }
 }
