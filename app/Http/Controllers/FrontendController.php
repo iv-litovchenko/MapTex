@@ -59,9 +59,10 @@ class FrontendController extends BaseController
         $postUserPassword = $request->input('password');
         if ($postUserId > 0) {
             $row = User::find($postUserId);
-            if ($row->user_email == $postUserEmail
+//            dd(md5($row->password) . ".|." . md5($postUserPassword));
+            if ($row->email == $postUserEmail
                 &&
-                $row->user_password == md5($postUserPassword)
+                $row->password == md5($postUserPassword)
             ) {
                 $cookie = Cookie::forever('BACKEND_OPEN', 'yes');
                 return response()
