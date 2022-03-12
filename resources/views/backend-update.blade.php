@@ -23,7 +23,7 @@
             <tr>
                 <td>Описание:</td>
                 <td>
-                    <textarea id="tinymce" name="description"
+                    <textarea name="description"
                               style="width: 100%; height: 500px;">{{ $model->description }}</textarea>
                     <textarea id="tinymce" name="description_tinymce"
                               style="width: 100%; height: 500px;">{{ $model->description_tinymce }}</textarea>
