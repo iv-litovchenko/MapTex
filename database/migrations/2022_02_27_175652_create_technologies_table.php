@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTechnologyModelsTable extends Migration
+class CreateTechnologyTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTechnologyModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('technology_models', function (Blueprint $table) {
+        Schema::create('technologies', function (Blueprint $table) {
             $table->id();
             $table->integer('branch_type')->default(0);
             $table->integer('branch_stop_flag')->default(0);
