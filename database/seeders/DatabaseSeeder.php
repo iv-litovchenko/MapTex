@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\TechnologyModel;
+use App\Models\Technology;
 
 class DatabaseSeeder extends Seeder
 {

@@ -13,6 +13,7 @@ Route::get('/books', [FrontendController::class, 'books'])->name('books');
 Route::any('/search', [FrontendController::class, 'search'])->name('search');
 
 Route::any('/login', [FrontendController::class, 'login'])->name('login');
+Route::any('/logout', [FrontendController::class, 'logout'])->name('logout');
 
 /**
  * Закрытая часть

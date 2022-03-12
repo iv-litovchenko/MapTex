@@ -2,6 +2,7 @@
 /public/hot
 /public/images/*
 /public/storage
+/public/adminer-4.8.1.php
 /storage/*.key
 /vendor
 .env

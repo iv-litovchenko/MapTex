@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\TechnologyModel;
+use App\Models\Technology;
 
 /** @var $parentId */
-$row = TechnologyModel::find($parentId);
+$row = Technology::find($parentId);
 ?>
 
 @if($row->parent_id > 0)

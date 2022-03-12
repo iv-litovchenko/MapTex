@@ -16,15 +16,15 @@
     <table width="80%" align="center" border="1">
         <tr>
             <td width="50%">ID-пользователя:</td>
-            <td><input name="user_id" style="width: 100%"></td>
+            <td><input name="id" style="width: 100%"></td>
         </tr>
         <tr>
             <td width="50%">Логин:</td>
-            <td><input name="user_email" style="width: 100%"></td>
+            <td><input name="email" style="width: 100%"></td>
         </tr>
         <tr>
             <td width="50%">Пароль:</td>
-            <td><input name="user_password" type="password" style="width: 100%"></td>
+            <td><input name="password" type="password" style="width: 100%"></td>
         </tr>
         <tr>
             <td colspan="2">

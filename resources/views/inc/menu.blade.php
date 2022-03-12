@@ -8,10 +8,12 @@
             <td>
                 <a href="{{ route('home') }}" style="font-size: 24px;">Главная</a> &nbsp;|&nbsp;
                 <a href="{{ route('pics') }}" style="font-size: 24px;">Разные картинки</a> &nbsp;|&nbsp;
-                <a href="{{ route('books') }}" style="font-size: 24px;">Книги</a>
+                <a href="{{ route('books') }}" style="font-size: 24px;">Книги</a> |
+                <a href="{{ route('login') }}" style="font-size: 24px;">Логин</a> |
+                <a href="{{ route('logout') }}" style="font-size: 24px;">Выход</a>
             </td>
             @php
-                $countTechnology = \App\Models\TechnologyModel::count();
+                $countTechnology = \App\Models\Technology::count();
             @endphp
             <td width="25%" align="right" style="font-size: 15px; color: gray;">
                 Всего знаний ({{ $countTechnology }})<br/>

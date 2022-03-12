@@ -9,14 +9,14 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
-use App\Models\TechnologyModel;
+use App\Models\Technology;
 
 class BackendController extends BaseController
 {
     public function add(int $parent_id = 0, int $sorting = 0, Request $request)
     {
         if ($request->input('name') !== null) {
-            $model = new TechnologyModel;
+            $model = new Technology;
             $model->parent_id = $parent_id;
             $model->name = $request->input('name');
             $model->branch_stop_flag = intval($request->input('branch_stop_flag'));
@@ -36,7 +36,7 @@ class BackendController extends BaseController
 
     public function update(int $id = 0, Request $request)
     {
-        $model = TechnologyModel::find($id);
+        $model = Technology::find($id);
         if ($request->input('name') !== null) {
             $model->name = $request->input('name');
             $model->description = $request->input('description');
@@ -51,15 +51,15 @@ class BackendController extends BaseController
 
     public function updateSorting(int $id = 0, Request $request)
     {
-        $model = TechnologyModel::find($id);
+        $model = Technology::find($id);
         if (is_array($request->input('sort_list'))) {
             foreach ($request->input('sort_list') as $postId => $postNewSort) {
-                $modelUpdate = TechnologyModel::find($postId);
+                $modelUpdate = Technology::find($postId);
                 $modelUpdate->sorting = intval($postNewSort);
                 $modelUpdate->save();
             }
         }
-        $rows = TechnologyModel::where('parent_id', '=', $model->id)->orderBy('sorting')->get();
+        $rows = Technology::where('parent_id', '=', $model->id)->orderBy('sorting')->get();
         return view('backend-update-sorting', ['model' => $model, 'rows' => $rows]);
     }
 }

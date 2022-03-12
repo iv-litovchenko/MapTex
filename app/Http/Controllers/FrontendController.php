@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\View;
-use App\Models\TechnologyModel;
+use App\Models\Technology;
 use App\Models\UserModel;
 
 class FrontendController extends BaseController
@@ -35,7 +35,7 @@ class FrontendController extends BaseController
 
     public function tech(int $id = 0)
     {
-        $model = TechnologyModel::find($id);
+        $model = Technology::find($id);
 
         $files = [];
         $path = public_path('images/posts/' . $model->id);
@@ -54,11 +54,11 @@ class FrontendController extends BaseController
 
     public function login(Request $request)
     {
-        $postUserId = $request->input('user_id');
-        $postUserEmail = $request->input('user_email');
-        $postUserPassword = $request->input('user_password');
+        $postUserId = $request->input('id');
+        $postUserEmail = $request->input('email');
+        $postUserPassword = $request->input('password');
         if ($postUserId > 0) {
-            $row = UserModel::find($postUserId);
+            $row = User::find($postUserId);
             if ($row->user_email == $postUserEmail
                 &&
                 $row->user_password == md5($postUserPassword)
@@ -83,6 +83,14 @@ class FrontendController extends BaseController
         ]);
     }
 
+    public function logout(Request $request)
+    {
+        $cookie = Cookie::forever('BACKEND_OPEN', 'no');
+        return redirect()
+            ->route('home')
+            ->withCookie($cookie);
+    }
+
     public function books()
     {
         $path = public_path('images/books');
@@ -102,7 +110,7 @@ class FrontendController extends BaseController
 
         $rows = [];
         if ($inputQuerySearch != '') {
-            $rows = TechnologyModel::where('name', 'like', $queryLike)
+            $rows = Technology::where('name', 'like', $queryLike)
                 ->orWhere('description', 'like', $queryLike)
                 ->get();
         }

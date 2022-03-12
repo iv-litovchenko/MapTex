@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\TechnologyModel;
+use App\Models\Technology;
 
 $parentId = 0;
 
@@ -9,7 +9,7 @@ if (isset($row['id'])) {
     $parentId = $row['id'];
 }
 
-$rows = TechnologyModel::where('parent_id', '=', $parentId)
+$rows = Technology::where('parent_id', '=', $parentId)
     ->orderBy('sorting')
     ->get();
 
