@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\View;
 use App\Models\Technology;
+use App\Models\Note;
 use App\Models\User;
 
 class FrontendController extends BaseController
@@ -100,6 +101,28 @@ class FrontendController extends BaseController
         return view('frontend-books', [
             'pageTitle' => 'Книги',
             'files' => $files
+        ]);
+    }
+
+    public function notes(Request $request)
+    {
+        // Проверка на авторизацию
+        $backendOpenStatus = Cookie::get('BACKEND_OPEN');
+        $inputBodytext = $request->input('bodytext');
+        if ($inputBodytext != '') {
+            $model = new Note;
+            $model->bodytext = $inputBodytext;
+            if($backendOpenStatus === 'yes'){
+                $model->is_me = 1;
+            }
+            $model->save();
+            return redirect()->route('notes');
+        }
+
+        $rows = Note::orderBy('id', 'desc')->get();
+        return view('frontend-notes', [
+            'pageTitle' => 'Барахолка',
+            'rows' => $rows
         ]);
     }
 

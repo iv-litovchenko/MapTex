@@ -10,8 +10,9 @@ Route::get('/tech/{id}', [FrontendController::class, 'tech'])->name('tech');
 
 Route::get('/pics', [FrontendController::class, 'pics'])->name('pics');
 Route::get('/books', [FrontendController::class, 'books'])->name('books');
-Route::any('/search', [FrontendController::class, 'search'])->name('search');
+Route::any('/notes', [FrontendController::class, 'notes'])->name('notes');
 
+Route::any('/search', [FrontendController::class, 'search'])->name('search');
 Route::any('/login', [FrontendController::class, 'login'])->name('login');
 Route::any('/logout', [FrontendController::class, 'logout'])->name('logout');
 
