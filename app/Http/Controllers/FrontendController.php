@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\View;
 use App\Models\Technology;
-use App\Models\UserModel;
+use App\Models\User;
 
 class FrontendController extends BaseController
 {
