@@ -45,7 +45,7 @@
                     <hr/>
                 @endforeach
             </center>
-            {{ $row->description }}
+            <pre>{{ $row->description }}</pre>
             <br/>
             {!! $row->description_tinymce !!}
         </div>

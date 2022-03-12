@@ -42,6 +42,7 @@ class BackendController extends BaseController
         if ($request->input('name') !== null) {
             $model->name = $request->input('name');
             $model->description = $request->input('description');
+            $model->description_tinymce = $request->input('description_tinymce');
             $model->branch_stop_flag = intval($request->input('branch_stop_flag'));
             $model->is_page_flag = intval($request->input('is_page_flag'));
             $model->is_draft_flag = intval($request->input('is_draft_flag'));
