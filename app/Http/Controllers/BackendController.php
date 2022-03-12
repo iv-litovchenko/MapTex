@@ -31,7 +31,9 @@ class BackendController extends BaseController
                     ->with('success', 'Добавлено: ' . $request->input('name'));
             }
         }
-        return view('backend-add');
+        return view('backend-add', [
+            'pageTitle' => 'Добавить запись'
+        ]);
     }
 
     public function update(int $id = 0, Request $request)
@@ -46,7 +48,10 @@ class BackendController extends BaseController
             $model->sorting = intval($request->input('sorting'));
             $model->save();
         }
-        return view('backend-update', ['model' => $model]);
+        return view('backend-update', [
+            'pageTitle' => 'Обновить запись',
+            'model' => $model
+        ]);
     }
 
     public function updateSorting(int $id = 0, Request $request)
@@ -60,6 +65,10 @@ class BackendController extends BaseController
             }
         }
         $rows = Technology::where('parent_id', '=', $model->id)->orderBy('sorting')->get();
-        return view('backend-update-sorting', ['model' => $model, 'rows' => $rows]);
+        return view('backend-update-sorting', [
+            'pageTitle' => 'Обновить сортировку',
+            'model' => $model,
+            'rows' => $rows
+        ]);
     }
 }

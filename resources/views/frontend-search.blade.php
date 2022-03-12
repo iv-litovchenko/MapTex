@@ -12,7 +12,7 @@
                     </a>
                 </h4>
                 <div class="backlightText" style="width: 50%; padding: 15px; background: #eee; text-align: justify">
-                    {{ $searchItem->description }}
+                    {!! $searchItem->description !!}
                 </div>
                 <hr/>
             @endforeach

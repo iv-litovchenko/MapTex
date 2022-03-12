@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumnIsMeToNotes extends Migration
+class AddColumnDescriptionTinymceToTechnologies extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddColumnIsMeToNotes extends Migration
      */
     public function up()
     {
-        Schema::table('notes', function (Blueprint $table) {
-            $table->integer('is_me')->nullable()->default(0)->after('bodytext');
+        Schema::table('technologies', function (Blueprint $table) {
+            $table->text('description_tinymce')->nullable()->after('description');
         });
     }
 
@@ -25,8 +25,8 @@ class AddColumnIsMeToNotes extends Migration
      */
     public function down()
     {
-        Schema::table('notes', function (Blueprint $table) {
-            $table->dropColumn('is_me');
+        Schema::table('technologies', function (Blueprint $table) {
+            $table->dropColumn('description_tinymce');
         });
     }
 }

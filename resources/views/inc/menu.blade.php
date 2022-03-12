@@ -3,7 +3,7 @@
         <tr>
             <td width="25%" align="left" style="font-size: 15px; color: gray;">
                 IT-заметки (над кодом - как это работает?)<br/>
-                Интерактивный справочник
+                Интерактивный справочник и копилка знаний
             </td>
             <td>
                 <a href="{{ route('home') }}" style="font-size: 24px;">Главная</a> &nbsp;|

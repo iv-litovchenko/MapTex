@@ -19,11 +19,11 @@ class IsMe
     public function handle(Request $request, Closure $next)
     {
         // Проверка на localhost (редактировать можно только на боевом)
-        $host = $request->getHost();
-        if ($host == 'localhost') {
-            echo 'Localhost (edit disabled)!!!';
-            exit();
-        }
+//        $host = $request->getHost();
+//        if ($host == 'localhost') {
+//            echo 'Localhost (edit disabled)!!!';
+//            exit();
+//        }
 
         // Проверка на авторизацию
         $backendOpenStatus = Cookie::get('BACKEND_OPEN');
