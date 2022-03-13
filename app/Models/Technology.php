@@ -5,6 +5,41 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Technology
+ *
+ * @property int $id
+ * @property int $branch_type
+ * @property int $branch_stop_flag
+ * @property int $is_page_flag
+ * @property int $is_draft_flag
+ * @property int $parent_id
+ * @property string|null $name
+ * @property string|null $slug
+ * @property string|null $description
+ * @property string|null $description_tinymce
+ * @property int $sorting
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Database\Factories\TechnologyFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Technology newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Technology newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Technology query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Technology whereBranchStopFlag($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Technology whereBranchType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Technology whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Technology whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Technology whereDescriptionTinymce($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Technology whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Technology whereIsDraftFlag($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Technology whereIsPageFlag($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Technology whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Technology whereParentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Technology whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Technology whereSorting($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Technology whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Technology extends Model
 {
     use HasFactory;
