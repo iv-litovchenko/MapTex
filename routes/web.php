@@ -19,15 +19,17 @@ Route::any('/logout', [FrontendController::class, 'logout'])->name('logout');
 /**
  * Закрытая часть
  */
-Route::middleware([IsMe::class])->group(function () {
+Route::middleware([IsMe::class])
+    ->namespace('\App\Http\Controllers\Admin\Technologies')
+    ->group(function () {
 
-    Route::any('/backend-add/{parent_id}/{sorting}', [BackendController::class, 'add'])
-        ->name('backend-add');
+        Route::any('/admin/technologies/create/{parent_id}/{sorting}', 'CreateController')
+            ->name('admin.technologies.create');
 
-    Route::any('/backend-update/{id}', [BackendController::class, 'update'])
-        ->name('backend-update');
+        Route::any('/admin/technologies/edit/{id}', 'EditController')
+            ->name('admin.technologies.edit');
 
-    Route::any('/backend-update-sorting/{id}', [BackendController::class, 'updateSorting'])
-        ->name('backend-update-sorting');
+        Route::any('/admin/technologies/edit/sorting/{id}', 'EditSortingController')
+            ->name('admin.technologies.edit-sorting');
 
-});
+    });

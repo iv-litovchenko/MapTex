@@ -62,7 +62,7 @@
                     // window.console && console.log(m) || alert(m);
                     // Вставка элемента
                     if (key == 'insertAfter') {
-                        var httpLink = '{{ route('backend-add', ['parent_id'=>100,'sorting'=>200]) }}';
+                        var httpLink = '{{ route('admin.technologies.create', ['parent_id'=>100,'sorting'=>200]) }}';
                         var dataId = $(this).data("id");
                         var dataParentId = $(this).data("parent-id");
                         var dataSorting = $(this).data("sorting");
@@ -72,7 +72,7 @@
                     }
                     // Создание новой ветки
                     if (key == 'createBrunch') {
-                        var httpLink = '{{ route('backend-add', ['parent_id'=>100,'sorting'=>200]) }}';
+                        var httpLink = '{{ route('admin.technologies.create', ['parent_id'=>100,'sorting'=>200]) }}';
                         var dataId = $(this).data("id");
                         var dataParentId = $(this).data("parent-id");
                         var dataSorting = $(this).data("sorting");
@@ -82,14 +82,14 @@
                     }
                     // Редактирование
                     if (key == 'edit') {
-                        var httpLink = '{{ route('backend-update', ['id'=>100]) }}';
+                        var httpLink = '{{ route('admin.technologies.edit', ['id'=>100]) }}';
                         var dataId = $(this).data("id");
                         httpLink = httpLink.replace(100, dataId);
                         window.location.href = httpLink;
                     }
                     // Редактирование сортировки
                     if (key == 'edit_sorting') {
-                        var httpLink = '{{ route('backend-update-sorting', ['id'=>100]) }}';
+                        var httpLink = '{{ route('admin.technologies.edit-sorting', ['id'=>100]) }}';
                         var dataId = $(this).data("id");
                         httpLink = httpLink.replace(100, dataId);
                         window.location.href = httpLink;
@@ -108,7 +108,7 @@
                     // var m = "clicked: " + key;
                     // window.console && console.log(m) || alert(m);
                     if (key == 'insert') {
-                        var httpLink = '{{ route('backend-add', ['parent_id'=>100,'sorting'=>200]) }}';
+                        var httpLink = '{{ route('admin.technologies.create', ['parent_id'=>100,'sorting'=>200]) }}';
                         var dataId = $(this).data("id");
                         var dataSorting = $(this).data("sorting");
                         httpLink = httpLink.replace(100, dataId);
@@ -116,14 +116,14 @@
                         window.location.href = httpLink;
                     }
                     if (key == 'edit') {
-                        var httpLink = '{{ route('backend-update', ['id'=>100]) }}';
+                        var httpLink = '{{ route('admin.technologies.edit', ['id'=>100]) }}';
                         var dataId = $(this).data("id");
                         httpLink = httpLink.replace(100, dataId);
                         window.location.href = httpLink;
                     }
                     // Редактирование сортировки
                     if (key == 'edit_sorting') {
-                        var httpLink = '{{ route('backend-update-sorting', ['id'=>100]) }}';
+                        var httpLink = '{{ route('admin.technologies.edit-sorting', ['id'=>100]) }}';
                         var dataId = $(this).data("id");
                         httpLink = httpLink.replace(100, dataId);
                         window.location.href = httpLink;
