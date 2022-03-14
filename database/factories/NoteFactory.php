@@ -3,9 +3,15 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Note;
 
 class NoteFactory extends Factory
 {
+    /**
+     * @var string
+     */
+    protected $model = Note::class;
+
     /**
      * Define the model's default state.
      *
