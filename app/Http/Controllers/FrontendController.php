@@ -112,14 +112,14 @@ class FrontendController extends BaseController
         if ($inputBodytext != '') {
             $model = new Note;
             $model->bodytext = $inputBodytext;
-            if($backendOpenStatus === 'yes'){
+            if ($backendOpenStatus === 'yes') {
                 $model->is_me = 1;
             }
             $model->save();
             return redirect()->route('notes');
         }
 
-        $rows = Note::orderBy('id', 'desc')->get();
+        $rows = Note::orderBy('id', 'desc')->paginate(3);
         return view('frontend-notes', [
             'pageTitle' => 'Барахолка',
             'rows' => $rows
@@ -136,6 +136,8 @@ class FrontendController extends BaseController
         if ($inputQuerySearch != '') {
             $rows = Technology::where('name', 'like', $queryLike)
                 ->orWhere('description', 'like', $queryLike)
+                ->orderBy('parent_id', 'asc')
+                ->orderBy('sorting', 'asc')
                 ->get();
         }
 

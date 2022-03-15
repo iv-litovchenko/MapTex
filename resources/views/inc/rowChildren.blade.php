@@ -25,12 +25,23 @@ $rows = Technology::where('parent_id', '=', $parentId)
                 @php $cssStyleBrunchStop = 'background: #ff9800' @endphp
             @endif
             <li class="children__item">
-                <div class="node" style="{{ $cssStyleBrunchStop }}">
+                <div class="node" style="{{ $cssStyleBrunchStop }}; position: relative;">
                     <div class="node__text context-menu-one btn btn-neutral"
                          data-id="{{ $row->id }}"
                          data-parent-id="{{ $row->parent_id }}"
                          data-sorting="{{ $loop->iteration }}"
                     >
+                        @if($row->logo_image)
+                            <img src="{{ url($row->logo_image) }}" height="50" style="
+                            position: absolute;
+                            top: -100%;
+                            left: -25%;
+                            background: white;
+                            padding: 3px;
+                            border-radius: 100%;
+                            border: gray 3px solid;">
+                            &nbsp;&nbsp;&nbsp;
+                        @endif
                         @if($row->is_draft_flag == 1)
                             [Черновик]
                         @endif

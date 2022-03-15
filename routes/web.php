@@ -33,3 +33,13 @@ Route::middleware([IsMe::class])
             ->name('admin.technologies.edit-sorting');
 
     });
+
+/**
+ * Разное
+ */
+Route::namespace('\App\Http\Controllers\System')
+    ->group(function () {
+
+        Route::get('/system/youtube', 'YouTubeDownloaderController');
+
+    });

@@ -8,7 +8,7 @@
         @endforeach
     @endif
 
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         @csrf
         <center><a href="{{ route('tech', ['id'=>$model->id]) }}">Вернуться к элементу</a></center>
         <table width="80%" align="center" border="1">
@@ -59,6 +59,15 @@
                 <td>Черновик?</td>
                 <td><input type="checkbox" name="is_draft_flag" value="1"
                         {{ $model->is_draft_flag == 1 ? 'checked=checked' : '' }}></td>
+            </tr>
+            <tr>
+                <td>Изображение (логотип технологии)</td>
+                <td>
+                    @if($model->logo_image)
+                        <img src="{{ url($model->logo_image) }}" width="100"> <br />
+                    @endif
+                    <input type="file" name="logo_image">
+                </td>
             </tr>
             <tr>
                 <td colspan="2">

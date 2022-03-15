@@ -33,7 +33,7 @@
     </form>
     <br/>
     <br/>
-    @foreach($rows as $row)
+    @foreach($rows->items() as $row)
         <div style="margin: 0 auto; width: 50%; padding: 15px; background: #dcdc7e;">
             #{{ $row->id }}.
             {!! $row->bodytext !!}
@@ -43,4 +43,13 @@
         </div>
         <hr/>
     @endforeach
+    <style>
+        .paginage * {
+            height: 20px;
+        }
+    </style>
+    <div align="center" class="paginage">
+        Всего записей: {{ $rows->total() }}
+        {{ $rows->links() }}
+    </div>
 @stop

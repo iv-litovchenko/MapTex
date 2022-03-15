@@ -34,6 +34,6 @@
 <br/>
 <br/>
 
-<div style="position: fixed; bottom: 15px; right: 15px;">Версия 0.0.2</div>
+<div style="position: fixed; bottom: 15px; right: 15px;">Версия 0.0.1</div>
 </body>
 </html>

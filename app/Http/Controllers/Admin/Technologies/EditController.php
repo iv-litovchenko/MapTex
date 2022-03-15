@@ -8,6 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
 use App\Models\Technology;
 
@@ -24,6 +25,15 @@ class EditController extends BaseController
             $model->is_page_flag = intval($request->input('is_page_flag'));
             $model->is_draft_flag = intval($request->input('is_draft_flag'));
             $model->sorting = intval($request->input('sorting'));
+
+            if ($request->file()) {
+                $file = $request->file('logo_image');
+                $destinationPath = 'images/logos/' . $id . '/';
+                $file->move($destinationPath, $file->getClientOriginalName());
+//                $model->logo_image = Storage::disk('public')->put('/images', 'content???');
+                $model->logo_image = 'images/logos/' . $id . '/' . $file->getClientOriginalName();
+            }
+
             $model->save();
         }
         return view('admin.technologies.edit', [

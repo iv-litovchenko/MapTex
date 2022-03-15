@@ -17,7 +17,8 @@
         "barryvdh/laravel-ide-helper": "2.12.3",
         "doctrine/dbal": "3.3.3",
         "squizlabs/php_codesniffer": "3.6.2",
-        "phpmd/phpmd": "2.11.1"
+        "phpmd/phpmd": "2.11.1",
+        "athlon1600/youtube-downloader": "3.1.1"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

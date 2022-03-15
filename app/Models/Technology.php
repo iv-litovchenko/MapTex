@@ -44,6 +44,9 @@ class Technology extends Model
 {
     use HasFactory;
 
+    protected $table = 'technologies';
+//    protected $fillable = false;
+
     const BRUNCH_LEFT_CODE = 1;
     const BRUNCH_RIGHT_CODE = 2;
     const BRUNCH_STOP_CODE = 1;
