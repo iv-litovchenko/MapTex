@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
-use App\Models\UserModel;
+use App\Models\User;
 
 class IsMe
 {
@@ -24,6 +24,10 @@ class IsMe
 //            echo 'Localhost (edit disabled)!!!';
 //            exit();
 //        }
+
+        if ((int)auth()->user()->role !== User::ROLE_ADMIN) {
+            abort(404);
+        }
 
         // Проверка на авторизацию
         $backendOpenStatus = Cookie::get('BACKEND_OPEN');

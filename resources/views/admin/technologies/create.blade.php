@@ -14,7 +14,13 @@
         <table width="80%" align="center" border="1">
             <tr>
                 <td width="30%">Имя:</td>
-                <td><input name="name" style="width: 100%"></td>
+                <td>
+                    <input name="name" style="width: 100%">
+                    @error('name')
+                    <b>Ошибка</b>
+                    {{ $message }}
+                    @enderror
+                </td>
             </tr>
             <tr>
                 <td>Продолжить ветку на отдельной странице?</td>

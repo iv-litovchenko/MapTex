@@ -9,19 +9,24 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use App\Models\Technology;
+use App\Http\Requests\Technologies\CreateRequest;
 
 class CreateController extends BaseController
 {
     public function __invoke(int $parent_id = 0, int $sorting = 0, Request $request)
     {
+//        TODO доработать CRUD по конвенции
+//        TODO Request (валидация)
+//        TODO Передача $data в сервис
+//        $data = $request->validated();
+//        Technology::firstOrCreate($data);
         if ($request->input('name') !== null) {
-            $model = new Technology;
-            $model->parent_id = $parent_id;
-            $model->name = $request->input('name');
-            $model->branch_stop_flag = intval($request->input('branch_stop_flag'));
-            $model->is_page_flag = intval($request->input('is_page_flag'));
-            $model->is_draft_flag = 0;
-            $model->save();
+            $this->service->create(
+                $request->input('name'),
+                $parent_id,
+                intval($request->input('branch_stop_flag')),
+                intval($request->input('is_page_flag'))
+            );
             if ($parent_id > 0) {
                 return redirect()->route('tech', ['id' => $parent_id])
                     ->with('success', 'Добавлено: ' . $request->input('name'));

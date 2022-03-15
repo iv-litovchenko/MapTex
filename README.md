@@ -9,4 +9,15 @@
 
 ## Changelog
 
-- ...
+TODO доработать CRUD по конвенции
+TODO Request (валидация)
+TODO Передача $data в сервис
+
+// Index
+// Show
+// Create (get) > Store (post)
+// Edit (get) > Update (patch)  @method
+// Delete (delete) @method
+
+// Хэширование паролей
+Hash::make($data['password']);
