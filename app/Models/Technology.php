@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 /**
  * App\Models\Technology
@@ -50,4 +51,15 @@ class Technology extends Model
     const BRUNCH_LEFT_CODE = 1;
     const BRUNCH_RIGHT_CODE = 2;
     const BRUNCH_STOP_CODE = 1;
+
+// TODO Поля таблицы (интересный способ)
+// where(Technology::FIELD_NAME,'=','foo')
+    const FIELD_ID = 'id';
+    const FIELD_NAME = 'name';
+    const FIELD_DESCRIPTION = 'description';
+
+    public function users()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 }

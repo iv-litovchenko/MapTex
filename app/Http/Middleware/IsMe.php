@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
 class IsMe
@@ -18,17 +19,9 @@ class IsMe
      */
     public function handle(Request $request, Closure $next)
     {
-//         Проверка на localhost (редактировать можно только на боевом)
-//        $host = $request->getHost();
-//        if ($host == 'localhost') {
-//            echo 'Localhost (edit disabled)!!!';
-//            exit();
-//        }
-
-        if ((int)auth()->user()->role !== User::ROLE_ADMIN) {
+        if ((int)Auth::user()->role !== User::ROLE_ADMIN) {
             abort(404);
         }
-
         return $next($request);
     }
 }

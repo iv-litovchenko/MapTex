@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\User\PasswordMail;
+use App\Models\Technology;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use YouTube\Exception\YouTubeException;
@@ -10,6 +11,15 @@ use YouTube\YouTubeDownloader;
 
 class Test extends Controller
 {
+    /**
+     * Выборка связи
+     */
+    public function rel()
+    {
+        $rows = Technology::with('users')->where('id', '=', 1)->first();
+        dd($rows->users->id);
+    }
+
     /**
      * Отправка почты
      */

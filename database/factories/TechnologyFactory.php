@@ -31,8 +31,7 @@ class TechnologyFactory extends Factory
             'description_tinymce' => $this->faker->text,
             'branch_type' => random_int(0, 1),
             'branch_stop_flag' => 0,
-            'is_draft_flag' => random_int(0, 1),
-            'parent_id' => random_int(0, 15)
+            'is_draft_flag' => random_int(0, 1)
         ];
     }
 }

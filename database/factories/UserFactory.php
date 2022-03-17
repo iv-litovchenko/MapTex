@@ -22,7 +22,8 @@ class UserFactory extends Factory
         return [
             'name' => 'Ivan Litovchenko',
             'email' => 'iv-litovchenko@mail.ru',
-            'password' => md5(100)
+            'password' => md5(100),
+            'role' => User::ROLE_ADMIN
         ];
     }
 }
