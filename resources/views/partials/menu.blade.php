@@ -10,9 +10,6 @@
                 <a href="{{ route('notes') }}" style="font-size: 24px;">Барахолка</a> |&nbsp;
                 <a href="{{ route('pics') }}" style="font-size: 24px;">Разные картинки</a> &nbsp;|&nbsp;
                 <a href="{{ route('books') }}" style="font-size: 24px;">Книги</a>
-                <br/>
-                <a href="{{ route('login') }}" style="font-size: 24px;">Логин</a> /
-                <a href="{{ route('logout') }}" style="font-size: 24px;">Выход</a>
             </td>
             @php
                 $countTechnology = \App\Models\Technology::count();
