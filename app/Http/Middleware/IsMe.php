@@ -20,7 +20,7 @@ class IsMe
     public function handle(Request $request, Closure $next)
     {
         if ((int)Auth::user()->role !== User::ROLE_ADMIN) {
-            abort(404);
+            abort(503);
         }
         return $next($request);
     }

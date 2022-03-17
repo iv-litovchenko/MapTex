@@ -9,7 +9,7 @@ if (isset($row['id'])) {
     $parentId = $row['id'];
 }
 
-$rows = Technology::where('parent_id', '=', $parentId)
+$rows = Technology::whereParentId($parentId)
     ->orderBy('sorting')
     ->get();
 

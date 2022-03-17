@@ -58,6 +58,26 @@ class Technology extends Model
     const FIELD_NAME = 'name';
     const FIELD_DESCRIPTION = 'description';
 
+    /**
+     * Scope a query to only include popular users.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param mixed $parentId
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeWhereParentId($query, $parentId)
+    {
+        if (intval($parentId) > 0) {
+            return $query->where('parent_id', '!=', $parentId);
+        }
+        return $query->whereNull('parent_id');
+    }
+
+    public function scopeWhere($query)
+    {
+        return $query->where('votes', '>', 100);
+    }
+
     public function users()
     {
         return $this->hasOne(User::class, 'id', 'user_id');

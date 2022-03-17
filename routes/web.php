@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\IsMe;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\BackendController;
@@ -19,7 +20,7 @@ Route::any('/logout', [FrontendController::class, 'logout'])->name('logout');
 /**
  * Закрытая часть
  */
-Route::middleware([IsMe::class])
+Route::middleware([Authenticate::class, IsMe::class])
     ->namespace('\App\Http\Controllers\Admin\Technologies')
     ->group(function () {
 
