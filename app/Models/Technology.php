@@ -68,7 +68,7 @@ class Technology extends Model
     public function scopeCustomWhereParentId($query, $parentId)
     {
         if (intval($parentId) > 0) {
-            return $query->where('parent_id', '!=', $parentId);
+            return $query->where('parent_id', '=', $parentId);
         }
         return $query->whereNull('parent_id');
     }
