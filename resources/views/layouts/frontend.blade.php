@@ -43,8 +43,9 @@
            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             Выйти
         </a>
-        <form action="{{ route('logout') }}" method="post" style="d-none">
+        <form action="{{ route('logout') }}" method="post" style="display: none;">
             @csrf
+            <input type="submit" id="logout-form">
         </form>
     @endguest
 </div>

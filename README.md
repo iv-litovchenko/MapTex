@@ -14,14 +14,10 @@ TODO Request (валидация)
 TODO Передача $data в сервис
 TODO Попробовать почту 
 TODO Попробовать очереди
-TODO Сделать авторизацию
 
 // Index
 // Show
 // Create (get) > Store (post)
 // Edit (get) > Update (patch)  @method
 // Delete (delete) @method
-
-// Хэширование паролей
-Hash::make($data['password']);
 
