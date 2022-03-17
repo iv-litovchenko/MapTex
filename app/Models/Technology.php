@@ -65,17 +65,12 @@ class Technology extends Model
      * @param mixed $parentId
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeWhereParentId($query, $parentId)
+    public function scopeCustomWhereParentId($query, $parentId)
     {
         if (intval($parentId) > 0) {
             return $query->where('parent_id', '!=', $parentId);
         }
         return $query->whereNull('parent_id');
-    }
-
-    public function scopeWhere($query)
-    {
-        return $query->where('votes', '>', 100);
     }
 
     public function users()
