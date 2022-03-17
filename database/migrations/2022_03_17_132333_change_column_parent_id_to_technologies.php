@@ -14,7 +14,7 @@ class ChangeColumnParentIdToTechnologies extends Migration
     public function up()
     {
         Schema::table('technologies', function (Blueprint $table) {
-            $table->unsignedBigInteger('parent_id')->nullable()->default(null)->change();
+            $table->unsignedBigInteger('parent_id')->nullable()->change();
             $table->index('parent_id', 'technology_parent_idx');
             $table->foreign('parent_id', 'technology_parent_fk')->on('technologies')->references('id');
         });
