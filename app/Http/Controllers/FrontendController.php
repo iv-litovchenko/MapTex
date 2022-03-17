@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\User\PasswordMail;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -10,6 +11,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\View;
 use App\Models\Technology;
 use App\Models\Note;
@@ -53,27 +55,6 @@ class FrontendController extends BaseController
         ]);
     }
 
-    public function login(Request $request)
-    {
-        $postUserId = $request->input('id');
-        $postUserEmail = $request->input('email');
-        $postUserPassword = $request->input('password');
-        if ($postUserId > 0) {
-            $row = User::find($postUserId);
-//            dd(md5($row->password) . ".|." . md5($postUserPassword));
-            if ($row->email == $postUserEmail
-                &&
-                $row->password == md5($postUserPassword)
-            ) {
-                $cookie = Cookie::forever('BACKEND_OPEN', 'yes');
-                return response()
-                    ->view('frontend-login-successfully')
-                    ->withCookie($cookie);
-            }
-        }
-        return view('frontend-login');
-    }
-
     public function pics()
     {
         $path = public_path('images/pics');
@@ -83,14 +64,6 @@ class FrontendController extends BaseController
             'pageTitle' => 'Разные картинки',
             'files' => $files
         ]);
-    }
-
-    public function logout(Request $request)
-    {
-        $cookie = Cookie::forever('BACKEND_OPEN', 'no');
-        return redirect()
-            ->route('home')
-            ->withCookie($cookie);
     }
 
     public function books()

@@ -53,7 +53,7 @@ $rows = Technology::where('parent_id', '=', $parentId)
                     </div>
                 </div>
                 @if($row->branch_stop_flag != 1)
-                    @include('inc/rowChildren', ['row' => $row, 'brunch_type' => 0])
+                    @include('partials/rowChildren', ['row' => $row, 'brunch_type' => 0])
                 @endif
             </li>
         @endforeach

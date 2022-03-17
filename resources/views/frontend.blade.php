@@ -13,7 +13,7 @@
                 </li>
             </ol>
             @if($back_id > 0)
-                @include('inc/rowParent', ['parentId'=>$back_id])
+                @include('partials/rowParent', ['parentId'=>$back_id])
             @endif
         @endif
         <div class="node node_root context-menu-two btn btn-neutral"
@@ -29,7 +29,7 @@
         >
             <div class="node__text">{{ Str::limit($pageHeader, 32) }}</div>
         </div>
-        @include('inc/rowChildren')
+        @include('partials/rowChildren')
     </div>
 
 

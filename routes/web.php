@@ -40,6 +40,6 @@ Route::middleware([IsMe::class])
 Route::namespace('\App\Http\Controllers\System')
     ->group(function () {
 
-        Route::get('/system/youtube', 'YouTubeDownloaderController');
-
     });
+
+Auth::routes();

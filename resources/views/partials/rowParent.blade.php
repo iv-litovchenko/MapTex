@@ -7,7 +7,7 @@ $row = Technology::find($parentId);
 ?>
 
 @if($row->parent_id > 0)
-    @include('inc/rowParent', ['parentId'=>$row->parent_id])
+    @include('partials/rowParent', ['parentId'=>$row->parent_id])
 @endif
 
 <ol class="children children_leftbranch">

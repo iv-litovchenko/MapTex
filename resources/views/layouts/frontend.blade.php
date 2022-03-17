@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <title>{{ $pageTitle }} | IT-заметки</title>
+    <title>{{ $pageTitle ?? '' }} | IT-заметки</title>
 
     <link rel="stylesheet" href="/assets/mindmap/dist/mindmap.css">
     <link rel="stylesheet" href="/assets/contextmenu/dist/jquery.contextMenu.css">
@@ -27,13 +27,38 @@
     {{ session('success') }}
 @endif
 
-@include('inc/menu')
+@include('partials/menu')
 @yield('content')
 
 <br/>
 <br/>
 <br/>
 
-<div style="position: fixed; bottom: 15px; right: 15px;">Версия 0.0.1</div>
+<div style="text-align: center;">
+    @guest
+        <a href="{{ route('login') }}">Логин</a>
+    @else
+        {{ Auth::user()->name }} |
+        <a href="{{ route('logout') }}"
+           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            Выйти
+        </a>
+        <form action="{{ route('logout') }}" method="post" style="d-none">
+            @csrf
+        </form>
+    @endguest
+</div>
+
+<br/>
+<br/>
+<br/>
+
+<div class="card-body">
+    @if (session('status'))
+        {{ session('status') }}
+    @endif
+</div>
+
+<div style="position: fixed; bottom: 15px; right: 15px;">Версия 0.0.1 | {{ config('app.name', 'Laravel') }}</div>
 </body>
 </html>

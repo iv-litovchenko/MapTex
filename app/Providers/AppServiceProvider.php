@@ -23,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // TODO Здесь подключаем и перенастраиваем
+//        Carbon::setLocale('ru_RU');
     }
 }

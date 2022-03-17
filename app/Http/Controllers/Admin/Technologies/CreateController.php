@@ -15,9 +15,6 @@ class CreateController extends BaseController
 {
     public function __invoke(int $parent_id = 0, int $sorting = 0, Request $request)
     {
-//        TODO доработать CRUD по конвенции
-//        TODO Request (валидация)
-//        TODO Передача $data в сервис
 //        $data = $request->validated();
 //        Technology::firstOrCreate($data);
         if ($request->input('name') !== null) {
