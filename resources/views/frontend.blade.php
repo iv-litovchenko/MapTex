@@ -32,7 +32,6 @@
         @include('partials/rowChildren')
     </div>
 
-
     @if (is_object($row) && $row['is_page_flag'] == 1)
         <div style="margin: 0 auto; margin-top: 100px; padding-bottom: 300px; width: 50%;">
             <h1>{{ $row->name }}</h1>
@@ -41,6 +40,10 @@
                 @foreach($files as $file)
                     <img src="/images/posts/{{ $row->id }}/{{ $file->getBasename() }}"
                          style="width: 100%; max-width: 100%; border: gray 3px solid;"/>
+                    @auth
+                        <br/>
+                        <b>{{ $file->getBasename() }}</b>
+                    @endauth
                     <br/>
                     <hr/>
                 @endforeach
@@ -52,8 +55,8 @@
     @endif
 
     @if(isset($images))
-        <br />
-        <br />
+        <br/>
+        <br/>
         <center>
             @foreach($images as $image)
                 <img src="/images/home/{{ $image->getBasename() }}"
