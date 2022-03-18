@@ -24,18 +24,26 @@ $rows = Technology::customWhereParentId($parentId)
             @elseif($row->is_page_flag == 1)
                 @php $cssStyleBrunchStop = 'background: #ff9800' @endphp
             @endif
-            <li class="children__item">
-                <div class="node" style="{{ $cssStyleBrunchStop }}; position: relative;">
+            <li class="children__item" style="
+            @if($row->logo_image)
+                margin: 20px 0 20px 0;
+            @endif
+                ">
+                <div class="node" style="{{ $cssStyleBrunchStop }}; position: relative;
+                @if($row->logo_image)
+                    padding-left: 35px;
+                @endif
+                    ">
                     <div class="node__text context-menu-one btn btn-neutral"
-                         data-id="{{ $row->id }}"
-                         data-parent-id="{{ $row->parent_id }}"
-                         data-sorting="{{ $loop->iteration }}"
+                         data-id="{{ intval($row->id) }}"
+                         data-parent-id="{{ intval($row->parent_id) }}"
+                         data-sorting="{{ intval($loop->iteration) }}"
                     >
                         @if($row->logo_image)
-                            <img src="{{ url($row->logo_image) }}" height="50" style="
+                            <img src="{{ url($row->logo_image) }}" width="32" height="32" style="
                             position: absolute;
-                            top: -100%;
-                            left: -25%;
+                            top: -10px;
+                            left: 0;
                             background: white;
                             padding: 3px;
                             border-radius: 100%;

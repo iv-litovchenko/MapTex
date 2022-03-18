@@ -13,7 +13,7 @@ use App\Http\Requests\Technologies\CreateRequest;
 
 class CreateController extends BaseController
 {
-    public function __invoke(int $parent_id = 0, int $sorting = 0, Request $request)
+    public function __invoke(int $parent_id = null, Request $request)
     {
 //        $data = $request->validated();
 //        Technology::firstOrCreate($data);

@@ -23,7 +23,7 @@ class TechnologiesService
         try {
             DB::beginTransaction();
             $model = new Technology;
-            $model->parent_id = $parent_id;
+            $model->parent_id = $parent_id > 0 ? $parent_id : null;
             $model->name = $name;
             $model->branch_stop_flag = $branch_stop_flag;
             $model->is_page_flag = $is_page_flag;

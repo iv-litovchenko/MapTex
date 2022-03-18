@@ -61,23 +61,20 @@
                     // var m = "clicked: " + key;
                     // window.console && console.log(m) || alert(m);
                     // Вставка элемента
-                    if (key == 'insertAfter') {
-                        var httpLink = '{{ route('admin.technologies.create', ['parent_id'=>100,'sorting'=>200]) }}';
+                    if (key == 'create') {
+                        var httpLink = '{{ route('admin.technologies.create', ['parent_id'=>100]) }}';
                         var dataId = $(this).data("id");
                         var dataParentId = $(this).data("parent-id");
-                        var dataSorting = $(this).data("sorting");
-                        httpLink = httpLink.replace(100, dataParentId);
-                        httpLink = httpLink.replace(200, dataSorting);
+                        httpLink = httpLink.replace(100, parseInt(dataParentId));
+                        alert(httpLink);
                         window.location.href = httpLink;
                     }
                     // Создание новой ветки
                     if (key == 'createBrunch') {
-                        var httpLink = '{{ route('admin.technologies.create', ['parent_id'=>100,'sorting'=>200]) }}';
+                        var httpLink = '{{ route('admin.technologies.create', ['parent_id'=>100]) }}';
                         var dataId = $(this).data("id");
-                        var dataParentId = $(this).data("parent-id");
-                        var dataSorting = $(this).data("sorting");
+                        var dataParentId = $(this).data("parent-id")
                         httpLink = httpLink.replace(100, dataId);
-                        httpLink = httpLink.replace(200, 0);
                         window.location.href = httpLink;
                     }
                     // Редактирование
@@ -88,7 +85,7 @@
                         window.location.href = httpLink;
                     }
                     // Редактирование сортировки
-                    if (key == 'edit_sorting') {
+                    if (key == 'editSorting') {
                         var httpLink = '{{ route('admin.technologies.edit-sorting', ['id'=>100]) }}';
                         var dataId = $(this).data("id");
                         httpLink = httpLink.replace(100, dataId);
@@ -96,10 +93,10 @@
                     }
                 },
                 items: {
-                    "insertAfter": {name: "Вставить элемент после"},
+                    "create": {name: "Добавить элеент"},
                     "createBrunch": {name: "Создать ветку элементов"},
                     "edit": {name: "Редактировать"},
-                    "edit_sorting": {name: "Редактировать сортировку"}
+                    "editSorting": {name: "Редактировать сортировку"}
                 }
             });
             $.contextMenu({
@@ -107,12 +104,10 @@
                 callback: function (key, options) {
                     // var m = "clicked: " + key;
                     // window.console && console.log(m) || alert(m);
-                    if (key == 'insert') {
-                        var httpLink = '{{ route('admin.technologies.create', ['parent_id'=>100,'sorting'=>200]) }}';
+                    if (key == 'create') {
+                        var httpLink = '{{ route('admin.technologies.create', ['parent_id'=>100]) }}';
                         var dataId = $(this).data("id");
-                        var dataSorting = $(this).data("sorting");
                         httpLink = httpLink.replace(100, dataId);
-                        httpLink = httpLink.replace(200, dataSorting);
                         window.location.href = httpLink;
                     }
                     if (key == 'edit') {
@@ -122,7 +117,7 @@
                         window.location.href = httpLink;
                     }
                     // Редактирование сортировки
-                    if (key == 'edit_sorting') {
+                    if (key == 'editSorting') {
                         var httpLink = '{{ route('admin.technologies.edit-sorting', ['id'=>100]) }}';
                         var dataId = $(this).data("id");
                         httpLink = httpLink.replace(100, dataId);
@@ -130,9 +125,9 @@
                     }
                 },
                 items: {
-                    "insert": {name: "Добавить элемент"},
+                    "create": {name: "Добавить элемент"},
                     "edit": {name: "Редактировать"},
-                    "edit_sorting": {name: "Редактировать сортировку"}
+                    "editSorting": {name: "Редактировать сортировку"}
                 }
             });
         });

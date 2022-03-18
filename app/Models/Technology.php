@@ -59,14 +59,15 @@ class Technology extends Model
     const FIELD_DESCRIPTION = 'description';
 
     /**
-     * Scope a query to only include popular users.
+     * Scope a query
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param mixed $parentId
+     * @param null|int $parentId
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeCustomWhereParentId($query, $parentId)
     {
+        // TODO пользовательское условие!
         if (intval($parentId) > 0) {
             return $query->where('parent_id', '=', $parentId);
         }

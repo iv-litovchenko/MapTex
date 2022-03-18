@@ -7,7 +7,7 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\BackendController;
 
 Route::get('/', [FrontendController::class, 'index'])->name('home');
-Route::get('/tech/{id}', [FrontendController::class, 'tech'])->name('tech');
+Route::get('/{id}', [FrontendController::class, 'tech'])->name('tech');
 
 Route::get('/pics', [FrontendController::class, 'pics'])->name('pics');
 Route::get('/books', [FrontendController::class, 'books'])->name('books');
@@ -24,7 +24,7 @@ Route::middleware([Authenticate::class, IsMe::class])
     ->namespace('\App\Http\Controllers\Admin\Technologies')
     ->group(function () {
 
-        Route::any('/admin/technologies/create/{parent_id}/{sorting}', 'CreateController')
+        Route::any('/admin/technologies/create/{parent_id}', 'CreateController')
             ->name('admin.technologies.create');
 
         Route::any('/admin/technologies/edit/{id}', 'EditController')
