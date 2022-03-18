@@ -7,7 +7,7 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\BackendController;
 
 Route::get('/', [FrontendController::class, 'index'])->name('home');
-Route::get('/{id}', [FrontendController::class, 'tech'])->name('tech');
+Route::get('/tech/{id}', [FrontendController::class, 'tech'])->name('tech');
 
 Route::get('/pics', [FrontendController::class, 'pics'])->name('pics');
 Route::get('/books', [FrontendController::class, 'books'])->name('books');
