@@ -40,7 +40,7 @@
             <center>
                 @foreach($files as $file)
                     <img src="/images/posts/{{ $row->id }}/{{ $file->getBasename() }}"
-                         style="width: auto; max-width: 50%; border: gray 3px solid;"/>
+                         style="width: 100%; max-width: 100%; border: gray 3px solid;"/>
                     <br/>
                     <hr/>
                 @endforeach
