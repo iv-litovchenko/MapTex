@@ -66,7 +66,6 @@
                         var dataId = $(this).data("id");
                         var dataParentId = $(this).data("parent-id");
                         httpLink = httpLink.replace(100, parseInt(dataParentId));
-                        alert(httpLink);
                         window.location.href = httpLink;
                     }
                     // Создание новой ветки
@@ -100,11 +99,11 @@
                     }
                 },
                 items: {
-                    "create": {name: "Добавить элеент"},
-                    "createBrunch": {name: "Создать ветку элементов"},
-                    "edit": {name: "Редактировать"},
+                    "create": {name: "Добавить элемент"},
+                    "edit": {name: "Редактировать элемент"},
                     "editSorting": {name: "Редактировать (сортировку)"},
-                    "editParent": {name: "Редактировать (родителя)"}
+                    "editParent": {name: "Редактировать (родителя)"},
+                    "createBrunch": {name: "Создать ветку элементов"},
                 }
             });
             $.contextMenu({
@@ -134,7 +133,7 @@
                 },
                 items: {
                     "create": {name: "Добавить элемент"},
-                    "edit": {name: "Редактировать"},
+                    "edit": {name: "Редактировать элемент"},
                     "editSorting": {name: "Редактировать сортировку"}
                 }
             });

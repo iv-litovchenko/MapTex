@@ -50,6 +50,9 @@ $rows = Technology::customWhereParentId($parentId)
                             border: gray 3px solid;">
                             &nbsp;&nbsp;&nbsp;
                         @endif
+                        @auth
+                            #{{ $row->id }} |
+                        @endauth
                         @if($row->is_draft_flag == 1)
                             [Черновик]
                         @endif
