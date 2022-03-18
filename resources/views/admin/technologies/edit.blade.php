@@ -64,9 +64,19 @@
                 <td>Изображение (логотип технологии)</td>
                 <td>
                     @if($model->logo_image)
-                        <img src="{{ url($model->logo_image) }}" width="100"> <br />
+                        <img src="{{ url($model->logo_image) }}" width="100"> <br/>
                     @endif
                     <input type="file" name="logo_image">
+                </td>
+            </tr>
+            <tr>
+                <td>Изображения</td>
+                <td>
+                    @foreach($images as $image)
+                        <img src="{{ url('images/posts/'.$model->id.'/'.$image->getFilename()) }}" width="100">
+                        <br/>
+                    @endforeach
+                    <input type="file" name="images[]">
                 </td>
             </tr>
             <tr>
