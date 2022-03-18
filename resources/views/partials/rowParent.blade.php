@@ -14,13 +14,9 @@ $row = Technology::find($parentId);
     <li class="children__item">
         <div class="node" style="">
             <div class="node__text btn btn-neutral">
-                @if($row->branch_stop_flag == 1 || $row->is_page_flag == 1)
-                    <a href="{{ route('tech', ['id'=>$row->id]) }}">
-                        {{ Str::limit($row->name, 14) }}
-                    </a>
-                @else
+                <a href="{{ route('tech', ['id'=>$row->id]) }}">
                     {{ Str::limit($row->name, 14) }}
-                @endif
+                </a>
             </div>
         </div>
     </li>
