@@ -31,7 +31,7 @@ $rows = Technology::customWhereParentId($parentId)
                 ">
                 <div class="node" style="{{ $cssStyleBrunchStop }}; position: relative;
                 @if($row->logo_image)
-                    padding-left: 35px;
+                    padding-left: 30px;
                 @endif
                     ">
                     <div class="node__text context-menu-one btn btn-neutral"
@@ -42,8 +42,8 @@ $rows = Technology::customWhereParentId($parentId)
                         @if($row->logo_image)
                             <img src="{{ url($row->logo_image) }}" width="32" height="32" style="
                             position: absolute;
-                            top: -10px;
-                            left: 0;
+                            top: -12px;
+                            left: -3px;
                             background: white;
                             padding: 3px;
                             border-radius: 100%;

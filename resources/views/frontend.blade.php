@@ -91,12 +91,20 @@
                         httpLink = httpLink.replace(100, dataId);
                         window.location.href = httpLink;
                     }
+                    // Изменить родителя
+                    if (key == 'editParent') {
+                        var httpLink = '{{ route('admin.technologies.edit-parent', ['id'=>100]) }}';
+                        var dataId = $(this).data("id");
+                        httpLink = httpLink.replace(100, dataId);
+                        window.location.href = httpLink;
+                    }
                 },
                 items: {
                     "create": {name: "Добавить элеент"},
                     "createBrunch": {name: "Создать ветку элементов"},
                     "edit": {name: "Редактировать"},
-                    "editSorting": {name: "Редактировать сортировку"}
+                    "editSorting": {name: "Редактировать (сортировку)"},
+                    "editParent": {name: "Редактировать (родителя)"}
                 }
             });
             $.contextMenu({

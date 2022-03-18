@@ -33,6 +33,9 @@ Route::middleware([Authenticate::class, IsMe::class])
         Route::any('/admin/technologies/edit/sorting/{id}', 'EditSortingController')
             ->name('admin.technologies.edit-sorting');
 
+        Route::any('/admin/technologies/edit/parent/{id}', 'EditParentController')
+            ->name('admin.technologies.edit-parent');
+
     });
 
 /**
