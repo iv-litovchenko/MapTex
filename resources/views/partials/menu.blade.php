@@ -11,12 +11,11 @@
                 <a href="{{ route('pics') }}" style="font-size: 24px;">Разные картинки</a> &nbsp;|&nbsp;
                 <a href="{{ route('books') }}" style="font-size: 24px;">Книги</a>
             </td>
-            @php
-                $countTechnology = \App\Models\Technology::count();
-            @endphp
             <td width="25%" align="right" style="font-size: 15px; color: gray;">
-                Всего знаний ({{ $countTechnology }})<br/>
-                Код пишется для людей</b>
+                @component('components.db-count-in-model')
+                    @slot('name', 'Всего знаний:')
+                @endcomponent
+                Код пишется для людей
             </td>
         </tr>
     </table>

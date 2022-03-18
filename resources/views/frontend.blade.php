@@ -51,6 +51,18 @@
         </div>
     @endif
 
+    @if(isset($images))
+        <br />
+        <br />
+        <center>
+            @foreach($images as $image)
+                <img src="/images/home/{{ $image->getBasename() }}"
+                     style="width: 100%; max-width: 50%;"/>
+                <br/>
+            @endforeach
+        </center>
+    @endif
+
     <script type="text/javascript">
 
         $(function () {

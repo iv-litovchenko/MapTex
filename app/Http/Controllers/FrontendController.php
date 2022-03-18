@@ -19,15 +19,19 @@ use App\Models\User;
 
 class FrontendController extends BaseController
 {
-//    use AuthorizesRequests;
-//    use DispatchesJobs;
-//    use ValidatesRequests;
+    //    use AuthorizesRequests;
+    //    use DispatchesJobs;
+    //    use ValidatesRequests;
 
     public function index(Request $request)
     {
+        $path = public_path('images/home');
+        $images = File::files($path);
+
         return view('frontend', [
             'pageTitle' => 'Главная',
             'pageHeader' => 'Roadmap backend',
+            'images' => $images,
             'row' => [
                 'id' => 0,
                 'parent_id' => 0,

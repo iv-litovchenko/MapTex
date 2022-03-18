@@ -60,6 +60,6 @@
     @endif
 </div>
 
-<div style="position: fixed; bottom: 15px; right: 15px;">Версия 0.0.1 | {{ config('app.name', 'Laravel') }}</div>
+<div style="position: fixed; bottom: 15px; right: 15px;">Версия 0.0.1/{{ $appProjectVersion }} | {{ config('app.name', 'Laravel') }}</div>
 </body>
 </html>

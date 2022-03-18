@@ -46,14 +46,14 @@ class Technology extends Model
     use HasFactory;
 
     protected $table = 'technologies';
-//    protected $fillable = false;
+    //    protected $fillable = false;
 
     const BRUNCH_LEFT_CODE = 1;
     const BRUNCH_RIGHT_CODE = 2;
     const BRUNCH_STOP_CODE = 1;
 
-// TODO Поля таблицы (интересный способ)
-// where(Technology::FIELD_NAME,'=','foo')
+    // TODO Поля таблицы (интересный способ)
+    // where(Technology::FIELD_NAME,'=','foo')
     const FIELD_ID = 'id';
     const FIELD_NAME = 'name';
     const FIELD_DESCRIPTION = 'description';
@@ -77,5 +77,20 @@ class Technology extends Model
     public function users()
     {
         return $this->hasOne(User::class, 'id', 'user_id');
+    }
+
+    public function parentsAll()
+    {
+//         return $this->hasMany ... self::class
+    }
+
+    public function parent()
+    {
+        // return $this->hasMany ... self::class
+    }
+
+    public function childrens()
+    {
+        // return $this->hasMany ... self::class
     }
 }
