@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/mindmap/dist/mindmap.css">
     <link rel="stylesheet" href="/assets/contextmenu/dist/jquery.contextMenu.css">
+
+    <style>
+        html, body {
+            background: white;
+        }
+    </style>
 </head>
 <body>
 
@@ -38,7 +44,7 @@
 <div class="container">
     @include('partials/searchForm')
 
-    <br />
+    <br/>
 
     @yield('content')
 </div> <!-- /container -->
