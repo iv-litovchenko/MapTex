@@ -1,38 +1,39 @@
-<div style="padding: 25px; background: #c7c7f5; text-align: center; color: white">
-    <table width="100%">
-        <tr>
-            <td width="25%" align="left" style="font-size: 15px; color: gray;">
-                IT-заметки (над кодом - как это работает?)<br/>
-                Интерактивный справочник и копилка знаний
-            </td>
-            <td>
-                <a href="{{ route('home') }}" style="font-size: 24px;">Главная</a> &nbsp;|
-                <a href="{{ route('notes') }}" style="font-size: 24px;">Барахолка</a> |&nbsp;
-                <a href="{{ route('pics') }}" style="font-size: 24px;">Разные картинки</a> &nbsp;|&nbsp;
-                <a href="{{ route('books') }}" style="font-size: 24px;">Книги</a>
-            </td>
-            <td width="25%" align="right" style="font-size: 15px; color: gray;">
-                @component('components.db-count-in-model')
-                    @slot('name', 'Всего знаний:')
-                @endcomponent
-                Код пишется для людей
-            </td>
-        </tr>
-    </table>
-
-</div>
-
-<div style="padding: 25px; background: #afe282; text-align: center; color: white">
-    <form action="{{ route('search') }}">
-        @csrf
-        <input type="text" name="q" placeholder="Введите запрос на поиск"
-               style="width: 50%; height: 42px; padding: 5px 10px 5px 10px;
-                border-radius: 10px; border: gray 1px solid; font-size: 32px;">
-        <input type="submit" value="Go"
-               style="height: 42px; padding-left: 5px; padding-right: 5px;
-                border-radius: 10px; border: gray 1px solid; font-size: 32px;">
-    </form>
-</div>
-
-<br/>
-<br/>
+<ul class="nav navbar-nav">
+    <li class="active"><a href="{{ route('home') }}">Главная</a></li>
+    <li><a href="{{ route('notes') }}">Барахолка</a></li>&nbsp;
+    <li><a href="{{ route('pics') }}">Разные картинки</a></li>&nbsp;
+    <li><a href="{{ route('books') }}">Книги</a></li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+    <li class="drowdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+           aria-expanded="false">
+            @guest
+                Кабинет
+            @else
+                {{ Auth::user()->name }} |
+            @endguest
+            <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            @guest
+                <li><a href="{{ route('login') }}">Логин</a></li>
+            @else
+                <li><a href="{{ route('logout') }}"
+                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        Выйти
+                    </a></li>
+                <form action="{{ route('logout') }}" method="post" style="display: none;">
+                    @csrf
+                    <input type="submit" id="logout-form">
+                </form>
+            @endguest
+        </ul>
+    </li>
+    <li>
+        <a href="{{ route('home') }}">
+            @component('components.db-count-in-model')
+                @slot('name', 'Всего знаний:')
+            @endcomponent
+        </a>
+    </li>
+</ul>
