@@ -37,6 +37,9 @@
 
 <div class="container">
     @include('partials/searchForm')
+
+    <br />
+
     @yield('content')
 </div> <!-- /container -->
 
@@ -57,5 +60,96 @@
     src="https://cdn.tiny.cloud/1/i7rtvlx6g594hivyfqzi1d4yk6e0uvnt71bu0wysnpqkkrnl/tinymce/5/tinymce.min.js"></script>
 <script src="/assets/mindmap/dist/mindmap.js"></script>
 <script src="/assets/contextmenu/dist/jquery.contextMenu.js"></script>
+
+
+<script type="text/javascript">
+
+    $(function () {
+        $('.mindmap').mindmap();
+        $.contextMenu({
+            selector: '.context-menu-one',
+            callback: function (key, options) {
+                // var m = "clicked: " + key;
+                // window.console && console.log(m) || alert(m);
+                // Вставка элемента
+                if (key == 'create') {
+                    var httpLink = '{{ route('admin.technologies.create', ['parent_id'=>100]) }}';
+                    var dataId = $(this).data("id");
+                    var dataParentId = $(this).data("parent-id");
+                    httpLink = httpLink.replace(100, parseInt(dataParentId));
+                    window.location.href = httpLink;
+                }
+                // Создание новой ветки
+                if (key == 'createBrunch') {
+                    var httpLink = '{{ route('admin.technologies.create', ['parent_id'=>100]) }}';
+                    var dataId = $(this).data("id");
+                    var dataParentId = $(this).data("parent-id")
+                    httpLink = httpLink.replace(100, dataId);
+                    window.location.href = httpLink;
+                }
+                // Редактирование
+                if (key == 'edit') {
+                    var httpLink = '{{ route('admin.technologies.edit', ['id'=>100]) }}';
+                    var dataId = $(this).data("id");
+                    httpLink = httpLink.replace(100, dataId);
+                    window.location.href = httpLink;
+                }
+                // Редактирование сортировки
+                if (key == 'editSorting') {
+                    var httpLink = '{{ route('admin.technologies.edit-sorting', ['id'=>100]) }}';
+                    var dataId = $(this).data("id");
+                    httpLink = httpLink.replace(100, dataId);
+                    window.location.href = httpLink;
+                }
+                // Изменить родителя
+                if (key == 'editParent') {
+                    var httpLink = '{{ route('admin.technologies.edit-parent', ['id'=>100]) }}';
+                    var dataId = $(this).data("id");
+                    httpLink = httpLink.replace(100, dataId);
+                    window.location.href = httpLink;
+                }
+            },
+            items: {
+                "create": {name: "Добавить элемент"},
+                "edit": {name: "Редактировать элемент"},
+                "editSorting": {name: "Редактировать (сортировку)"},
+                "editParent": {name: "Редактировать (родителя)"},
+                "createBrunch": {name: "Создать ветку элементов"},
+            }
+        });
+        $.contextMenu({
+            selector: '.context-menu-two',
+            callback: function (key, options) {
+                // var m = "clicked: " + key;
+                // window.console && console.log(m) || alert(m);
+                if (key == 'create') {
+                    var httpLink = '{{ route('admin.technologies.create', ['parent_id'=>100]) }}';
+                    var dataId = $(this).data("id");
+                    httpLink = httpLink.replace(100, dataId);
+                    window.location.href = httpLink;
+                }
+                if (key == 'edit') {
+                    var httpLink = '{{ route('admin.technologies.edit', ['id'=>100]) }}';
+                    var dataId = $(this).data("id");
+                    httpLink = httpLink.replace(100, dataId);
+                    window.location.href = httpLink;
+                }
+                // Редактирование сортировки
+                if (key == 'editSorting') {
+                    var httpLink = '{{ route('admin.technologies.edit-sorting', ['id'=>100]) }}';
+                    var dataId = $(this).data("id");
+                    httpLink = httpLink.replace(100, dataId);
+                    window.location.href = httpLink;
+                }
+            },
+            items: {
+                "create": {name: "Добавить элемент"},
+                "edit": {name: "Редактировать элемент"},
+                "editSorting": {name: "Редактировать сортировку"}
+            }
+        });
+    });
+
+</script>
 </body>
 </html>

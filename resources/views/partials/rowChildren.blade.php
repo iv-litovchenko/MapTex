@@ -34,7 +34,7 @@ $rows = Technology::customWhereParentId($parentId)
                     padding-left: 30px;
                 @endif
                     ">
-                    <div class="node__text context-menu-one btn btn-neutral"
+                    <div class="node__text context-menu-one"
                          data-id="{{ intval($row->id) }}"
                          data-parent-id="{{ intval($row->parent_id) }}"
                          data-sorting="{{ intval($loop->iteration) }}"
