@@ -38,7 +38,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         // TODO здесь подключаем и перенастраиваем
-        //        Paginator::defaultView('vendor.pagination.bootstrap-v4');
-        //        Carbon::setLocale('ru_RU');
+        // Paginator::defaultView('vendor.pagination.bootstrap-v3');
+        Paginator::useBootstrap();
+
+        // TODO установка локали для дат
+        Carbon::setLocale('ru_RU');
     }
 }

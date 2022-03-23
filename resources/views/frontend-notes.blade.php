@@ -1,5 +1,9 @@
 @extends('layouts.frontend')
 
+@section('pageLayoutTitle', 'Барахолка')
+@section('pageLayoutHeader', 'Барахолка')
+@section('pageLayoutBreadcrumb', Breadcrumbs::render('notes'))
+
 @section('content')
     <h3 align="center">Здесь можно оставить заметки - возможно они попадут в ветки!</h3>
     <form action="" method="post">

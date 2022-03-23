@@ -1,5 +1,9 @@
 @extends('layouts.frontend')
 
+@section('pageLayoutTitle', 'Книги')
+@section('pageLayoutHeader', 'Книги')
+@section('pageLayoutBreadcrumb', Breadcrumbs::render('books'))
+
 @section('content')
     <center>
         @foreach($files as $file)

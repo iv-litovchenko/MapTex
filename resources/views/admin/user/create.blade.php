@@ -1,11 +1,11 @@
 @extends('layouts.frontend')
 
-@section('pageLayoutTitle', 'Регистрация')
-@section('pageLayoutHeader', 'Регистрация')
-@section('pageLayoutBreadcrumb', Breadcrumbs::render('auth.register'))
+@section('pageLayoutTitle', 'Добавить')
+@section('pageLayoutHeader', 'Добавить')
+@section('pageLayoutBreadcrumb', Breadcrumbs::render('admin.user.create'))
 
 @section('content')
-    <form action="{{ route('register') }}" method="post">
+    <form action="{{ route('admin.user.store') }}" method="post">
         @csrf
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Email</label>
@@ -31,6 +31,6 @@
                 <input type="password" class="form-control" name="password_confirmation">
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Регистрация</button>
+        <button type="submit" class="btn btn-primary">Создать</button>
     </form>
 @endsection

@@ -1,5 +1,9 @@
 @extends('layouts.frontend')
 
+@section('pageLayoutTitle', 'Поиск')
+@section('pageLayoutHeader', 'Поиск')
+@section('pageLayoutBreadcrumb', Breadcrumbs::render('search'))
+
 @section('content')
     <center>
         <h3>Результаты поиска: {{ $q }}</h3>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $pageTitle ?? '' }} | IT-заметки</title>
+    <title>@yield('pageLayoutTitle') | IT-заметки</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/mindmap/dist/mindmap.css">
     <link rel="stylesheet" href="/assets/contextmenu/dist/jquery.contextMenu.css">
@@ -16,10 +16,6 @@
     </style>
 </head>
 <body>
-
-@if (session('status'))
-    {{ session('status') }}
-@endif
 
 <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -36,16 +32,23 @@
             </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
+            {!! Menu::get('menu.header.left')->asUl(['class' => 'nav navbar-nav']) !!}
+            {!! Menu::get('menu.header.right')->asUl(['class' => 'nav navbar-nav navbar-right']) !!}
             @include('partials/menu')
         </div><!--/.nav-collapse -->
     </div><!--/.container-fluid -->
 </nav>
 
+
+@component('components.db-count-in-model')
+    @slot('name', 'Всего знаний:')
+@endcomponent
+
 <div class="container">
-    @include('partials/searchForm')
-
-    <br/>
-
+    @include('partials/form-search')
+    @include('partials/flash-message')
+    @yield('pageLayoutBreadcrumb')
+    <h1>@yield('pageLayoutHeader')</h1>
     @yield('content')
 </div> <!-- /container -->
 

@@ -10,20 +10,23 @@
     "require": {
         "php": "^8.0",
         "athlon1600/youtube-downloader": "3.1.1",
-        "barryvdh/laravel-ide-helper": "2.12.3",
+        "barryvdh/laravel-debugbar": "^3.6",
+        "davejamesmiller/laravel-breadcrumbs": "^5.3",
         "doctrine/dbal": "3.3.3",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
+        "laravel/telescope": "^4.8",
         "laravel/tinker": "^2.5",
-        "laravel/ui": "^3.4"
+        "laravel/ui": "^3.4",
+        "lavary/laravel-menu": "^1.8"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.0.1",
-        "laravel/telescope": "^4.8",
+        "barryvdh/laravel-ide-helper": "2.12.3",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^5.10",
         "phpmd/phpmd": "2.11.1",
