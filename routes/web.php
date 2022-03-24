@@ -4,26 +4,25 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\IsMe;
 use App\Http\Controllers\FrontendController;
-use App\Http\Controllers\BackendController;
+use App\Http\Controllers\SiteController;
 use DaveJamesMiller\Breadcrumbs\Facades;
 
-Route::get('/', [FrontendController::class, 'index'])->name('home');
-Route::get('/tech/{id}', [FrontendController::class, 'tech'])->name('tech');
-
-Route::any('/notes', [FrontendController::class, 'notes'])->name('notes');
-Route::get('/pics', [FrontendController::class, 'pics'])->name('pics');
-Route::get('/books', [FrontendController::class, 'books'])->name('books');
-
-Route::any('/search', [FrontendController::class, 'search'])->name('search');
-Route::any('/login', [FrontendController::class, 'login'])->name('login');
-Route::any('/logout', [FrontendController::class, 'logout'])->name('logout');
+Route::get('/', [SiteController::class, 'home'])->name('site.home');
+Route::get('/tech/{id}', [SiteController::class, 'tech'])->name('site.tech');
+Route::any('/note', [SiteController::class, 'note'])->name('site.note');
+Route::get('/pic', [SiteController::class, 'pic'])->name('site.pic');
+Route::get('/book', [SiteController::class, 'book'])->name('site.book');
+Route::any('/search', [SiteController::class, 'search'])->name('site.search');
 
 //middleware([Authenticate::class, IsMe::class])
-Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('dashboard', \App\Http\Controllers\Admin\DashboardController::class)->name('dashboard');
-    Route::resource('technology', \App\Http\Controllers\Admin\TechnologyController::class);
-    Route::resource('user', \App\Http\Controllers\Admin\UserController::class);
-});
+Route::middleware([Authenticate::class, IsMe::class])
+    ->prefix('admin')
+    ->name('admin.')
+    ->group(function () {
+        Route::get('dashboard', \App\Http\Controllers\Admin\DashboardController::class)->name('dashboard');
+        Route::resource('technology', \App\Http\Controllers\Admin\TechnologyController::class);
+        Route::resource('user', \App\Http\Controllers\Admin\UserController::class);
+    });
 
 /**
  * Закрытая часть

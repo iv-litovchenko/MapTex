@@ -1,4 +1,4 @@
-@extends('layouts.frontend')
+@extends('layouts.default')
 
 @section('pageLayoutTitle', 'Редактировать')
 @section('pageLayoutHeader', 'Редактировать')

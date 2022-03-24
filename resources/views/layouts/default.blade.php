@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('pageLayoutTitle') | IT-заметки</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/mindmap/dist/mindmap.css">
-    <link rel="stylesheet" href="/assets/contextmenu/dist/jquery.contextMenu.css">
+    <link rel="stylesheet" href="{{ asset('assets/mindmap/dist/mindmap.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/contextmenu/dist/jquery.contextMenu.css') }}">
 
     <style>
         html, body {
@@ -27,14 +27,21 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ route('home') }}">
+            <a class="navbar-brand" href="{{ route('site.home') }}">
                 IT-заметки
             </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             {!! Menu::get('menu.header.left')->asUl(['class' => 'nav navbar-nav']) !!}
-            {!! Menu::get('menu.header.right')->asUl(['class' => 'nav navbar-nav navbar-right']) !!}
-            @include('partials/menu')
+            {!! Menu::get('menu.header.right')->asUl(['class' => 'nav navbar-nav navbar-right'],['class' => 'dropdown-menu']) !!}
+            @auth
+                fewfew
+                <form id="logout-form" action="{{ route('logout') }}" method="post" style="dis2play: none;">
+                    @csrf
+                    <input type="text">
+                    fewfew
+                </form>
+            @endauth
         </div><!--/.nav-collapse -->
     </div><!--/.container-fluid -->
 </nav>
@@ -62,14 +69,12 @@
     </div>
 </footer>
 
-
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script
     src="https://cdn.tiny.cloud/1/i7rtvlx6g594hivyfqzi1d4yk6e0uvnt71bu0wysnpqkkrnl/tinymce/5/tinymce.min.js"></script>
-<script src="/assets/mindmap/dist/mindmap.js"></script>
-<script src="/assets/contextmenu/dist/jquery.contextMenu.js"></script>
-
+<script src="{{ asset('assets/mindmap/dist/mindmap.js') }}"></script>
+<script src="{{ asset('assets/contextmenu/dist/jquery.contextMenu.js') }}"></script>
 
 <script type="text/javascript">
 

@@ -1,8 +1,8 @@
-@extends('layouts.frontend')
+@extends('layouts.default')
 
 @section('pageLayoutTitle', 'Барахолка')
 @section('pageLayoutHeader', 'Барахолка')
-@section('pageLayoutBreadcrumb', Breadcrumbs::render('notes'))
+@section('pageLayoutBreadcrumb', Breadcrumbs::render('note'))
 
 @section('content')
     <h3 align="center">Здесь можно оставить заметки - возможно они попадут в ветки!</h3>

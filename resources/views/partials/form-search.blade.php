@@ -1,4 +1,4 @@
-<form action="{{ route('search') }}">
+<form action="{{ route('site.search') }}">
     @csrf
     <div class="input-group">
         <input type="text" name="q" class="form-control" placeholder="Введите запрос на поиск">

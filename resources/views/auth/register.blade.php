@@ -1,8 +1,8 @@
-@extends('layouts.frontend')
+@extends('layouts.default')
 
 @section('pageLayoutTitle', 'Регистрация')
 @section('pageLayoutHeader', 'Регистрация')
-@section('pageLayoutBreadcrumb', Breadcrumbs::render('auth.register'))
+@section('pageLayoutBreadcrumb', Breadcrumbs::render('register'))
 
 @section('content')
     <form action="{{ route('register') }}" method="post">

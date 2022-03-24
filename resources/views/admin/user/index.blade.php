@@ -1,4 +1,4 @@
-@extends('layouts.frontend')
+@extends('layouts.default')
 
 @section('pageLayoutTitle', 'Пользователи')
 @section('pageLayoutHeader', 'Пользователи')

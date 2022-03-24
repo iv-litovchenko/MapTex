@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
         Blade::component('components.test', 'test');
 
         // TODO подгрузка в шаблон данных (переменная "projectVersion" будет доступна в шаблоне)
-        View::composer('layouts.frontend', function ($view) {
+        View::composer('layouts.default', function ($view) {
             $view->with('appDbCountInModel', \App\Models\Technology::count());
             $view->with('appProjectVersion', 1);
         });

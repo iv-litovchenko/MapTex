@@ -1,8 +1,8 @@
-@extends('layouts.frontend')
+@extends('layouts.default')
 
 @section('pageLayoutTitle', 'Разные картинки')
 @section('pageLayoutHeader', 'Разные картинки')
-@section('pageLayoutBreadcrumb', Breadcrumbs::render('pics'))
+@section('pageLayoutBreadcrumb', Breadcrumbs::render('pic'))
 
 @section('content')
     <center>

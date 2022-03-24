@@ -5,9 +5,6 @@ use Lavary\Menu\Facade;
 // Верхнее меню справа
 Menu::make('menu.header.right', function ($menu) {
 
-    //    @guest
-    //
-    //    @else
     //                <li><a href="{{ route('logout') }}"
     //                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
     //                           Выйти
@@ -16,17 +13,30 @@ Menu::make('menu.header.right', function ($menu) {
     //        @csrf
     //                    <input type="submit" id="logout-form">
     //                </form>
-    //    @endguest
-
     if (Auth::check()) {
-        # $menu->item('profile')->add('Войти', 'login');
-        $cab = $menu->add(Auth::user()->name, 'profile');
-        $cab->add('Профиль');
-        $cab->add('Выход', 'logout');
+        $cab = $menu->add(Auth::user()->name, ['class' => 'dropdown']);
+        $cab->append('<span class="caret"></span>');
+        $cab->link->attr([
+            'class'         => 'nav-link dropdown-toggle',
+            'data-toggle'   => 'dropdown',
+            'role'          => 'button',
+            'aria-expanded' => 'false',
+        ]);
+//        $cab->add('Профиль', ['route' => 'auth.profile']);
+        $cab->add('Выход', ['route' => 'logout'])->link->attr([
+            'onclick' => "$('#logout-form').submit(); return false;"
+        ]);
     } else {
-        $cab = $menu->add('Кабинет');
-        $cab->add('Войти', 'login');
-        $cab->add('Регистрация', 'register');
-        $cab->add('Забыли пароль?', 'password.request');
+        $cab = $menu->add('Личный кабинет', ['class' => 'dropdown']);
+        $cab->append('<span class="caret"></span>');
+        $cab->link->attr([
+            'class'         => 'nav-link dropdown-toggle',
+            'data-toggle'   => 'dropdown',
+            'role'          => 'button',
+            'aria-expanded' => 'false',
+        ]);
+        $cab->add('Войти', ['route' => 'login']);
+        $cab->add('Регистрация', ['route' => 'register']);
+        $cab->add('Забыли пароль?', ['route' => 'password.request']);
     }
 });

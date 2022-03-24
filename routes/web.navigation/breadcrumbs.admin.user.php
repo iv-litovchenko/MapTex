@@ -4,7 +4,7 @@ use DaveJamesMiller\Breadcrumbs\Facades;
 
 // Главная > Администрирование > Пользователи
 Breadcrumbs::for('admin.user.index', function ($trail) {
-    $trail->parent('home');
+    $trail->parent('site.home');
     $trail->parent('admin.dashboard');
     $trail->push('Пользователи', route('admin.user.index'));
 });

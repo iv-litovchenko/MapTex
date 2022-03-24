@@ -1,8 +1,8 @@
-@extends('layouts.frontend')
+@extends('layouts.default')
 
 @section('pageLayoutTitle', 'Вход')
 @section('pageLayoutHeader', 'Вход')
-@section('pageLayoutBreadcrumb', Breadcrumbs::render('auth.login'))
+@section('pageLayoutBreadcrumb', Breadcrumbs::render('login'))
 
 @section('content')
     <form action="{{ route('login') }}" method="post">

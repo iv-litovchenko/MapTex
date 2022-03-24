@@ -3,38 +3,44 @@
 use DaveJamesMiller\Breadcrumbs\Facades;
 
 // Главная
-Breadcrumbs::for('home', function ($trail) {
-    $trail->push('Главная', route('home'));
+Breadcrumbs::for('site.home', function ($trail) {
+    $trail->push('Главная', route('site.home'));
 });
 
 // Барахолка
-Breadcrumbs::for('notes', function ($trail) {
-    $trail->parent('home');
-    $trail->push('Барахолка', route('notes'));
+Breadcrumbs::for('note', function ($trail) {
+    $trail->parent('site.home');
+    $trail->push('Барахолка');
 });
 
 // Разные картинки
-Breadcrumbs::for('pics', function ($trail) {
-    $trail->parent('home');
-    $trail->push('Разные картинки', route('pics'));
+Breadcrumbs::for('pic', function ($trail) {
+    $trail->parent('site.home');
+    $trail->push('Разные картинки');
 });
 
 // Книги
-Breadcrumbs::for('books', function ($trail) {
-    $trail->parent('home');
-    $trail->push('Книги', route('books'));
+Breadcrumbs::for('book', function ($trail) {
+    $trail->parent('site.home');
+    $trail->push('Книги');
 });
 
 // Главная > Вход
-Breadcrumbs::for('auth.login', function ($trail) {
-    $trail->parent('home');
+Breadcrumbs::for('login', function ($trail) {
+    $trail->parent('site.home');
     $trail->push('Вход в систему');
 });
 
 // Главная > Регистрация
-Breadcrumbs::for('auth.register', function ($trail) {
-    $trail->parent('home');
+Breadcrumbs::for('register', function ($trail) {
+    $trail->parent('site.home');
     $trail->push('Регистрация');
+});
+
+// Главная > Забыли пароль?
+Breadcrumbs::for('password.email', function ($trail) {
+    $trail->parent('site.home');
+    $trail->push('Забыли пароль?');
 });
 
 // Главная > Администрирование

@@ -4,8 +4,8 @@ use Lavary\Menu\Facade;
 
 // Верхнее меню справа
 Menu::make('menu.header.left', function ($menu) {
-    $menu->add('Главная', 'home');
-    $menu->add('Барахолка', 'notes');
-    $menu->add('Разные картинки', 'pics');
-    $menu->add('Книги', 'books');
+    $menu->add('Главная', ['route'  => 'site.home']);
+    $menu->add('Барахолка', ['route'  => 'site.note']);
+    $menu->add('Разные картинки', ['route'  => 'site.pic']);
+    $menu->add('Книги', ['route'  => 'site.book']);
 });

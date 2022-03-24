@@ -1,4 +1,8 @@
-@extends('layouts.frontend')
+@extends('layouts.default')
+
+@section('pageLayoutTitle', 'Книги')
+@section('pageLayoutHeader', 'Книги')
+@section('pageLayoutBreadcrumb', Breadcrumbs::render('site.home'))
 
 @section('content')
     <div class="mindmap">
@@ -7,7 +11,7 @@
                 <li class="children__item">
                     <div class="node" style="">
                         <div class="node__text">
-                            <a href="{{ route('home') }}">Главная</a>
+                            <a href="{{ route('site.home') }}">Главная</a>
                         </div>
                     </div>
                 </li>
@@ -27,7 +31,7 @@
              data-sorting="0"
             @endif
         >
-            <div class="node__text">{{ Str::limit($pageHeader, 32) }}</div>
+            <div class="node__text">Roadmap backend</div>
         </div>
         @include('partials/rowChildren')
     </div>

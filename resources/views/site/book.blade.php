@@ -1,8 +1,8 @@
-@extends('layouts.frontend')
+@extends('layouts.default')
 
 @section('pageLayoutTitle', 'Книги')
 @section('pageLayoutHeader', 'Книги')
-@section('pageLayoutBreadcrumb', Breadcrumbs::render('books'))
+@section('pageLayoutBreadcrumb', Breadcrumbs::render('book'))
 
 @section('content')
     <center>

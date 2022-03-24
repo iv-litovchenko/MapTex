@@ -2,35 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\User\PasswordMail;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Http\Request;
-use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Cookie;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\View;
-use App\Models\Technology;
 use App\Models\Note;
-use App\Models\User;
+use App\Models\Technology;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\File;
 
-class FrontendController extends BaseController
+/**
+ * Контроллер для обработки страниц frontend-а
+ */
+class SiteController extends Controller
 {
     //    use AuthorizesRequests;
     //    use DispatchesJobs;
     //    use ValidatesRequests;
 
-    public function index(Request $request)
+    /**
+     * Главная страница
+     *
+     * @return \Illuminate\View\View
+     */
+    public function home()
     {
         $path = public_path('images/home');
         $images = File::files($path);
 
-        return view('frontend', [
-            'pageTitle' => 'Главная',
-            'pageHeader' => 'Roadmap backend',
+        return view('site.home', [
             'images' => $images,
             'row' => [
                 'id' => 0,
@@ -50,44 +48,51 @@ class FrontendController extends BaseController
             $files = File::files($path);
         }
 
-        return view('frontend', [
-            'pageTitle' => $model->name,
-            'pageHeader' => $model->name,
+        return view('site.tech', [
             'back_id' => $model->parent_id,
             'row' => $model,
             'files' => $files
         ]);
     }
 
-    public function pics()
+    /**
+     * Страница разных картинок
+     *
+     * @return \Illuminate\View\View
+     */
+    public function pic()
     {
         $path = public_path('images/pics');
         $files = File::files($path);
-
-        return view('frontend-pics', [
-            'pageTitle' => 'Разные картинки',
-            'files' => $files
-        ]);
+        return view('site.pic', compact('files'));
     }
 
-    public function books()
+
+    /**
+     * Страница список книг
+     *
+     * @return \Illuminate\View\View
+     */
+    public function book()
     {
         $path = public_path('images/books');
         $files = File::files($path);
-
-        return view('frontend-books', [
-            'pageTitle' => 'Книги',
-            'files' => $files
-        ]);
+        return view('site.book', compact('files'));
     }
 
-    public function notes(Request $request)
+    /**
+     * Страница барахолка
+     *
+     * @param Request $request
+     * @return \Illuminate\View\View
+     */
+    public function note(Request $request)
     {
         // Проверка на авторизацию
         $backendOpenStatus = Cookie::get('BACKEND_OPEN');
         $inputBodytext = $request->input('bodytext');
         if ($inputBodytext != '') {
-            $model = new Note;
+            $model = Note::make();
             $model->bodytext = $inputBodytext;
             if ($backendOpenStatus === 'yes') {
                 $model->is_me = 1;
@@ -97,12 +102,17 @@ class FrontendController extends BaseController
         }
 
         $rows = Note::orderBy('id', 'desc')->paginate(3);
-        return view('frontend-notes', [
-            'pageTitle' => 'Барахолка',
+        return view('site.note', [
             'rows' => $rows
         ]);
     }
 
+    /**
+     * Страница поиска по сайту
+     *
+     * @param Request $request
+     * @return \Illuminate\View\View
+     */
     public function search(Request $request)
     {
         $inputQuerySearch = $request->input('q');
@@ -118,10 +128,10 @@ class FrontendController extends BaseController
                 ->get();
         }
 
-        return view('frontend-search', [
-            'pageTitle' => 'Поиск по сайту',
+        return view('site.search', [
             'q' => $inputQuerySearch,
             'searchResult' => $rows
         ]);
     }
+
 }
