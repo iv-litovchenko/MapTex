@@ -14,7 +14,7 @@ $row = Technology::find($parentId);
     <li class="children__item">
         <div class="node" style="">
             <div class="node__text">
-                <a href="{{ route('tech', ['id'=>$row->id]) }}">
+                <a href="{{ route('site.tech', ['id'=>$row->id]) }}">
                     {{ Str::limit($row->name, 14) }}
                 </a>
             </div>

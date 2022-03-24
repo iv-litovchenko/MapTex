@@ -57,7 +57,7 @@ $rows = Technology::customWhereParentId($parentId)
                             [Черновик]
                         @endif
                         @if($row->branch_stop_flag == 1 || $row->is_page_flag == 1)
-                            <a href="{{ route('tech', ['id'=>$row->id]) }}">{{ Str::limit($row->name, 32) }}</a>
+                            <a href="{{ route('site.tech', ['id'=>$row->id]) }}">{{ Str::limit($row->name, 32) }}</a>
                         @else
                             {{ Str::limit($row->name, 32) }}
                         @endif
