@@ -43,6 +43,13 @@ Breadcrumbs::for('password.email', function ($trail) {
     $trail->push('Забыли пароль?');
 });
 
+// Главная > Сброс пароля
+Breadcrumbs::for('password.update', function ($trail) {
+    $trail->parent('site.home');
+    $trail->push('Сброс пароля');
+});
+
+
 // Главная > Администрирование
 Breadcrumbs::for('admin.dashboard', function ($trail) {
     $trail->push('Администрирование', route('admin.dashboard'));
