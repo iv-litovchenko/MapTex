@@ -2,7 +2,7 @@
 
 @section('pageLayoutTitle', 'Барахолка')
 @section('pageLayoutHeader', 'Барахолка')
-@section('pageLayoutBreadcrumb', Breadcrumbs::render('note'))
+@section('pageLayoutBreadcrumb', Breadcrumbs::render('site.note'))
 
 @section('content')
     <h3 align="center">Здесь можно оставить заметки - возможно они попадут в ветки!</h3>
@@ -47,13 +47,6 @@
         </div>
         <hr/>
     @endforeach
-    <style>
-        .paginage * {
-            height: 20px;
-        }
-    </style>
-    <div align="center" class="paginage">
-        Всего записей: {{ $rows->total() }}
-        {{ $rows->links() }}
-    </div>
+    {{ $rows->links() }}
+    Всего записей: {{ $rows->total() }}
 @stop

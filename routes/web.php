@@ -5,7 +5,6 @@ use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\IsMe;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\SiteController;
-use DaveJamesMiller\Breadcrumbs\Facades;
 
 Route::get('/', [SiteController::class, 'home'])->name('site.home');
 Route::get('/tech/{id}', [SiteController::class, 'tech'])->name('site.tech');

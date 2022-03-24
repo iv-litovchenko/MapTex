@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
-@section('pageLayoutTitle', 'Книги')
-@section('pageLayoutHeader', 'Книги')
+@section('pageLayoutTitle', 'Главная')
+@section('pageLayoutHeader', 'Главная')
 @section('pageLayoutBreadcrumb', Breadcrumbs::render('site.home'))
 
 @section('content')

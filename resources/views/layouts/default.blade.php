@@ -35,36 +35,41 @@
             {!! Menu::get('menu.header.left')->asUl(['class' => 'nav navbar-nav']) !!}
             {!! Menu::get('menu.header.right')->asUl(['class' => 'nav navbar-nav navbar-right'],['class' => 'dropdown-menu']) !!}
             @auth
-                fewfew
-                <form id="logout-form" action="{{ route('logout') }}" method="post" style="dis2play: none;">
+                <form id="logout-form" action="{{ route('logout') }}" method="post" style="display: none;">
                     @csrf
-                    <input type="text">
-                    fewfew
                 </form>
             @endauth
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#">Всего знаний: {{ $appDbCountTechnology }}</a>
+                </li>
+            </ul>
         </div><!--/.nav-collapse -->
     </div><!--/.container-fluid -->
 </nav>
 
-
-@component('components.db-count-in-model')
-    @slot('name', 'Всего знаний:')
-@endcomponent
-
 <div class="container">
     @include('partials/form-search')
-    @yield('pageLayoutBreadcrumb')
     @include('partials/flash-message')
-    <h1>@yield('pageLayoutHeader')</h1>
+
+    <div class="page-header">
+        <h1>@yield('pageLayoutHeader')</h1>
+        @yield('pageLayoutBreadcrumb')
+    </div>
     @yield('content')
 </div> <!-- /container -->
 
 <footer class="footer">
     <div class="container">
+        <hr class="my-12"/>
         <p class="text-muted">Версия 0.0.1/{{ $appProjectVersion }} | {{ config('app.name', 'Laravel') }}</p>
         <p>
             Над кодом - как это работает? Интерактивный справочник и копилка знаний. <br/>
-            Код пишется для людей. https://bootstrap-4.ru/docs/3.4/getting-started/
+            Код пишется для людей. https://bootstrap-4.ru/docs/3.4/getting-started/ <br/>
+            Компонент (пример):
+            @component('components.db-count-in-model')
+                @slot('name', 'Всего знаний:')
+            @endcomponent
         </p>
     </div>
 </footer>

@@ -1,8 +1,8 @@
 @extends('layouts.default')
 
-@section('pageLayoutTitle', 'Поиск')
-@section('pageLayoutHeader', 'Поиск')
-@section('pageLayoutBreadcrumb', Breadcrumbs::render('search'))
+@section('pageLayoutTitle', 'Результаты поиска')
+@section('pageLayoutHeader', 'Результаты поиска')
+@section('pageLayoutBreadcrumb', Breadcrumbs::render('site.search'))
 
 @section('content')
     <center>

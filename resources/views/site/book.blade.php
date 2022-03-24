@@ -2,7 +2,7 @@
 
 @section('pageLayoutTitle', 'Книги')
 @section('pageLayoutHeader', 'Книги')
-@section('pageLayoutBreadcrumb', Breadcrumbs::render('book'))
+@section('pageLayoutBreadcrumb', Breadcrumbs::render('site.book'))
 
 @section('content')
     <center>

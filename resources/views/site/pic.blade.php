@@ -2,7 +2,7 @@
 
 @section('pageLayoutTitle', 'Разные картинки')
 @section('pageLayoutHeader', 'Разные картинки')
-@section('pageLayoutBreadcrumb', Breadcrumbs::render('pic'))
+@section('pageLayoutBreadcrumb', Breadcrumbs::render('site.pic'))
 
 @section('content')
     <center>
