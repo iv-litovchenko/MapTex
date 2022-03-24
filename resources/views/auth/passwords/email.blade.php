@@ -13,6 +13,6 @@
                 <input type="text" class="form-control" name="email" value="{{ old('email') }}">
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Сбросить ссылку на восстановление</button>
+        <button type="submit" class="btn btn-primary">Сбросить ссылку на восстановление пароля</button>
     </form>
 @endsection
