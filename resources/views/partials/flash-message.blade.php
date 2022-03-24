@@ -19,7 +19,7 @@
     </div>
 @endif
 
-@if ($message = Session::get('flash_messages_info'))
+@if ($message = Session::get('flash_messages_info') or $message = Session::get('status'))
     <div class="alert alert-info alert-block">
         <button type="button" class="close" data-dismiss="alert">×</button>
         <strong>{{ $message }}</strong>
