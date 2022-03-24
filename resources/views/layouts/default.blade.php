@@ -53,8 +53,8 @@
 
 <div class="container">
     @include('partials/form-search')
-    @include('partials/flash-message')
     @yield('pageLayoutBreadcrumb')
+    @include('partials/flash-message')
     <h1>@yield('pageLayoutHeader')</h1>
     @yield('content')
 </div> <!-- /container -->
