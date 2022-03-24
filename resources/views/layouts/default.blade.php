@@ -28,6 +28,8 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="{{ route('site.home') }}">
+                <img src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" width="20" height="20"
+                     style="display: inline; vertical-align: top;" alt="">
                 IT-заметки
             </a>
         </div>
@@ -49,13 +51,16 @@
 </nav>
 
 <div class="container">
-    @include('partials/form-search')
-    @include('partials/flash-message')
-
     <div class="page-header">
         <h1>@yield('pageLayoutHeader')</h1>
         @yield('pageLayoutBreadcrumb')
+
+        @if(Route::is('site.home'))
+            @include('partials/form-search')
+        @endif
     </div>
+
+    @include('partials/flash-message')
     @yield('content')
 </div> <!-- /container -->
 

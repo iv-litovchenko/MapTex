@@ -57,5 +57,6 @@ Breadcrumbs::for('password.update', function ($trail) {
 
 // Главная > Администрирование
 Breadcrumbs::for('admin.dashboard', function ($trail) {
+    $trail->parent('site.home');
     $trail->push('Администрирование', route('admin.dashboard'));
 });

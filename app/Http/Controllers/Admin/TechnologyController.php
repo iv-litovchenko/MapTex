@@ -12,13 +12,13 @@ use App\Models\Technology;
 /**
  * Контроллер - управление технологиями
  *
- * GET|HEAD     |admin/technology              |admin.technology.index      |App\Http\Controllers\Admin\TechnologyController@index|web|
- * GET|HEAD     |admin/technology/{user}       |admin.technology.show       |App\Http\Controllers\Admin\TechnologyController@show|web|
- * GET|HEAD     |admin/technology/create       |admin.technology.create     |App\Http\Controllers\Admin\TechnologyController@create|web|
- * POST         |admin/technology              |admin.technology.store      |App\Http\Controllers\Admin\TechnologyController@store|web|
- * GET|HEAD     |admin/technology/{user}/edit  |admin.technology.edit       |App\Http\Controllers\Admin\TechnologyController@edit|web|
- * PUT|PATCH    |admin/technology/{user}       |admin.technology.update     |App\Http\Controllers\Admin\TechnologyController@update|web|
- * DELETE       |admin/technology/{user}       |admin.technology.destroy    |App\Http\Controllers\Admin\TechnologyController@destroy|web|
+ * GET|HEAD     |admin/technology                    |admin.technology.index      |App\Http\Controllers\Admin\TechnologyController@index|web|
+ * GET|HEAD     |admin/technology/{technology}       |admin.technology.show       |App\Http\Controllers\Admin\TechnologyController@show|web|
+ * GET|HEAD     |admin/technology/create             |admin.technology.create     |App\Http\Controllers\Admin\TechnologyController@create|web|
+ * POST         |admin/technology                    |admin.technology.store      |App\Http\Controllers\Admin\TechnologyController@store|web|
+ * GET|HEAD     |admin/technology/{technology}/edit  |admin.technology.edit       |App\Http\Controllers\Admin\TechnologyController@edit|web|
+ * PUT|PATCH    |admin/technology/{technology}       |admin.technology.update     |App\Http\Controllers\Admin\TechnologyController@update|web|
+ * DELETE       |admin/technology/{technology}       |admin.technology.destroy    |App\Http\Controllers\Admin\TechnologyController@destroy|web|
  *
  */
 class TechnologyController extends Controller

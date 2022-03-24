@@ -1,6 +1,10 @@
 <?php
 
 use Lavary\Menu\Facade;
+use App\Models\User;
+
+// https://github.com/lavary/laravel-menu
+// TODO большой недостаток - собирается каждый раз при вызове любой страницы
 
 // Верхнее меню справа
 Menu::make('menu.header.right', function ($menu) {
@@ -13,6 +17,10 @@ Menu::make('menu.header.right', function ($menu) {
             'role' => 'button',
             'aria-expanded' => 'false',
         ]);
+        // -- Если администратор --
+        #if (Auth::user()->role == \App\Models\User::ROLE_ADMIN) {
+            $cab->add('Панель управления', ['route' => 'admin.dashboard']);
+        #}
         $cab->add('Профиль', '#');
         $cab->add('Выход', ['route' => 'logout'])->link->attr([
             'onclick' => "$('#logout-form').submit(); return false;"
