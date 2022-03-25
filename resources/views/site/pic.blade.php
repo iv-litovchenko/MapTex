@@ -7,6 +7,7 @@
 @section('LayoutSectionPageContent')
     <center>
         @foreach($images as $image)
+            2
             <img src="{{ asset('uploads/image/pic/'.$image->getBasename()) }}"
                  style="width: auto; max-width: 50%; border: gray 3px solid;"/>
             @auth
