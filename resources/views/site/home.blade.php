@@ -59,11 +59,10 @@
     @endif
 
     @if(isset($images))
-        <br/>
-        <br/>
+        <hr class="my-12">
         <center>
             @foreach($images as $image)
-                <img src="/images/home/{{ $image->getBasename() }}"
+                <img src="{{ asset('uploads/image/home/'.$image->getBasename()) }}"
                      style="width: 100%; max-width: 50%;"/>
                 <br/>
             @endforeach

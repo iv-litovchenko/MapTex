@@ -63,8 +63,8 @@ class SiteController extends Controller
     public function pic()
     {
         $path = public_path('uploads/image/pic');
-        $files = File::files($path);
-        return view('site.pic', compact('files'));
+        $images = File::files($path);
+        return view('site.pic', compact('images'));
     }
 
 
@@ -76,8 +76,8 @@ class SiteController extends Controller
     public function book()
     {
         $path = public_path('uploads/image/book');
-        $files = File::files($path);
-        return view('site.book', compact('files'));
+        $images = File::files($path);
+        return view('site.book', compact('images'));
     }
 
     /**
