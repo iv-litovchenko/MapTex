@@ -20,8 +20,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         // TODO пример компонента
-        Blade::component('components.db-count-in-model', 'db-count-in-model');
-        Blade::component('components.test', 'test');
+        // Blade::component(\App\View\Components\Mindmap::class, 'mindmap');
 
         // TODO подгрузка в шаблон данных (переменная "projectVersion" будет доступна в шаблоне)
         View::composer('layouts.default', function ($view) {

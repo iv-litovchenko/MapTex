@@ -27,15 +27,7 @@ class SiteController extends Controller
     {
         $path = public_path('uploads/image/home');
         $images = File::files($path);
-
-        return view('site.home', [
-            'images' => $images,
-            'row' => [
-                'id' => 0,
-                'parent_id' => 0,
-                'sorting' => 0
-            ]
-        ]);
+        return view('site.home', compact('images'));
     }
 
     public function tech(int $id = 0)

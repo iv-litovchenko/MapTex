@@ -1,21 +1,4 @@
-<?php
 
-use App\Models\Technology;
-
-$parentId = 0;
-
-/** @var $row */
-if (isset($row['id'])) {
-    $parentId = $row['id'];
-}
-
-$rows = Technology::customWhereParentId($parentId)
-    ->orderBy('sorting')
-    ->get();
-
-?>
-
-@if(count($rows) > 0)
     <ol class="children">
         @foreach ($rows as $row)
             @php $cssStyleBrunchStop = '' @endphp

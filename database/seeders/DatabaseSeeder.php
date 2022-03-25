@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         $rows = \App\Models\Technology::where('id', '>', 7)->get();
         foreach ($rows as $row) {
             $model = \App\Models\Technology::find($row->id);
-            $model->parent_id = random_int(1, 15);
+            $model->parent_id = random_int(1, 5);
             $model->user_id = 1;
             $model->save();
         }

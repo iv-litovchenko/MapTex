@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Schema\Blueprint;
+use Kalnoy\Nestedset\NodeTrait;
 use App\Models\User;
 
 /**
@@ -43,10 +45,10 @@ use App\Models\User;
  */
 class Technology extends Model
 {
-    use HasFactory;
+    use HasFactory, NodeTrait;
 
     protected $table = 'technologies';
-    //    protected $fillable = false;
+    // protected $fillable = false;
 
     const BRUNCH_LEFT_CODE = 1;
     const BRUNCH_RIGHT_CODE = 2;
@@ -59,13 +61,53 @@ class Technology extends Model
     const FIELD_DESCRIPTION = 'description';
 
     /**
+     * Run the migrations.
+     *
+     * @param Blueprint $table
+     * @return void
+     */
+    public function migration(Blueprint $table)
+    {
+        $table->id();
+        $table->nestedSet();
+        $table->integer('branch_type')->default(0);
+        $table->integer('branch_stop_flag')->default(0);
+        $table->integer('is_page_flag')->default(0);
+        $table->integer('is_draft_flag')->default(0);
+        $table->unsignedBigInteger('user_id')->nullable();
+        $table->string('name')->nullable();
+        $table->string('slug')->nullable();
+        $table->text('description')->nullable();
+        $table->text('description_tinymce')->nullable();
+        $table->text('logo_image')->nullable();
+        $table->integer('sorting')->default(0);
+        $table->integer('sorting3')->default(0);
+        $table->timestamps();
+
+        Schema::hasColumn('')
+        $table->hasC
+            // TODO нужно проверить сущестование индекса...
+        # $table->index('user_id', 'technology_user_idx');
+        # $table->foreign('user_id', 'technology_user_fk')->on('users')->references('id');
+
+        // TODO последовательность удаления важна!
+        // $table->dropForeign('technology_parent_fk');
+        // $table->dropIndex('technology_parent_idx');
+
+        // TODO последовательность удаления важна!
+        // $table->dropForeign('technology_user_fk');
+        // $table->dropIndex('technology_user_idx');
+        // $table->dropColumn('user_id');
+    }
+
+    /**
      * Scope a query
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @param null|int $parentId
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeCustomWhereParentId($query, $parentId)
+    public function scopeWhereParentIdWithNull($query, $parentId)
     {
         // TODO пользовательское условие!
         if (intval($parentId) > 0) {
@@ -81,7 +123,7 @@ class Technology extends Model
 
     public function parentsAll()
     {
-//         return $this->hasMany ... self::class
+        //         return $this->hasMany ... self::class
     }
 
     public function parent()

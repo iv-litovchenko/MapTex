@@ -74,10 +74,6 @@
         <p>
             Над кодом - как это работает? Интерактивный справочник и копилка знаний. <br/>
             Код пишется для людей. https://bootstrap-4.ru/docs/3.4/getting-started/ <br/>
-            Компонент (пример):
-            @component('components.db-count-in-model')
-                @slot('name', 'Всего знаний:')
-            @endcomponent
         </p>
     </div>
 </footer>
@@ -86,7 +82,6 @@
 
     <script src="{{ asset('assets/js/app.js') }}"></script>
 {{--    <script src="https://cdn.tiny.cloud/1/i7rtvlx6g594hivyfqzi1d4yk6e0uvnt71bu0wysnpqkkrnl/tinymce/5/tinymce.min.js"></script>--}}
-{{--    <script src="{{ asset('assets/mindmap/dist/mindmap.js') }}"></script>--}}
 {{--    <script src="{{ asset('assets/contextmenu/dist/jquery.contextMenu.js') }}"></script>--}}
 @show
 
