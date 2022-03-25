@@ -1,10 +1,10 @@
 @extends('layouts.default')
 
-@section('pageLayoutTitle', 'Результаты поиска')
-@section('pageLayoutHeader', 'Результаты поиска')
-@section('pageLayoutBreadcrumb', Breadcrumbs::render('site.search'))
+@section('LayoutSectionPageTitle', 'Результаты поиска')
+@section('LayoutSectionPageHeader', 'Результаты поиска')
+@section('LayoutSectionPageBreadcrumb', Breadcrumbs::render('site.search'))
 
-@section('content')
+@section('LayoutSectionPageContent')
     <center>
         <h3>Результаты поиска: {{ $q }}</h3>
         <hr/>

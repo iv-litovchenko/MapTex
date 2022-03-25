@@ -1,10 +1,10 @@
 @extends('layouts.default')
 
-@section('pageLayoutTitle', 'Пользователи')
-@section('pageLayoutHeader', 'Пользователи')
-@section('pageLayoutBreadcrumb', Breadcrumbs::render('admin.user.index'))
+@section('LayoutSectionPageTitle', 'Пользователи')
+@section('LayoutSectionPageHeader', 'Пользователи')
+@section('LayoutSectionPageBreadcrumb', Breadcrumbs::render('admin.user.index'))
 
-@section('content')
+@section('LayoutSectionPageContent')
 
     <div class="panel panel-default">
         <div class="panel-heading">

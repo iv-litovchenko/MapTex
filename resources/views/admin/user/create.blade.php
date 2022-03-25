@@ -1,10 +1,10 @@
 @extends('layouts.default')
 
-@section('pageLayoutTitle', 'Добавить')
-@section('pageLayoutHeader', 'Добавить')
-@section('pageLayoutBreadcrumb', Breadcrumbs::render('admin.user.create'))
+@section('LayoutSectionPageTitle', 'Добавить')
+@section('LayoutSectionPageHeader', 'Добавить')
+@section('LayoutSectionPageBreadcrumb', Breadcrumbs::render('admin.user.create'))
 
-@section('content')
+@section('LayoutSectionPageContent')
     <form action="{{ route('admin.user.store') }}" method="post">
         @csrf
         <div class="form-group row">

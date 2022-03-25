@@ -1,10 +1,10 @@
 @extends('layouts.default')
 
-@section('pageLayoutTitle', 'Панель управления')
-@section('pageLayoutHeader', 'Панель управления')
-@section('pageLayoutBreadcrumb', Breadcrumbs::render('admin.dashboard'))
+@section('LayoutSectionPageTitle', 'Панель управления')
+@section('LayoutSectionPageHeader', 'Панель управления')
+@section('LayoutSectionPageBreadcrumb', Breadcrumbs::render('admin.dashboard'))
 
-@section('content')
+@section('LayoutSectionPageContent')
 
     @foreach(Menu::get('menu.admin.dashboard')->all() as $menuItem)
         <div class="list-group">

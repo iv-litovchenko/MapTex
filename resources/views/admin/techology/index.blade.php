@@ -1,10 +1,10 @@
 @extends('layouts.default')
 
-@section('pageLayoutTitle', 'Технологии')
-@section('pageLayoutHeader', 'Технологии')
-@section('pageLayoutBreadcrumb', Breadcrumbs::render('admin.technology.index'))
+@section('LayoutSectionPageTitle', 'Технологии')
+@section('LayoutSectionPageHeader', 'Технологии')
+@section('LayoutSectionPageBreadcrumb', Breadcrumbs::render('admin.technology.index'))
 
-@section('content')
+@section('LayoutSectionPageContent')
 
     <div class="panel panel-default">
         <div class="panel-heading">

@@ -1,10 +1,10 @@
 @extends('layouts.default')
 
-@section('pageLayoutTitle', 'Барахолка')
-@section('pageLayoutHeader', 'Барахолка')
-@section('pageLayoutBreadcrumb', Breadcrumbs::render('site.note'))
+@section('LayoutSectionPageTitle', 'Барахолка')
+@section('LayoutSectionPageHeader', 'Барахолка')
+@section('LayoutSectionPageBreadcrumb', Breadcrumbs::render('site.note'))
 
-@section('content')
+@section('LayoutSectionPageContent')
     <h3 align="center">Здесь можно оставить заметки - возможно они попадут в ветки!</h3>
     <form action="" method="post">
         @csrf

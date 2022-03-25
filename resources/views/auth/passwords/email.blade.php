@@ -1,10 +1,10 @@
 @extends('layouts.default')
 
-@section('pageLayoutTitle', 'Забыли пароль?')
-@section('pageLayoutHeader', 'Забыли пароль?')
-@section('pageLayoutBreadcrumb', Breadcrumbs::render('password.email'))
+@section('LayoutSectionPageTitle', 'Забыли пароль?')
+@section('LayoutSectionPageHeader', 'Забыли пароль?')
+@section('LayoutSectionPageBreadcrumb', Breadcrumbs::render('password.email'))
 
-@section('content')
+@section('LayoutSectionPageContent')
     <form action="{{ route('password.email') }}" method="post">
         @csrf
         <div class="form-group row">

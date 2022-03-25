@@ -1,10 +1,10 @@
 @extends('layouts.default')
 
-@section('pageLayoutTitle', 'Регистрация')
-@section('pageLayoutHeader', 'Регистрация')
-@section('pageLayoutBreadcrumb', Breadcrumbs::render('register'))
+@section('LayoutSectionPageTitle', 'Регистрация')
+@section('LayoutSectionPageHeader', 'Регистрация')
+@section('LayoutSectionPageBreadcrumb', Breadcrumbs::render('register'))
 
-@section('content')
+@section('LayoutSectionPageContent')
     <form action="{{ route('register') }}" method="post">
         @csrf
         <div class="form-group row">

@@ -1,10 +1,10 @@
 @extends('layouts.default')
 
-@section('pageLayoutTitle', 'Вход')
-@section('pageLayoutHeader', 'Вход')
-@section('pageLayoutBreadcrumb', Breadcrumbs::render('login'))
+@section('LayoutSectionPageTitle', 'Вход')
+@section('LayoutSectionPageHeader', 'Вход')
+@section('LayoutSectionPageBreadcrumb', Breadcrumbs::render('login'))
 
-@section('content')
+@section('LayoutSectionPageContent')
     <form action="{{ route('login') }}" method="post">
         @csrf
         <div class="form-group row">

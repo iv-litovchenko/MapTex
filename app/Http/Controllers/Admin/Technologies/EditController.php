@@ -30,7 +30,7 @@ class EditController extends BaseController
             if ($file = $request->file('logo_image')) {
                 $fileName = md5(time() . $file->getClientOriginalName()) . '.' . $file->getClientOriginalExtension();
                 $fileName = strtolower($fileName);
-                $destinationPath = 'images/logos/' . $id . '/';
+                $destinationPath = 'uploads/image/logo/' . $id . '/';
                 $file->move($destinationPath, $fileName);
                 $model->logo_image = $destinationPath . $fileName;
 //                $model->logo_image = Storage::disk('public')->put('/images', 'content???');
@@ -43,14 +43,14 @@ class EditController extends BaseController
                 foreach ($files as $file) {
                     $fileName = md5(time() . $file->getClientOriginalName()) . '.' . $file->getClientOriginalExtension();
                     $fileName = strtolower($fileName);
-                    $destinationPath = 'images/posts/' . $id . '/';
+                    $destinationPath = 'uploads/image/post/' . $id . '/';
                     $file->move($destinationPath, $fileName);
                 }
             }
         }
 
         $images = [];
-        $path = public_path('images/posts/' . $id . '/');
+        $path = public_path('uploads/image/post/' . $id . '/');
         if (File::exists($path)) {
             $images = File::files($path);
         }

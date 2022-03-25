@@ -1,10 +1,10 @@
 @extends('layouts.default')
 
-@section('pageLayoutTitle', 'Разные картинки')
-@section('pageLayoutHeader', 'Разные картинки')
-@section('pageLayoutBreadcrumb', Breadcrumbs::render('site.pic'))
+@section('LayoutSectionPageTitle', 'Разные картинки')
+@section('LayoutSectionPageHeader', 'Разные картинки')
+@section('LayoutSectionPageBreadcrumb', Breadcrumbs::render('site.pic'))
 
-@section('content')
+@section('LayoutSectionPageContent')
     <center>
         @foreach($files as $file)
             <img src="images/pics/{{ $file->getBasename() }}"

@@ -1,6 +1,6 @@
 @extends('layouts.default')
 
-@section('content')
+@section('LayoutSectionPageContent')
 
     @if($errors->any())
         @foreach($erros->all() as $error)

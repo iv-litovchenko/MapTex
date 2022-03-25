@@ -1,10 +1,10 @@
 @extends('layouts.default')
 
-@section('pageLayoutTitle', 'Редактировать')
-@section('pageLayoutHeader', 'Редактировать')
-@section('pageLayoutBreadcrumb', Breadcrumbs::render('admin.technology.edit'))
+@section('LayoutSectionPageTitle', 'Редактировать')
+@section('LayoutSectionPageHeader', 'Редактировать')
+@section('LayoutSectionPageBreadcrumb', Breadcrumbs::render('admin.technology.edit'))
 
-@section('content')
+@section('LayoutSectionPageContent')
     <form action="{{ route('admin.technology.update') }}" method="post">
         @csrf
         @method('PUT')

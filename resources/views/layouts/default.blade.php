@@ -4,16 +4,19 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('pageLayoutTitle') | IT-заметки</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('assets/mindmap/dist/mindmap.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/contextmenu/dist/jquery.contextMenu.css') }}">
-
-    <style>
-        html, body {
-            background: white;
-        }
-    </style>
+    <title>@yield('LayoutSectionPageTitle') | IT-заметки</title>
+    @section('LayoutSectionPageCssFiles')
+        <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/mindmap/dist/mindmap.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/contextmenu/dist/jquery.contextMenu.css') }}">
+    @show
+    @section('LayoutSectionPageCssCode')
+        <style>
+            html, body {
+                background: white;
+            }
+        </style>
+    @show
 </head>
 <body>
 
@@ -52,16 +55,16 @@
 
 <div class="container">
     <div class="page-header">
-        <h1>@yield('pageLayoutHeader')</h1>
-        @yield('pageLayoutBreadcrumb')
+        <h1>@yield('LayoutSectionPageHeader')</h1>
+        @yield('LayoutSectionPageBreadcrumb')
 
         @if(Route::is('site.home'))
-            @include('partials/form-search')
+            @include('layouts.partials.form-search')
         @endif
     </div>
 
-    @include('partials/flash-message')
-    @yield('content')
+    @include('layouts.partials.flash-message')
+    @yield('LayoutSectionPageContent')
 </div> <!-- /container -->
 
 <footer class="footer">
@@ -79,101 +82,16 @@
     </div>
 </footer>
 
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script
-    src="https://cdn.tiny.cloud/1/i7rtvlx6g594hivyfqzi1d4yk6e0uvnt71bu0wysnpqkkrnl/tinymce/5/tinymce.min.js"></script>
-<script src="{{ asset('assets/mindmap/dist/mindmap.js') }}"></script>
-<script src="{{ asset('assets/contextmenu/dist/jquery.contextMenu.js') }}"></script>
+@section('LayoutSectionPageJsFooterFiles')
 
-<script type="text/javascript">
+    <script src="{{ asset('assets/js/app.js') }}"></script>
+{{--    <script src="https://cdn.tiny.cloud/1/i7rtvlx6g594hivyfqzi1d4yk6e0uvnt71bu0wysnpqkkrnl/tinymce/5/tinymce.min.js"></script>--}}
+{{--    <script src="{{ asset('assets/mindmap/dist/mindmap.js') }}"></script>--}}
+{{--    <script src="{{ asset('assets/contextmenu/dist/jquery.contextMenu.js') }}"></script>--}}
+@show
 
-    $(function () {
-        $('.mindmap').mindmap();
-        $.contextMenu({
-            selector: '.context-menu-one',
-            callback: function (key, options) {
-                // var m = "clicked: " + key;
-                // window.console && console.log(m) || alert(m);
-                // Вставка элемента
-                if (key == 'create') {
-                    var httpLink = '{{ route('admin.technologies.create', ['parent_id'=>100]) }}';
-                    var dataId = $(this).data("id");
-                    var dataParentId = $(this).data("parent-id");
-                    httpLink = httpLink.replace(100, parseInt(dataParentId));
-                    window.location.href = httpLink;
-                }
-                // Создание новой ветки
-                if (key == 'createBrunch') {
-                    var httpLink = '{{ route('admin.technologies.create', ['parent_id'=>100]) }}';
-                    var dataId = $(this).data("id");
-                    var dataParentId = $(this).data("parent-id")
-                    httpLink = httpLink.replace(100, dataId);
-                    window.location.href = httpLink;
-                }
-                // Редактирование
-                if (key == 'edit') {
-                    var httpLink = '{{ route('admin.technologies.edit', ['id'=>100]) }}';
-                    var dataId = $(this).data("id");
-                    httpLink = httpLink.replace(100, dataId);
-                    window.location.href = httpLink;
-                }
-                // Редактирование сортировки
-                if (key == 'editSorting') {
-                    var httpLink = '{{ route('admin.technologies.edit-sorting', ['id'=>100]) }}';
-                    var dataId = $(this).data("id");
-                    httpLink = httpLink.replace(100, dataId);
-                    window.location.href = httpLink;
-                }
-                // Изменить родителя
-                if (key == 'editParent') {
-                    var httpLink = '{{ route('admin.technologies.edit-parent', ['id'=>100]) }}';
-                    var dataId = $(this).data("id");
-                    httpLink = httpLink.replace(100, dataId);
-                    window.location.href = httpLink;
-                }
-            },
-            items: {
-                "create": {name: "Добавить элемент"},
-                "edit": {name: "Редактировать элемент"},
-                "editSorting": {name: "Редактировать (сортировку)"},
-                "editParent": {name: "Редактировать (родителя)"},
-                "createBrunch": {name: "Создать ветку элементов"},
-            }
-        });
-        $.contextMenu({
-            selector: '.context-menu-two',
-            callback: function (key, options) {
-                // var m = "clicked: " + key;
-                // window.console && console.log(m) || alert(m);
-                if (key == 'create') {
-                    var httpLink = '{{ route('admin.technologies.create', ['parent_id'=>100]) }}';
-                    var dataId = $(this).data("id");
-                    httpLink = httpLink.replace(100, dataId);
-                    window.location.href = httpLink;
-                }
-                if (key == 'edit') {
-                    var httpLink = '{{ route('admin.technologies.edit', ['id'=>100]) }}';
-                    var dataId = $(this).data("id");
-                    httpLink = httpLink.replace(100, dataId);
-                    window.location.href = httpLink;
-                }
-                // Редактирование сортировки
-                if (key == 'editSorting') {
-                    var httpLink = '{{ route('admin.technologies.edit-sorting', ['id'=>100]) }}';
-                    var dataId = $(this).data("id");
-                    httpLink = httpLink.replace(100, dataId);
-                    window.location.href = httpLink;
-                }
-            },
-            items: {
-                "create": {name: "Добавить элемент"},
-                "edit": {name: "Редактировать элемент"},
-                "editSorting": {name: "Редактировать сортировку"}
-            }
-        });
-    });
+@section('LayoutSectionPageJsFooterCode')
+@show
 
-</script>
 </body>
 </html>

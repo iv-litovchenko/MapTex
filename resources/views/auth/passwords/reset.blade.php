@@ -1,10 +1,10 @@
 @extends('layouts.default')
 
-@section('pageLayoutTitle', 'Сброс пароля')
-@section('pageLayoutHeader', 'Сброс пароля')
-@section('pageLayoutBreadcrumb', Breadcrumbs::render('password.update'))
+@section('LayoutSectionPageTitle', 'Сброс пароля')
+@section('LayoutSectionPageHeader', 'Сброс пароля')
+@section('LayoutSectionPageBreadcrumb', Breadcrumbs::render('password.update'))
 
-@section('content')
+@section('LayoutSectionPageContent')
     <form action="{{ route('password.update') }}" method="post">
         @csrf
         <input type="hidden" name="token" value="{{ $token }}">
