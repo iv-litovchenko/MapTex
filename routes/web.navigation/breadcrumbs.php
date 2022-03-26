@@ -1,10 +1,19 @@
 <?php
 
 use DaveJamesMiller\Breadcrumbs\Facades;
+use App\Models\Technology;
 
 // Главная
 Breadcrumbs::for('site.home', function ($trail) {
     $trail->push('Главная', route('site.home'));
+});
+
+// Главная > Технология (детальная страница) - выводим в виде цепочки
+Breadcrumbs::for('site.technology', function ($trail, $technology) {
+    $trail->parent('site.home');
+    foreach(Technology::ancestorsAndSelf($technology->id) as $ancestor){
+        $trail->push($ancestor->name, route('site.technology', $ancestor->id));
+    }
 });
 
 // Барахолка

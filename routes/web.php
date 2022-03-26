@@ -7,7 +7,7 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\SiteController;
 
 Route::get('/', [SiteController::class, 'home'])->name('site.home');
-Route::get('/tech/{id}', [SiteController::class, 'tech'])->name('site.tech');
+Route::get('/technology/{technology}', [SiteController::class, 'technology'])->name('site.technology');
 Route::any('/note', [SiteController::class, 'note'])->name('site.note');
 Route::get('/pic', [SiteController::class, 'pic'])->name('site.pic');
 Route::get('/book', [SiteController::class, 'book'])->name('site.book');

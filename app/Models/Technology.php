@@ -152,22 +152,6 @@ class Technology extends Model
         // $table->dropColumn('user_id');
     }
 
-    /**
-     * Scope a query
-     *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param null|int $parentId
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function scopeWhereParentIdWithNull($query, $parentId)
-    {
-        // TODO пользовательское условие!
-        if (intval($parentId) > 0) {
-            return $query->where('parent_id', '=', $parentId);
-        }
-        return $query->whereNull('parent_id');
-    }
-
     public function users()
     {
         return $this->hasOne(User::class, 'id', 'user_id');

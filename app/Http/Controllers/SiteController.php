@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\File;
  */
 class SiteController extends Controller
 {
-    //    use AuthorizesRequests;
-    //    use DispatchesJobs;
-    //    use ValidatesRequests;
+//    use AuthorizesRequests;
+//    use DispatchesJobs;
+//    use ValidatesRequests;
 
     /**
      * Главная страница
@@ -30,21 +30,20 @@ class SiteController extends Controller
         return view('site.home', compact('images'));
     }
 
-    public function tech(int $id = 0)
+    /**
+     * Страница детального просмотра технологии
+     *
+     * @param \App\Models\Technology $technology
+     * @return \Illuminate\View\View
+     */
+    public function technology(Technology $technology)
     {
-        $model = Technology::find($id);
-
-        $files = [];
-        $path = public_path('uploads/image/post/' . $model->id);
+        $images = [];
+        $path = public_path('uploads/image/post/' . $technology->id);
         if (File::exists($path)) {
-            $files = File::files($path);
+            $images = File::files($path);
         }
-
-        return view('site.tech', [
-            'back_id' => $model->parent_id,
-            'row' => $model,
-            'files' => $files
-        ]);
+        return view('site.technology', compact('technology', 'images'));
     }
 
     /**
@@ -58,7 +57,6 @@ class SiteController extends Controller
         $images = File::files($path);
         return view('site.pic', compact('images'));
     }
-
 
     /**
      * Страница список книг

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('LayoutSectionPageTitle') | IT-заметки</title>
     @section('LayoutSectionPageCssFiles')
-        <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
+        <link rel="stylesheet" href="{{ mix('assets/css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/mindmap/dist/mindmap.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/contextmenu/dist/jquery.contextMenu.css') }}">
     @show
@@ -74,15 +74,17 @@
         <p>
             Над кодом - как это работает? Интерактивный справочник и копилка знаний. <br/>
             Код пишется для людей. https://bootstrap-4.ru/docs/3.4/getting-started/ <br/>
+            <a href="https://github.com/iv-litovchenko/maptex/">Исходики проекта на github</a>
         </p>
     </div>
 </footer>
 
 @section('LayoutSectionPageJsFooterFiles')
 
-    <script src="{{ asset('assets/js/app.js') }}"></script>
+    <script src="{{ mix('assets/js/app.js') }}"></script>
 {{--    <script src="https://cdn.tiny.cloud/1/i7rtvlx6g594hivyfqzi1d4yk6e0uvnt71bu0wysnpqkkrnl/tinymce/5/tinymce.min.js"></script>--}}
 {{--    <script src="{{ asset('assets/contextmenu/dist/jquery.contextMenu.js') }}"></script>--}}
+
 @show
 
 @section('LayoutSectionPageJsFooterCode')
