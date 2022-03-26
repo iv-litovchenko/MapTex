@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use Illuminate\Support\HtmlString;
 use Illuminate\View\Component;
 use App\Models\Technology;
 
@@ -28,13 +29,38 @@ class Mindmap extends Component
      */
     public function render()
     {
+//        return function ($date){
+//            return $date['componentName'];
+
+              // TODO <x-mindmap my-attr="val"/> сюда попадет все что не определено в конструкторе
+//            return $date['atributes'];
+
+        // TODO сюда попадет все что будет между открывающим и закрывающим тэгом
+        /** @var  $slot HtmlString */
+//        $slot = $date['slot']->toHtml();
+        // <x-mindmap> --CONTENT-- </x-mindmap>
+//            return $date['slot'];
+
+//        }
         $rows = Technology::whereParentIdWithNull($this->parentId)
             ->orderBy('sorting')
             ->get();
 
+        dd($this);
+        ;
         if (count($rows) > 0) {
             return view('components.mindmap', compact('rows'));
         }
         return '';
+    }
+
+    public function divCssBackgroundColor($row = [])
+    {
+        if ($row->branch_stop_flag) {
+            return '#8bc34a';
+        } elseif ($row->is_page_flag) {
+            return '#ff9800';
+        }
+        return 'none';
     }
 }

@@ -2,10 +2,8 @@
     @foreach ($rows as $row)
         <li class="children__item" style="@if($row->logo_image) margin: 20px 0 20px 0; @endif">
             <div class="node" style="
-                position: relative;
+                position: relative; background: {{ $divCssBackgroundColor($row) }};
             @if($row->logo_image) padding-left: 20px; @endif
-            @if($row->branch_stop_flag == 1) background: #8bc34a;
-            @elseif($row->branch_stop_flag == 1) background: #8bc34a; @endif
                 ">
                 <div class="node__text context-menu-one"
                      data-id="{{ intval($row->id) }}"

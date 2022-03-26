@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Schema\Blueprint;
 
 /**
  * App\Models\Note
@@ -29,5 +30,19 @@ class Note extends Model
     use HasFactory;
 
     protected $table = 'notes';
-//    protected $fillable = false;
+    //    protected $fillable = false;
+
+    /**
+     * Run the migrations.
+     *
+     * @param Blueprint $table
+     * @return void
+     */
+    public function migration(Blueprint $table)
+    {
+        $table->id();
+        $table->text('bodytext')->nullable();
+        $table->integer('is_me')->nullable()->default(0);
+        $table->timestamps();
+    }
 }

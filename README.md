@@ -58,3 +58,10 @@ npm update [название пакета]
 -- (Larael webpack.mix.js)
 npm run dev (Larael для продакшина)
 npm run prod (Larael для продакшина)
+
+
+--
+LARAVEL IDE Helper
+> php artisan ide-helper:generate (генерирует подсветку кода для фасадов _ide_helper.php)
+> php artisan ide-helper:models (генерирует подсветку полей при работе с бд)
+> php artisan ide-helper:generate (генерирует подсказки для сервисов app('cache'))
