@@ -7,6 +7,9 @@
 @section('LayoutSectionPageContent')
 
     <div class="mindmap">
+        <div class="node node_root context-menu-two btn btn-neutral" data-id="0" data-parent-id="0" data-sorting="0">
+            <div class="node__text">Roadmap backend</div>
+        </div>
         <x-mindmap parent-id="0"/>
     </div>
 
@@ -25,20 +28,7 @@
         {{--                @include('partials/rowParent', ['parentId'=>$back_id])--}}
         {{--            @endif--}}
         {{--        @endif--}}
-        {{--        <div class="node node_root context-menu-two btn btn-neutral"--}}
-        {{--             @if (is_object($row))--}}
-        {{--             data-id="{{ $row->id }}"--}}
-        {{--             data-parent-id="{{ $row->parent_id }}"--}}
-        {{--             data-sorting="{{ $row->sorting }}"--}}
-        {{--             @else--}}
-        {{--             data-id="0"--}}
-        {{--             data-parent-id="0"--}}
-        {{--             data-sorting="0"--}}
-        {{--            @endif--}}
-        {{--        >--}}
-        {{--            <div class="node__text">Roadmap backend</div>--}}
         {{--        </div>--}}
-        {{--        @include('partials/rowChildren')--}}
         {{--    </div>--}}
 
         {{--    @if (is_object($row) && $row['is_page_flag'] == 1)--}}

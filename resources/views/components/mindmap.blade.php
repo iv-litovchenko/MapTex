@@ -11,7 +11,7 @@
                      data-sorting="{{ intval($loop->iteration) }}"
                 >
                     @if($row->logo_image)
-                        <img src="{{ url($row->logo_image) }}" width="32" height="32" style="
+                        <img src="{{ asset('uploads/image/logo/'.$row->id.'/'.$row->logo_image) }}" width="32" height="32" style="
                             position: absolute;
                             top: -6px;
                             left: -3px;

@@ -11,6 +11,12 @@ class Mindmap extends Component
     /** @var int */
     public $parentId = 0;
 
+    /** @var array Пример инкапсуляции */
+    private $backgroundColor = [
+        1 => '#8bc34a',
+        2 => '#ff9800'
+    ];
+
     /**
      * Инициализируем компонент.
      *
@@ -45,8 +51,6 @@ class Mindmap extends Component
         $rows = Technology::whereParentIdWithNull($this->parentId)
             ->orderBy('sorting')
             ->get();
-
-        dd($this);
         ;
         if (count($rows) > 0) {
             return view('components.mindmap', compact('rows'));
@@ -57,9 +61,9 @@ class Mindmap extends Component
     public function divCssBackgroundColor($row = [])
     {
         if ($row->branch_stop_flag) {
-            return '#8bc34a';
+            return $this->backgroundColor[1];
         } elseif ($row->is_page_flag) {
-            return '#ff9800';
+            return $this->backgroundColor[2];
         }
         return 'none';
     }

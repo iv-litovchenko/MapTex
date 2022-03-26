@@ -129,7 +129,7 @@ class Technology extends Model
         $table->integer('branch_stop_flag')->default(0);
         $table->integer('is_page_flag')->default(0);
         $table->integer('is_draft_flag')->default(0);
-        $table->unsignedBigInteger('user_id');
+        $table->unsignedBigInteger('user_id')->nullable();
         $table->string('name')->nullable();
         $table->string('slug')->nullable();
         $table->text('description')->nullable();
@@ -171,20 +171,5 @@ class Technology extends Model
     public function users()
     {
         return $this->hasOne(User::class, 'id', 'user_id');
-    }
-
-    public function parentsAll()
-    {
-        //         return $this->hasMany ... self::class
-    }
-
-    public function parent()
-    {
-        // return $this->hasMany ... self::class
-    }
-
-    public function childrens()
-    {
-        // return $this->hasMany ... self::class
     }
 }
