@@ -67,7 +67,7 @@ Breadcrumbs::for('password.update', function ($trail) {
 // Главная > Администрирование
 Breadcrumbs::for('admin.dashboard', function ($trail) {
     $trail->parent('site.home');
-    $trail->push('Администрирование');
+    $trail->push('Администрирование', route('admin.dashboard'));
 });
 
 // Главная > Администрирование > Список позиций
