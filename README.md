@@ -20,15 +20,6 @@
 - папка doc/ER-диаграмма модели, диаграмма классов
 - папка doc/Сгенерироать документацию
 
-
-
---
-LARAVEL IDE Helper
-> php artisan ide-helper:generate (генерирует подсветку кода для фасадов _ide_helper.php)
-> php artisan ide-helper:models (генерирует подсветку полей при работе с бд)
-> php artisan ide-helper:generate (генерирует подсказки для сервисов app('cache'))
-
-
 ---
 Поменять названия этих колонок:
 $post->branch_stop_flag     = $request->input('branch_stop_flag');
