@@ -11,7 +11,7 @@ Breadcrumbs::for('site.home', function ($trail) {
 // Главная > Пост (детальная страница) - выводим в виде цепочки
 Breadcrumbs::for('site.post', function ($trail, $post) {
     $trail->parent('site.home');
-    foreach(Post::ancestorsAndSelf($post->id) as $ancestor){
+    foreach(Post::defaultOrder()->ancestorsAndSelf($post->id) as $ancestor){
         $trail->push($ancestor->name, route('site.post', $ancestor->id));
     }
 });
@@ -67,12 +67,12 @@ Breadcrumbs::for('password.update', function ($trail) {
 // Главная > Администрирование
 Breadcrumbs::for('admin.dashboard', function ($trail) {
     $trail->parent('site.home');
-    $trail->push('Администрирование', route('admin.dashboard'));
+    $trail->push('Администрирование');
 });
 
 // Главная > Администрирование > Список позиций
 Breadcrumbs::for('admin.apiquiktradingviewposition', function ($trail) {
     $trail->parent('site.home');
     $trail->parent('admin.dashboard');
-    $trail->push('Список позиций (Api Quik Tradingview)', route('admin.apiquiktradingviewposition'));
+    $trail->push('Список позиций (Api Quik Tradingview)');
 });

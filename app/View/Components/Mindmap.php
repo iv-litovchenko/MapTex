@@ -64,7 +64,7 @@ class Mindmap extends Component
 
         $rowsBreadcrumbs = [];
         if ($this->showBreadcrumbs == 1) {
-            $rowsBreadcrumbs = Post::ancestorsAndSelf($this->recordId);
+            $rowsBreadcrumbs = Post::defaultOrder()->ancestorsAndSelf($this->recordId);
         }
 
         return view('components.mindmap', compact('rows', 'rowsBreadcrumbs'));
