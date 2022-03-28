@@ -1,6 +1,6 @@
 <div class="node" style="
     position: relative; background: {{ $divCssBackgroundColor($row) }};
-@if($row->logo_image) padding-left: 20px; @endif
+@if($row->logo_image) padding-left: 32px; @endif
     ">
     <div class="node__text context-menu-one"
          data-id="{{ intval($row->id) }}"
@@ -26,6 +26,10 @@
         @if($row->is_draft_flag == 1)
             [Черновик]
         @endif
-        <a href="{{ route('site.post', $row->id) }}">{{ Str::limit($row->name, 32) }}</a>
+        @if($row->branch_stop_flag == 1 || $row->is_page_flag == 1)
+            <a href="{{ route('site.post', $row->id) }}">{{ Str::limit($row->name, 32) }}</a>
+        @else
+            {{ Str::limit($row->name, 32) }}
+        @endif
     </div>
 </div>
