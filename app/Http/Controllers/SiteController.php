@@ -25,6 +25,9 @@ class SiteController extends Controller
      */
     public function home()
     {
+        $data = Post::countErrors();
+        dd($data);
+
         $path = public_path('uploads/image/home');
         $images = File::files($path);
         return view('site.home', compact('images'));
