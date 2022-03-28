@@ -57,6 +57,7 @@ class PostController extends Controller
         $post->name = $request->input('name');
         $post->parent_id = $request->input('parent_id');
         if ($post->save()) {
+            Post::fixTree();
             $request->session()->flash('flash_messages_success',
                 'Пост [' . $post->id . '] успешно создан');
             return redirect()->route('admin.post.index');
@@ -127,6 +128,7 @@ class PostController extends Controller
         //        }
 
         if ($post->save()) {
+            Post::fixTree();
             $request->session()->flash('flash_messages_success', 'Пост [' . $post->id . '] успешно обновлен');
             return redirect()->route('admin.post.edit', $post->id);
         }
