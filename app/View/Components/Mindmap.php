@@ -57,7 +57,9 @@ class Mindmap extends Component
         if ($this->recordId == 0) {
             $rows = Post::whereIsRoot()->orderBy('sorting')->get();
         } else {
-            $rows = Post::whereDescendantOf($this->recordId)->orderBy('sorting')->get();
+            $rows = Post::orderBy('sorting')
+                ->descendantsOf($this->recordId)
+                ->toTree($this->recordId);
         }
 
         $rowsBreadcrumbs = [];
