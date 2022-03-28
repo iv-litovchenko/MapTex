@@ -11,7 +11,6 @@
         "php": "^8.0",
         "athlon1600/youtube-downloader": "3.1.1",
         "barryvdh/laravel-debugbar": "^3.6",
-        "bastinald/laravel-automatic-migrations": "^3.0",
         "davejamesmiller/laravel-breadcrumbs": "^5.3",
         "doctrine/dbal": "3.3.3",
         "fruitcake/laravel-cors": "^2.0",
@@ -22,7 +21,8 @@
         "laravel/telescope": "^4.8",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
-        "lavary/laravel-menu": "^1.8"
+        "lavary/laravel-menu": "^1.8",
+        "legodion/lucid": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

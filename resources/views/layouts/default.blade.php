@@ -46,7 +46,7 @@
             @endauth
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="#">Всего знаний: {{ $appDbCountTechnology }}</a>
+                    <a href="#">Всего знаний: {{ $appDbCountPosts }}</a>
                 </li>
             </ul>
         </div><!--/.nav-collapse -->

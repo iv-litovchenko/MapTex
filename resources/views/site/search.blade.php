@@ -11,7 +11,7 @@
         <div>
             @foreach($searchResult as $searchItem)
                 <h4 style="padding-top: 15px;">
-                    <a href="{{ route('tech', ['id'=>$searchItem->id]) }}" style="font-size: 32px;">
+                    <a href="{{ route('site.post', ['id'=>$searchItem->id]) }}" style="font-size: 32px;">
                         {{ $searchItem->name }}
                     </a>
                 </h4>

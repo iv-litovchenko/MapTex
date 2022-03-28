@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\Support\HtmlString;
 use Illuminate\View\Component;
-use App\Models\Technology;
+use App\Models\Post;
 
 class Mindmap extends Component
 {
@@ -55,14 +55,14 @@ class Mindmap extends Component
         //        }
 
         if ($this->recordId == 0) {
-            $rows = Technology::whereIsRoot()->orderBy('sorting')->get();
+            $rows = Post::whereIsRoot()->orderBy('sorting')->get();
         } else {
-            $rows = Technology::whereDescendantOf($this->recordId)->orderBy('sorting')->get();
+            $rows = Post::whereDescendantOf($this->recordId)->orderBy('sorting')->get();
         }
 
         $rowsBreadcrumbs = [];
         if ($this->showBreadcrumbs == 1) {
-            $rowsBreadcrumbs = Technology::ancestorsAndSelf($this->recordId);
+            $rowsBreadcrumbs = Post::ancestorsAndSelf($this->recordId);
         }
 
         return view('components.mindmap', compact('rows', 'rowsBreadcrumbs'));

@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
 
         // TODO подгрузка в шаблон данных (переменная "projectVersion" будет доступна в шаблоне)
         View::composer('layouts.default', function ($view) {
-            $view->with('appDbCountTechnology', \App\Models\Technology::count());
+            $view->with('appDbCountPosts', \App\Models\Post::count());
             $view->with('appProjectVersion', 1);
         });
     }

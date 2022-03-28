@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Schema;
 use Kalnoy\Nestedset\NodeTrait;
 
 /**
- * App\Models\Technology
+ * App\Models\Post
  *
  * @property int $id
  * @property int $_lft
@@ -29,80 +29,80 @@ use Kalnoy\Nestedset\NodeTrait;
  * @property int $sorting3
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Kalnoy\Nestedset\Collection|Technology[] $children
+ * @property-read \Kalnoy\Nestedset\Collection|Post[] $children
  * @property-read int|null $children_count
  * @property-read \App\Models\User|null $users
  * @method static \Kalnoy\Nestedset\Collection|static[] all($columns = ['*'])
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology ancestorsAndSelf($id, array $columns = [])
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology ancestorsOf($id, array $columns = [])
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology applyNestedSetScope(?string $table = null)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology countErrors()
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology d()
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology defaultOrder(string $dir = 'asc')
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology descendantsAndSelf($id, array $columns = [])
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology descendantsOf($id, array $columns = [], $andSelf = false)
- * @method static \Database\Factories\TechnologyFactory factory(...$parameters)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology fixSubtree($root)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology fixTree($root = null)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post ancestorsAndSelf($id, array $columns = [])
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post ancestorsOf($id, array $columns = [])
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post applyNestedSetScope(?string $table = null)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post countErrors()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post d()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post defaultOrder(string $dir = 'asc')
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post descendantsAndSelf($id, array $columns = [])
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post descendantsOf($id, array $columns = [], $andSelf = false)
+ * @method static \Database\Factories\PostFactory factory(...$parameters)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post fixSubtree($root)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post fixTree($root = null)
  * @method static \Kalnoy\Nestedset\Collection|static[] get($columns = ['*'])
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology getNodeData($id, $required = false)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology getPlainNodeData($id, $required = false)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology getTotalErrors()
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology hasChildren()
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology hasParent()
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology isBroken()
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology leaves(array $columns = [])
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology makeGap(int $cut, int $height)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology moveNode($key, $position)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology newModelQuery()
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology newQuery()
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology orWhereAncestorOf(bool $id, bool $andSelf = false)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology orWhereDescendantOf($id)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology orWhereNodeBetween($values)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology orWhereNotDescendantOf($id)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology query()
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology rebuildSubtree($root, array $data, $delete = false)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology rebuildTree(array $data, $delete = false, $root = null)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology reversed()
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology root(array $columns = [])
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology whereAncestorOf($id, $andSelf = false, $boolean = 'and')
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology whereAncestorOrSelf($id)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology whereBranchStopFlag($value)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology whereBranchType($value)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology whereCreatedAt($value)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology whereDescendantOf($id, $boolean = 'and', $not = false, $andSelf = false)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology whereDescendantOrSelf(string $id, string $boolean = 'and', string $not = false)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology whereDescription($value)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology whereDescriptionTinymce($value)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology whereId($value)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology whereIsAfter($id, $boolean = 'and')
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology whereIsBefore($id, $boolean = 'and')
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology whereIsDraftFlag($value)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology whereIsLeaf()
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology whereIsPageFlag($value)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology whereIsRoot()
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology whereLft($value)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology whereLogoImage($value)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology whereName($value)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology whereNodeBetween($values, $boolean = 'and', $not = false)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology whereNotDescendantOf($id)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology whereParentId($value)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology whereParentIdWithNull($parentId)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology whereRgt($value)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology whereSlug($value)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology whereSorting($value)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology whereSorting3($value)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology whereUpdatedAt($value)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology whereUserId($value)
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology withDepth(string $as = 'depth')
- * @method static \Kalnoy\Nestedset\QueryBuilder|Technology withoutRoot()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post getNodeData($id, $required = false)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post getPlainNodeData($id, $required = false)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post getTotalErrors()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post hasChildren()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post hasParent()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post isBroken()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post leaves(array $columns = [])
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post makeGap(int $cut, int $height)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post moveNode($key, $position)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post newModelQuery()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post newQuery()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post orWhereAncestorOf(bool $id, bool $andSelf = false)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post orWhereDescendantOf($id)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post orWhereNodeBetween($values)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post orWhereNotDescendantOf($id)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post query()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post rebuildSubtree($root, array $data, $delete = false)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post rebuildTree(array $data, $delete = false, $root = null)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post reversed()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post root(array $columns = [])
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post whereAncestorOf($id, $andSelf = false, $boolean = 'and')
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post whereAncestorOrSelf($id)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post whereBranchStopFlag($value)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post whereBranchType($value)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post whereCreatedAt($value)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post whereDescendantOf($id, $boolean = 'and', $not = false, $andSelf = false)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post whereDescendantOrSelf(string $id, string $boolean = 'and', string $not = false)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post whereDescription($value)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post whereDescriptionTinymce($value)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post whereId($value)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post whereIsAfter($id, $boolean = 'and')
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post whereIsBefore($id, $boolean = 'and')
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post whereIsDraftFlag($value)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post whereIsLeaf()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post whereIsPageFlag($value)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post whereIsRoot()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post whereLft($value)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post whereLogoImage($value)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post whereName($value)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post whereNodeBetween($values, $boolean = 'and', $not = false)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post whereNotDescendantOf($id)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post whereParentId($value)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post whereParentIdWithNull($parentId)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post whereRgt($value)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post whereSlug($value)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post whereSorting($value)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post whereSorting3($value)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post whereUpdatedAt($value)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post whereUserId($value)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post withDepth(string $as = 'depth')
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Post withoutRoot()
  * @mixin \Eloquent
  */
-class Technology extends Model
+class Post extends Model
 {
     use HasFactory, NodeTrait;
 
-    protected $table = 'technologies';
+    protected $table = 'posts';
     // protected $fillable = false;
 
     const BRUNCH_LEFT_CODE = 1;
@@ -110,7 +110,7 @@ class Technology extends Model
     const BRUNCH_STOP_CODE = 1;
 
     // TODO Поля таблицы (интересный способ)
-    // where(Technology::FIELD_NAME,'=','foo')
+    // where(Post::FIELD_NAME,'=','foo')
     const FIELD_ID = 'id';
     const FIELD_NAME = 'name';
     const FIELD_DESCRIPTION = 'description';
@@ -152,8 +152,8 @@ class Technology extends Model
         }
 
         // TODO [не актуально!] в обычных миграциях последовательность удаления важна!
-        // $table->dropForeign('technology_user_fk');
-        // $table->dropIndex('technology_user_idx');
+        // $table->dropForeign('post_user_fk');
+        // $table->dropIndex('post_user_idx');
         // $table->dropColumn('user_id');
     }
 

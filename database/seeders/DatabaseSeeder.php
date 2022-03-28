@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
-use App\Models\Technology;
+use App\Models\Post;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,17 +20,22 @@ class DatabaseSeeder extends Seeder
             'email' => Str::random(10).'@gmail.com',
             'password' => Hash::make('password'),
         ]);*/
+
         \App\Models\User::factory(1)->create();
         \App\Models\Note::factory(100)->create();
-        \App\Models\Technology::factory(100)->create();
+        \App\Models\Post::factory(100)->create();
 
         // Создание дерева
-        $rows = \App\Models\Technology::where('id', '>', 7)->get();
+        $rows = \App\Models\Post::where('id', '>', 7)->get();
         foreach ($rows as $row) {
-            $model = \App\Models\Technology::find($row->id);
+            $model = \App\Models\Post::find($row->id);
             $model->parent_id = random_int(2, 10);
             $model->user_id = 1;
             $model->save();
         }
+
+        DB::table('api_quik_tradingview_positions')->insert([
+            'strategy' => 'RTS'
+        ]);
     }
 }

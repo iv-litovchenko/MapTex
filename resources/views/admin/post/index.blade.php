@@ -15,6 +15,7 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Название</th>
+                <th scope="col">Родительский раздел</th>
                 <th scope="col">Действие</th>
             </tr>
             </thead>
@@ -23,17 +24,12 @@
                 <tr>
                     <th scope="row">{{ $post->id }}</th>
                     <td>{{ $post->name }}</td>
+                    <td>{{ $post->parent_id }}</td>
                     <td>
                         <div class="btn-group" role="group">
+                            <a class="btn btn-success btn-sm" href="{{ route('site.post', $post->id) }}">Смотреть</a>
                             <a class="btn btn-primary btn-sm" href="{{ route('admin.post.edit', $post->id) }}">Редактировать</a>
-                            <a class="btn btn-danger btn-sm" href="#"
-                               onclick="document.getElementById('formId{{ $post->id }}').submit(); return false;">Удалить</a>
                         </div>
-                        <form action="{{ route('admin.post.destroy', $post->id) }}" method="post"
-                              id="formId{{ $post->id }}">
-                            @csrf
-                            @method('DELETE')
-                        </form>
                     </td>
                 </tr>
             @endforeach

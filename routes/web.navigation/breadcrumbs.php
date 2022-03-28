@@ -1,18 +1,18 @@
 <?php
 
 use DaveJamesMiller\Breadcrumbs\Facades;
-use App\Models\Technology;
+use App\Models\Post;
 
 // Главная
 Breadcrumbs::for('site.home', function ($trail) {
     $trail->push('Главная', route('site.home'));
 });
 
-// Главная > Технология (детальная страница) - выводим в виде цепочки
-Breadcrumbs::for('site.technology', function ($trail, $technology) {
+// Главная > Пост (детальная страница) - выводим в виде цепочки
+Breadcrumbs::for('site.post', function ($trail, $post) {
     $trail->parent('site.home');
-    foreach(Technology::ancestorsAndSelf($technology->id) as $ancestor){
-        $trail->push($ancestor->name, route('site.technology', $ancestor->id));
+    foreach(Post::ancestorsAndSelf($post->id) as $ancestor){
+        $trail->push($ancestor->name, route('site.post', $ancestor->id));
     }
 });
 
@@ -68,4 +68,11 @@ Breadcrumbs::for('password.update', function ($trail) {
 Breadcrumbs::for('admin.dashboard', function ($trail) {
     $trail->parent('site.home');
     $trail->push('Администрирование', route('admin.dashboard'));
+});
+
+// Главная > Администрирование > Список позиций
+Breadcrumbs::for('admin.apiquiktradingviewposition', function ($trail) {
+    $trail->parent('site.home');
+    $trail->parent('admin.dashboard');
+    $trail->push('Список позиций (Api Quik Tradingview)', route('admin.apiquiktradingviewposition'));
 });

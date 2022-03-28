@@ -6,7 +6,7 @@
             <li class="children__item" style="@if($row->logo_image) margin: 20px 0 20px 0; @endif">
                 <div class="node" style="">
                     <div class="node__text context-menu-one">
-                        <a href="{{ route('site.technology', $row->id) }}">
+                        <a href="{{ route('site.post', $row->id) }}">
                             {{ Str::limit($row->name, 14) }}
                         </a>
                     </div>

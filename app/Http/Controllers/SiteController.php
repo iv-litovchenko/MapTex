@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Note;
-use App\Models\Technology;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Cookie;
@@ -31,19 +31,19 @@ class SiteController extends Controller
     }
 
     /**
-     * Страница детального просмотра технологии
+     * Страница детального просмотра поста
      *
-     * @param \App\Models\Technology $technology
+     * @param \App\Models\Post $post
      * @return \Illuminate\View\View
      */
-    public function technology(Technology $technology)
+    public function post(Post $post)
     {
         $images = [];
-        $path = public_path('uploads/image/post/' . $technology->id);
+        $path = public_path('uploads/image/post/' . $post->id);
         if (File::exists($path)) {
             $images = File::files($path);
         }
-        return view('site.technology', compact('technology', 'images'));
+        return view('site.post', compact('post', 'images'));
     }
 
     /**
@@ -111,7 +111,7 @@ class SiteController extends Controller
 
         $rows = [];
         if ($inputQuerySearch != '') {
-            $rows = Technology::where('name', 'like', $queryLike)
+            $rows = Post::where('name', 'like', $queryLike)
                 ->orWhere('description', 'like', $queryLike)
                 ->orderBy('parent_id', 'asc')
                 ->orderBy('sorting', 'asc')

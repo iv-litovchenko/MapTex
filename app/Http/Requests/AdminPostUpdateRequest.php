@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class AdminUserStoreRequest extends FormRequest
+class AdminPostUpdateRequest extends FormRequest
 {
     /**
      * Флаг разрешения отправки формы
@@ -27,10 +26,15 @@ class AdminUserStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email|max:50|unique:users',
             'name' => 'required|min:3|max:50',
-            'password' => 'required|min:6|confirmed',
-            'password_confirmation' => 'required|min:6'
+            'parent_id' => 'nullable:posts,id',
+            'sorting' => 'integer',
+            'branch_stop_flag' => 'integer',
+            'is_page_flag' => 'integer',
+            'is_draft_flag' => 'integer'
+            // 'logo_image' => 'file',
+            // 'tags_ids' => 'nullable|array',
+            // 'tags_ids.*' => 'nullable|integer|exists:posts.id'
         ];
     }
 
@@ -42,11 +46,7 @@ class AdminUserStoreRequest extends FormRequest
     public function messages()
     {
         return [
-            'email.unique' => 'Email уже существует',
-            'email.*' => 'Email заполнен не правильно',
-            'name.*' => 'Имя заполнено не правильно',
-            'password.*' => 'Пароль заполнен не правильно',
-            'password_confirmation.*' => '',
+            'name.*' => 'Название заполнено не правильно',
         ];
     }
 }

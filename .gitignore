@@ -1,6 +1,6 @@
 /node_modules
 /public/hot
-/public/uploads/*
+/public/uploads
 /public/storage
 /public/adminer-4.8.1.php
 /storage/*.key

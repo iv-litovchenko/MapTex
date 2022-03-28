@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use App\Http\Requests\AdminTechnologyStoreRequest;
-use App\Models\Technology;
+use App\Http\Requests\AdminPostStoreRequest;
+use App\Models\Post;
 
 /**
  * Контроллер - главная страница административного раздела
@@ -13,7 +13,7 @@ use App\Models\Technology;
 class DashboardController extends Controller
 {
     /**
-     * Вывод списка модулей
+     * Вывод списка модулей (одноименный контроллер)
      *
      * @return \Illuminate\View\View
      */

@@ -7,13 +7,15 @@ use Illuminate\Foundation\Http\FormRequest;
 class AdminUserUpdateRequest extends FormRequest
 {
     /**
-     * Флаг авторизации пользователя
+     * Флаг разрешения отправки формы
+     * <true>, предоставляя право всем желающим отправлять форму
+     * <false>, предоставляя право только авторизовавшимся пользователям
      *
      * @return bool
      */
     public function authorize()
     {
-        return false;
+        return auth()->check();
     }
 
     /**

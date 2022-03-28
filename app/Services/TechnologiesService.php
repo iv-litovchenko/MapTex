@@ -3,9 +3,9 @@
 namespace App\Services;
 
 use Illuminate\Support\Facades\DB;
-use App\Models\Technology;
+use App\Models\Post;
 
-class TechnologiesService
+class PostsService
 {
     /**
      * @param $name
@@ -22,7 +22,7 @@ class TechnologiesService
     ) {
         try {
             DB::beginTransaction();
-            $model = new Technology;
+            $model = new Post;
             $model->parent_id = $parent_id > 0 ? $parent_id : null;
             $model->name = $name;
             $model->branch_stop_flag = $branch_stop_flag;

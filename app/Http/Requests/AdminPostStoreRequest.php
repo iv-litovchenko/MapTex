@@ -7,13 +7,15 @@ use Illuminate\Foundation\Http\FormRequest;
 class AdminPostStoreRequest extends FormRequest
 {
     /**
-     * Флаг авторизации пользователя
+     * Флаг разрешения отправки формы
+     * <true>, предоставляя право всем желающим отправлять форму
+     * <false>, предоставляя право только авторизовавшимся пользователям
      *
      * @return bool
      */
     public function authorize()
     {
-        return false;
+        return auth()->check();
     }
 
     /**
@@ -24,7 +26,8 @@ class AdminPostStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:3|max:50'
+            'name' => 'required|min:3|max:50',
+            'parent_id' => 'nullable:posts,id'
         ];
     }
 

@@ -2,7 +2,7 @@
 
 @section('LayoutSectionPageTitle', 'Создать')
 @section('LayoutSectionPageHeader', 'Создать')
-@section('LayoutSectionPageBreadcrumb', Breadcrumbs::render('admin.post.index'))
+@section('LayoutSectionPageBreadcrumb', Breadcrumbs::render('admin.post.create'))
 
 @section('LayoutSectionPageContent')
     <form action="{{ route('admin.post.store') }}" method="post">
@@ -18,8 +18,12 @@
             <div class="col-sm-10">
                 <select class="form-control" name="parent_id">
                     <option value="">Без родителя</option>
-                    @foreach($posts as $post)
-                        <option value="{{ $post->id }}" {{ (collect(old('parent_id'))->contains($post->id)) ? 'selected':'' }}>{{ $post->name }}</option>
+                    @foreach($postsList as $postItem)
+                        <option
+                            value="{{ $postItem->id }}" {{ (collect(old('parent_id'))->contains($postItem->id)) ? 'selected':'' }}>
+                            [{{ $postItem->id }}]
+                            {{ $postItem->name }}
+                        </option>
                     @endforeach
                 </select>
             </div>

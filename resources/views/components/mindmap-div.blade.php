@@ -27,7 +27,7 @@
             [Черновик]
         @endif
         @if($row->branch_stop_flag == 1 || $row->is_page_flag == 1)
-            <a href="{{ route('site.technology', $row->id) }}">{{ Str::limit($row->name, 32) }}</a>
+            <a href="{{ route('site.post', $row->id) }}">{{ Str::limit($row->name, 32) }}</a>
         @else
             {{ Str::limit($row->name, 32) }}
         @endif
