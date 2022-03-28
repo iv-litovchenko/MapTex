@@ -100,7 +100,7 @@ use Kalnoy\Nestedset\NodeTrait;
  */
 class Technology extends Model
 {
-     use HasFactory, NodeTrait;
+    use HasFactory, NodeTrait;
 
     protected $table = 'technologies';
     // protected $fillable = false;
@@ -129,7 +129,11 @@ class Technology extends Model
         $table->integer('branch_stop_flag')->default(0);
         $table->integer('is_page_flag')->default(0);
         $table->integer('is_draft_flag')->default(0);
-        $table->unsignedBigInteger('user_id')->nullable();
+
+        #$table->foreignId('user_id', 'fewfew')->nullable()->constrained('users');
+        $table->integer('user_id')->nullable();
+        #$table->index('user_id');  // <--------
+
         $table->string('name')->nullable();
         $table->string('slug')->nullable();
         $table->text('description')->nullable();
@@ -139,12 +143,13 @@ class Technology extends Model
         $table->timestamps();
 
         // TODO добавление индекса...
-        $table->index('user_id', 'technology_user_idx');
-        // if (Schema::hasTable('users')) {
-        //    $table->foreign('user_id', 'technology_user_fk')
-        //        ->references('id')
-        //        ->on('users');
-        // }
+        // $table->index('user_id', 'tu_idx');
+        // TODO важно! именование индекса во множественном числе!
+        if (Schema::hasTable('users')) {
+            # $table->foreign('user_id')
+            # ->references('id')
+            # ->on('users');
+        }
 
         // TODO [не актуально!] в обычных миграциях последовательность удаления важна!
         // $table->dropForeign('technology_user_fk');

@@ -1,15 +1,14 @@
 @extends('layouts.default')
 
-@section('LayoutSectionPageTitle', 'Редактировать')
-@section('LayoutSectionPageHeader', 'Редактировать')
-@section('LayoutSectionPageBreadcrumb', Breadcrumbs::render('admin.technology.edit'))
+@section('LayoutSectionPageTitle', 'Создать')
+@section('LayoutSectionPageHeader', 'Создать')
+@section('LayoutSectionPageBreadcrumb', Breadcrumbs::render('admin.post.index'))
 
 @section('LayoutSectionPageContent')
-    <form action="{{ route('admin.technology.update') }}" method="post">
+    <form action="{{ route('admin.post.store') }}" method="post">
         @csrf
-        @method('PUT')
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Название</label>
+            <label class="col-sm-2 col-form-label">Имя</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" name="name" value="{{ old('name') }}">
             </div>
@@ -19,8 +18,8 @@
             <div class="col-sm-10">
                 <select class="form-control" name="parent_id">
                     <option value="">Без родителя</option>
-                    @foreach($technologies as $technology)
-                        <option value="{{ $technology->id }}" {{ (collect(old('parent_id'))->contains($technology->id)) ? 'selected':'' }}>{{ $technology->name }}</option>
+                    @foreach($posts as $post)
+                        <option value="{{ $post->id }}" {{ (collect(old('parent_id'))->contains($post->id)) ? 'selected':'' }}>{{ $post->name }}</option>
                     @endforeach
                 </select>
             </div>

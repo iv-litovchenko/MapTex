@@ -1,8 +1,8 @@
 @extends('layouts.default')
 
-@section('LayoutSectionPageTitle', $technology->name)
-@section('LayoutSectionPageHeader', $technology->name)
-@section('LayoutSectionPageBreadcrumb', Breadcrumbs::render('site.technology', $technology))
+@section('LayoutSectionPageTitle', $post->name)
+@section('LayoutSectionPageHeader', $post->name)
+@section('LayoutSectionPageBreadcrumb', Breadcrumbs::render('site.post', $post))
 
 @section('LayoutSectionPageContent')
 
@@ -12,14 +12,14 @@
                 Roadmap backend
             </div>
         </div>
-        <x-mindmap record-id="{{ $technology->id }}" show-breadcrumbs="1"/>
+        <x-mindmap record-id="{{ $post->id }}" show-breadcrumbs="1"/>
     </div>
 
     <hr class="my-12">
 
-    @if ($technology->is_page_flag == 1)
+    @if ($post->is_page_flag == 1)
         @foreach($images as $image)
-            <img src="{{ asset('uploads/image/post/'.$technology->id.'/'.$image->getBasename()) }}"
+            <img src="{{ asset('uploads/image/post/'.$post->id.'/'.$image->getBasename()) }}"
                  style="width: 100%; max-width: 100%; border: gray 3px solid;"/>
             @auth
                 <br/>
@@ -28,9 +28,9 @@
             <br/>
             <hr/>
         @endforeach
-        <pre>{{ $technology->description }}</pre>
+        <pre>{{ $post->description }}</pre>
         <br/>
-        {!! $technology->description_tinymce !!}
+        {!! $post->description_tinymce !!}
     @endif
 
 @endsection

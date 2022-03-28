@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\User\PasswordMail;
-use App\Models\Technology;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use YouTube\Exception\YouTubeException;
@@ -16,7 +16,7 @@ class Test extends Controller
      */
     public function rel()
     {
-        $rows = Technology::with('users')->where('id', '=', 1)->first();
+        $rows = Post::with('users')->where('id', '=', 1)->first();
         dd($rows->users->id);
     }
 

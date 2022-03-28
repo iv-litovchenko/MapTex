@@ -10,14 +10,12 @@
 
     <form method="post">
         @csrf
-        <center><a href="{{ route('tech', ['id'=>$model->id]) }}">Вернуться к элементу</a></center>
+        <center><a href="{{ route('site.post', ['id'=>$model->id]) }}">Вернуться к элементу</a></center>
         <table width="80%" align="center" border="1">
-            @foreach($rows as $k => $v)
-                <tr>
-                    <td width="50%">{{ $v->name }}</td>
-                    <td><input name="sort_list[{{ $v->id  }}]" style="width: 100%" value="{{ $v->sorting }}"></td>
-                </tr>
-            @endforeach
+            <tr>
+                <td width="50%">{{ $model->name }}</td>
+                <td><input name="parent_id" style="width: 100%" value="{{ $model->parent_id }}"></td>
+            </tr>
             <tr>
                 <td colspan="2">
                     <input type="submit">

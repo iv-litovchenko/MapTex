@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AdminTechnologyStoreRequest extends FormRequest
+class AdminPostStoreRequest extends FormRequest
 {
     /**
      * Флаг авторизации пользователя

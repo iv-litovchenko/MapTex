@@ -3,14 +3,14 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Technology;
+use App\Models\Post;
 
-class TechnologyFactory extends Factory
+class PostFactory extends Factory
 {
     /**
      * @var string
      */
-    protected $model = Technology::class;
+    protected $model = Post::class;
 
     /**
      * Define the model's default state.
