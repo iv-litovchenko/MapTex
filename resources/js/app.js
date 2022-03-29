@@ -52,6 +52,7 @@ $(document).ready(function () {
             {text: 'Lua', value: 'lua'},
             {text: 'JSON', value: 'json'},
             {text: 'YAML', value: 'yaml'},
+            // {text: 'UML', value: ''} ???
         ]
     });
 
