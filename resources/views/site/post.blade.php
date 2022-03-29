@@ -17,20 +17,18 @@
 
     <hr class="my-12">
 
-    @if ($post->is_page_flag == 1)
-        @foreach($images as $image)
-            <img src="{{ asset('uploads/image/post/'.$post->id.'/'.$image->getBasename()) }}"
-                 style="width: 100%; max-width: 100%; border: gray 3px solid;"/>
-            @auth
-                <br/>
-                <b>{{ $image->getBasename() }}</b>
-            @endauth
+    @foreach($images as $image)
+        <img src="{{ asset('uploads/image/post/'.$post->id.'/'.$image->getBasename()) }}"
+             style="width: 100%; max-width: 100%; border: gray 3px solid;"/>
+        @auth
             <br/>
-            <hr/>
-        @endforeach
-        <pre>{{ $post->description }}</pre>
+            <b>{{ $image->getBasename() }}</b>
+        @endauth
         <br/>
-        {!! $post->description_tinymce !!}
-    @endif
+        <hr/>
+    @endforeach
+    <pre>{{ $post->description }}</pre>
+    <br/>
+    {!! $post->description_tinymce !!}
 
 @endsection

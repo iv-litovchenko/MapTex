@@ -74,8 +74,6 @@ class Mindmap extends Component
     {
         if ($row->branch_stop_flag) {
             return $this->backgroundColor[1];
-        } elseif ($row->is_page_flag) {
-            return $this->backgroundColor[2];
         }
         return 'none';
     }

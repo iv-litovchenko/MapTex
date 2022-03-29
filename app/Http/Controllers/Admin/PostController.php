@@ -93,8 +93,6 @@ class PostController extends BaseController
         $post->description = $request->input('description');
         $post->description_tinymce = $request->input('description_tinymce');
         $post->branch_stop_flag = intval($request->input('branch_stop_flag'));
-        $post->is_page_flag = intval($request->input('is_page_flag'));
-        $post->is_draft_flag = intval($request->input('is_draft_flag'));
         $post->sorting = intval($request->input('sorting'));
 
         //        $model = Post::find($id);

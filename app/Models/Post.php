@@ -17,8 +17,6 @@ use Kalnoy\Nestedset\NodeTrait;
  * @property int|null $parent_id
  * @property int $branch_type
  * @property int $branch_stop_flag
- * @property int $is_page_flag
- * @property int $is_draft_flag
  * @property int|null $user_id
  * @property string|null $name
  * @property string|null $slug
@@ -127,8 +125,6 @@ class Post extends Model
         $table->nestedSet();
         $table->integer('branch_type')->default(0);
         $table->integer('branch_stop_flag')->default(0);
-        $table->integer('is_page_flag')->default(0);
-        $table->integer('is_draft_flag')->default(0);
 
         #$table->foreignId('user_id', 'fewfew')->nullable()->constrained('users');
         $table->integer('user_id')->nullable();

@@ -30,8 +30,6 @@ class AdminPostUpdateRequest extends FormRequest
             'parent_id' => 'nullable:posts,id',
             'sorting' => 'integer',
             'branch_stop_flag' => 'integer',
-            'is_page_flag' => 'integer',
-            'is_draft_flag' => 'integer'
             // 'logo_image' => 'file',
             // 'tags_ids' => 'nullable|array',
             // 'tags_ids.*' => 'nullable|integer|exists:posts.id'

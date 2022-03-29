@@ -23,9 +23,6 @@
         @auth
             #{{ $row->id }} |
         @endauth
-        @if($row->is_draft_flag == 1)
-            [Черновик]
-        @endif
         <a href="{{ route('site.post', $row->id) }}">{{ Str::limit($row->name, 32) }}</a>
     </div>
 </div>

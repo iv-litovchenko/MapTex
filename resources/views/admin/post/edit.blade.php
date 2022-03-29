@@ -77,21 +77,10 @@
             <label class="col-sm-2 col-form-label">Дополнительные настройки</label>
             <div class="col-sm-10">
                 <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" name="branch_stop_flag" value="0">
                     <input class="form-check-input" type="checkbox" name="branch_stop_flag" value="1"
-                        {{ old('is_page_flag', $post->branch_stop_flag) == 1 ? 'checked' : '' }}>
+                        {{ old('branch_stop_flag', $post->branch_stop_flag) == 1 ? 'checked' : '' }}>
                     Продолжить ветку на отдельной странице?
-                </label>
-                <br/>
-                <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" name="is_page_flag" value="1"
-                        {{ old('is_page_flag', $post->is_page_flag) == 1 ? 'checked' : '' }}>
-                    Создать отдельную страницу?
-                </label>
-                <br/>
-                <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" name="is_draft_flag" value="1"
-                        {{ old('is_page_flag', $post->is_draft_flag) == 1 ? 'checked' : '' }}>
-                    Черновик?
                 </label>
             </div>
         </div>
