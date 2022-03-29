@@ -8,7 +8,7 @@
     <center>
         @foreach($images as $image)
             <img src="{{ asset('uploads/image/book/'.$image->getBasename()) }}" class="img-thumbnail"
-                 style="margin: 5px;" height="200"/>
+                 style="margin: 5px; height: 200px;"/>
         @endforeach
     </center>
 @stop
