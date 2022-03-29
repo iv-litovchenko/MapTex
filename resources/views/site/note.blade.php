@@ -6,6 +6,7 @@
 
 @section('LayoutSectionPageContent')
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/default.min.css">
     <div class="row">
         <div class="col-sm-8">
             @foreach($notes->items() as $note)
@@ -17,7 +18,7 @@
                         @endif
                     </div>
                     <div class="panel-body">
-                        {{ $note->bodytext }}
+                        {!! clean($note->bodytext, 'default') !!}
                     </div>
                 </div>
             @endforeach

@@ -9,10 +9,11 @@
 
 ## Changelog http://maptex.ru/
 
-- Composer
+- Composer (установка расширений для Laravel)
 - NPM (Note.js) - сборка клиентской части на основе Mix
 - Маршрутизация и контроллеры
 - Модели и миграции
+- TinyMCE (wysiwyg editor) и composer require mews/purifier
 - Request-валидация
 - Шаблонизатор Blade
 - Компоненты
@@ -28,3 +29,4 @@
 - [todo] Почта
 - [todo] Очереди
 - [todo] Передача $data в сервис
+- [todo] Разобраться с теми ссылками на папку ресурсов (зачем она нужна)

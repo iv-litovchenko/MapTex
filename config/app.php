@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Mews\Purifier\PurifierServiceProvider::class, // TODO обработка wysiwyg editor
         Lavary\Menu\ServiceProvider::class, // TODO меню
         Barryvdh\Debugbar\ServiceProvider::class, // TODO хлебные крошки
 
@@ -234,7 +235,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Menu' => Lavary\Menu\Facade::class, // TODO меню
-
+        'Purifier' => Mews\Purifier\Facades\Purifier::class // TODO обработка wysiwyg editor
     ],
 
 ];
