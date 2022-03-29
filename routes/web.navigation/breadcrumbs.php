@@ -71,7 +71,7 @@ Breadcrumbs::for('admin.dashboard', function ($trail) {
 });
 
 // Главная > Администрирование > Список позиций
-Breadcrumbs::for('admin.apiquiktradingviewposition', function ($trail) {
+Breadcrumbs::for('admin.tvposition', function ($trail) {
     $trail->parent('site.home');
     $trail->parent('admin.dashboard');
     $trail->push('Список позиций (Api Quik Tradingview)');

@@ -4,19 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\Note;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use App\Http\Controllers\BaseController;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\File;
 
 /**
  * Контроллер для обработки страниц frontend-а
  */
-class SiteController extends Controller
+class SiteController extends BaseController
 {
-//    use AuthorizesRequests;
-//    use DispatchesJobs;
-//    use ValidatesRequests;
+    //    use AuthorizesRequests;
+    //    use DispatchesJobs;
+    //    use ValidatesRequests;
 
     /**
      * Главная страница
@@ -71,30 +73,44 @@ class SiteController extends Controller
     }
 
     /**
-     * Страница барахолка
+     * Страница барахолка (список записей)
      *
-     * @param Request $request
      * @return \Illuminate\View\View
      */
-    public function note(Request $request)
+    public function note()
     {
-        // Проверка на авторизацию
-        $backendOpenStatus = Cookie::get('BACKEND_OPEN');
-        $inputBodytext = $request->input('bodytext');
-        if ($inputBodytext != '') {
-            $model = Note::make();
-            $model->bodytext = $inputBodytext;
-            if ($backendOpenStatus === 'yes') {
-                $model->is_me = 1;
-            }
-            $model->save();
-            return redirect()->route('notes');
+        $notes = Note::orderBy('id', 'desc')->paginate(5);
+        return view('site.note', compact('notes'));
+    }
+
+    /**
+     * Страница барахолка (форма добавить запись)
+     *
+     * @param Request $request
+     * @param Note $note
+     * @return \Illuminate\View\View
+     */
+    public function noteStore(Request $request, Note $note)
+    {
+        // TODO Валидируем форму (она не пускает дальше)
+        $request->validate(
+            ['bodytext' => 'required|min:10'],
+            ['bodytext.*' => 'Поле обязательно к заполнению и должно что-то содержать!']
+        );
+
+        // Заполняем данными
+        $note->bodytext = $request->input('bodytext');
+        if (auth()->user()->role === User::ROLE_ADMIN) {
+            $note->is_me = 1;
         }
 
-        $rows = Note::orderBy('id', 'desc')->paginate(3);
-        return view('site.note', [
-            'rows' => $rows
-        ]);
+        if ($note->save()) {
+            $request->session()->flash('flash_messages_success',
+                'Барахольная заметка [' . $note->id . '] успешно создана!');
+            return redirect()->route('site.note');
+        }
+        $request->session()->flash('flash_messages_error', 'Ошибка создания барахольной заметки!');
+        return redirect()->route('site.note')->withInput();
     }
 
     /**

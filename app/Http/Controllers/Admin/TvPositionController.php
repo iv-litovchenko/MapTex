@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\BaseController;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\AdminUserStoreRequest;
 use App\Http\Requests\AdminUserUpdateRequest;
-use App\Models\ApiQuikTradingviewPosition;
+use App\Models\TvPosition;
 
 /**
  * Контроллер - список позиций
  */
-class ApiQuikTradingviewPositionController extends Controller
+class TvPositionController extends BaseController
 {
     /**
      * Список позиций (одноименный контроллер)
@@ -21,8 +22,8 @@ class ApiQuikTradingviewPositionController extends Controller
      */
     public function __invoke()
     {
-        $rows = ApiQuikTradingviewPosition::orderBy('id', 'DESC')->get();
-        return view('admin.apiquiktradingviewposition', compact('rows'));
+        $rows = TvPosition::orderBy('id', 'DESC')->get();
+        return view('admin.tvposition', compact('rows'));
     }
 
     //    public function getPositonsResult()

@@ -1,4 +1,0 @@
-mindmap
-=======
-
-jQuery mindmap plugin

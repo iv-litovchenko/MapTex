@@ -1,8 +1,8 @@
 @extends('layouts.default')
 
-@section('LayoutSectionPageTitle', 'Список позиций (Api Quik Tradingview)')
-@section('LayoutSectionPageHeader', 'Список позиций (Api Quik Tradingview)')
-@section('LayoutSectionPageBreadcrumb', Breadcrumbs::render('admin.apiquiktradingviewposition'))
+@section('LayoutSectionPageTitle', 'Список позиций')
+@section('LayoutSectionPageHeader', 'Список позиций')
+@section('LayoutSectionPageBreadcrumb', Breadcrumbs::render('admin.tvposition'))
 
 @section('LayoutSectionPageContent')
 

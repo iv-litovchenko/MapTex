@@ -7,15 +7,9 @@
     <title>@yield('LayoutSectionPageTitle') | IT-заметки</title>
     @section('LayoutSectionPageCssFiles')
         <link rel="stylesheet" href="{{ mix('assets/css/app.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/mindmap/dist/mindmap.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/contextmenu/dist/jquery.contextMenu.css') }}">
     @show
     @section('LayoutSectionPageCssCode')
-        <style>
-            html, body {
-                background: white;
-            }
-        </style>
+
     @show
 </head>
 <body>
@@ -31,7 +25,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="{{ route('site.home') }}">
-                <img src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" width="20" height="20"
+                <img src="{{ asset('uploads/logo.png') }}" width="20" height="20"
                      style="display: inline; vertical-align: top;" alt="">
                 IT-заметки
             </a>
@@ -82,12 +76,11 @@
 @section('LayoutSectionPageJsFooterFiles')
 
     <script src="{{ mix('assets/js/app.js') }}"></script>
-{{--    <script src="https://cdn.tiny.cloud/1/i7rtvlx6g594hivyfqzi1d4yk6e0uvnt71bu0wysnpqkkrnl/tinymce/5/tinymce.min.js"></script>--}}
-{{--    <script src="{{ asset('assets/contextmenu/dist/jquery.contextMenu.js') }}"></script>--}}
 
 @show
 
 @section('LayoutSectionPageJsFooterCode')
+
 @show
 
 </body>

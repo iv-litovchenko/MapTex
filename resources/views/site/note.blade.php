@@ -5,48 +5,41 @@
 @section('LayoutSectionPageBreadcrumb', Breadcrumbs::render('site.note'))
 
 @section('LayoutSectionPageContent')
-    <h3 align="center">Здесь можно оставить заметки - возможно они попадут в ветки!</h3>
-    <form action="" method="post">
-        @csrf
-        <center>
-            <textarea id="tinymce" name="bodytext" style="
-            width: 50%;
-            height: 100px;
-            border: gray 3px solid;
-             border-radius: 10px;"
-            ></textarea>
-            <script>
-                tinymce.init({
-                    selector: '#tinymce',
-                    menubar: false,
-                    plugins: ' lists advlist table link code',
-                    toolbar1: 'undo redo | styleselect backcolor forecolor |' +
-                        ' bold italic strikethrough underline | ' +
-                        'aligncenter alignjustify alignleft alignright | removeformat',
-                    toolbar2: 'outdent outdent bullist numlist  | ' +
-                        'quicktable quicklink | table | ' +
-                        'tableprops tablerowprops tablecellprops | ' +
-                        'tableinsertrowbefore tableinsertrowafter | ' +
-                        'tableinsertcolbefore tableinsertcolafter | link codesample code ',
-                    height: 350
-                });
-            </script>
-            <br/>
-            <input type="submit" value="Добавить">
-        </center>
-    </form>
-    <br/>
-    <br/>
-    @foreach($rows->items() as $row)
-        <div style="margin: 0 auto; width: 50%; padding: 15px; background: #dcdc7e;">
-            #{{ $row->id }}.
-            {!! $row->bodytext !!}
-            @if($row->is_me === 1)
-                [Me!]
-            @endif
+
+    <div class="row">
+        <div class="col-sm-8">
+            @foreach($notes->items() as $note)
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        #{{ $note->id }} | {{ $note->created_at }}
+                        @if($note->is_me === 1)
+                            <span class="glyphicon glyphicon glyphicon-leaf" aria-hidden="true"></span>
+                        @endif
+                    </div>
+                    <div class="panel-body">
+                        {{ $note->bodytext }}
+                    </div>
+                </div>
+            @endforeach
+            {{ $notes->links() }}
+            Всего записей: {{ $notes->total() }} <br/>
+            <span class="glyphicon glyphicon glyphicon-leaf" aria-hidden="true"></span> - записи созданные
+            администратором
         </div>
-        <hr/>
-    @endforeach
-    {{ $rows->links() }}
-    Всего записей: {{ $rows->total() }}
+        <div class="col-sm-4">
+            <div class="alert alert-success">
+                Здесь можно оставить заметки - возможно они попадут в ветки!
+            </div>
+            <form action="{{ route('site.note-store') }}" method="post">
+                @csrf
+                <div class="form-group">
+                    <textarea id="tinymce" type="text" class="form-control" name="bodytext"
+                              rows="15" placeholder="Введите барахольный текст"
+                    >{{ old('bodytext') }}</textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Добавить в барахолку</button>
+            </form>
+        </div>
+    </div>
+
 @stop

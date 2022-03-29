@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\BaseController;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use App\Http\Requests\AdminPostStoreRequest;
@@ -21,7 +22,7 @@ use Illuminate\Support\Facades\File;
  * DELETE       |admin/post/{post}       |admin.post.destroy    |App\Http\Controllers\Admin\PostController@destroy|web|
  *
  */
-class PostController extends Controller
+class PostController extends BaseController
 {
     /**
      * Список постов
@@ -63,7 +64,7 @@ class PostController extends Controller
             return redirect()->route('admin.post.index');
         }
         $request->session()->flash('flash_messages_error', 'Ошибка создания поста');
-        return redirect()->route('admin.post.create');
+        return redirect()->route('admin.post.create')->withInput();
     }
 
     /**
@@ -133,6 +134,6 @@ class PostController extends Controller
             return redirect()->route('admin.post.edit', $post->id);
         }
         $request->session()->flash('flash_messages_error', 'Ошибка обновления поста [' . $post->id . ']');
-        return redirect()->route('admin.post.edit', $post->id);
+        return redirect()->route('admin.post.edit', $post->id)->withInput();
     }
 }

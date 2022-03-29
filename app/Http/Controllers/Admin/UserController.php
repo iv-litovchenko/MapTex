@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\BaseController;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -21,7 +22,7 @@ use App\Models\User;
  * DELETE       |admin/user/{user}       |admin.user.destroy    |App\Http\Controllers\Admin\UserController@destroy|web|
  *
  */
-class UserController extends Controller
+class UserController extends BaseController
 {
     /**
      * Список пользователей
@@ -61,7 +62,7 @@ class UserController extends Controller
             return redirect()->route('admin.user.index');
         }
         $request->session()->flash('flash_messages_error', 'Ошибка создания пользователя');
-        return redirect()->route('admin.user.create');
+        return redirect()->route('admin.user.create')->withInput();
     }
 
     /**
@@ -90,7 +91,7 @@ class UserController extends Controller
             return redirect()->route('admin.user.edit', $user->id);
         }
         $request->session()->flash('flash_messages_error', 'Ошибка обновления пользователя [' . $user->id . ']');
-        return redirect()->route('admin.user.edit', $user->id);
+        return redirect()->route('admin.user.edit', $user->id)->withInput();
     }
 
     /**

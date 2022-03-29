@@ -5,7 +5,7 @@ namespace App\Services;
 use Illuminate\Support\Facades\DB;
 use App\Models\Post;
 
-class PostsService
+class PostService
 {
     /**
      * @param $name

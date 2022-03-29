@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Schema\Blueprint;
 
-class ApiQuikTradingviewPosition extends Model
+class TvPosition extends Model
 {
     use HasFactory;
 
