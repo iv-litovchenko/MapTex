@@ -93,6 +93,7 @@
                 </label>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Сохранить</button>
+        <button type="submit" name="redirect" class="btn btn-primary" value="0">Сохранить</button>
+        <button type="submit" name="redirect" class="btn btn-primary" value="1">Сохранить и к просмотру</button>
     </form>
 @endsection

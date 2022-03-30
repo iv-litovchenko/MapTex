@@ -74,6 +74,11 @@ class PostController extends BaseController
      */
     public function edit(Post $post)
     {
+
+        print "<pre>";
+        dd( \App\Utils\TreeUtility::buildingTree());
+        exit();
+
         $postsList = Post::select('id', 'name')->orderBy('parent_id', 'DESC')->get();
         return view('admin.post.edit', compact('post', 'postsList'));
     }
@@ -129,6 +134,9 @@ class PostController extends BaseController
 
         if ($post->save()) {
             $request->session()->flash('flash_messages_success', 'Пост [' . $post->id . '] успешно обновлен');
+            if (intval($request->input('redirect')) == 1) { // Сохранение и к просмотру
+                return redirect()->route('site.post', $post->id);
+            }
             return redirect()->route('admin.post.edit', $post->id);
         }
         $request->session()->flash('flash_messages_error', 'Ошибка обновления поста [' . $post->id . ']');

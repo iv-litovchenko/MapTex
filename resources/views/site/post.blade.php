@@ -17,6 +17,20 @@
 
     <hr class="my-12">
 
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+        <div class="btn-group" role="group">
+            <a type="button" class="btn btn-warning btn-lg">Добавить знание</a>
+        </div>
+        <div class="btn-group" role="group">
+            <a href="{{ route('admin.post.edit', $post->id) }}" class="btn btn-success btn-lg">Редактировать знание</a>
+        </div>
+        <div class="btn-group" role="group">
+            <a type="button" class="btn btn-warning btn-lg">Создать ветку</a>
+        </div>
+    </div>
+
+    <hr class="my-12">
+
     {!! clean($post->description, 'default') !!}
 
     <hr class="my-12">
