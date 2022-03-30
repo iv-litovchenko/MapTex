@@ -1,6 +1,7 @@
 global.jquery = global.jQuery = global.$ = require('jquery/dist/jquery');
 const Bootstrap = require('bootstrap/dist/js/bootstrap');
 const TinyMCE = require('tinymce/tinymce');
+
 require('tinymce/icons/default');
 require('tinymce/models/dom');
 require('tinymce/themes/silver');
@@ -8,21 +9,10 @@ require('tinymce/plugins/advlist');
 require('tinymce/plugins/autolink');
 require('tinymce/plugins/lists');
 require('tinymce/plugins/link');
-require('tinymce/plugins/image');
-require('tinymce/plugins/charmap');
-require('tinymce/plugins/preview');
 require('tinymce/plugins/anchor');
-require('tinymce/plugins/searchreplace');
-require('tinymce/plugins/visualblocks');
-require('tinymce/plugins/code');
-require('tinymce/plugins/codesample');
-require('tinymce/plugins/fullscreen');
-require('tinymce/plugins/insertdatetime');
-require('tinymce/plugins/media');
 require('tinymce/plugins/table');
 require('tinymce/plugins/code');
-require('tinymce/plugins/help');
-require('tinymce/plugins/wordcount');
+require('tinymce/plugins/codesample');
 hljs = require('highlight.js/lib/common'); // Highlight.Js
 
 $(document).ready(function () {
@@ -51,7 +41,7 @@ $(document).ready(function () {
             {text: 'Markdown', value: 'markdown'},
             {text: 'Lua', value: 'lua'},
             {text: 'JSON', value: 'json'},
-            {text: 'YAML', value: 'yaml'},
+            {text: 'YAML', value: 'yaml'}
             // {text: 'UML', value: ''} ???
         ]
     });
