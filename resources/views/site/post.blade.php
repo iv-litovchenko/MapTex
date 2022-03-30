@@ -17,16 +17,18 @@
 
     <hr class="my-12">
 
-    @foreach($images as $image)
-        <img src="{{ asset('uploads/image/post/'.$post->id.'/'.$image->getBasename()) }}"
-             style="width: 100%; max-width: 100%; border: gray 3px solid;"/>
-        @auth
+    <center>
+        @foreach($images as $image)
+            <img src="{{ asset('uploads/site/post/'.$post->id.'/'.$image->getBasename()) }}"
+                 class="img-thumbnail img-site-post"/>
+            @auth
+                <br/>
+                <b>{{ $image->getBasename() }}</b>
+            @endauth
             <br/>
-            <b>{{ $image->getBasename() }}</b>
-        @endauth
-        <br/>
-        <hr/>
-    @endforeach
+            <hr/>
+        @endforeach
+    </center>
     <pre>{{ $post->description }}</pre>
     <br/>
     {!! $post->description_tinymce !!}

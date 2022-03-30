@@ -27,7 +27,7 @@ class SiteController extends BaseController
      */
     public function home()
     {
-        $path = public_path('uploads/image/home');
+        $path = public_path('uploads/site/home');
         $images = File::files($path);
         return view('site.home', compact('images'));
     }
@@ -41,7 +41,7 @@ class SiteController extends BaseController
     public function post(Post $post)
     {
         $images = [];
-        $path = public_path('uploads/image/post/' . $post->id);
+        $path = public_path('uploads/site/post/' . $post->id);
         if (File::exists($path)) {
             $images = File::files($path);
         }
@@ -55,7 +55,7 @@ class SiteController extends BaseController
      */
     public function pic()
     {
-        $path = public_path('uploads/image/pic');
+        $path = public_path('uploads/site/pic');
         $images = File::files($path);
         return view('site.pic', compact('images'));
     }
@@ -67,7 +67,7 @@ class SiteController extends BaseController
      */
     public function book()
     {
-        $path = public_path('uploads/image/book');
+        $path = public_path('uploads/site/book');
         $images = File::files($path);
         return view('site.book', compact('images'));
     }

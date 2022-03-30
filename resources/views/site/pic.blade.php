@@ -7,8 +7,8 @@
 @section('LayoutSectionPageContent')
     <center>
         @foreach($images as $image)
-            <img src="{{ asset('uploads/image/pic/'.$image->getBasename()) }}" class="img-thumbnail"
-                 style="width: 100%; max-width: 500px;"/>
+            <img src="{{ asset('uploads/site/pic/'.$image->getBasename()) }}"
+                 class="img-thumbnail img-site-pic"/>
             @auth
                 <br/>
                 <b>{{ $image->getBasename() }}</b>

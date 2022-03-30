@@ -7,8 +7,8 @@
 @section('LayoutSectionPageContent')
     <center>
         @foreach($images as $image)
-            <img src="{{ asset('uploads/image/book/'.$image->getBasename()) }}" class="img-thumbnail"
-                 style="margin: 5px; height: 200px;"/>
+            <img src="{{ asset('uploads/site/book/'.$image->getBasename()) }}"
+                 class="img-thumbnail img-site-book"/>
         @endforeach
     </center>
 @stop

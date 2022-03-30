@@ -19,8 +19,8 @@
         <hr class="my-12">
         <center>
             @foreach($images as $image)
-                <img src="{{ asset('uploads/image/home/'.$image->getBasename()) }}" class="img-thumbnail"
-                     style="width: 100%; max-width: 500px;"/>
+                <img src="{{ asset('uploads/site/home/'.$image->getBasename()) }}"
+                     class="img-thumbnail img-site-home"/>
                 <hr/>
             @endforeach
         </center>

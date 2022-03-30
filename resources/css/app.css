@@ -4,3 +4,19 @@
 html, body {
     background: white;
 }
+
+.img-site-home {
+    width: 100%;
+}
+
+.img-site-post,
+.img-site-pic {
+    width: auto;
+    max-width: 500px;
+}
+
+.img-site-book {
+    margin: 5px;
+    width: auto;
+    max-height: 200px;
+}
