@@ -17,6 +17,10 @@
 
     <hr class="my-12">
 
+    {!! clean($post->description, 'default') !!}
+
+    <hr class="my-12">
+
     <center>
         @foreach($images as $image)
             <img src="{{ asset('uploads/site/post/'.$post->id.'/'.$image->getBasename()) }}"
@@ -29,8 +33,5 @@
             <hr/>
         @endforeach
     </center>
-    <pre>{{ $post->description }}</pre>
-    <br/>
-    {!! $post->description_tinymce !!}
 
 @endsection

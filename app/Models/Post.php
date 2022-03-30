@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Spatie\Permission\Traits\HasRoles;
 use Kalnoy\Nestedset\NodeTrait;
 
 /**
@@ -98,7 +99,7 @@ use Kalnoy\Nestedset\NodeTrait;
  */
 class Post extends Model
 {
-    use HasFactory, NodeTrait;
+    use HasFactory, NodeTrait, HasRoles;
 
     protected $table = 'posts';
     // protected $fillable = false;

@@ -58,7 +58,6 @@ class PostController extends BaseController
         $post->name = $request->input('name');
         $post->parent_id = $request->input('parent_id');
         if ($post->save()) {
-            Post::fixTree();
             $request->session()->flash('flash_messages_success',
                 'Пост [' . $post->id . '] успешно создан');
             return redirect()->route('admin.post.index');
@@ -91,21 +90,23 @@ class PostController extends BaseController
         $post->name = $request->input('name');
         $post->parent_id = $request->input('parent_id');
         $post->description = $request->input('description');
-        $post->description_tinymce = $request->input('description_tinymce');
         $post->branch_stop_flag = intval($request->input('branch_stop_flag'));
         $post->sorting = intval($request->input('sorting'));
 
-        //        $model = Post::find($id);
-        //        if ($request->input('name') !== null) {
-        //            // загрузка 1 файла (логотип)
-        //            if ($file = $request->file('logo_image')) {
-        //                $fileName = md5(time() . $file->getClientOriginalName()) . '.' . $file->getClientOriginalExtension();
-        //                $fileName = strtolower($fileName);
-        //                $destinationPath = 'uploads/image/logo/' . $id . '/';
-        //                $file->move($destinationPath, $fileName);
-        //                $model->logo_image = $destinationPath . $fileName;
-        //                //                $model->logo_image = Storage::disk('public')->put('/images', 'content???');
-        //            }
+        // Загрузка 1 файла (логотип)
+        if ($file = $request->file('logo_image')) {
+            // $model->logo_image = Storage::disk('public')->put('/images', 'content???');
+            $fileName = md5(time() . $file->getClientOriginalName()) . '.' . $file->getClientOriginalExtension();
+            $fileName = strtolower($fileName);
+            $destinationPath = 'uploads/site/post/logo/';
+            $file->move($destinationPath, $fileName);
+            $post->logo_image = $fileName;
+
+            // Удаление изображения (галочка)
+        } elseif (intval($request->input('logo_image_delete')) == 1) {
+            $post->logo_image = null;
+        }
+
         //
         //            $model->save();
         //
@@ -127,7 +128,6 @@ class PostController extends BaseController
         //        }
 
         if ($post->save()) {
-            Post::fixTree();
             $request->session()->flash('flash_messages_success', 'Пост [' . $post->id . '] успешно обновлен');
             return redirect()->route('admin.post.edit', $post->id);
         }

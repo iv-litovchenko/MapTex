@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('LayoutSectionPageTitle') | IT-заметки</title>
     @section('LayoutSectionPageCssFiles')
-        <link rel="stylesheet" href="{{ mix('assets/css/app.css') }}">
+        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     @show
     @section('LayoutSectionPageCssCode')
 
@@ -75,7 +75,7 @@
 
 @section('LayoutSectionPageJsFooterFiles')
 
-    <script src="{{ mix('assets/js/app.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}"></script>
 
 @show
 

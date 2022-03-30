@@ -1,5 +1,6 @@
-@import 'bootstrap/dist/css/bootstrap.css';
-@import '../libraries/mindmap/dist/mindmap.css';
+@import "bootstrap/dist/css/bootstrap.css";
+@import "highlight.js/styles/default.css";
+@import "../libraries/mindmap/dist/mindmap.css";
 
 html, body {
     background: white;

@@ -22,7 +22,8 @@
         "laravel/ui": "^3.4",
         "lavary/laravel-menu": "^1.8",
         "legodion/lucid": "^1.0",
-        "mews/purifier": "^3.3"
+        "mews/purifier": "^3.3",
+        "spatie/laravel-permission": "^5.5"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

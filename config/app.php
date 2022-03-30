@@ -169,6 +169,7 @@ return [
         Mews\Purifier\PurifierServiceProvider::class, // TODO обработка wysiwyg editor
         Lavary\Menu\ServiceProvider::class, // TODO меню
         Barryvdh\Debugbar\ServiceProvider::class, // TODO хлебные крошки
+        Spatie\Permission\PermissionServiceProvider::class, // TODO роли и права
 
         /*
          * Application Service Providers...
