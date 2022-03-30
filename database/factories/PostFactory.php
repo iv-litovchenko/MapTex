@@ -27,6 +27,7 @@ class PostFactory extends Factory
             'branch_stop_flag' => 0,
             'parent_id' => null,
             'user_id' => null,
+            'logo_image' => 'post-icon.png'
         ];
     }
 }
