@@ -37,66 +37,6 @@ __webpack_require__(/*! tinymce/plugins/codesample */ "./node_modules/tinymce/pl
 
 hljs = __webpack_require__(/*! highlight.js/lib/common */ "./node_modules/highlight.js/lib/common.js"); // Highlight.Js
 
-$(document).ready(function () {
-  // Визуальный редактор
-  tinymce.init({
-    selector: '#tinymce',
-    menubar: false,
-    height: 350,
-    plugins: 'lists advlist table link code codesample',
-    toolbar1: 'undo redo | styleselect backcolor forecolor removeformat codesample code  |' + 'bold italic strikethrough underline | ' + 'alignleft aligncenter alignjustify alignright',
-    toolbar2: 'outdent outdent bullist numlist  | ' + 'quicktable quicklink | table | ',
-    // 'tableprops tablerowprops tablecellprops | ' +
-    // 'tableinsertrowbefore tableinsertrowafter | ' +
-    // 'tableinsertcolbefore tableinsertcolafter | link ',
-    codesample_languages: [{
-      text: 'Plain',
-      value: 'plaintext'
-    }, {
-      text: 'HTML/XML',
-      value: 'xml'
-    }, {
-      text: 'JavaScript',
-      value: 'javascript'
-    }, {
-      text: 'CSS',
-      value: 'css'
-    }, {
-      text: 'PHP',
-      value: 'php'
-    }, {
-      text: 'SQL',
-      value: 'sql'
-    }, {
-      text: 'Markdown',
-      value: 'markdown'
-    }, {
-      text: 'Lua',
-      value: 'lua'
-    }, {
-      text: 'JSON',
-      value: 'json'
-    }, {
-      text: 'YAML',
-      value: 'yaml'
-    } // {text: 'UML', value: ''} ???
-    ]
-  }); // Подсветка синтаксиса
-  // html = hljs.highlight('<h1>Hello World!</h1>', {language: 'xml'}).value
-
-  $("pre[class^='language']").each(function () {
-    var content = $(this).text();
-    var codeLanguage = $(this).attr('class');
-    codeLanguage = codeLanguage.replace('language-', '');
-    var hljsContent = hljs.highlight(content, {
-      language: codeLanguage
-    }).value;
-    $(this).html(hljsContent);
-    $(this).css('border', 'none');
-    $(this).css('border-radius', 'none'); // alert(codeLanguage + ' : ' + hljsContent);
-  });
-});
-
 /***/ }),
 
 /***/ "./node_modules/bootstrap/dist/js/bootstrap.js":
