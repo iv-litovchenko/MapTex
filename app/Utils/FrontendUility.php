@@ -4,24 +4,24 @@ namespace App\Utils;
 
 use App\Models\Post;
 
-class TreeUtility
+class FrontendUility
 {
     /**
+     * Функция генерирует дерево записей из модели в массив
+     *
      * @return array
      */
-    public static function buildingTree()
+    public static function buildTreeArray()
     {
-        $postsList = Post::get()->toTree();
+        $postsList = Post::orderBy('sorting', 'DESC')->get()->toTree();
         $arTree = [];
-        $traverse = function ($categories, $prefix = '-') use (&$traverse, &$arTree) {
+        $traverse = function ($categories, $prefix = ' - ') use (&$traverse, &$arTree) {
             foreach ($categories as $category) {
-                print  $prefix . ' ' . $category->name;
-                print_r($arTree);
-                exit();
-                $traverse($category->children, $prefix . '-');
+                $arTree[$category->id] = $prefix.' '.$category->name;
+                $traverse($category->children, $prefix . ' - ');
             }
         };
-        $traverse($postsList, $arTree);
+        $traverse($postsList);
         return $arTree;
     }
 }

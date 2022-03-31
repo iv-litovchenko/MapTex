@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use App\Http\Requests\AdminPostStoreRequest;
 use App\Http\Requests\AdminPostUpdateRequest;
 use App\Models\Post;
+use \App\Utils\FrontendUility;
 use Illuminate\Support\Facades\File;
 
 /**
@@ -42,8 +43,12 @@ class PostController extends BaseController
      */
     public function create()
     {
-        $postsList = Post::select('id', 'name')->orderBy('parent_id', 'DESC')->get();
-        return view('admin.post.create', compact('postsList'));
+        $postsTreeArray = FrontendUility::buildTreeArray();
+        $defaultParentId = request()->input('default_parent_id');
+        return view('admin.post.create', compact(
+            'postsTreeArray',
+            'defaultParentId'
+        ));
     }
 
     /**
@@ -58,8 +63,13 @@ class PostController extends BaseController
         $post->name = $request->input('name');
         $post->parent_id = $request->input('parent_id');
         if ($post->save()) {
-            $request->session()->flash('flash_messages_success',
-                'Пост [' . $post->id . '] успешно создан');
+            $request->session()->flash('flash_messages_success', 'Пост [' . $post->id . '] успешно создан');
+
+            // Создать и к просмотру
+            if ($request->input('redirect') == 'show') {
+                return redirect()->route('site.post', $post->id);
+            }
+
             return redirect()->route('admin.post.index');
         }
         $request->session()->flash('flash_messages_error', 'Ошибка создания поста');
@@ -74,13 +84,8 @@ class PostController extends BaseController
      */
     public function edit(Post $post)
     {
-
-        print "<pre>";
-        dd( \App\Utils\TreeUtility::buildingTree());
-        exit();
-
-        $postsList = Post::select('id', 'name')->orderBy('parent_id', 'DESC')->get();
-        return view('admin.post.edit', compact('post', 'postsList'));
+        $postsTreeArray = FrontendUility::buildTreeArray();
+        return view('admin.post.edit', compact('post', 'postsTreeArray'));
     }
 
     /**
@@ -111,9 +116,6 @@ class PostController extends BaseController
         } elseif (intval($request->input('logo_image_delete')) == 1) {
             $post->logo_image = null;
         }
-
-        //
-        //            $model->save();
         //
         //            // загрузка картинок в папку (в базу не пишем)
         //            if ($files = $request->file('images')) {
@@ -134,9 +136,12 @@ class PostController extends BaseController
 
         if ($post->save()) {
             $request->session()->flash('flash_messages_success', 'Пост [' . $post->id . '] успешно обновлен');
-            if (intval($request->input('redirect')) == 1) { // Сохранение и к просмотру
+
+            // Сохранение и к просмотру
+            if ($request->input('redirect') == 'show') {
                 return redirect()->route('site.post', $post->id);
             }
+
             return redirect()->route('admin.post.edit', $post->id);
         }
         $request->session()->flash('flash_messages_error', 'Ошибка обновления поста [' . $post->id . ']');

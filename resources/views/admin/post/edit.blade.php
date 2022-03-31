@@ -29,16 +29,7 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Родитель</label>
             <div class="col-sm-10">
-                <select class="form-control" name="parent_id">
-                    <option value="">Без родителя</option>
-                    @foreach($postsList as $postItem)
-                        <option
-                            value="{{ $postItem->id }}" {{ (collect(old('parent_id', $post->parent_id))->contains($postItem->id)) ? 'selected':'' }}>
-                            [{{ $postItem->id }}]
-                            {{ $postItem->name }}
-                        </option>
-                    @endforeach
-                </select>
+                @include('admin.post.partials.html-select-parent-id',['default'=>$post->parent_id])
             </div>
         </div>
         <div class="form-group row">
@@ -56,7 +47,7 @@
                 @if($post->logo_image)
                     <img src="{{ asset('uploads/site/post/logo/'.$post->logo_image) }}"
                          class="img-thumbnail">
-                    <br />
+                    <br/>
                     <label class="form-check-label">
                         <input class="form-check-input" type="hidden" name="logo_image_delete" value="0">
                         <input class="form-check-input" type="checkbox" name="logo_image_delete" value="1"
@@ -64,7 +55,7 @@
                         Удалить изображение?
                     </label>
                 @endif
-                <br />
+                <br/>
                 <div class="form-group">
                     <input type="file" class="form-control" name="logo_image">
                 </div>
@@ -93,7 +84,7 @@
                 </label>
             </div>
         </div>
-        <button type="submit" name="redirect" class="btn btn-primary" value="0">Сохранить</button>
-        <button type="submit" name="redirect" class="btn btn-primary" value="1">Сохранить и к просмотру</button>
+        <button type="submit" name="redirect" class="btn btn-primary" value="none">Сохранить</button>
+        <button type="submit" name="redirect" class="btn btn-primary" value="show">Сохранить и к просмотру</button>
     </form>
 @endsection

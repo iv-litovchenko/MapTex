@@ -16,18 +16,10 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Родитель</label>
             <div class="col-sm-10">
-                <select class="form-control" name="parent_id">
-                    <option value="">Без родителя</option>
-                    @foreach($postsList as $postItem)
-                        <option
-                            value="{{ $postItem->id }}" {{ (collect(old('parent_id'))->contains($postItem->id)) ? 'selected':'' }}>
-                            [{{ $postItem->id }}]
-                            {{ $postItem->name }}
-                        </option>
-                    @endforeach
-                </select>
+                @include('admin.post.partials.html-select-parent-id', ['default'=>$defaultParentId])
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Создать</button>
+        <button type="submit" name="redirect" class="btn btn-primary" value="none">Создать</button>
+        <button type="submit" name="redirect" class="btn btn-primary" value="show">Создать и к просмотру</button>
     </form>
 @endsection
