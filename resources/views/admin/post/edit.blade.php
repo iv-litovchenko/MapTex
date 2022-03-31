@@ -40,7 +40,7 @@
             </div>
             <div class="col-sm-3">
                 <textarea type="text" class="form-control" disabled
-                          rows="15">{{ $post->description_tinymce }}</textarea>
+                          rows="15">{{ $post->description }}</textarea>
             </div>
             <div class="col-sm-2">
                 <b>Изображение (иконка или логотип поста) для ветки</b>
