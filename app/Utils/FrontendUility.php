@@ -15,7 +15,9 @@ class TreeUtility
         $arTree = [];
         $traverse = function ($categories, $prefix = '-') use (&$traverse, &$arTree) {
             foreach ($categories as $category) {
-                $arTree[$category->id] = PHP_EOL . $prefix . ' [' . $category->id . ']' . ' ' . $category->name;
+                print  $prefix . ' ' . $category->name;
+                print_r($arTree);
+                exit();
                 $traverse($category->children, $prefix . '-');
             }
         };
