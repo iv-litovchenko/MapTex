@@ -75,7 +75,7 @@
                         </div>
                     @endforeach
                 </div>
-                <input type="file" class="form-control" name="images[]">
+                <input type="file" class="form-control" name="images" multiple>
             </div>
         </div>
         <div class="form-group row">

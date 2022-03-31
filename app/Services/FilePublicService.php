@@ -16,7 +16,7 @@ class FilePublicService
      * <input type="file" name="image">
      *
      * <input type="checkbox" name="images_delete[]" value="filename.png">
-     * <input type="file" name="images[]">
+     * <input type="file" name="images" multiple>
      *
      * @param bool $multiple
      * @param string $filed
