@@ -6948,14 +6948,10 @@ html, body {
     background: white;
 }
 
-.img-site-home {
-    width: 100%;
-}
-
+.img-site-home,
 .img-site-post,
 .img-site-pic {
-    width: auto;
-    max-width: 500px;
+    width: 100%;
 }
 
 .img-site-book {
