@@ -9,14 +9,17 @@ use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
+use App\Services\FilePublicService;
 use App\Services\PostService;
 
-class BaseController extends Controller
+abstract class BaseController extends Controller
 {
-    public $service;
+    public $servicePost;
+    public $serviceFilePublic;
 
-    public function __construct(PostService $service)
+    public function __construct()
     {
-        $this->service = $service;
+        $this->servicePost = new PostService();
+        $this->serviceFilePublic = new FilePublicService();
     }
 }

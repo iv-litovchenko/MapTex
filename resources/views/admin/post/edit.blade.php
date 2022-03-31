@@ -34,24 +34,22 @@
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Описание</label>
-            <div class="col-sm-5">
+            <div class="col-sm-6">
                 <textarea type="text" class="form-control" name="description" id="tinymce"
                           rows="15">{{ old('description', $post->description) }}</textarea>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-2">
                 <textarea type="text" class="form-control" disabled
                           rows="15">{{ $post->description }}</textarea>
             </div>
             <div class="col-sm-2">
                 <b>Изображение (иконка или логотип поста) для ветки</b>
                 @if($post->logo_image)
-                    <img src="{{ asset('uploads/site/post/logo/'.$post->logo_image) }}"
-                         class="img-thumbnail">
-                    <br/>
                     <label class="form-check-label">
-                        <input class="form-check-input" type="hidden" name="logo_image_delete" value="0">
-                        <input class="form-check-input" type="checkbox" name="logo_image_delete" value="1"
-                            {{ old('branch_stop_flag', $post->branch_stop_flag) == 1 ? 'checked' : '' }}>
+                        <img src="{{ asset('storage/site/post/logo/'.$post->logo_image) }}"
+                             class="img-thumbnail">
+                        <br/>
+                        <input class="form-check-input" type="checkbox" name="logo_image_delete" value="{{ $post->logo_image }}">
                         Удалить изображение?
                     </label>
                 @endif
@@ -61,18 +59,25 @@
                 </div>
             </div>
         </div>
-
-        {{--        <tr>--}}
-        {{--            <td>Изображения</td>--}}
-        {{--            <td>--}}
-        {{--                @foreach($images as $image)--}}
-        {{--                    <img src="{{ url('images/posts/'.$model->id.'/'.$image->getFilename()) }}" width="100">--}}
-        {{--                    <br/>--}}
-        {{--                @endforeach--}}
-        {{--                <input type="file" name="images[]">--}}
-        {{--            </td>--}}
-        {{--        </tr>--}}
-
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Изображения</label>
+            <div class="col-sm-10">
+                <div class="row">
+                    @foreach($images as $image)
+                        <div class="col-sm-2" style="text-align: center;">
+                            <label class="form-check-label">
+                                <img src="{{ asset('storage/'.$image) }}" class="img-thumbnail" style="height: 100px;">
+                                <br/>
+                                <input class="form-check-input" type="checkbox"
+                                       name="images_delete[]" value="{{ basename($image) }}">
+                                Удалить изображение?
+                            </label>
+                        </div>
+                    @endforeach
+                </div>
+                <input type="file" class="form-control" name="images[]">
+            </div>
+        </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Дополнительные настройки</label>
             <div class="col-sm-10">

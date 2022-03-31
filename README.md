@@ -13,6 +13,8 @@
 - NPM (Note.js) - сборка клиентской части на основе Mix
 - Маршрутизация и контроллеры
 - Модели и миграции
+- Загрузка и извлечение файлов Storage::disk('public');
+  -  php artisan storage:link
 - TinyMCE (wysiwyg editor) и composer require mews/purifier
 - Request-валидация
 - Шаблонизатор Blade

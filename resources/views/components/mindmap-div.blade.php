@@ -8,7 +8,7 @@
          data-sorting="{{ intval($loop->iteration) }}"
     >
         @if($row->logo_image)
-            <img src="{{ asset('uploads/site/post/logo/'.$row->logo_image) }}"
+            <img src="{{ asset('storage/site/post/logo/'.$row->logo_image) }}"
                  width="32"
                  height="32"
                  style="

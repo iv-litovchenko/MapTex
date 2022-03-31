@@ -37,7 +37,7 @@
 
     <center>
         @foreach($images as $image)
-            <img src="{{ asset('uploads/site/post/'.$post->id.'/'.$image->getBasename()) }}"
+            <img src="{{ asset('storage/site/post/'.$post->id.'/'.$image->getBasename()) }}"
                  class="img-thumbnail img-site-post"/>
             @auth
                 <br/>

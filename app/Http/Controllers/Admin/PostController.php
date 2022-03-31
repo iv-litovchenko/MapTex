@@ -5,11 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\BaseController;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\AdminPostStoreRequest;
 use App\Http\Requests\AdminPostUpdateRequest;
 use App\Models\Post;
-use \App\Utils\FrontendUility;
-use Illuminate\Support\Facades\File;
+use App\Utils\FrontendUility;
 
 /**
  * Контроллер - управление постами
@@ -84,8 +85,13 @@ class PostController extends BaseController
      */
     public function edit(Post $post)
     {
+        $images = Storage::disk('public')->allFiles('site/post/' . $post->id);
         $postsTreeArray = FrontendUility::buildTreeArray();
-        return view('admin.post.edit', compact('post', 'postsTreeArray'));
+        return view('admin.post.edit', compact(
+            'post',
+            'images',
+            'postsTreeArray'
+        ));
     }
 
     /**
@@ -103,36 +109,10 @@ class PostController extends BaseController
         $post->branch_stop_flag = intval($request->input('branch_stop_flag'));
         $post->sorting = intval($request->input('sorting'));
 
-        // Загрузка 1 файла (логотип)
-        if ($file = $request->file('logo_image')) {
-            // $model->logo_image = Storage::disk('public')->put('/images', 'content???');
-            $fileName = md5(time() . $file->getClientOriginalName()) . '.' . $file->getClientOriginalExtension();
-            $fileName = strtolower($fileName);
-            $destinationPath = 'uploads/site/post/logo/';
-            $file->move($destinationPath, $fileName);
-            $post->logo_image = $fileName;
-
-            // Удаление изображения (галочка)
-        } elseif (intval($request->input('logo_image_delete')) == 1) {
-            $post->logo_image = null;
-        }
-        //
-        //            // загрузка картинок в папку (в базу не пишем)
-        //            if ($files = $request->file('images')) {
-        //                foreach ($files as $file) {
-        //                    $fileName = md5(time() . $file->getClientOriginalName()) . '.' . $file->getClientOriginalExtension();
-        //                    $fileName = strtolower($fileName);
-        //                    $destinationPath = 'uploads/image/post/' . $id . '/';
-        //                    $file->move($destinationPath, $fileName);
-        //                }
-        //            }
-        //        }
-        //
-        //        $images = [];
-        //        $path = public_path('uploads/image/post/' . $id . '/');
-        //        if (File::exists($path)) {
-        //            $images = File::files($path);
-        //        }
+        // Логотип: загрузка (отсоединение) 1 файла
+        // Изображения: загрузка нескольких картинок (в базу не пишем)
+        $post->logo_image = $this->serviceFilePublic->attachOrDetach(false, 'logo_image', 'site/post/logo', $post->logo_image);
+        $this->serviceFilePublic->attachOrDetach(true, 'images', 'site/post/' . $post->id);
 
         if ($post->save()) {
             $request->session()->flash('flash_messages_success', 'Пост [' . $post->id . '] успешно обновлен');
@@ -144,6 +124,7 @@ class PostController extends BaseController
 
             return redirect()->route('admin.post.edit', $post->id);
         }
+
         $request->session()->flash('flash_messages_error', 'Ошибка обновления поста [' . $post->id . ']');
         return redirect()->route('admin.post.edit', $post->id)->withInput();
     }

@@ -30,7 +30,8 @@ class AdminPostUpdateRequest extends FormRequest
             'parent_id' => 'nullable:posts,id',
             'sorting' => 'integer',
             'branch_stop_flag' => 'integer',
-            // 'logo_image' => 'file',
+            'logo_image' => 'image',
+            'images.*' => 'image',
             // 'tags_ids' => 'nullable|array',
             // 'tags_ids.*' => 'nullable|integer|exists:posts.id'
         ];
@@ -45,6 +46,8 @@ class AdminPostUpdateRequest extends FormRequest
     {
         return [
             'name.*' => 'Название заполнено не правильно',
+            'logo_image.*' => 'Логотип должен быть картинкой',
+            'images.*' => 'К загрузке доступны только изображения',
         ];
     }
 }
