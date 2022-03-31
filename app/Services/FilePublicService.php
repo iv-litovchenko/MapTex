@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 class FilePublicService
 {
     /**
-     * Загрузка файла(ов) на диск
+     * Загрузка файла(ов) на диск, возврат имени файла или null
      *
      * Примеры:
      * $path = $this->serviceFilePublic->attachOrDetach(false, 'logo_image', 'site/post/image/')
@@ -64,5 +64,19 @@ class FilePublicService
             return $result;
         }
         return false;
+    }
+
+    /**
+     * Чтение с публичного диска
+     *
+     * @param string $path
+     * @return array
+     */
+    public function files($path)
+    {
+        if ($files = Storage::disk('public')->files($path)) {
+            return $files;
+        }
+        return [];
     }
 }
