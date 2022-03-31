@@ -40,7 +40,7 @@
             @endauth
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="#">Всего знаний: {{ $appDbCountPosts }}</a>
+                    <a href="#">Всего знаний: {{ $appDbCountPosts }}/{{ $appFilesCount }}</a>
                 </li>
             </ul>
         </div><!--/.nav-collapse -->
@@ -64,7 +64,7 @@
 <footer class="footer">
     <div class="container">
         <hr class="my-12"/>
-        <p class="text-muted">Версия 0.0.1/{{ $appProjectVersion }} | {{ config('app.name', 'Laravel') }}</p>
+        <p class="text-muted">Версия 0.0.{{ $appProjectVersion }} | {{ config('app.name', 'Laravel') }}</p>
         <p>
             Над кодом - как это работает? Интерактивный справочник и копилка знаний. <br/>
             Код пишется для людей. https://bootstrap-4.ru/docs/3.4/getting-started/ <br/>

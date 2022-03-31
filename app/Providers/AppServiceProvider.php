@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Pagination\PaginationState;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
@@ -24,6 +25,12 @@ class AppServiceProvider extends ServiceProvider
 
         // TODO подгрузка в шаблон данных (переменная "projectVersion" будет доступна в шаблоне)
         View::composer('layouts.default', function ($view) {
+
+            // Кол-во файлов
+            if ($files = Storage::disk('public')->allFiles('.')) {
+                $view->with('appFilesCount', count($files));
+            }
+
             $view->with('appDbCountPosts', \App\Models\Post::count());
             $view->with('appProjectVersion', 1);
         });
