@@ -29,6 +29,7 @@
                         <div class="btn-group" role="group">
                             <a class="btn btn-success btn-sm" href="{{ route('site.post', $post->id) }}">Смотреть</a>
                             <a class="btn btn-primary btn-sm" href="{{ route('admin.post.edit', $post->id) }}">Редактировать</a>
+                            <a class="btn btn-danger btn-sm" href="{{ route('admin.post.delete', $post->id) }}">Удалить</a>
                         </div>
                     </td>
                 </tr>

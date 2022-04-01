@@ -3,8 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\IsMe;
-use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\UserController;
 
 Route::get('/', [SiteController::class, 'home'])->name('site.home');
 Route::get('/p/{post}', [SiteController::class, 'post'])->name('site.post');
@@ -22,9 +23,13 @@ Route::middleware([Authenticate::class, IsMe::class])
     ->name('admin.')
     ->group(function () {
         Route::get('dashboard', \App\Http\Controllers\Admin\DashboardController::class)->name('dashboard');
-        Route::resource('post', \App\Http\Controllers\Admin\PostController::class);
-        Route::resource('user', \App\Http\Controllers\Admin\UserController::class);
         Route::get('tvpositon', \App\Http\Controllers\Admin\TvPositionController::class)->name('tvposition');
+
+        Route::resource('post', PostController::class);
+        Route::get('post/{post}/delete', [PostController::class,'delete'])->name('post.delete');
+
+        Route::resource('user', UserController::class);
+        Route::get('user/{user}/delete', [UserController::class,'delete'])->name('user.delete');
     });
 
 Auth::routes();

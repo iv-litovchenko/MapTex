@@ -19,3 +19,9 @@ Breadcrumbs::for('admin.post.edit', function ($trail) {
     $trail->parent('admin.post.index');
     $trail->push('Редактировать');
 });
+
+// Главная > Администрирование > Посты > Удалить
+Breadcrumbs::for('admin.post.delete', function ($trail) {
+    $trail->parent('admin.post.index');
+    $trail->push('Удалить');
+});

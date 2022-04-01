@@ -99,7 +99,7 @@ use Kalnoy\Nestedset\NodeTrait;
  */
 class Post extends Model
 {
-    use HasFactory, NodeTrait, HasRoles;
+    use HasFactory, NodeTrait; // HasRoles
 
     protected $table = 'posts';
     // protected $fillable = false;

@@ -20,3 +20,8 @@ Breadcrumbs::for('admin.user.edit', function ($trail) {
     $trail->push('Редактировать');
 });
 
+// Главная > Администрирование > Пользователи > Удалить
+Breadcrumbs::for('admin.user.delete', function ($trail) {
+    $trail->parent('admin.user.index');
+    $trail->push('Удалить');
+});

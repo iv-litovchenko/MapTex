@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\BaseController;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\File;
@@ -15,13 +16,14 @@ use App\Utils\FrontendUility;
 /**
  * Контроллер - управление постами
  *
- * GET|HEAD     |admin/post              |admin.post.index      |App\Http\Controllers\Admin\postController@index|web|
- * GET|HEAD     |admin/post/{post}       |admin.post.show       |App\Http\Controllers\Admin\PostController@show|web|
- * GET|HEAD     |admin/post/create       |admin.post.create     |App\Http\Controllers\Admin\PostController@create|web|
- * POST         |admin/post              |admin.post.store      |App\Http\Controllers\Admin\PostController@store|web|
- * GET|HEAD     |admin/post/{post}/edit  |admin.post.edit       |App\Http\Controllers\Admin\PostController@edit|web|
- * PUT|PATCH    |admin/post/{post}       |admin.post.update     |App\Http\Controllers\Admin\PostController@update|web|
- * DELETE       |admin/post/{post}       |admin.post.destroy    |App\Http\Controllers\Admin\PostController@destroy|web|
+ * GET|HEAD     |admin/post                 |admin.post.index
+ * GET|HEAD     |admin/post/{post}          |admin.post.show
+ * GET|HEAD     |admin/post/create          |admin.post.create
+ * POST         |admin/post                 |admin.post.store
+ * GET|HEAD     |admin/post/{post}/edit     |admin.post.edit
+ * PUT|PATCH    |admin/post/{post}          |admin.post.update
+ * DELETE       |admin/post/{post}          |admin.post.destroy
+ * GET          |admin/post/{post}/delete   |admin.post.delete
  *
  */
 class PostController extends BaseController
@@ -111,7 +113,8 @@ class PostController extends BaseController
 
         // Логотип: загрузка (отсоединение) 1 файла
         // Изображения: загрузка нескольких картинок (в базу не пишем)
-        $post->logo_image = $this->serviceFilePublic->attachOrDetach(false, 'logo_image', 'site/post/logo', $post->logo_image);
+        $post->logo_image = $this->serviceFilePublic->attachOrDetach(false, 'logo_image', 'site/post/logo',
+            $post->logo_image);
         $this->serviceFilePublic->attachOrDetach(true, 'images', 'site/post/' . $post->id);
 
         if ($post->save()) {
@@ -127,5 +130,46 @@ class PostController extends BaseController
 
         $request->session()->flash('flash_messages_error', 'Ошибка обновления поста [' . $post->id . ']');
         return redirect()->route('admin.post.edit', $post->id)->withInput();
+    }
+
+    /**
+     * Удалить пост (форма)
+     *
+     * @param \App\Models\Post $post
+     * @return \Illuminate\View\View
+     */
+    public function delete(Post $post)
+    {
+        return view('admin.post.delete', compact('post'));
+    }
+
+    /**
+     * Удалить пост (процесс)
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Post $post
+     * @return \Illuminate\Routing\Redirector
+     */
+    public function destroy(Request $request, Post $post)
+    {
+        if ($post->delete()) {
+
+            // Чистим диск (логотип)
+            $path = 'site/post/logo/' . $post->logo_image;
+            if (Storage::disk('public')->exists($path)) {
+                Storage::disk('public')->delete($path);
+            }
+
+            // Чистим диск (изображения)
+            $path = 'site/post/' . $post->id;
+            if (Storage::disk('public')->exists($path)) {
+                Storage::disk('public')->deleteDirectory($path);
+            }
+
+            $request->session()->flash('flash_messages_success', 'Пост [' . $post->id . '] успешно удален');
+            return redirect()->route('admin.post.index');
+        }
+        $request->session()->flash('flash_messages_error', 'Ошибка удаления поста [' . $post->id . ']');
+        return redirect()->route('admin.post.index');
     }
 }

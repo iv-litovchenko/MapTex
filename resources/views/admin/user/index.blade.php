@@ -28,14 +28,8 @@
                     <td>
                         <div class="btn-group" role="group">
                             <a class="btn btn-primary btn-sm" href="{{ route('admin.user.edit', $user->id) }}">Редактировать</a>
-                            <a class="btn btn-danger btn-sm" href="#"
-                               onclick="document.getElementById('formId{{ $user->id }}').submit(); return false;">Удалить</a>
+                            <a class="btn btn-danger btn-sm" href="{{ route('admin.user.delete', $user->id) }}">Удалить</a>
                         </div>
-                        <form action="{{ route('admin.user.destroy', $user->id) }}" method="post"
-                              id="formId{{ $user->id }}">
-                            @csrf
-                            @method('DELETE')
-                        </form>
                     </td>
                 </tr>
             @endforeach
