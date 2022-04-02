@@ -30,6 +30,7 @@ html, body {
 
     .sidebar-nav .navbar ul {
         float: none;
+        overflow: auto;
     }
 
     .sidebar-nav .navbar ul:not {

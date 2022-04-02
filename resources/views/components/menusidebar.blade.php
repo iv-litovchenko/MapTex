@@ -11,10 +11,11 @@
                     {{--                    @auth--}}
                     {{--                        #{{ $row->id }} |--}}
                     {{--                    @endauth--}}
-                    {{ Str::limit($row->name, 32) }}
                     @if($countChildrens($row->id) > 0)
-                        <span class="badge">{{ $countChildrens($row->id) }}</span> <b class="caret"></b>
+                        <span class="badge">{{ $countChildrens($row->id) }}</span>
+                        <!--<b class="caret"></b>-->
                     @endif
+                    {{ Str::limit($row->name, 32) }}
                 </a>
                 @if($isActive($row->id, $currentPostId))
                     <x-menu-sidebar
