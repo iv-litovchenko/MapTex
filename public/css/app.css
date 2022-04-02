@@ -6987,7 +6987,16 @@ html, body {
         display: block;
         position: relative;
         border: none;
+        border-radius: 0;
         box-shadow: none;
+    }
+    .sidebar-nav .menu-sidebar-level-next {
+        display: block;
+        position: relative;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        padding-left: 15px;
     }
 }
 
