@@ -21,7 +21,7 @@ class MenuSidebar extends Component
      * @param string $htmlUlClass
      * @return void
      */
-    public function __construct(int $parentId = 0, $htmlUlClass = '')
+    public function __construct(int $parentId = 0, $htmlUlClass = 'nav navbar-nav')
     {
         $this->parentId = $parentId;
         $this->htmlUlClass = $htmlUlClass;
@@ -37,7 +37,7 @@ class MenuSidebar extends Component
         if ($this->parentId == 0) {
             $rows = Post::whereParentId(null)->orderBy('sorting')->get();
         } else {
-            $rows = Post::whereParentId($this->parentId)->orderBy('sorting')->limit(1)->get();
+            $rows = Post::whereParentId($this->parentId)->orderBy('sorting')->get();
         }
         $htmlUlClass = $this->htmlUlClass;
         return view('components.menusidebar', compact('rows', 'htmlUlClass'));
