@@ -67,7 +67,7 @@
         <p class="text-muted">Версия 0.0.{{ $appProjectVersion }} | {{ config('app.name', 'Laravel') }}</p>
         <p>
             Над кодом - как это работает? Интерактивный справочник и копилка знаний. <br/>
-            Код пишется для людей. https://bootstrap-4.ru/docs/3.4/getting-started/ <br/>
+            Код пишется для людей. <a href="http://bootstrapessentials.com/fulldocs/components/">Bootstrap компоненты</a><br/>
             <a href="https://github.com/iv-litovchenko/maptex/">Исходики проекта на github</a>
         </p>
     </div>

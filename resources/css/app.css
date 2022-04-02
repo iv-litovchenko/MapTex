@@ -20,3 +20,31 @@ html, body {
     width: auto;
     max-height: 200px;
 }
+
+/* make sidebar nav vertical */
+@media (min-width: 768px) {
+    .sidebar-nav .navbar .navbar-collapse {
+        padding: 0;
+        max-height: none;
+    }
+    .sidebar-nav .navbar ul {
+        float: none;
+    }
+    .sidebar-nav .navbar ul:not {
+        display: block;
+    }
+    .sidebar-nav .navbar li {
+        float: none;
+        display: block;
+    }
+    .sidebar-nav .navbar li a {
+        /*padding-top: 12px;*/
+        /*padding-bottom: 12px;*/
+    }
+    .sidebar-nav .menu-sidebar-level-2 {
+        display: block;
+        position: relative;
+        border: none;
+        box-shadow: none;
+    }
+}

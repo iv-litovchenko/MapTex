@@ -5,7 +5,8 @@ use App\Models\Post;
 
 // Главная
 Breadcrumbs::for('site.home', function ($trail) {
-    $trail->push('Главная', route('site.home'));
+    // <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+    $trail->push('Roadmap backend', route('site.home'));
 });
 
 // Главная > Пост (детальная страница) - выводим в виде цепочки
