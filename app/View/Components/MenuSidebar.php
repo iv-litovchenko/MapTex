@@ -62,15 +62,20 @@ class MenuSidebar extends Component
     public function isActive($currentRowId = 0, $currentPostId = 0)
     {
         // Проверка активности пункта меню для текущего раздела
-        if($currentRowId == $currentPostId){
+        if ($currentRowId == $currentPostId) {
             return true;
         }
         // Проверка активности пункта меню для разделов выше
-        foreach(Post::defaultOrder()->ancestorsAndSelf($currentPostId) as $ancestor){
-            if($currentRowId == $ancestor->id) {
+        foreach (Post::defaultOrder()->ancestorsAndSelf($currentPostId) as $ancestor) {
+            if ($currentRowId == $ancestor->id) {
                 return true;
             }
         }
         return false;
+    }
+
+    public function countChildrens($currentRowId = 0)
+    {
+        return Post::whereParentId($currentRowId)->count();
     }
 }

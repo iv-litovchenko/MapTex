@@ -12,7 +12,9 @@
                     {{--                        #{{ $row->id }} |--}}
                     {{--                    @endauth--}}
                     {{ Str::limit($row->name, 32) }}
-                    <span class="badge">1,118</span> <b class="caret"></b>
+                    @if($countChildrens($row->id) > 0)
+                        <span class="badge">{{ $countChildrens($row->id) }}</span> <b class="caret"></b>
+                    @endif
                 </a>
                 @if($isActive($row->id, $currentPostId))
                     <x-menu-sidebar
