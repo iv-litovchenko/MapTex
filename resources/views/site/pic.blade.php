@@ -9,7 +9,7 @@
         <div class="col-sm-8">
             <div class="row">
                 @foreach($notes->items() as $note)
-                    <div class="col-sm-4 mh-100">
+                    <div class="col-sm-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 #{{ $note->id }} | {{ $note->created_at }}
@@ -18,12 +18,17 @@
                                 @endif
                             </div>
                             <div class="panel-body">
-                                <img src="{{ asset('storage/site/pic/'.$note->upload_image) }}"
-                                     class="img-site-pic"/>
+                                <a href="{{ asset('storage/site/pic/'.$note->upload_image) }}">
+                                    <img src="{{ asset('storage/site/pic/'.$note->upload_image) }}"
+                                         class="img-site-pic"/>
+                                </a>
                                 <center><b>{{ $note->bodytext }}</b></center>
                             </div>
                         </div>
                     </div>
+                    @if(is_int($loop->iteration/3))
+                        <div class="clearfix"></div>
+                    @endif
                 @endforeach
             </div>
             {{ $notes->links() }}
