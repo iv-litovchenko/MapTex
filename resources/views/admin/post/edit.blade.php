@@ -53,6 +53,23 @@
                 <div class="form-group">
                     <input type="file" class="form-control" name="logo_image">
                 </div>
+
+                <hr />
+
+                <b>Изображение зарисовки (figma)</b>
+                @if($post->figma_image)
+                    <label class="form-check-label">
+                        <img src="{{ asset('storage/site/post/figma/'.$post->figma_image) }}"
+                             class="img-thumbnail">
+                        <br/>
+                        <input class="form-check-input" type="checkbox" name="figma_image_delete" value="{{ $post->figma_image }}">
+                        Удалить изображение?
+                    </label>
+                @endif
+                <br/>
+                <div class="form-group">
+                    <input type="file" class="form-control" name="figma_image">
+                </div>
             </div>
         </div>
         <div class="form-group row">

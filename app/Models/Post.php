@@ -134,8 +134,8 @@ class Post extends Model
         $table->string('name')->nullable();
         $table->string('slug')->nullable();
         $table->text('description')->nullable();
-        $table->text('description_tinymce')->nullable();
-        $table->text('logo_image')->nullable();
+        $table->char('logo_image',255)->nullable();
+        $table->char('figma_image',255)->nullable();
         $table->integer('sorting')->default(0);
         $table->timestamps();
 

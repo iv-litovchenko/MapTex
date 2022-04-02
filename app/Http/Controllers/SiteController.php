@@ -127,11 +127,11 @@ class SiteController extends BaseController
         $request->validate(
             [
                 'bodytext' => 'required|min:5',
-                'image_upload' => 'image'
+                'upload_image' => 'image'
             ],
             [
                 'bodytext.*' => 'Поле с комментарием обязательно к заполнению и должно что-то содержать!',
-                'image_upload.*' => 'Необходимо загрузить картинку!'
+                'upload_image.*' => 'Необходимо загрузить картинку!'
             ]
         );
 
@@ -141,7 +141,7 @@ class SiteController extends BaseController
         }
         $note->note_type = Note::NOTE_TYPE_PIC;
         $note->bodytext = $request->input('bodytext');
-        $note->image_upload = $this->serviceFilePublic->attachOrDetach(false, 'image_upload', 'site/pic');
+        $note->upload_image = $this->serviceFilePublic->attachOrDetach(false, 'upload_image', 'site/pic');
 
         if ($note->save()) {
             $request->session()->flash('flash_messages_success',

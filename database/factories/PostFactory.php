@@ -22,7 +22,6 @@ class PostFactory extends Factory
         return [
             'name' => $this->faker->title(20),
             'description' => $this->faker->text,
-            'description_tinymce' => $this->faker->text,
             'branch_type' => random_int(0, 1),
             'branch_stop_flag' => 0,
             'parent_id' => null,

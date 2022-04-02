@@ -112,9 +112,14 @@ class PostController extends BaseController
         $post->sorting = intval($request->input('sorting'));
 
         // Логотип: загрузка (отсоединение) 1 файла
+        // Зарисовка: загрузка (отсоединение) 1 файла
         // Изображения: загрузка нескольких картинок (в базу не пишем)
         $post->logo_image = $this->serviceFilePublic->attachOrDetach(false, 'logo_image', 'site/post/logo',
             $post->logo_image);
+
+        $post->figma_image = $this->serviceFilePublic->attachOrDetach(false, 'figma_image', 'site/post/figma',
+            $post->figma_image);
+
         $this->serviceFilePublic->attachOrDetach(true, 'images', 'site/post/' . $post->id);
 
         if ($post->save()) {

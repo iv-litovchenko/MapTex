@@ -18,7 +18,7 @@
                                 @endif
                             </div>
                             <div class="panel-body">
-                                <img src="{{ asset('storage/site/pic/'.$note->image_upload) }}"
+                                <img src="{{ asset('storage/site/pic/'.$note->upload_image) }}"
                                      class="img-site-pic"/>
                                 <center><b>{{ $note->bodytext }}</b></center>
                             </div>
@@ -38,7 +38,7 @@
             <form action="{{ route('site.pic-store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                    <input type="file" class="form-control" name="image_upload">
+                    <input type="file" class="form-control" name="upload_image">
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" name="bodytext"

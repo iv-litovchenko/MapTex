@@ -31,7 +31,7 @@ class NoteFactory extends Factory
                     'user_id' => random_int(0, 1),
                     'bodytext' => $this->faker->name,
                     'note_type' => Note::NOTE_TYPE_PIC,
-                    'image_upload' => 'example-image.png'
+                    'upload_image' => 'example-image.png'
                 ];
         }
     }

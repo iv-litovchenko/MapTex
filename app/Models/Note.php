@@ -43,7 +43,7 @@ class Note extends Model
         $table->integer('user_id')->nullable();
         $table->integer('note_type')->default(0);
         $table->text('bodytext')->nullable();
-        $table->text('image_upload')->nullable();
+        $table->text('upload_image')->nullable();
         $table->timestamps();
     }
 }
