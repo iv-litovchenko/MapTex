@@ -2,6 +2,7 @@
 
 @section('LayoutSectionPageTitle', $post->name)
 @section('LayoutSectionPageHeader', $post->name)
+@section('LayoutSectionPageHeaderIcon', asset('storage/site/post/logo/'.$post->logo_image))
 @section('LayoutSectionPageBreadcrumb', Breadcrumbs::render('site.post', $post))
 
 @section('LayoutSectionPageContent')
@@ -77,10 +78,13 @@
         </div>
     </div>
 
+<a href="" class="btn btn-warning">Обратно</a>
+<a href="" class="btn btn-warning">Далее</a>
+<a href="" class="btn btn-warning">Редактировать сортировку</a>
 
     <div id="more_options">
         <div class="page-header">
-            <h2>More Options</h2>
+            <h2>More Options (понравилась идея вот таких плиток)</h2>
         </div>
         <div class="container-flex">
             <div class="row gutter-20">
@@ -112,7 +116,7 @@
                 <div class="col-xs-12 col-sm-12">
                     <a href="/fulldocs/components/navmenu/navmenu-inverse" class="thumbnail no-underline btn-block">
                         <div class="caption">
-                            <h3>Inverted Navmenu</h3>
+                            <h3>Inverted Navmenu (и то, что этот контейнер растягивается на 3 или на 2 во всю строку)</h3>
                         </div>
                     </a>
                 </div>

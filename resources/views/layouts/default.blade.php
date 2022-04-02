@@ -49,9 +49,15 @@
 
 <div class="container">
     <div class="page-header">
-        <h1>@yield('LayoutSectionPageHeader')</h1>
+        @if (Route::is('site.post'))
+            <h1>
+                <img src="@yield('LayoutSectionPageHeaderIcon','')" height="40" style="vertical-align: top;">
+                @yield('LayoutSectionPageHeader')
+            </h1>
+        @else
+            <h1>@yield('LayoutSectionPageHeader')</h1>
+        @endif
         @yield('LayoutSectionPageBreadcrumb')
-
         @if(Route::is('site.home'))
             @include('layouts.partials.form-search')
         @endif
@@ -67,7 +73,8 @@
         <p class="text-muted">Версия 0.0.{{ $appProjectVersion }} | {{ config('app.name', 'Laravel') }}</p>
         <p>
             Над кодом - как это работает? Интерактивный справочник и копилка знаний. <br/>
-            Код пишется для людей. <a href="http://bootstrapessentials.com/fulldocs/components/">Bootstrap компоненты</a><br/>
+            Код пишется для людей. <a href="http://bootstrapessentials.com/fulldocs/components/">Bootstrap
+                компоненты</a><br/>
             <a href="https://github.com/iv-litovchenko/maptex/">Исходики проекта на github</a>
         </p>
     </div>
