@@ -1,8 +1,8 @@
 @extends('layouts.default')
 
-@section('LayoutSectionPageTitle', 'Список позиций')
-@section('LayoutSectionPageHeader', 'Список позиций')
-@section('LayoutSectionPageBreadcrumb', Breadcrumbs::render('admin.tvposition'))
+@section('LayoutSectionPageTitle', 'Список позиций TV')
+@section('LayoutSectionPageHeader', 'Список позиций TV')
+@section('LayoutSectionPageBreadcrumb', Breadcrumbs::render('admin.tvsignal'))
 
 @section('LayoutSectionPageContent')
 
