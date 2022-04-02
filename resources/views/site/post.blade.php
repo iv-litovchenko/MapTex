@@ -6,16 +6,16 @@
 
 @section('LayoutSectionPageContent')
 
-    <div class="mindmap">
-        <div class="node node_root context-menu-one btn btn-neutral">
-            <div class="node__text" onclick="window.location.href='{{ route('site.home') }}';">
-                Roadmap backend
-            </div>
-        </div>
-        <x-mindmap record-id="{{ $post->id }}" show-breadcrumbs="1"/>
-    </div>
+{{--    <div class="mindmap">--}}
+{{--        <div class="node node_root context-menu-one btn btn-neutral">--}}
+{{--            <div class="node__text" onclick="window.location.href='{{ route('site.home') }}';">--}}
+{{--                Roadmap backend--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <x-mindmap record-id="{{ $post->id }}" show-breadcrumbs="1"/>--}}
+{{--    </div>--}}
 
-    <hr class="my-12">
+{{--    <hr class="my-12">--}}
 
     <div class="row">
         <div class="col-sm-9">
@@ -70,33 +70,7 @@
                         <span class="visible-xs navbar-brand">Sidebar menu</span>
                     </div>
                     <div class="navbar-collapse collapse sidebar-navbar-collapse">
-                        <x-menu-sidebar parent-id="0"/>
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">Menu Item 1</a></li>
-                            <li><a href="#">Menu Item 2</a></li>
-                            <li class="dropdown">
-                                <a href="#">Dropdown <b class="caret"></b></a>
-                                <ul class="dropdown-menu menu-sidebar-level-next">
-                                    <li><a href="#">Action</a></li>
-                                    <li>
-                                        <a href="#">Another action <b class="caret"></b></a>
-                                        <ul class="dropdown-menu menu-sidebar-level-next">
-                                            <li><a href="#">Level 3</a></li>
-                                            <li><a href="#">Level 3</a></li>
-                                            <li><a href="#">Level 3</a></li>
-                                            <li><a href="#">Level 3</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Something else here</a></li>
-                                    <!-- <li class="divider"></li> -->
-                                    <!-- <li class="dropdown-header">Nav header</li> -->
-                                    <li><a href="#">Separated link</a></li>
-                                    <li><a href="#">One more separated link</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Menu Item 4</a></li>
-                            <li><a href="#">Reviews <span class="badge">1,118</span></a></li>
-                        </ul>
+                        <x-menu-sidebar parent-id="0" current-post-id="{{ $post->id }}"/>
                     </div><!--/.nav-collapse -->
                 </div>
             </div>

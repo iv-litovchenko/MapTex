@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\HtmlString;
 use Illuminate\View\Component;
 use App\Models\Post;
@@ -9,7 +10,10 @@ use App\Models\Post;
 class MenuSidebar extends Component
 {
     /** @var int */
-    public $parentId = 0;
+    public $startParentId = 0;
+
+    /** @var int */
+    public $currentPostId = 0;
 
     /** @var string */
     public $htmlUlClass = 'nav navbar-nav';
@@ -18,12 +22,17 @@ class MenuSidebar extends Component
      * Инициализируем компонент.
      *
      * @param int $parentId
+     * @param int $currentPostId
      * @param string $htmlUlClass
      * @return void
      */
-    public function __construct(int $parentId = 0, $htmlUlClass = 'nav navbar-nav')
-    {
+    public function __construct(
+        int $parentId = 0,
+        int $currentPostId = 0,
+        $htmlUlClass = 'nav navbar-nav'
+    ) {
         $this->parentId = $parentId;
+        $this->currentPostId = $currentPostId;
         $this->htmlUlClass = $htmlUlClass;
     }
 
@@ -39,7 +48,29 @@ class MenuSidebar extends Component
         } else {
             $rows = Post::whereParentId($this->parentId)->orderBy('sorting')->get();
         }
+
         $htmlUlClass = $this->htmlUlClass;
-        return view('components.menusidebar', compact('rows', 'htmlUlClass'));
+        $currentPostId = $this->currentPostId;
+        return view('components.menusidebar', compact(
+                'rows',
+                'htmlUlClass',
+                'currentPostId'
+            )
+        );
+    }
+
+    public function isActive($currentRowId = 0, $currentPostId = 0)
+    {
+        // Проверка активности пункта меню для текущего раздела
+        if($currentRowId == $currentPostId){
+            return true;
+        }
+        // Проверка активности пункта меню для разделов выше
+        foreach(Post::defaultOrder()->ancestorsAndSelf($currentPostId) as $ancestor){
+            if($currentRowId == $ancestor->id) {
+                return true;
+            }
+        }
+        return false;
     }
 }
