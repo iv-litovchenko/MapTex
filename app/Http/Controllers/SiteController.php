@@ -127,7 +127,7 @@ class SiteController extends BaseController
         $request->validate(
             [
                 // 'bodytext' => 'required|min:5',
-                'upload_image' => 'image'
+                'upload_image' => 'required|image'
             ],
             [
                 // 'bodytext.*' => 'Поле с комментарием обязательно к заполнению и должно что-то содержать!',
