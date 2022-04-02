@@ -6,13 +6,13 @@
                 <a href="{{ route('site.post', $row->id) }}">
                     &raquo;
                     @if($row->logo_image)
-                        <img src="{{ asset('storage/site/post/logo/'.$row->logo_image) }}" height="14">
+                        <img src="{{ asset('storage/site/post/logo/'.$row->logo_image) }}" height="20">
                     @endif
-                    @auth
-                        #{{ $row->id }} |
-                    @endauth
+                    {{--                    @auth--}}
+                    {{--                        #{{ $row->id }} |--}}
+                    {{--                    @endauth--}}
                     {{ Str::limit($row->name, 32) }}
-                    {{-- <span class="badge">1,118</span> <b class="caret"></b>--}}
+                    <span class="badge">1,118</span> <b class="caret"></b>
                 </a>
                 @if($isActive($row->id, $currentPostId))
                     <x-menu-sidebar

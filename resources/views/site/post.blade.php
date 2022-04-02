@@ -67,7 +67,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <span class="visible-xs navbar-brand">Sidebar menu</span>
+                        <span class="visible-xs navbar-brand">Навигация по разделам</span>
                     </div>
                     <div class="navbar-collapse collapse sidebar-navbar-collapse">
                         <x-menu-sidebar parent-id="0" current-post-id="{{ $post->id }}"/>

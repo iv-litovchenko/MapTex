@@ -27,20 +27,30 @@ html, body {
         padding: 0;
         max-height: none;
     }
+
     .sidebar-nav .navbar ul {
         float: none;
     }
+
     .sidebar-nav .navbar ul:not {
         display: block;
     }
+
     .sidebar-nav .navbar li {
         float: none;
         display: block;
+        border-bottom: rgb(245, 245, 245) 1px solid;
     }
+
+    .sidebar-nav .navbar li:last-child {
+        border-bottom: none;
+    }
+
     .sidebar-nav .navbar li a {
         /*padding-top: 12px;*/
         /*padding-bottom: 12px;*/
     }
+
     .sidebar-nav .menu-sidebar-level-2 {
         display: block;
         position: relative;
@@ -48,6 +58,7 @@ html, body {
         border-radius: 0;
         box-shadow: none;
     }
+
     .sidebar-nav .menu-sidebar-level-next {
         display: block;
         position: relative;
@@ -56,11 +67,14 @@ html, body {
         box-shadow: none;
         padding-left: 15px;
     }
+
     .sidebar-nav .menu-sidebar-level-next ul {
     }
+
     .sidebar-nav .menu-sidebar-level-next li {
         border-left: rgb(193, 193, 193) 1px solid;
     }
+
     .sidebar-nav .menu-sidebar-level-next a {
         padding: 3px 10px;
     }
