@@ -6998,5 +6998,13 @@ html, body {
         box-shadow: none;
         padding-left: 15px;
     }
+    .sidebar-nav .menu-sidebar-level-next ul {
+    }
+    .sidebar-nav .menu-sidebar-level-next li {
+        border-left: rgb(193, 193, 193) 1px solid;
+    }
+    .sidebar-nav .menu-sidebar-level-next a {
+        padding: 3px 10px;
+    }
 }
 
