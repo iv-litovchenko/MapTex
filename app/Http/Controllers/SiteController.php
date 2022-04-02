@@ -109,7 +109,7 @@ class SiteController extends BaseController
     public function pic()
     {
         $notes = Note::where('note_type', Note::NOTE_TYPE_PIC)
-            ->orderBy('id', 'desc')
+            ->orderBy('id', 'asc')
             ->paginate(12);
         return view('site.pic', compact('notes'));
     }
