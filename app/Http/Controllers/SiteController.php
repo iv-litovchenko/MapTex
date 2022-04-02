@@ -126,11 +126,11 @@ class SiteController extends BaseController
         // TODO Валидируем форму (она не пускает дальше)
         $request->validate(
             [
-                'bodytext' => 'required|min:5',
+                // 'bodytext' => 'required|min:5',
                 'upload_image' => 'image'
             ],
             [
-                'bodytext.*' => 'Поле с комментарием обязательно к заполнению и должно что-то содержать!',
+                // 'bodytext.*' => 'Поле с комментарием обязательно к заполнению и должно что-то содержать!',
                 'upload_image.*' => 'Необходимо загрузить картинку!'
             ]
         );
