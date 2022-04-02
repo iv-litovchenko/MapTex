@@ -31,7 +31,7 @@
             </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-            {!! Menu::get('menu.header.left')->asUl(['class' => 'nav navbar-nav']) !!}
+            {!! Menu::get('menu.header.left')->asUl(['class' => 'nav navbar-nav'],['class' => 'dropdown-menu']) !!}
             {!! Menu::get('menu.header.right')->asUl(['class' => 'nav navbar-nav navbar-right'],['class' => 'dropdown-menu']) !!}
             @auth
                 <form id="logout-form" action="{{ route('logout') }}" method="post" style="display: none;">

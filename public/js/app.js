@@ -46,10 +46,10 @@ $(document).ready(function () {
   tinymce.init({
     selector: '#tinymce',
     menubar: false,
-    height: 350,
+    height: 500,
     plugins: 'lists advlist table link code codesample',
-    toolbar1: 'undo redo | styleselect backcolor forecolor removeformat codesample code  |' + 'bold italic strikethrough underline | ' + 'alignleft aligncenter alignjustify alignright',
-    toolbar2: 'outdent outdent bullist numlist  | ' + 'quicktable quicklink | table | ',
+    toolbar1: 'undo redo | styleselect backcolor forecolor removeformat codesample code |' + 'bold italic strikethrough underline | ' + 'alignleft aligncenter alignjustify alignright',
+    toolbar2: 'outdent outdent bullist numlist  | ' + 'quicktable quicklink | table | link ',
     // 'tableprops tablerowprops tablecellprops | ' +
     // 'tableinsertrowbefore tableinsertrowafter | ' +
     // 'tableinsertcolbefore tableinsertcolafter | link ',

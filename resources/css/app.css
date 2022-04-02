@@ -7,9 +7,12 @@ html, body {
 }
 
 .img-site-home,
-.img-site-post,
-.img-site-pic {
+.img-site-post {
     width: 65%;
+}
+
+.img-site-pic {
+    width: 100%;
 }
 
 .img-site-book {

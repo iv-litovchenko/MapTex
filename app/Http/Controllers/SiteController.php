@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Note;
-use App\Models\Post;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use App\Http\Controllers\BaseController;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\File;
+use App\Models\Note;
+use App\Models\Post;
+use App\Models\User;
 
 /**
  * Контроллер для обработки страниц frontend-а
@@ -44,17 +44,6 @@ class SiteController extends BaseController
     }
 
     /**
-     * Страница разных картинок
-     *
-     * @return \Illuminate\View\View
-     */
-    public function pic()
-    {
-        $images = $this->serviceFilePublic->files('site/pic');
-        return view('site.pic', compact('images'));
-    }
-
-    /**
      * Страница список книг
      *
      * @return \Illuminate\View\View
@@ -72,7 +61,9 @@ class SiteController extends BaseController
      */
     public function note()
     {
-        $notes = Note::orderBy('id', 'desc')->paginate(5);
+        $notes = Note::where('note_type', Note::NOTE_TYPE_DEFAULT)
+            ->orderBy('id', 'desc')
+            ->paginate(10);
         return view('site.note', compact('notes'));
     }
 
@@ -92,18 +83,74 @@ class SiteController extends BaseController
         );
 
         // Заполняем данными
-        $note->bodytext = $request->input('bodytext');
-        if (auth()->user()->role === User::ROLE_ADMIN) {
-            $note->is_me = 1;
+        if (auth()->check()) {
+            $note->user_id = auth()->user()->id;
         }
+        $note->note_type = Note::NOTE_TYPE_PIC;
+        $note->bodytext = $request->input('bodytext');
 
         if ($note->save()) {
             $request->session()->flash('flash_messages_success',
                 'Барахольная заметка [' . $note->id . '] успешно создана!');
             return redirect()->route('site.note');
         }
+
         $request->session()->flash('flash_messages_error', 'Ошибка создания барахольной заметки!');
         return redirect()->route('site.note')->withInput();
+    }
+
+
+
+    /**
+     * Страница барахолка (разные картинки)
+     *
+     * @return \Illuminate\View\View
+     */
+    public function pic()
+    {
+        $notes = Note::where('note_type', Note::NOTE_TYPE_PIC)
+            ->orderBy('id', 'desc')
+            ->paginate(12);
+        return view('site.pic', compact('notes'));
+    }
+
+    /**
+     * Страница барахолка (разные картини) - обработка формы добавления картинки
+     *
+     * @param Request $request
+     * @param Note $note
+     * @return \Illuminate\View\View
+     */
+    public function picStore(Request $request, Note $note)
+    {
+        // TODO Валидируем форму (она не пускает дальше)
+        $request->validate(
+            [
+                'bodytext' => 'required|min:5',
+                'image_upload' => 'image'
+            ],
+            [
+                'bodytext.*' => 'Поле с комментарием обязательно к заполнению и должно что-то содержать!',
+                'image_upload.*' => 'Необходимо загрузить картинку!'
+            ]
+        );
+
+        // Загружаем изображение, заполняем данные
+        if (auth()->check()) {
+            $note->user_id = auth()->user()->id;
+        }
+        $note->note_type = Note::NOTE_TYPE_PIC;
+        $note->bodytext = $request->input('bodytext');
+        $note->image_upload = $this->serviceFilePublic->attachOrDetach(false, 'image_upload', 'site/pic');
+
+        if ($note->save()) {
+            $request->session()->flash('flash_messages_success',
+                'Барахольная заметка [' . $note->id . '] успешно создана!');
+            return redirect()->route('site.pic');
+        }
+
+        $request->session()->flash('flash_messages_error', 'Ошибка создания барахольной заметки!');
+        return redirect()->route('site.pic')->withInput();
     }
 
     /**

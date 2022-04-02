@@ -29,12 +29,15 @@ class DatabaseSeeder extends Seeder
         $rows = \App\Models\Post::where('id', '>', 7)->get();
         foreach ($rows as $row) {
             $model = \App\Models\Post::find($row->id);
-            $model->parent_id = random_int(2, 10);
-            $model->user_id = 1;
+            $nodeId = random_int(2, 10); // !!! Cannot move node into itself.
+            if($nodeId !== $row->id){
+                $model->parent_id = $nodeId;
+            }
             $model->save();
         }
 
-        DB::table('api_quik_tradingview_positions')->insert([
+        // Наполнение таблицы сигналов
+        DB::table('tv_signals')->insert([
             'strategy' => 'RTS'
         ]);
     }

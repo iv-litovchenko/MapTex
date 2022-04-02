@@ -34,13 +34,9 @@
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Описание</label>
-            <div class="col-sm-6">
+            <div class="col-sm-8">
                 <textarea type="text" class="form-control" name="description" id="tinymce"
                           rows="15">{{ old('description', $post->description) }}</textarea>
-            </div>
-            <div class="col-sm-2">
-                <textarea type="text" class="form-control" disabled
-                          rows="15">{{ $post->description }}</textarea>
             </div>
             <div class="col-sm-2">
                 <b>Изображение (иконка или логотип поста) для ветки</b>

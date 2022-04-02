@@ -19,13 +19,13 @@ Breadcrumbs::for('site.post', function ($trail, $post) {
 // Барахолка
 Breadcrumbs::for('site.note', function ($trail) {
     $trail->parent('site.home');
-    $trail->push('Барахолка');
+    $trail->push('Барахолка (заметки)');
 });
 
 // Разные картинки
 Breadcrumbs::for('site.pic', function ($trail) {
     $trail->parent('site.home');
-    $trail->push('Разные картинки');
+    $trail->push('Барахолка (разные картинки)');
 });
 
 // Книги
@@ -71,8 +71,7 @@ Breadcrumbs::for('admin.dashboard', function ($trail) {
 });
 
 // Главная > Администрирование > Список позиций
-Breadcrumbs::for('admin.tvposition', function ($trail) {
-    $trail->parent('site.home');
+Breadcrumbs::for('admin.tvsignal', function ($trail) {
     $trail->parent('admin.dashboard');
-    $trail->push('Список позиций (Api Quik Tradingview)');
+    $trail->push('Список позиций TV');
 });

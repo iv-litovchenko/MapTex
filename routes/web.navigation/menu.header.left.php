@@ -8,7 +8,18 @@ use Lavary\Menu\Facade;
 // Верхнее меню справа
 Menu::make('menu.header.left', function ($menu) {
     $menu->add('Главная', ['route'  => 'site.home']);
-    $menu->add('Барахолка', ['route'  => 'site.note']);
-    $menu->add('Разные картинки', ['route'  => 'site.pic']);
+
+    $top = $menu->add('Барахолка', ['class' => 'dropdown']);
+    $top->append('<span class="caret"></span>');
+    $top->link->attr([
+        'class' => 'nav-link dropdown-toggle',
+        'data-toggle' => 'dropdown',
+        'role' => 'button',
+        'aria-expanded' => 'false',
+    ]);
+    $top->add('Заметки', ['route'  => 'site.note']);
+    $top->add('Разные картинки', ['route'  => 'site.pic']);
+
+    $menu->add('Зарисовки', ['route'  => 'site.figma']);
     $menu->add('Книги', ['route'  => 'site.book']);
 });

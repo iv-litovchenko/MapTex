@@ -8,12 +8,12 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\AdminUserStoreRequest;
 use App\Http\Requests\AdminUserUpdateRequest;
-use App\Models\TvPosition;
+use App\Models\TvSignal;
 
 /**
  * Контроллер - список позиций
  */
-class TvPositionController extends BaseController
+class TvSignalController extends BaseController
 {
     /**
      * Список позиций (одноименный контроллер)
@@ -22,8 +22,8 @@ class TvPositionController extends BaseController
      */
     public function __invoke()
     {
-        $rows = TvPosition::orderBy('id', 'DESC')->get();
-        return view('admin.tvposition', compact('rows'));
+        $rows = TvSignal::orderBy('id', 'DESC')->get();
+        return view('admin.tvsignal', compact('rows'));
     }
 
     //    public function getPositonsResult()

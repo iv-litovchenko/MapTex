@@ -11,7 +11,6 @@ use Illuminate\Database\Schema\Blueprint;
  *
  * @property int $id
  * @property string|null $bodytext
- * @property int|null $is_me
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Database\Factories\NoteFactory factory(...$parameters)
@@ -29,6 +28,9 @@ class Note extends Model
 {
     use HasFactory;
 
+    const NOTE_TYPE_DEFAULT = 0;
+    const NOTE_TYPE_PIC = 1;
+
     /**
      * Run the migrations.
      *
@@ -38,8 +40,10 @@ class Note extends Model
     public function migration(Blueprint $table)
     {
         $table->id();
+        $table->integer('user_id')->nullable();
+        $table->integer('note_type')->default(0);
         $table->text('bodytext')->nullable();
-        $table->integer('is_me')->nullable()->default(0);
+        $table->text('image_upload')->nullable();
         $table->timestamps();
     }
 }

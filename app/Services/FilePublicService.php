@@ -75,6 +75,12 @@ class FilePublicService
     public function files($path)
     {
         if ($files = Storage::disk('public')->files($path)) {
+            $sortFiles = [];
+            foreach($files as $file){
+                $time = Storage::disk('public')->lastModified($file);
+                $sortFiles[$time] = $file;
+            }
+            #dd($files);
             return $files;
         }
         return [];

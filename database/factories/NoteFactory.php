@@ -19,9 +19,20 @@ class NoteFactory extends Factory
      */
     public function definition()
     {
-        return [
-            'bodytext' => $this->faker->text,
-            'is_me' => random_int(0,1)
-        ];
+        switch (random_int(0, 1)) {
+            case Note::NOTE_TYPE_DEFAULT:
+                return [
+                    'user_id' => random_int(0, 1),
+                    'bodytext' => $this->faker->text,
+                    'note_type' => Note::NOTE_TYPE_DEFAULT
+                ];
+            case Note::NOTE_TYPE_PIC:
+                return [
+                    'user_id' => random_int(0, 1),
+                    'bodytext' => $this->faker->name,
+                    'note_type' => Note::NOTE_TYPE_PIC,
+                    'image_upload' => 'example-image.png'
+                ];
+        }
     }
 }

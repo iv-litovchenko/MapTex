@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
-@section('LayoutSectionPageTitle', 'Барахолка')
-@section('LayoutSectionPageHeader', 'Барахолка')
+@section('LayoutSectionPageTitle', 'Барахолка (заметки)')
+@section('LayoutSectionPageHeader', 'Барахолка (заметки)')
 @section('LayoutSectionPageBreadcrumb', Breadcrumbs::render('site.note'))
 
 @section('LayoutSectionPageContent')
@@ -12,7 +12,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         #{{ $note->id }} | {{ $note->created_at }}
-                        @if($note->is_me === 1)
+                        @if($note->user_id === 1)
                             <span class="glyphicon glyphicon glyphicon-leaf" aria-hidden="true"></span>
                         @endif
                     </div>
