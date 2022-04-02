@@ -5,9 +5,6 @@
             <li @if($isActive($row->id, $currentPostId)) class="active" @endif>
                 <a href="{{ route('site.post', $row->id) }}">
                     &raquo;
-                    @if($row->logo_image)
-                        <img src="{{ asset('storage/site/post/logo/'.$row->logo_image) }}" height="20">
-                    @endif
                     {{--                    @auth--}}
                     {{--                        #{{ $row->id }} |--}}
                     {{--                    @endauth--}}
@@ -15,7 +12,10 @@
                         <span class="badge">{{ $countChildrens($row->id) }}</span>
                         <!--<b class="caret"></b>-->
                     @endif
-                    {{ Str::limit($row->name, 32) }}
+                    @if($row->logo_image)
+                        <img src="{{ asset('storage/site/post/logo/'.$row->logo_image) }}" height="20">
+                    @endif
+                    {{ Str::limit($row->name, 72) }}
                 </a>
                 @if($isActive($row->id, $currentPostId))
                     <x-menu-sidebar
