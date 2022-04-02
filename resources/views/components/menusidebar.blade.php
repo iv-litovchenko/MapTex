@@ -13,7 +13,6 @@
                         <!--<b class="caret"></b>-->
                     @endif
                     @if($row->logo_image)
-                        &nbsp;
                         <img src="{{ asset('storage/site/post/logo/'.$row->logo_image) }}" height="20">
                     @endif
                     {{ Str::limit($row->name, 72) }}
