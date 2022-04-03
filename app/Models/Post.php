@@ -112,9 +112,9 @@ class Post extends Model
     const POST_TYPE = [
         'directory' => 'Раздел',
         'page' => 'Страница',
-        'page-cheat-sheet' => 'Шпаргалка',
-        'page-figma' => 'Зарисовка',
-        'page-mind-map' => 'Карта (mindmap)'
+        'page-figma' => 'Страница: зарисовка',
+        'page-cheat-sheet' => 'Страница: шпаргалка',
+        'page-mind-map' => 'Страница: карта (mindmap)'
     ];
 
     // TODO Поля таблицы (интересный способ)
