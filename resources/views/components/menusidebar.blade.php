@@ -4,7 +4,6 @@
         @foreach($rows as $row)
             <li @if($isActive($row->id, $currentPostId)) class="active" @endif>
                 <a href="{{ route('site.post', $row->id) }}">
-                    &raquo;
                     {{--                    @auth--}}
                     {{--                        #{{ $row->id }} |--}}
                     {{--                    @endauth--}}
