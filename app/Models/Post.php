@@ -112,9 +112,9 @@ class Post extends Model
     const POST_TYPE = [
         'directory' => 'Раздел',
         'page' => 'Страница',
-        'cheat-sheet' => 'Шпаргалка',
-        'figma' => 'Зарисовка',
-        'mind-map' => 'Карта (mindmap)'
+        'page-cheat-sheet' => 'Шпаргалка',
+        'page-figma' => 'Зарисовка',
+        'page-mind-map' => 'Карта (mindmap)'
     ];
 
     // TODO Поля таблицы (интересный способ)
@@ -133,7 +133,7 @@ class Post extends Model
     {
         $table->id();
         $table->nestedSet();
-        $table->char('post_type', 12)->default('page');
+        $table->char('post_type', 20)->default('page');
         $table->integer('branch_type')->default(0);
         $table->integer('branch_stop_flag')->default(0);
 
