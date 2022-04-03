@@ -7,55 +7,18 @@
 
 @section('LayoutSectionPageContent')
 
-{{--    <div class="mindmap">--}}
-{{--        <div class="node node_root context-menu-one btn btn-neutral">--}}
-{{--            <div class="node__text" onclick="window.location.href='{{ route('site.home') }}';">--}}
-{{--                Roadmap backend--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--        <x-mindmap record-id="{{ $post->id }}" show-breadcrumbs="1"/>--}}
-{{--    </div>--}}
+    {{--    <div class="mindmap">--}}
+    {{--        <div class="node node_root context-menu-one btn btn-neutral">--}}
+    {{--            <div class="node__text" onclick="window.location.href='{{ route('site.home') }}';">--}}
+    {{--                Roadmap backend--}}
+    {{--            </div>--}}
+    {{--        </div>--}}
+    {{--        <x-mindmap record-id="{{ $post->id }}" show-breadcrumbs="1"/>--}}
+    {{--    </div>--}}
 
-{{--    <hr class="my-12">--}}
+    {{--    <hr class="my-12">--}}
 
     <div class="row">
-        <div class="col-sm-9">
-
-            <div class="btn-group btn-group-justified" role="group" aria-label="...">
-                <div class="btn-group" role="group">
-                    <a href="{{ route('admin.post.create', ['default_parent_id' => $post->parent_id]) }}" type="button"
-                       class="btn btn-warning btn-lg">Добавить знание</a>
-                </div>
-                <div class="btn-group" role="group">
-                    <a href="{{ route('admin.post.edit', $post->id) }}" class="btn btn-success btn-lg">Редактировать
-                        знание</a>
-                </div>
-                <div class="btn-group" role="group">
-                    <a href="{{ route('admin.post.create', ['default_parent_id' => $post->id]) }}" type="button"
-                       class="btn btn-warning btn-lg">Создать ветку</a>
-                </div>
-            </div>
-
-            <hr class="my-12">
-
-            {!! clean($post->description, 'default') !!}
-
-            <hr class="my-12">
-
-            <center>
-                @foreach($images as $image)
-                    <img src="{{ asset('storage/'.$image) }}"
-                         class="img-thumbnail img-site-post"/>
-                    @auth
-                        <br/>
-                        <b>{{ basename($image) }}</b>
-                    @endauth
-                    <br/>
-                    <hr/>
-                @endforeach
-            </center>
-
-        </div>
         <div class="col-sm-3">
             {{-- https://jonathanbriehl.com/posts/vertical-menu-for-bootstrap-3 --}}
             <div class="sidebar-nav">
@@ -76,11 +39,44 @@
                 </div>
             </div>
         </div>
+        <div class="col-sm-9">
+            <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                <div class="btn-group" role="group">
+                    <a href="{{ route('admin.post.create', ['default_parent_id' => $post->parent_id]) }}" type="button"
+                       class="btn btn-warning btn-lg">Добавить знание</a>
+                </div>
+                <div class="btn-group" role="group">
+                    <a href="{{ route('admin.post.edit', $post->id) }}" class="btn btn-success btn-lg">Редактировать
+                        знание</a>
+                </div>
+                <div class="btn-group" role="group">
+                    <a href="{{ route('admin.post.create', ['default_parent_id' => $post->id]) }}" type="button"
+                       class="btn btn-warning btn-lg">Создать ветку</a>
+                </div>
+            </div>
+            <hr class="my-12">
+
+            {!! clean($post->description, 'default') !!}
+
+            <hr class="my-12">
+            <center>
+                @foreach($images as $image)
+                    <img src="{{ asset('storage/'.$image) }}"
+                         class="img-thumbnail img-site-post"/>
+                    @auth
+                        <br/>
+                        <b>{{ basename($image) }}</b>
+                    @endauth
+                    <br/>
+                    <hr/>
+                @endforeach
+            </center>
+        </div>
     </div>
 
-<a href="" class="btn btn-warning">Обратно</a>
-<a href="" class="btn btn-warning">Далее</a>
-<a href="" class="btn btn-warning">Редактировать сортировку</a>
+    <a href="" class="btn btn-warning">Обратно</a>
+    <a href="" class="btn btn-warning">Далее</a>
+    <a href="" class="btn btn-warning">Редактировать сортировку</a>
 
     <div id="more_options">
         <div class="page-header">
@@ -116,7 +112,8 @@
                 <div class="col-xs-12 col-sm-12">
                     <a href="/fulldocs/components/navmenu/navmenu-inverse" class="thumbnail no-underline btn-block">
                         <div class="caption">
-                            <h3>Inverted Navmenu (и то, что этот контейнер растягивается на 3 или на 2 во всю строку)</h3>
+                            <h3>Inverted Navmenu (и то, что этот контейнер растягивается на 3 или на 2 во всю
+                                строку)</h3>
                         </div>
                     </a>
                 </div>
