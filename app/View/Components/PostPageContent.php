@@ -2,26 +2,38 @@
 
 namespace App\View\Components;
 
+use App\Services\FilePublicService;
+use App\Services\PostService;
 use Illuminate\Http\Request;
 use Illuminate\Support\HtmlString;
 use Illuminate\View\Component;
 use App\Models\Post;
 
-class PostPageCheatSheet extends Component
+class PostPageContent extends Component
 {
     /** @var int */
     public $currentPostId = 0;
+
+    /** @var int */
+    public $parentPostId = 0;
+
+    /** @var FilePublicService */
+    public $serviceFilePublic;
 
     /**
      * Инициализируем компонент.
      *
      * @param int $currentPostId
+     * @param int $parentPostId
      * @return void
      */
     public function __construct(
-        int $currentPostId = 0
+        int $currentPostId = 0,
+        int $parentPostId = 0
     ) {
         $this->currentPostId = $currentPostId;
+        $this->parentPostId = $parentPostId;
+        $this->serviceFilePublic = new FilePublicService();
     }
 
     /**
@@ -31,19 +43,13 @@ class PostPageCheatSheet extends Component
      */
     public function render()
     {
-        if ($this->parentId == 0) {
-            $rows = Post::whereParentId(null)->orderBy('sorting')->get();
-        } else {
-            $rows = Post::whereParentId($this->parentId)->orderBy('sorting')->get();
+        if ($this->currentPostId > 0) {
+            $posts = Post::whereId($this->currentPostId)->get();
+        } elseif ($this->parentPostId > 0) {
+            $posts = Post::whereParentId($this->parentPostId)->orderBy('sorting')->get();
         }
-
-        $htmlUlClass = $this->htmlUlClass;
-        $currentPostId = $this->currentPostId;
-        return view('components.menusidebar', compact(
-                'rows',
-                'htmlUlClass',
-                'currentPostId'
-            )
-        );
+        // $images = $this->serviceFilePublic->files('site/post/' . $post->id);
+        $images = [];
+        return view('components.post-page-content', compact('posts', 'images'));
     }
 }

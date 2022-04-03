@@ -38,8 +38,7 @@ class SiteController extends BaseController
      */
     public function post(Post $post)
     {
-        $images = $this->serviceFilePublic->files('site/post/' . $post->id);
-        return view('site.post', compact('post', 'images'));
+        return view('site.post', compact('post'));
     }
 
     /**

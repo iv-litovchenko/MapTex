@@ -51,7 +51,7 @@ class MenuSidebar extends Component
 
         $htmlUlClass = $this->htmlUlClass;
         $currentPostId = $this->currentPostId;
-        return view('components.menusidebar', compact(
+        return view('components.menu-sidebar', compact(
                 'rows',
                 'htmlUlClass',
                 'currentPostId'

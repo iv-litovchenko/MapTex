@@ -40,7 +40,7 @@
             </div>
         </div>
         <div class="col-sm-9">
-            @include('site.partials.block', ['post'=>$post])
+            <x-post-page-content current-post-id="{{ $post->id }}"/>
         </div>
     </div>
 
