@@ -49,15 +49,17 @@
 
 <div class="container">
     <div class="page-header">
-        @if (Route::is('site.post'))
-            <h1>
-                <img src="@yield('LayoutSectionPageHeaderIcon','')" height="40" style="vertical-align: top;">
-                @yield('LayoutSectionPageHeader')
-            </h1>
-        @else
-            <h1>@yield('LayoutSectionPageHeader')</h1>
+        @if (!Route::is('site.home'))
+            @if (Route::is('site.post'))
+                <h1>
+                    <img src="@yield('LayoutSectionPageHeaderIcon','')" height="40" style="vertical-align: top;">
+                    @yield('LayoutSectionPageHeader')
+                </h1>
+            @else
+                <h1>@yield('LayoutSectionPageHeader')</h1>
+            @endif
+            @yield('LayoutSectionPageBreadcrumb')
         @endif
-        @yield('LayoutSectionPageBreadcrumb')
         @if(Route::is('site.home'))
             @include('layouts.partials.form-search')
         @endif

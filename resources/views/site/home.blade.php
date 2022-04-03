@@ -6,6 +6,10 @@
 
 @section('LayoutSectionPageContent')
 
+    <div>
+        Roadmap backend
+    </div>
+
     <div class="mindmap">
         <div class="node node_root context-menu-one btn btn-neutral">
             <div class="node__text" onclick="window.location.href='{{ route('site.home') }}';">

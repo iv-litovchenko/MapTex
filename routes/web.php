@@ -15,6 +15,9 @@ Route::post('/note', [SiteController::class, 'noteStore'])->name('site.note-stor
 Route::get('/pic', [SiteController::class, 'pic'])->name('site.pic');
 Route::post('/pic', [SiteController::class, 'picStore'])->name('site.pic-store');
 
+Route::middleware([Authenticate::class, IsMe::class])
+    ->post('/note-or-pic-close/{note}', [SiteController::class, 'noteOrPicClose'])->name('site.note-or-pic-close');
+
 Route::get('/figma', [SiteController::class, 'figma'])->name('site.figma');
 Route::get('/book', [SiteController::class, 'book'])->name('site.book');
 Route::get('/search', [SiteController::class, 'search'])->name('site.search');

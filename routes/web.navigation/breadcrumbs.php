@@ -6,7 +6,7 @@ use App\Models\Post;
 // Главная
 Breadcrumbs::for('site.home', function ($trail) {
     // <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-    $trail->push('Roadmap backend', route('site.home'));
+    $trail->push('Главная', route('site.home'));
 });
 
 // Главная > Пост (детальная страница) - выводим в виде цепочки
@@ -29,16 +29,16 @@ Breadcrumbs::for('site.pic', function ($trail) {
     $trail->push('Барахолка (разные картинки)');
 });
 
-// Книги
+// Книжки
 Breadcrumbs::for('site.book', function ($trail) {
     $trail->parent('site.home');
-    $trail->push('Книги');
+    $trail->push('Книжки');
 });
 
 // Поиск по сайту
 Breadcrumbs::for('site.search', function ($trail) {
     $trail->parent('site.home');
-    $trail->push('Книги');
+    $trail->push('Поиск по сайту');
 });
 
 // Главная > Вход

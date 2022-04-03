@@ -10,19 +10,34 @@
             <div class="row">
                 @foreach($notes->items() as $note)
                     <div class="col-sm-4">
-                        <div class="panel panel-default">
+                        <div class="panel panel-default" style="@if($note->is_close == 1) opacity: 0.2; @endif">
                             <div class="panel-heading">
                                 #{{ $note->id }} | {{ $note->created_at }}
                                 @if($note->user_id === 1)
                                     <span class="glyphicon glyphicon glyphicon-leaf" aria-hidden="true"></span>
                                 @endif
+                                <span class="" style="float: right;">
+                                    @if($note->is_close == 1)
+                                        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                                    @else
+                                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                                    @endif
+                                </span>
                             </div>
                             <div class="panel-body">
                                 <a href="{{ asset('storage/site/pic/'.$note->upload_image) }}">
                                     <img src="{{ asset('storage/site/pic/'.$note->upload_image) }}"
                                          class="img-site-pic"/>
                                 </a>
-                                <center><b>{{ $note->bodytext }}</b></center>
+                                <center>
+                                    <b>{{ $note->bodytext }}</b><br/>
+                                    @if($note->is_close != 1)
+                                        <form action="{{ route('site.note-or-pic-close',$note->id) }}" method="post">
+                                            @csrf
+                                            <button type="submit" class="btn btn-primary btn-sm">Закрыть</button>
+                                        </form>
+                                    @endif
+                                </center>
                             </div>
                         </div>
                     </div>

@@ -99,8 +99,6 @@ class SiteController extends BaseController
         return redirect()->route('site.note')->withInput();
     }
 
-
-
     /**
      * Страница барахолка (разные картинки)
      *
@@ -151,6 +149,25 @@ class SiteController extends BaseController
 
         $request->session()->flash('flash_messages_error', 'Ошибка создания барахольной заметки!');
         return redirect()->route('site.pic')->withInput();
+    }
+
+    /**
+     * Страница барахолка (закрыть заметку)
+     *
+     * @param Request $request
+     * @param Note $note
+     * @return \Illuminate\View\View
+     */
+    public function noteOrPicClose(Request $request, Note $note)
+    {
+        $note->is_close = 1;
+        if ($note->save()) {
+            $request->session()->flash('flash_messages_success',
+                'Барахольная заметка [' . $note->id . '] успешно закрыта!');
+            return redirect()->back();
+        }
+        $request->session()->flash('flash_messages_error', 'Ошибка закрытия барахольной заметки!');
+        return redirect()->back();
     }
 
     /**
