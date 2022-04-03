@@ -15,8 +15,11 @@
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Название</label>
-            <div class="col-sm-10">
+            <label class="col-sm-2 col-form-label">Название/тип</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" name="name" value="{{ old('name', $post->name) }}">
+            </div>
+            <div class="col-sm-5">
                 <input type="text" class="form-control" name="name" value="{{ old('name', $post->name) }}">
             </div>
         </div>

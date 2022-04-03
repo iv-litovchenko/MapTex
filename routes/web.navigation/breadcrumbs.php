@@ -29,6 +29,12 @@ Breadcrumbs::for('site.pic', function ($trail) {
     $trail->push('Барахолка (разные картинки)');
 });
 
+// Зарисовки
+Breadcrumbs::for('site.figma', function ($trail) {
+    $trail->parent('site.home');
+    $trail->push('Зарисовки');
+});
+
 // Книжки
 Breadcrumbs::for('site.book', function ($trail) {
     $trail->parent('site.home');

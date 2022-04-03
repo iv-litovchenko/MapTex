@@ -27,8 +27,7 @@ class SiteController extends BaseController
      */
     public function home()
     {
-        $images = $this->serviceFilePublic->files('site/home');
-        return view('site.home', compact('images'));
+        return view('site.home');
     }
 
     /**
@@ -41,6 +40,17 @@ class SiteController extends BaseController
     {
         $images = $this->serviceFilePublic->files('site/post/' . $post->id);
         return view('site.post', compact('post', 'images'));
+    }
+
+    /**
+     * Страница зарисовок
+     *
+     * @return \Illuminate\View\View
+     */
+    public function figma()
+    {
+        $postsWithFigmaImages = Post::where('figma_image')->get();
+        return view('site.figma', compact('postsWithFigmaImages'));
     }
 
     /**

@@ -77,7 +77,7 @@
             Над кодом - как это работает? Интерактивный справочник и копилка знаний. <br/>
             Код пишется для людей. <a href="http://bootstrapessentials.com/fulldocs/components/">Bootstrap
                 компоненты</a><br/>
-            <a href="https://github.com/iv-litovchenko/maptex/">Исходики проекта на github</a>
+            <a href="https://github.com/iv-litovchenko/maptex/">Исходники проекта на github</a>
         </p>
     </div>
 </footer>
