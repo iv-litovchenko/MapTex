@@ -133,7 +133,7 @@ class Post extends Model
     {
         $table->id();
         $table->nestedSet();
-        $table->char('post_type', 12)->default('post');
+        $table->char('post_type', 12)->default('page');
         $table->integer('branch_type')->default(0);
         $table->integer('branch_stop_flag')->default(0);
 
