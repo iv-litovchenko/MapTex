@@ -49,7 +49,7 @@ class SiteController extends BaseController
      */
     public function figma()
     {
-        $postsWithFigmaImages = Post::where('figma_image')->get();
+        $postsWithFigmaImages = Post::whereNotNull('figma_image')->get();
         return view('site.figma', compact('postsWithFigmaImages'));
     }
 
