@@ -34,8 +34,8 @@
     {{--        @endforeach--}}
     {{--    </center>--}}
 
-    <div style="margin-left: 25px;">
+    <blockquote class="blockquote">
         <x-post-page-content parent-post-id="{{ $post->id }}"/>
-    </div>
+    </blockquote>
 
 @endforeach
