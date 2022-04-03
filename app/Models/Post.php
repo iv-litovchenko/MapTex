@@ -99,7 +99,9 @@ use Kalnoy\Nestedset\NodeTrait;
  */
 class Post extends Model
 {
-    use HasFactory, NodeTrait; // HasRoles
+    use HasFactory, NodeTrait;
+
+    // HasRoles
 
     protected $table = 'posts';
     // protected $fillable = false;
@@ -107,6 +109,13 @@ class Post extends Model
     const BRUNCH_LEFT_CODE = 1;
     const BRUNCH_RIGHT_CODE = 2;
     const BRUNCH_STOP_CODE = 1;
+    const POST_TYPE = [
+        'directory' => 'Раздел',
+        'page' => 'Страница',
+        'cheat-sheet' => 'Шпаргалка',
+        'figma' => 'Зарисовка',
+        'mind-map' => 'Карта (mindmap)'
+    ];
 
     // TODO Поля таблицы (интересный способ)
     // where(Post::FIELD_NAME,'=','foo')
@@ -124,6 +133,7 @@ class Post extends Model
     {
         $table->id();
         $table->nestedSet();
+        $table->char('post_type', 12)->default('post');
         $table->integer('branch_type')->default(0);
         $table->integer('branch_stop_flag')->default(0);
 
@@ -134,8 +144,8 @@ class Post extends Model
         $table->string('name')->nullable();
         $table->string('slug')->nullable();
         $table->text('description')->nullable();
-        $table->char('logo_image',255)->nullable();
-        $table->char('figma_image',255)->nullable();
+        $table->char('logo_image', 255)->nullable();
+        $table->char('figma_image', 255)->nullable();
         $table->integer('sorting')->default(0);
         $table->timestamps();
 

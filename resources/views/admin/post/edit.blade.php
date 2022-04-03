@@ -16,11 +16,19 @@
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Название/тип</label>
-            <div class="col-sm-5">
+            <div class="col-sm-7">
                 <input type="text" class="form-control" name="name" value="{{ old('name', $post->name) }}">
             </div>
-            <div class="col-sm-5">
-                <input type="text" class="form-control" name="name" value="{{ old('name', $post->name) }}">
+            <div class="col-sm-3">
+                <select class="form-control" name="post_type">
+                    @foreach($postTypes as $postTypeKey => $postTypeName)
+                        <option value="{{ $postTypeKey }}"
+                            {{ (collect(old('post_type', $post->post_type))->contains($postTypeKey)) ? 'selected' : '' }}
+                        >
+                            {{ $postTypeName }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
         </div>
         <div class="form-group row">
@@ -48,7 +56,8 @@
                         <img src="{{ asset('storage/site/post/logo/'.$post->logo_image) }}"
                              class="img-thumbnail">
                         <br/>
-                        <input class="form-check-input" type="checkbox" name="logo_image_delete" value="{{ $post->logo_image }}">
+                        <input class="form-check-input" type="checkbox" name="logo_image_delete"
+                               value="{{ $post->logo_image }}">
                         Удалить изображение?
                     </label>
                 @endif
@@ -57,7 +66,7 @@
                     <input type="file" class="form-control" name="logo_image">
                 </div>
 
-                <hr />
+                <hr/>
 
                 <b>Изображение зарисовки (figma)</b>
                 @if($post->figma_image)
@@ -65,7 +74,8 @@
                         <img src="{{ asset('storage/site/post/figma/'.$post->figma_image) }}"
                              class="img-thumbnail">
                         <br/>
-                        <input class="form-check-input" type="checkbox" name="figma_image_delete" value="{{ $post->figma_image }}">
+                        <input class="form-check-input" type="checkbox" name="figma_image_delete"
+                               value="{{ $post->figma_image }}">
                         Удалить изображение?
                     </label>
                 @endif

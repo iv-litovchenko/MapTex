@@ -89,10 +89,12 @@ class PostController extends BaseController
     {
         $images = Storage::disk('public')->allFiles('site/post/' . $post->id);
         $postsTreeArray = FrontendUility::buildTreeArray();
+        $postTypes = Post::POST_TYPE;
         return view('admin.post.edit', compact(
             'post',
             'images',
-            'postsTreeArray'
+            'postsTreeArray',
+            'postTypes'
         ));
     }
 
@@ -105,6 +107,7 @@ class PostController extends BaseController
      */
     public function update(AdminPostUpdateRequest $request, Post $post)
     {
+        $post->post_type = $request->input('post_type') ? $request->input('post_type') : null;
         $post->name = $request->input('name');
         $post->parent_id = $request->input('parent_id');
         $post->description = $request->input('description');
