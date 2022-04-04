@@ -1,9 +1,5 @@
 <img
-    {{--    @if(isset($src))--}}
-    {{--    src="{{ assert('storage/'.$src) }}"--}}
-    {{--    @else--}}
     src="{{ asset('storage/logo.png') }}"
-    {{--    @endif--}}
     height="{{ $height }}"
     style="
         vertical-align: {{ $valign }};
