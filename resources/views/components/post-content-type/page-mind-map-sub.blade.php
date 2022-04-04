@@ -1,21 +1,21 @@
 {{-- Вывод дерева --}}
-@if(count($rows) > 0)
+@if(count($subPosts) > 0)
     <ol class="children">
-        @foreach ($rows as $row)
+        @foreach ($subPosts as $subPost)
             <li class="children__item">
                 <div class="node">
                     <div class="node__text context-menu-one">
-                        <a href="{{ route('site.post', $row->id) }}" target="_blank">
+                        <a href="{{ route('site.post', $subPost->id) }}" target="_blank">
                             @component('components.icon')
-                                @slot('src', asset('storage/site/post/logo/'.$row->logo_image))
+                                @slot('src', asset('storage/site/post/logo/'.$subPost->logo_image))
                                 @slot('height', 22)
                                 @slot('valign', 'top')
                             @endcomponent
-                            {{ Str::limit($row->name, 24) }}
+                            {{ Str::limit($subPost->name, 24) }}
                         </a>
                     </div>
                 </div>
-                <x-post-content-type-mind-map record-id="{{ $row->id }}"/>
+                <x-post-content-type-mind-map record-id="{{ $subPost->id }}"/>
             </li>
         @endforeach
     </ol>
