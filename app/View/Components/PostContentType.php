@@ -14,11 +14,11 @@ class PostContentType extends Component
     /** @var int */
     public $currentPostId = 0;
 
-    /** @var int */
-    public $parentPostId = 0;
+    /** @var int|string */
+    public $parentPostId;
 
     /** @var string */
-    public $htmlHeaderSize = 2;
+    public $htmlHeaderSize = 0;
 
     /** @var FilePublicService */
     private $serviceFilePublic;
@@ -30,13 +30,13 @@ class PostContentType extends Component
      * Инициализируем компонент.
      *
      * @param int $currentPostId
-     * @param int $parentPostId
+     * @param int|string $parentPostId
      * @return void
      */
     public function __construct(
         int $currentPostId = 0,
-        int $parentPostId = 0,
-        int $htmlHeaderSize = 2
+        int|string $parentPostId = 0,
+        int $htmlHeaderSize = 0
     ) {
         $this->currentPostId = $currentPostId;
         $this->parentPostId = $parentPostId;
@@ -51,12 +51,31 @@ class PostContentType extends Component
      */
     public function render()
     {
+        // return function ($date){
+        // return $date['componentName'];
+
+        // TODO <x-mindmap my-attr="val"/> сюда попадет все что не определено в конструкторе
+        //  return $date['atributes'];
+
+        // TODO сюда попадет все что будет между открывающим и закрывающим тэгом
+        /** @var  $slot HtmlString */
+        //        $slot = $date['slot']->toHtml();
+        // <x-mindmap> --CONTENT-- </x-mindmap>
+        // return $date['slot'];
+
         // $images = $this->serviceFilePublic->files('site/post/' . $post->id);
         // return view('components.post-page-content', compact('posts', 'images'));
-        if ($this->parentPostId > 0) {
-            return $this->postTypePageCheatSheetSub();
+
+        // Сценарий когда есть родитель
+        if ($this->parentPostId == 'root' || $this->parentPostId > 0) {
+            if ($this->htmlHeaderSize > 0) {
+                return $this->postTypePageCheatSheetSub();
+            } else {
+                return $this->postTypePageMindMapSub();
+            }
         }
 
+        // Сценарий когда текущяя запись
         $this->post = Post::find($this->currentPostId);
         switch ($this->post->post_type) {
             case 'directory':
@@ -101,5 +120,19 @@ class PostContentType extends Component
     {
         $post = $this->post;
         return view('components.post-content-type.page-mind-map', compact('post'));
+    }
+
+    private function postTypePageMindMapSub()
+    {
+        if ($this->parentPostId === 'root') {
+            $subPosts = Post::whereParentId(null)
+                ->orderBy('sorting')
+                ->get();
+        } else {
+            $subPosts = Post::whereParentId(intval($this->parentPostId))
+                ->orderBy('sorting')
+                ->get();
+        }
+        return view('components.post-content-type.page-mind-map-sub', compact('subPosts'));
     }
 }

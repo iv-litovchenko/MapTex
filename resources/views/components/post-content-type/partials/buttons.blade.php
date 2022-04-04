@@ -7,7 +7,12 @@
     </div>
     <div class="btn-group" role="group">
         <a href="{{ route('admin.post.edit', $post->id) }}" class="btn btn-success btn-lg">
-            Редактировать знание
+            Изменить знание
+        </a>
+    </div>
+    <div class="btn-group" role="group">
+        <a href="{{ route('admin.post.delete', $post->id) }}" class="btn btn-danger btn-lg">
+            Удалить знание
         </a>
     </div>
     <div class="btn-group" role="group">

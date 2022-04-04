@@ -34,6 +34,6 @@
                 <span class="glyphicon glyphicon glyphicon-plane" aria-hidden="true"></span>
             </div>
         </div>
-        <x-post-content-type-mind-map record-id="0"/>
+        <x-post-content-type parent-post-id="root"/>
     </div>
 @stop

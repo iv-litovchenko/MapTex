@@ -111,8 +111,8 @@ class Post extends Model
     const POST_TYPE = [
         'directory' => 'Раздел (папка)',
         'page' => 'Страница',
-        'page-figma' => 'Страница: зарисовка',
-        'page-cheat-sheet' => 'Страница: шпаргалка',
+        'page-figma' => 'Страница: зарисовка (figma)',
+        'page-cheat-sheet' => 'Страница: шпаргалка (sheet)',
         'page-mind-map' => 'Страница: карта (mindmap)'
     ];
 

@@ -15,7 +15,7 @@
                         </a>
                     </div>
                 </div>
-                <x-post-content-type-mind-map record-id="{{ $subPost->id }}"/>
+                <x-post-content-type parent-post-id="{{ $subPost->id }}"/>
             </li>
         @endforeach
     </ol>

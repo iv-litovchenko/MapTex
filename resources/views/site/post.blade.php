@@ -26,13 +26,18 @@
                     </div><!--/.nav-collapse -->
                 </div>
             </div>
+            <center>
+                <button class="btn btn-warning" disabled>Оглавление</button>
+            </center>
         </div>
         <div class="col-sm-9">
             <x-post-content-type current-post-id="{{ $post->id }}"/>
+            <center>
+                <button class="btn btn-warning" disabled>Обратно</button>
+                <button class="btn btn-warning" disabled>Редактировать сортировку</button>
+                <button class="btn btn-warning" disabled>Далее</button>
+            </center>
         </div>
     </div>
-    <a href="" class="btn btn-warning">Обратно</a>
-    <a href="" class="btn btn-warning">Далее</a>
-    <a href="" class="btn btn-warning">Редактировать сортировку</a>
 
 @endsection
