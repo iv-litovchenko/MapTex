@@ -29,7 +29,6 @@ class AdminPostUpdateRequest extends FormRequest
             'name' => 'required|min:3|max:255',
             'parent_id' => 'nullable:posts,id',
             'sorting' => 'integer',
-            'branch_stop_flag' => 'integer',
             'logo_image' => 'image',
             'images.*' => 'image',
             // 'tags_ids' => 'nullable|array',

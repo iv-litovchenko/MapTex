@@ -1,0 +1,1 @@
+{!! clean($post->description, 'default') !!}

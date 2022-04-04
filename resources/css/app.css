@@ -80,3 +80,16 @@ html, body {
         padding: 3px 10px;
     }
 }
+
+.mindmap {
+    overflow-x: auto;
+    background: #dcdc7e;
+    padding: 25px;
+}
+
+.mindmap .children__item {
+}
+
+.mindmap a {
+    color: #000;
+}

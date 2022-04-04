@@ -6769,8 +6769,8 @@ body {
 	margin: 2px 0;
 	padding: 0 4px;
 	height: 22px;
-	border: 1px solid #ccc;
-	border-radius: 2px;
+	border: 0px solid #000;
+	border-radius: 0px;
 	background: #fff;
 	vertical-align: middle;
 	text-align: left;
@@ -6851,13 +6851,13 @@ body {
 	top: 50%;
 	left: -4px;
 	width: 10px;
-	border-top: 1px solid #ccc;
+	border-top: 1px solid #000;
 	content: '';
 	}
 	.children__item {
 		position: relative;
 		padding: 0 0 0 10px;
-		border-left: 1px solid #ccc;
+		border-left: 1px solid #000;
 		}
 	.children__item:first-child,
 	.children__item:last-child {
@@ -6868,13 +6868,13 @@ body {
 		top: 50%;
 		left: 0;
 		width: 10px;
-		border-top: 1px solid #ccc;
+		border-top: 1px solid #000;
 		content: '';
 		}
 	.children__item:first-child:before {
 		bottom: 0;
 		left: -1px;
-		border-left: 1px solid #ccc;
+		border-left: 1px solid #000;
 		border-radius: 4px 0 0 0;
 		}
 	.children__item:last-child:before {
@@ -6882,15 +6882,15 @@ body {
 		bottom: 50%;
 		left: -1px;
 		border: 0;
-		border-bottom: 1px solid #ccc;
-		border-left: 1px solid #ccc;
+		border-bottom: 1px solid #000;
+		border-left: 1px solid #000;
 		border-radius: 0 0 0 4px;
 		}
 	.children__item:first-child:last-child:before {
 		top: 50%;
 		bottom: auto;
 		border: 0;
-		border-top: 1px solid #ccc;
+		border-top: 1px solid #000;
 		border-radius: 0;
 		}
 
@@ -6908,7 +6908,7 @@ body {
 	.children_leftbranch .children__item {
 		padding: 0 10px 0 0;
 		border: 0;
-		border-right: 1px solid #ccc;
+		border-right: 1px solid #000;
 		}
 	.children_leftbranch .children__item:first-child,
 	.children_leftbranch .children__item:last-child {
@@ -6922,8 +6922,8 @@ body {
 	.children_leftbranch .children__item:first-child:before {
 		right: -1px;
 		border: 0;
-		border-top: 1px solid #ccc;
-		border-right: 1px solid #ccc;
+		border-top: 1px solid #000;
+		border-right: 1px solid #000;
 		border-radius: 0 4px 0 0;
 		direction: ltr;
 		}
@@ -6932,8 +6932,8 @@ body {
 		right: -1px;
 		bottom: 50%;
 		border: 0;
-		border-right: 1px solid #ccc;
-		border-bottom: 1px solid #ccc;
+		border-right: 1px solid #000;
+		border-bottom: 1px solid #000;
 		border-radius: 0 0 4px 0;
 		direction: ltr;
 		}
@@ -6941,9 +6941,10 @@ body {
 		top: 50%;
 		bottom: auto;
 		border: 0;
-		border-top: 1px solid #ccc;
+		border-top: 1px solid #000;
 		border-radius: 0;
 		}
+
 html, body {
     background: white;
 }
@@ -7021,5 +7022,18 @@ html, body {
     .sidebar-nav .menu-sidebar-level-next a {
         padding: 3px 10px;
     }
+}
+
+.mindmap {
+    overflow-x: auto;
+    background: #dcdc7e;
+    padding: 25px;
+}
+
+.mindmap .children__item {
+}
+
+.mindmap a {
+    color: #000;
 }
 

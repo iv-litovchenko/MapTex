@@ -7,12 +7,14 @@
                     {{--                    @auth--}}
                     {{--                        #{{ $row->id }} |--}}
                     {{--                    @endauth--}}
+                    @component('components.icon')
+                        @slot('src', asset('storage/site/post/logo/'.$row->logo_image))
+                        @slot('height', 20)
+                        @slot('valign', 'top')
+                    @endcomponent
                     @if($countChildrens($row->id) > 0)
                         <span class="badge">{{ $countChildrens($row->id) }}</span>
                         <!--<b class="caret"></b>-->
-                    @endif
-                    @if($row->logo_image)
-                        <img src="{{ asset('storage/site/post/logo/'.$row->logo_image) }}" height="20">
                     @endif
                     {{ Str::limit($row->name, 72) }}
                 </a>
@@ -29,5 +31,3 @@
         @endforeach
     </ul>
 @endif
-
-{{--@if($row->branch_stop_flag != 1)--}}

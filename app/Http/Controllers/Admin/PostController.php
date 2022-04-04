@@ -111,7 +111,6 @@ class PostController extends BaseController
         $post->name = $request->input('name');
         $post->parent_id = $request->input('parent_id');
         $post->description = $request->input('description');
-        $post->branch_stop_flag = intval($request->input('branch_stop_flag'));
         $post->sorting = intval($request->input('sorting'));
 
         // Логотип: загрузка (отсоединение) 1 файла

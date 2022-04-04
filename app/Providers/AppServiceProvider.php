@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         // TODO пример компонента
-        // Blade::component(\App\View\Components\Mindmap::class, 'mindmap');
+        // Blade::component(\App\View\Components\PostContentTypeMindMap::class, 'mindmap');
 
         // TODO подгрузка в шаблон данных (переменная "projectVersion" будет доступна в шаблоне)
         View::composer('layouts.default', function ($view) {

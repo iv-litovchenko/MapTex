@@ -108,8 +108,8 @@
             <label class="col-sm-2 col-form-label">Дополнительные настройки</label>
             <div class="col-sm-10">
                 <label class="form-check-label">
-                    <input class="form-check-input" type="hidden" name="branch_stop_flag" value="0">
-                    <input class="form-check-input" type="checkbox" name="branch_stop_flag" value="1"
+                    <input class="form-check-input" type="hidden" disabled name="branch_stop_flag" value="0">
+                    <input class="form-check-input" type="checkbox" disabled name="branch_stop_flag" value="1"
                         {{ old('branch_stop_flag', $post->branch_stop_flag) == 1 ? 'checked' : '' }}>
                     Продолжить ветку на отдельной странице?
                 </label>

@@ -1,35 +1,22 @@
-{{-- Вывод родительского дерева --}}
-@if(count($rowsBreadcrumbs) > 0)
-
-    @foreach ($rowsBreadcrumbs as $row)
-        <ol class="children">
-            <li class="children__item" style="@if($row->logo_image) margin: 20px 0 20px 0; @endif">
-
-                {{--Подключаем дублирующийся код--}}
-                @include('components.mindmap-div')
-
-            </li>
-        </ol>
-    @endforeach
-
-@endif
-
 {{-- Вывод дерева --}}
 @if(count($rows) > 0)
-
     <ol class="children">
         @foreach ($rows as $row)
-            <li class="children__item" style="@if($row->logo_image) margin: 20px 0 20px 0; @endif">
-
-                {{--Подключаем дублирующийся код--}}
-                @include('components.mindmap-div')
-
-                @if($row->branch_stop_flag != 1)
-                    <x-mindmap record-id="{{ $row->id }}"/>
-                @endif
-
+            <li class="children__item">
+                <div class="node">
+                    <div class="node__text context-menu-one">
+                        <a href="{{ route('site.post', $row->id) }}" target="_blank">
+                            @component('components.icon')
+                                @slot('src', asset('storage/site/post/logo/'.$row->logo_image))
+                                @slot('height', 22)
+                                @slot('valign', 'top')
+                            @endcomponent
+                            {{ Str::limit($row->name, 24) }}
+                        </a>
+                    </div>
+                </div>
+                <x-post-content-type-mind-map record-id="{{ $row->id }}"/>
             </li>
         @endforeach
     </ol>
-
 @endif

@@ -17,7 +17,6 @@ use Kalnoy\Nestedset\NodeTrait;
  * @property int $_rgt
  * @property int|null $parent_id
  * @property int $branch_type
- * @property int $branch_stop_flag
  * @property int|null $user_id
  * @property string|null $name
  * @property string|null $slug
@@ -110,7 +109,7 @@ class Post extends Model
     const BRUNCH_RIGHT_CODE = 2;
     const BRUNCH_STOP_CODE = 1;
     const POST_TYPE = [
-        'directory' => 'Раздел',
+        'directory' => 'Раздел (папка)',
         'page' => 'Страница',
         'page-figma' => 'Страница: зарисовка',
         'page-cheat-sheet' => 'Страница: шпаргалка',
@@ -133,9 +132,8 @@ class Post extends Model
     {
         $table->id();
         $table->nestedSet();
-        $table->char('post_type', 20)->default('page');
+        $table->char('post_type', 24)->default('page');
         $table->integer('branch_type')->default(0);
-        $table->integer('branch_stop_flag')->default(0);
 
         #$table->foreignId('user_id', 'fewfew')->nullable()->constrained('users');
         $table->integer('user_id')->nullable();

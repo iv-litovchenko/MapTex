@@ -6,13 +6,10 @@ use Illuminate\Support\HtmlString;
 use Illuminate\View\Component;
 use App\Models\Post;
 
-class Mindmap extends Component
+class PostContentTypeMindMap extends Component
 {
     /** @var int */
     public $recordId = 0;
-
-    /** @var int */
-    public $showBreadcrumbs = 0;
 
     /** @var array Пример инкапсуляции */
     private $backgroundColor = [
@@ -24,13 +21,11 @@ class Mindmap extends Component
      * Инициализируем компонент.
      *
      * @param int $recordId
-     * @param int $showBreadcrumbs
      * @return void
      */
-    public function __construct(int $recordId = 0, $showBreadcrumbs = 0)
+    public function __construct(int $recordId = 0)
     {
         $this->recordId = $recordId;
-        $this->showBreadcrumbs = $showBreadcrumbs;
     }
 
     /**
@@ -40,19 +35,17 @@ class Mindmap extends Component
      */
     public function render()
     {
-        //        return function ($date){
-        //            return $date['componentName'];
+        // return function ($date){
+        // return $date['componentName'];
 
         // TODO <x-mindmap my-attr="val"/> сюда попадет все что не определено в конструкторе
-        //            return $date['atributes'];
+        //  return $date['atributes'];
 
         // TODO сюда попадет все что будет между открывающим и закрывающим тэгом
         /** @var  $slot HtmlString */
         //        $slot = $date['slot']->toHtml();
         // <x-mindmap> --CONTENT-- </x-mindmap>
-        //            return $date['slot'];
-
-        //        }
+        // return $date['slot'];
 
         if ($this->recordId == 0) {
             $rows = Post::whereIsRoot()->orderBy('sorting')->get();
@@ -62,19 +55,6 @@ class Mindmap extends Component
                 ->toTree($this->recordId);
         }
 
-        $rowsBreadcrumbs = [];
-        if ($this->showBreadcrumbs == 1) {
-            $rowsBreadcrumbs = Post::defaultOrder()->ancestorsAndSelf($this->recordId);
-        }
-
-        return view('components.mindmap', compact('rows', 'rowsBreadcrumbs'));
-    }
-
-    public function divCssBackgroundColor($row = [])
-    {
-        if ($row->branch_stop_flag) {
-            return $this->backgroundColor[1];
-        }
-        return 'none';
+        return view('components.mindmap', compact('rows'));
     }
 }
