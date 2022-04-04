@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\AdminPostStoreRequest;
 use App\Http\Requests\AdminPostUpdateRequest;
 use App\Models\Post;
+use App\Services\FilePublicAttachOrDetachService;
 use App\Utils\FrontendUility;
 
 /**
@@ -116,13 +117,11 @@ class PostController extends BaseController
         // Логотип: загрузка (отсоединение) 1 файла
         // Зарисовка: загрузка (отсоединение) 1 файла
         // Изображения: загрузка нескольких картинок (в базу не пишем)
-        $post->logo_image = $this->serviceFilePublic->attachOrDetach(false, 'logo_image', 'site/post/logo',
-            $post->logo_image);
+        $post->logo_image = new FilePublicAttachOrDetachService('logo_image', $post->logo_image, 'site/post/logo');
+        #$post->figma_image = $this->serviceFilePublic->attachOrDetach(false, 'figma_image', 'site/post/figma',
+        #    $post->figma_image);
 
-        $post->figma_image = $this->serviceFilePublic->attachOrDetach(false, 'figma_image', 'site/post/figma',
-            $post->figma_image);
-
-        $this->serviceFilePublic->attachOrDetach(true, 'images', 'site/post/' . $post->id);
+        #$post->post_images = $this->serviceFilePublic->attachOrDetach(true, 'images', 'site/post/' . $post->id);
 
         if ($post->save()) {
             $request->session()->flash('flash_messages_success', 'Пост [' . $post->id . '] успешно обновлен');

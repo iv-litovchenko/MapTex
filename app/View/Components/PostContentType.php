@@ -2,7 +2,6 @@
 
 namespace App\View\Components;
 
-use App\Services\FilePublicService;
 use App\Services\PostService;
 use Illuminate\Http\Request;
 use Illuminate\Support\HtmlString;
@@ -19,9 +18,6 @@ class PostContentType extends Component
 
     /** @var string */
     public $htmlHeaderSize = 0;
-
-    /** @var FilePublicService */
-    private $serviceFilePublic;
 
     /** @var Post */
     private $post;
@@ -41,7 +37,6 @@ class PostContentType extends Component
         $this->currentPostId = $currentPostId;
         $this->parentPostId = $parentPostId;
         $this->htmlHeaderSize = $htmlHeaderSize;
-        $this->serviceFilePublic = new FilePublicService();
     }
 
     /**
