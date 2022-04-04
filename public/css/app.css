@@ -7037,3 +7037,14 @@ html, body {
     color: #000;
 }
 
+.search-sot {
+    display: inline-block;
+    padding: 5px;
+    background: yellow;
+    border-radius: 10px;
+    border: #afafaf 3px solid;
+    font-width: bold;
+    font-size: 15px;
+    font-color: black;
+}
+

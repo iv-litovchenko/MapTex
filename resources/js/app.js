@@ -56,9 +56,15 @@ $(document).ready(function () {
         codeLanguage = codeLanguage.replace('language-', '');
         var hljsContent = hljs.highlight(content, {language: codeLanguage}).value;
         $(this).html(hljsContent);
-        $(this).css('border','none');
-        $(this).css('border-radius','none');
+        $(this).css('border', 'none');
+        $(this).css('border-radius', 'none');
         // alert(codeLanguage + ' : ' + hljsContent);
+    });
+
+    // Подсветка текста в разделе поиск
+    var qSearchValue = $('#qSearch').val();
+    $('.backlightText').html(function () {
+        return $(this).html().replace(new RegExp(qSearchValue + "(?=[^>]*<)", "ig"), "<span class='search-sot'>$&</span>");
     });
 
 });

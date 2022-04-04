@@ -98,6 +98,11 @@ $(document).ready(function () {
     $(this).html(hljsContent);
     $(this).css('border', 'none');
     $(this).css('border-radius', 'none'); // alert(codeLanguage + ' : ' + hljsContent);
+  }); // Подсветка текста в разделе поиск
+
+  var qSearchValue = $('#qSearch').val();
+  $('.backlightText').html(function () {
+    return $(this).html().replace(new RegExp(qSearchValue + "(?=[^>]*<)", "ig"), "<span class='search-sot'>$&</span>");
   });
 });
 

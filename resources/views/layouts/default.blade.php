@@ -53,7 +53,7 @@
             <h1>@yield('LayoutSectionPageHeader')</h1>
         @endif
         @yield('LayoutSectionPageBreadcrumb')
-        @if(Route::is('site.home'))
+        @if(Route::is('site.home') || Route::is('site.post') || Route::is('site.search'))
             @include('layouts.partials.form-search')
         @endif
     </div>

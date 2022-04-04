@@ -190,22 +190,21 @@ class SiteController extends BaseController
     public function search(Request $request)
     {
         $inputQuerySearch = $request->input('q');
-        $queryLike = $inputQuerySearch;
-        $queryLike = '%' . str_ireplace(' ', '_', $queryLike) . '%';
+        $posts = [];
 
-        $rows = [];
-        if ($inputQuerySearch != '') {
-            $rows = Post::where('name', 'like', $queryLike)
+        if ($inputQuerySearch !== null) {
+            $queryLike = $inputQuerySearch;
+            $queryLike = '%' . str_ireplace(' ', '_', $queryLike) . '%';
+
+            $posts = Post::where('name', 'like', $queryLike)
                 ->orWhere('description', 'like', $queryLike)
                 ->orderBy('parent_id', 'asc')
                 ->orderBy('sorting', 'asc')
                 ->get();
         }
 
-        return view('site.search', [
-            'q' => $inputQuerySearch,
-            'searchResult' => $rows
-        ]);
+        $q = $inputQuerySearch;
+        return view('site.search', compact('posts', 'q'));
     }
 
 }
