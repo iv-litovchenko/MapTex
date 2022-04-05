@@ -53,6 +53,9 @@
             <h1>@yield('LayoutSectionPageHeader')</h1>
             @yield('LayoutSectionPageBreadcrumb')
         @endif
+        @if (!Route::is('site.home'))
+            @yield('LayoutSectionPageBreadcrumb')
+        @endif
         @if(Route::is('site.home') || Route::is('site.post') || Route::is('site.search'))
             @include('layouts.partials.form-search')
         @endif
@@ -69,7 +72,8 @@
             Над кодом - как это работает? Интерактивный справочник и копилка знаний. <br/>
             Код пишется для людей. <a href="http://bootstrapessentials.com/fulldocs/components/">Bootstrap
                 компоненты</a><br/>
-            <a href="https://github.com/iv-litovchenko/maptex/">Исходники проекта на github</a>
+            <a href="https://github.com/iv-litovchenko/maptex/">Исходники проекта на github</a> |
+            <a href="#" disabled>Оглавление (карта сайта)</a>
         </p>
     </div>
 </footer>

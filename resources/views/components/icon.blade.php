@@ -5,24 +5,22 @@
         height="{{ $height }}"
         style="
             vertical-align: {{ $valign }};
-            background: white;
-            padding: 3px;
-            border-radius: 100%;
-            border: gray 1px solid;
+            padding: 0px;
+            border-radius: 0%;
+            border: gray 0px solid;
             "
     />
 
 @else
 
     <img
-        src="{{ asset('img/logo.png') }}"
+        src="{{ asset('img/page.png') }}"
         height="{{ $height }}"
         style="
             vertical-align: {{ $valign }};
-            background: white;
-            padding: 3px;
-            border-radius: 100%;
-            border: gray 1px solid;
+            padding: 0px;
+            border-radius: 0%;
+            border: gray 0px solid;
             "
     />
 

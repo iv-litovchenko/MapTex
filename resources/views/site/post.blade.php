@@ -26,9 +26,9 @@
                     </div><!--/.nav-collapse -->
                 </div>
             </div>
-            <center>
-                <button class="btn btn-warning" disabled>Оглавление</button>
-            </center>
+{{--            <center>--}}
+{{--                <button class="btn btn-warning" disabled>Оглавление</button>--}}
+{{--            </center>--}}
         </div>
         <div class="col-sm-9">
             <x-post-content-type current-post-id="{{ $post->id }}"/>

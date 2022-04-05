@@ -35,5 +35,6 @@
             </div>
         </div>
         <x-post-content-type parent-post-id="root"/>
+        Карта
     </div>
 @stop
