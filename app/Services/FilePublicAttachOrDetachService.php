@@ -49,6 +49,7 @@ class FilePublicAttachOrDetachService
         string $savePath = '' // '.'
     )
     {
+        $this->stringForDatabaseRow = $defValue;
         $this->formFieldName = $formFieldName;
         $this->savePath = $savePath;
         if ($isMultiple === false) {
@@ -71,6 +72,9 @@ class FilePublicAttachOrDetachService
      */
     public function __toString()
     {
+        if($this->stringForDatabaseRow === null){
+            return '';
+        }
         return $this->stringForDatabaseRow;
     }
 
@@ -93,7 +97,7 @@ class FilePublicAttachOrDetachService
             // Удаление файла
         } elseif (Request::input($this->formFieldName . '_delete')) {
             if (Storage::disk('public')->delete($this->defValue)) {
-                $this->stringForDatabaseRow = '';
+                $this->stringForDatabaseRow = null;
             }
 
             // Возврат старого значения
@@ -140,6 +144,10 @@ class FilePublicAttachOrDetachService
         // TODO Сортировка файлов
         // ...
 
-        $this->stringForDatabaseRow = implode(chr(10), $result);
+        if(count($result) > 0){
+            $this->stringForDatabaseRow = implode(chr(10), $result);
+        } else {
+            $this->stringForDatabaseRow = null;
+        }
     }
 }

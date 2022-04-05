@@ -87,19 +87,22 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Изображения</label>
             <div class="col-sm-10">
-                <div class="row">
-                    @foreach(explode(chr(10),$post->post_images) as $image)
-                        <div class="col-sm-2" style="text-align: center;">
-                            <label class="form-check-label">
-                                <img src="{{ asset('storage/'.$image) }}" class="img-thumbnail" style="height: 100px;">
-                                <br/>
-                                <input class="form-check-input" type="checkbox" name="post_images_delete[]" disabled
-                                       value="{{ $image }}" onclick="handleCommandConfirm(this)">
-                                Удалить изображение?
-                            </label>
-                        </div>
-                    @endforeach
-                </div>
+                @if($post->post_images)
+                    <div class="row">
+                        @foreach(explode(chr(10),$post->post_images) as $image)
+                            <div class="col-sm-2" style="text-align: center;">
+                                <label class="form-check-label">
+                                    <img src="{{ asset('storage/'.$image) }}" class="img-thumbnail"
+                                         style="height: 100px;">
+                                    <br/>
+                                    <input class="form-check-input" type="checkbox" name="post_images_delete[]" disabled
+                                           value="{{ $image }}" onclick="handleCommandConfirm(this)">
+                                    Удалить изображение?
+                                </label>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
                 <input type="file" class="form-control" name="post_images[]" multiple>
             </div>
         </div>
