@@ -32,9 +32,9 @@
         <div class="node node_root context-menu-one btn btn-neutral">
             <div class="node__text">
                 <span class="glyphicon glyphicon glyphicon-plane" aria-hidden="true"></span>
+                Карта
             </div>
         </div>
         <x-post-content-type parent-post-id="root"/>
-        Карта
     </div>
 @stop

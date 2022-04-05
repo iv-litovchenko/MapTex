@@ -3,9 +3,6 @@
     <ul class="{{ $htmlUlClass }}">
         @foreach($rows as $row)
             <li @if($isActive($row->id, $currentPostId)) class="active" @endif>
-                @if($row->post_type != 'page')
-                    @continue
-                @endif
                 <a href="{{ route('site.post', $row->id) }}">
                     {{--                    @auth--}}
                     {{--                        #{{ $row->id }} |--}}
@@ -21,12 +18,14 @@
                     @endif
                     {{ Str::limit($row->name, 72) }}
                 </a>
-                @if($isActive($row->id, $currentPostId))
-                    <x-menu-sidebar
-                        parent-id="{{ $row->id }}"
-                        current-post-id="{{ $currentPostId }}"
-                        html-ul-class="dropdown-menu menu-sidebar-level-next"
-                    />
+                @if($row->post_type == 'page')
+                    @if($isActive($row->id, $currentPostId))
+                        <x-menu-sidebar
+                            parent-id="{{ $row->id }}"
+                            current-post-id="{{ $currentPostId }}"
+                            html-ul-class="dropdown-menu menu-sidebar-level-next"
+                        />
+                    @endif
                 @endif
             </li>
             <!-- <li class="divider"></li> -->
