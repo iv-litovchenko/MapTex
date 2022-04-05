@@ -1,5 +1,5 @@
 <img
-    src="{{ asset('storage/logo.png') }}"
+    src="{{ asset('img/logo.png') }}"
     height="{{ $height }}"
     style="
         vertical-align: {{ $valign }};

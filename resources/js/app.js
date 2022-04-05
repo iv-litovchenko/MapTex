@@ -1,5 +1,7 @@
 global.jquery = global.jQuery = global.$ = require('jquery/dist/jquery');
 require('bootstrap/dist/js/bootstrap'); // Bootstrap
+require('bootbox/dist/bootbox.min');
+require('bootbox/dist/bootbox.locales.min');
 
 const hljs = require('highlight.js/lib/common'); // Highlight.Js
 const tinymce = require('tinymce/tinymce'); // TinyMCE
@@ -66,6 +68,20 @@ $(document).ready(function () {
     $('.backlightText').html(function () {
         return $(this).html().replace(new RegExp(qSearchValue + "(?=[^>]*<)", "ig"), "<span class='search-sot'>$&</span>");
     });
+
+    // Подтвердить удаление (для изображений)?
+    // function handleCommandConfirm(obj) {
+    //     var checkbox = obj; // $(this);
+    //     if (!checkbox.is(':checked')) {
+    //         bootbox.confirm("Are you sure?", function (result) {
+    //             if (result) {
+    //                 // your code
+    //             } else {
+    //                 checkbox.prop('checked', true);
+    //             }
+    //         });
+    //     }
+    // }
 
 });
 

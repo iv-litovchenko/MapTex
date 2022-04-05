@@ -16,6 +16,7 @@
         "laravel-mix": "^6.0.6"
     },
     "dependencies": {
+        "bootbox": "^5.5.2",
         "bootstrap": "^3.4.1",
         "highlight.js": "^11.5.0",
         "jquery": "^1.12.4",

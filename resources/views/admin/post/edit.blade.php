@@ -22,7 +22,8 @@
             <div class="col-sm-3">
                 <select class="form-control" name="post_type">
                     @foreach($postTypes as $postTypeKey => $postTypeName)
-                        <option value="{{ $postTypeKey }}"
+                        <option @if($postTypeKey === 'page-figma') disabled @endif
+                        value="{{ $postTypeKey }}"
                             {{ (collect(old('post_type', $post->post_type))->contains($postTypeKey)) ? 'selected' : '' }}
                         >
                             {{ $postTypeName }}
@@ -50,14 +51,14 @@
                           rows="15">{{ old('description', $post->description) }}</textarea>
             </div>
             <div class="col-sm-2">
-                <b>Изображение (иконка или логотип поста) для ветки</b>
+                <b>Изображение (иконка)</b>
                 @if($post->logo_image)
                     <label class="form-check-label">
-                        <img src="{{ asset('storage/site/post/logo/'.$post->logo_image) }}"
+                        <img src="{{ asset('storage/'.$post->logo_image) }}"
                              class="img-thumbnail">
                         <br/>
-                        <input class="form-check-input" type="checkbox" name="logo_image_delete"
-                               value="{{ $post->logo_image }}">
+                        <input class="form-check-input" type="checkbox" name="logo_image_delete" disabled
+                               value="{{ $post->logo_image }}" onclick="handleCommandConfirm(this)">
                         Удалить изображение?
                     </label>
                 @endif
@@ -65,17 +66,15 @@
                 <div class="form-group">
                     <input type="file" class="form-control" name="logo_image">
                 </div>
-
                 <hr/>
-
                 <b>Изображение зарисовки (figma)</b>
                 @if($post->figma_image)
                     <label class="form-check-label">
-                        <img src="{{ asset('storage/site/post/figma/'.$post->figma_image) }}"
+                        <img src="{{ asset('storage/'.$post->figma_image) }}"
                              class="img-thumbnail">
                         <br/>
-                        <input class="form-check-input" type="checkbox" name="figma_image_delete"
-                               value="{{ $post->figma_image }}">
+                        <input class="form-check-input" type="checkbox" name="figma_image_delete" disabled
+                               value="{{ $post->figma_image }}" onclick="handleCommandConfirm(this)">
                         Удалить изображение?
                     </label>
                 @endif
@@ -89,19 +88,19 @@
             <label class="col-sm-2 col-form-label">Изображения</label>
             <div class="col-sm-10">
                 <div class="row">
-                    @foreach($images as $image)
+                    @foreach(explode(chr(10),$post->post_images) as $image)
                         <div class="col-sm-2" style="text-align: center;">
                             <label class="form-check-label">
                                 <img src="{{ asset('storage/'.$image) }}" class="img-thumbnail" style="height: 100px;">
                                 <br/>
-                                <input class="form-check-input" type="checkbox"
-                                       name="images_delete[]" value="{{ basename($image) }}">
+                                <input class="form-check-input" type="checkbox" name="post_images_delete[]" disabled
+                                       value="{{ $image }}" onclick="handleCommandConfirm(this)">
                                 Удалить изображение?
                             </label>
                         </div>
                     @endforeach
                 </div>
-                <input type="file" class="form-control" name="images[]" multiple>
+                <input type="file" class="form-control" name="post_images[]" multiple>
             </div>
         </div>
         <div class="form-group row">

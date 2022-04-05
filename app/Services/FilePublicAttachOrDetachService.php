@@ -18,6 +18,9 @@ use Illuminate\Support\Facades\Storage;
  */
 class FilePublicAttachOrDetachService
 {
+    /** @var bool */
+    private $isMultiple = false;
+
     /** @var string */
     private $formFieldName = '';
 
@@ -28,52 +31,43 @@ class FilePublicAttachOrDetachService
     private $savePath = '.';
 
     /** @var string */
-    private $stringForDatabaseRow = '';
+    private $stringForDatabaseRow = null;
 
     /**
      * Конструктор
      *
+     * @param bool $isMultiple
      * @param string $formFieldName
      * @param string $defValue
      * @param string $savePath
      * @return false|string|null
      */
     public function __construct(
+        bool $isMultiple = false,
         string $formFieldName,
         string $defValue = null,
-        string $savePath = '.'
-    ) {
+        string $savePath = '' // '.'
+    )
+    {
         $this->formFieldName = $formFieldName;
-        $this->defValue = $defValue;
-        $this->oneFileProcess();
-
-        //        if ($multiple === false) {
-        //
-        //
-        //        } elseif ($multiple === true) {
-        //            $result = [];
-        //            if ($files = Request::file($filed)) {
-        //                foreach ($files as $file) {
-        //                    $savePath = Storage::disk('public')->putFile($path, $file);
-        //                    $result[] = basename($savePath);
-        //                }
-        //            }
-        //            if ($filesDelete = Request::input($filed . '_delete')) {
-        //                foreach ($filesDelete as $fileDelete) {
-        //                    if (Storage::disk('public')->delete($path . '/' . $fileDelete)) {
-        //
-        //                    }
-        //                }
-        //            }
-        //            return $result;
-        //        }
-        //        return false;
+        $this->savePath = $savePath;
+        if ($isMultiple === false) {
+            $this->defValue = $defValue;
+            $this->oneFileProcess();
+        } elseif ($isMultiple === true) {
+            if(!empty($defValue)){
+                $this->defValue = explode(chr(10), $defValue);
+            } else{
+                $this->defValue = $defValue;
+            }
+            $this->multipleFilesProcess();
+        }
     }
 
     /**
      * Возвращаем строку для записи в БД
      *
-     * @return string
+     * @return string|null
      */
     public function __toString()
     {
@@ -94,35 +88,58 @@ class FilePublicAttachOrDetachService
         // Загрузка 1 файла
         if ($file = Request::file($this->formFieldName)) {
             $savePath = Storage::disk('public')->putFile($this->savePath, $file);
-            $this->stringForDatabaseRow = basename($savePath);
+            $this->stringForDatabaseRow = $savePath;
 
             // Удаление файла
         } elseif (Request::input($this->formFieldName . '_delete')) {
             if (Storage::disk('public')->delete($this->defValue)) {
-                $this->stringForDatabaseRow = null;
+                $this->stringForDatabaseRow = '';
             }
-        }
 
-        $this->stringForDatabaseRow = $this->defValue;
+            // Возврат старого значения
+        } else {
+            $this->stringForDatabaseRow = $this->defValue;
+        }
     }
 
     /**
-     * Чтение с публичного диска
+     * Загрузка (удаление по галочке) нескольких файлов файла
      *
-     * @param string $path
-     * @return array
+     * Сортировка
+     * Замена
+     * Удаление
+     *
+     * @return string|null
      */
-    public function files($path)
+    private function multipleFilesProcess()
     {
-        //        if ($files = Storage::disk('public')->files($path)) {
-        //            $sortFiles = [];
-        //            foreach ($files as $file) {
-        //                $time = Storage::disk('public')->lastModified($file);
-        //                $sortFiles[$time] = $file;
-        //            }
-        //            #dd($files);
-        //            return $files;
-        //        }
-        //        return [];
+        $result = [];
+        if (is_array($this->defValue)) {
+            foreach ($this->defValue as $value) {
+                $result[$value] = $value;
+            }
+        }
+
+        // Загрузка файлов
+        if ($files = Request::file($this->formFieldName)) {
+            foreach ($files as $file) {
+                $savePath = Storage::disk('public')->putFile($this->savePath, $file);
+                $result[$savePath] = $savePath;
+            }
+        }
+
+        // TODO Удаление файлов
+        if ($filesDelete = Request::input($this->formFieldName . '_delete')) {
+            foreach ($filesDelete as $fileDelete) {
+                if (Storage::disk('public')->delete($this->savePath . '/' . $fileDelete)) {
+
+                }
+            }
+        }
+
+        // TODO Сортировка файлов
+        // ...
+
+        $this->stringForDatabaseRow = implode(chr(10), $result);
     }
 }

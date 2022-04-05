@@ -88,12 +88,10 @@ class PostController extends BaseController
      */
     public function edit(Post $post)
     {
-        $images = Storage::disk('public')->allFiles('site/post/' . $post->id);
         $postsTreeArray = FrontendUility::buildTreeArray();
         $postTypes = Post::POST_TYPE;
         return view('admin.post.edit', compact(
             'post',
-            'images',
             'postsTreeArray',
             'postTypes'
         ));
@@ -117,11 +115,14 @@ class PostController extends BaseController
         // Логотип: загрузка (отсоединение) 1 файла
         // Зарисовка: загрузка (отсоединение) 1 файла
         // Изображения: загрузка нескольких картинок (в базу не пишем)
-        $post->logo_image = new FilePublicAttachOrDetachService('logo_image', $post->logo_image, 'site/post/logo');
-        #$post->figma_image = $this->serviceFilePublic->attachOrDetach(false, 'figma_image', 'site/post/figma',
-        #    $post->figma_image);
+        $post->logo_image = new FilePublicAttachOrDetachService(false, 'logo_image', $post->logo_image,
+            'site/post/logo');
 
-        #$post->post_images = $this->serviceFilePublic->attachOrDetach(true, 'images', 'site/post/' . $post->id);
+        $post->figma_image = new FilePublicAttachOrDetachService(false, 'figma_image', $post->figma_image,
+            'site/post/figma');
+
+        $post->post_images = new FilePublicAttachOrDetachService(true, 'post_images', $post->post_images,
+            'site/post/' . $post->id);
 
         if ($post->save()) {
             $request->session()->flash('flash_messages_success', 'Пост [' . $post->id . '] успешно обновлен');

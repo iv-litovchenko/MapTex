@@ -1,6 +1,6 @@
 @import "bootstrap/dist/css/bootstrap.css";
 @import "highlight.js/styles/default.css";
-@import "../libraries/mindmap/dist/mindmap.css";
+@import "mindmap.css";
 
 html, body {
     background: white;
@@ -79,19 +79,6 @@ html, body {
     .sidebar-nav .menu-sidebar-level-next a {
         padding: 3px 10px;
     }
-}
-
-.mindmap {
-    overflow-x: auto;
-    background: #dcdc7e;
-    padding: 25px;
-}
-
-.mindmap .children__item {
-}
-
-.mindmap a {
-    color: #000;
 }
 
 .search-sot {
