@@ -18,14 +18,12 @@
                     @endif
                     {{ Str::limit($row->name, 72) }}
                 </a>
-                @if($row->post_type == 'page')
-                    @if($isActive($row->id, $currentPostId))
-                        <x-menu-sidebar
-                            parent-id="{{ $row->id }}"
-                            current-post-id="{{ $currentPostId }}"
-                            html-ul-class="dropdown-menu menu-sidebar-level-next"
-                        />
-                    @endif
+                @if($isActive($row->id, $currentPostId))
+                    <x-menu-sidebar
+                        parent-id="{{ $row->id }}"
+                        current-post-id="{{ $currentPostId }}"
+                        html-ul-class="dropdown-menu menu-sidebar-level-next"
+                    />
                 @endif
             </li>
             <!-- <li class="divider"></li> -->
