@@ -51,8 +51,8 @@
     <div class="page-header">
         @if (!Route::is('site.home') && !Route::is('site.post'))
             <h1>@yield('LayoutSectionPageHeader')</h1>
+            @yield('LayoutSectionPageBreadcrumb')
         @endif
-        @yield('LayoutSectionPageBreadcrumb')
         @if(Route::is('site.home') || Route::is('site.post') || Route::is('site.search'))
             @include('layouts.partials.form-search')
         @endif

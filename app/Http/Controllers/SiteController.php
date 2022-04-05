@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use App\Http\Controllers\BaseController;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Note;
 use App\Models\Post;
 use App\Models\User;
@@ -62,7 +63,7 @@ class SiteController extends BaseController
      */
     public function book()
     {
-        $images = $this->serviceFilePublic->files('site/book');
+        $images = Storage::disk('public')->files('site/book');
         return view('site.book', compact('images'));
     }
 
