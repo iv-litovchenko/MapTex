@@ -15,9 +15,7 @@
                         </a>
                     </div>
                 </div>
-                @if($subPost->post_type == 'page')
-                    <x-post-content-type parent-post-id="{{ $subPost->id }}"/>
-                @endif
+                <x-post-content-type parent-post-id="{{ $subPost->id }}"/>
             </li>
         @endforeach
     </ol>
