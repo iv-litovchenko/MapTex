@@ -1,6 +1,6 @@
 @if($post->figma_image)
 
-{{--    Изображение фигма--}}
+    {{-- Изображение фигма --}}
     <img src="{{ asset('storage/'.$post->figma_image) }}" class="img-thumbnail" style="width: 100%;">
     <hr class="my-12">
 
@@ -8,7 +8,8 @@
 
 @if($post->description)
 
-{{--    Контент--}}
+    {{-- Контент --}}
     {!! clean($post->description, 'default') !!}
+    <hr class="my-12">
 
-@endif;
+@endif
