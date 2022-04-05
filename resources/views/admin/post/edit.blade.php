@@ -97,7 +97,7 @@
                                     <br/>
                                     <input class="form-check-input" type="checkbox" name="post_images_delete[]" disabled
                                            value="{{ $image }}" onclick="handleCommandConfirm(this)">
-                                    Удалить изображение?
+                                    Удалить изображение {{ $loop->iteration }}?
                                 </label>
                             </div>
                         @endforeach

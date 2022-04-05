@@ -8,7 +8,7 @@
                     {{--                        #{{ $row->id }} |--}}
                     {{--                    @endauth--}}
                     @component('components.icon')
-                        @slot('src', asset('storage/site/post/logo/'.$row->logo_image))
+                        @slot('asset', $row->logo_image)
                         @slot('height', 20)
                         @slot('valign', 'top')
                     @endcomponent

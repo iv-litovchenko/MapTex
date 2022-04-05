@@ -11,7 +11,7 @@
                     <div class="caption">
                         <h4>
                             @component('components.icon')
-                                @slot('src', asset('storage/site/post/logo/'.$subPost->logo_image))
+                                @slot('asset', $subPost->logo_image)
                                 @slot('height', '20')
                                 @slot('valign', 'top')
                             @endcomponent
