@@ -9,7 +9,6 @@ use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
-use App\Services\PostService;
 
 abstract class BaseController extends Controller
 {
@@ -18,7 +17,7 @@ abstract class BaseController extends Controller
 
     public function __construct()
     {
-        $this->servicePost = new PostService();
+        // $this->servicePost = new PostService();
         // $this->serviceFilePublic = new FilePublicService();
     }
 }
