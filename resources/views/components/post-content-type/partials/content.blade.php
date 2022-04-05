@@ -1,4 +1,4 @@
-@if($post->fiagma_image)
+@if($post->figma_image)
 
     <img src="{{ asset('storage/'.$post->figma_image) }}" class="img-thumbnail" style="width: 100%;">
     <hr class="my-12">
