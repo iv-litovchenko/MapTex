@@ -76,3 +76,25 @@
 Как быть с тип раздел (он не отображает всех дочек подстраниц страниц?)
 МиндМап - выделение зеленым, если это миндмап...
 МиндМап - веточка в лево (на примере английского языка)?
+
+-- TEMP
+
+
+		if ($dirs = Storage::disk('public')->directories('site/post')) {
+			foreach($dirs as $dir){
+				if($dir == 'site/post/figma') continue;
+				if($dir == 'site/post/logo') continue;
+				
+				$id =  basename($dir);
+				$files = Storage::disk('public')->files($dir);
+				$ar = [];
+				foreach($files as $file){
+					#echo $file.'<br />';
+					$ar[] = $file;
+				}
+				echo "\nUPDATE posts SET post_images='".implode(chr(10),$ar)."' WHERE id=".$id.";";
+				//$dirs = Storage::disk('public')->all('site/post/'.$dir)
+				//print 'UPDATE posts set post_images=CONCAT(post_images, \'\n\', \''.$file.'\');<br />';
+			}
+		}
+		exit();
