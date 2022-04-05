@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\FilePublicAttachOrDetachService;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use App\Http\Controllers\BaseController;
@@ -97,7 +98,8 @@ class SiteController extends BaseController
         if (auth()->check()) {
             $note->user_id = auth()->user()->id;
         }
-        $note->note_type = Note::NOTE_TYPE_PIC;
+
+        $note->note_type = Note::NOTE_TYPE_DEFAULT;
         $note->bodytext = $request->input('bodytext');
 
         if ($note->save()) {
@@ -148,9 +150,15 @@ class SiteController extends BaseController
         if (auth()->check()) {
             $note->user_id = auth()->user()->id;
         }
+
         $note->note_type = Note::NOTE_TYPE_PIC;
         $note->bodytext = $request->input('bodytext');
-        $note->upload_image = $this->serviceFilePublic->attachOrDetach(false, 'upload_image', 'site/pic');
+        $note->upload_image = new FilePublicAttachOrDetachService(
+            false,
+            'upload_image',
+            $note->upload_image,
+            'site/pic'
+        );
 
         if ($note->save()) {
             $request->session()->flash('flash_messages_success',
