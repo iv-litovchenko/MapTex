@@ -7,7 +7,7 @@
                     <div class="node__text context-menu-one">
                         <a href="{{ route('site.post', $subPost->id) }}" target="_blank">
                             @component('components.icon')
-                                @slot('asset', $subPost->logo_image)
+                                @slot('data', $subPost)
                                 @slot('height', 22)
                                 @slot('valign', 'top')
                             @endcomponent

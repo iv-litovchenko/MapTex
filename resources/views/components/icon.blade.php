@@ -1,7 +1,7 @@
-@if($asset)
+@if($data->logo_image)
 
     <img
-        src="{{ asset('storage/'.$asset) }}"
+        src="{{ asset('storage/'.$data->logo_images) }}"
         height="{{ $height }}"
         style="
             vertical-align: {{ $valign }};
@@ -14,7 +14,11 @@
 @else
 
     <img
+        @if($data->post_type == 'directory')
+        src="{{ asset('img/folder.png') }}"
+        @else
         src="{{ asset('img/page.png') }}"
+        @endif
         height="{{ $height }}"
         style="
             vertical-align: {{ $valign }};

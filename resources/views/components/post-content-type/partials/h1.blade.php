@@ -1,6 +1,6 @@
 <h1>
     @component('components.icon')
-        @slot('asset', $post->logo_image)
+        @slot('data', $post)
         @slot('height', 40)
         @slot('valign', 'top')
     @endcomponent
