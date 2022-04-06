@@ -1,7 +1,7 @@
 @if($data->logo_image)
 
     <img
-        src="{{ asset('storage/'.$data->logo_images) }}"
+        src="{{ asset('storage/'.$data->logo_image) }}"
         height="{{ $height }}"
         style="
             vertical-align: {{ $valign }};
