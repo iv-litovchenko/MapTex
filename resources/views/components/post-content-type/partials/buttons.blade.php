@@ -12,12 +12,6 @@
         </a>
     </div>
     <div class="btn-group" role="group">
-        <a href="{{ route('admin.post.edit-sorting', $post->id) }}"
-           class="btn btn-success btn-lg" target="_blank">
-            Сортировка
-        </a>
-    </div>
-    <div class="btn-group" role="group">
         <a href="{{ route('admin.post.delete', $post->id) }}"
            class="btn btn-danger btn-lg">
             Удалить

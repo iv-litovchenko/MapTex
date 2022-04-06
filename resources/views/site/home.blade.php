@@ -37,4 +37,12 @@
         </div>
         <x-post-content-type parent-post-id="root"/>
     </div>
+{{--    <center>--}}
+{{--        <div class="btn-group" role="group">--}}
+{{--            <a href="{{ route('admin.post.edit-sorting', 0) }}"--}}
+{{--               class="btn btn-default btn-lg" target="_blank">--}}
+{{--                Изменить сортировку дочерних элементов--}}
+{{--            </a>--}}
+{{--        </div>--}}
+{{--    </center>--}}
 @stop

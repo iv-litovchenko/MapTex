@@ -26,17 +26,25 @@
                     </div><!--/.nav-collapse -->
                 </div>
             </div>
-{{--            <center>--}}
-{{--                <button class="btn btn-warning" disabled>Оглавление</button>--}}
-{{--            </center>--}}
+            {{--            <center>--}}
+            {{--                <button class="btn btn-warning" disabled>Оглавление</button>--}}
+            {{--            </center>--}}
         </div>
         <div class="col-sm-9">
             <x-post-content-type current-post-id="{{ $post->id }}"/>
-{{--            <center>--}}
-{{--                <button class="btn btn-warning" disabled>Обратно</button>--}}
-{{--                <button class="btn btn-warning" disabled>Редактировать сортировку</button>--}}
-{{--                <button class="btn btn-warning" disabled>Далее</button>--}}
-{{--            </center>--}}
+            {{--            <center>--}}
+            {{--                <button class="btn btn-warning" disabled>Обратно</button>--}}
+            {{--                <button class="btn btn-warning" disabled>Редактировать сортировку</button>--}}
+            {{--                <button class="btn btn-warning" disabled>Далее</button>--}}
+            {{--            </center>--}}
+            <center>
+                <div class="btn-group" role="group">
+                    <a href="{{ route('admin.post.edit-sorting', $post->id) }}"
+                       class="btn btn-default btn-lg" target="_blank">
+                        Изменить сортировку
+                    </a>
+                </div>
+            </center>
         </div>
     </div>
 
