@@ -12,7 +12,8 @@
             </a>
         </h2>
         <div class="backlightText">
-            {!! clean($post->description, 'default') !!}
+            @include('components.post-content-type.partials.content')
+            @include('components.post-content-type.partials.images')
         </div>
         <hr/>
     @endforeach
