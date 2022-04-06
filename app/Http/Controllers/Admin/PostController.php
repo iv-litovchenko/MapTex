@@ -230,6 +230,38 @@ class PostController extends BaseController
         }
 
         $request->session()->flash('flash_messages_error', 'Ошибка обновления поста [' . $post->id . ']');
-        return redirect()->route('admin.post.edit', $post->id)->withInput();
+        return redirect()->back()->withInput();
+    }
+
+    /**
+     * Редактировать сортировку дочек (форма)
+     *
+     * @param \App\Models\Post $post
+     * @return \Illuminate\View\View
+     */
+    public function editSorting(Post $post)
+    {
+        $posts = Post::where('parent_id', '=', $post->id)->orderBy('sorting')->get();
+        return view('admin.post.edit-sorting', compact('posts', 'post'));
+    }
+
+    /**
+     * Редактировать сортировку дочек (процесс)
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Post $post
+     * @return \Illuminate\Routing\Redirector
+     */
+    public function updateSorting(Request $request, Post $post)
+    {
+        if (is_array($request->input('sort_list'))) {
+            foreach ($request->input('sort_list') as $postId => $postNewSort) {
+                $modelUpdate = Post::find($postId);
+                $modelUpdate->sorting = intval($postNewSort);
+                $modelUpdate->save();
+            }
+        }
+        $request->session()->flash('flash_messages_success', 'Сортировка для [' . $post->id . '] успешно обновлена');
+        return redirect()->back();
     }
 }

@@ -16,7 +16,7 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Родитель</label>
             <div class="col-sm-10">
-                @include('admin.post.partials.html-select-parent-id', ['default'=>$defaultParentId])
+                @include('admin.post.partials.html-select-parent-id', ['default'=>$defaultParentId, 'changeAllow'=>false])
             </div>
         </div>
         <button type="submit" name="redirect" class="btn btn-primary" value="none">Создать</button>

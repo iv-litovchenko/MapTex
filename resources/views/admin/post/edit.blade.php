@@ -41,7 +41,7 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Родитель</label>
             <div class="col-sm-7">
-                @include('admin.post.partials.html-select-parent-id',['default'=>$post->parent_id])
+                @include('admin.post.partials.html-select-parent-id',['default'=>$post->parent_id, 'changeAllow'=>false])
             </div>
             <div class="col-sm-3">
                 <a href="{{ route('admin.post.edit-parent', $post->id) }}" target="_blank" class="btn btn-primary form-control">Сменить родителя</a>
