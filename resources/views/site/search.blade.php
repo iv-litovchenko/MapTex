@@ -7,12 +7,12 @@
 @section('LayoutSectionPageContent')
     @foreach($posts as $post)
         <h4>
-            <a href="{{ route('site.post', $post->id) }}" style="font-size: 32px;">
+            <a href="{{ route('site.post', $post->id) }}">
                 {{ $post->name }}
             </a>
         </h4>
         <div class="jumbotron backlightText">
-            {!! nl2br(strip_tags($post->description)) !!}
+            {!! clean($post->description, 'default') !!}
         </div>
         <hr/>
     @endforeach
