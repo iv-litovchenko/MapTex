@@ -13,7 +13,7 @@ class FrontendUility
      */
     public static function buildTreeArray()
     {
-        $postsList = Post::orderBy('sorting', 'DESC')->get()->toTree();
+        $postsList = Post::orderBy('sorting', 'asc')->get()->toTree();
         $arTree = [];
         $traverse = function ($categories, $prefix = ' - ') use (&$traverse, &$arTree) {
             foreach ($categories as $category) {
