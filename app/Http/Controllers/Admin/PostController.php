@@ -17,14 +17,20 @@ use App\Utils\FrontendUility;
 /**
  * Контроллер - управление постами
  *
- * GET|HEAD     |admin/post                 |admin.post.index
- * GET|HEAD     |admin/post/{post}          |admin.post.show
- * GET|HEAD     |admin/post/create          |admin.post.create
- * POST         |admin/post                 |admin.post.store
- * GET|HEAD     |admin/post/{post}/edit     |admin.post.edit
- * PUT|PATCH    |admin/post/{post}          |admin.post.update
- * DELETE       |admin/post/{post}          |admin.post.destroy
- * GET          |admin/post/{post}/delete   |admin.post.delete
+ * GET|HEAD     |admin/post                        |admin.post.index
+ * GET|HEAD     |admin/post/{post}                 |admin.post.show
+ * GET|HEAD     |admin/post/create                 |admin.post.create
+ * POST         |admin/post                        |admin.post.store
+ * GET|HEAD     |admin/post/{post}/edit            |admin.post.edit
+ * PUT|PATCH    |admin/post/{post}                 |admin.post.update
+ * DELETE       |admin/post/{post}                 |admin.post.destroy
+ * GET          |admin/post/{post}/delete          |admin.post.delete
+ *
+ * GET|HEAD     |admin/post/{post}/edit/parent     |admin.post.editParent
+ * PUT|PATCH    |admin/post/{post}/edit/parent     |admin.post.updateParent
+ *
+ * GET|HEAD     |admin/post/{post}/edit/sorting    |admin.post.editSorting
+ * PUT|PATCH    |admin/post/{post}/edit/sorting    |admin.post.updateSorting
  *
  */
 class PostController extends BaseController
@@ -126,7 +132,7 @@ class PostController extends BaseController
             'site/post/figma'
         );
 
-        // Изображения: загрузка нескольких картинок (в базу не пишем)
+        // Изображения: загрузка нескольких картинок
         $post->post_images = $this->fileAttachDetachService->manyFiles(
             $post->post_images,
             'post_images',
@@ -187,5 +193,43 @@ class PostController extends BaseController
         }
         $request->session()->flash('flash_messages_error', 'Ошибка удаления поста [' . $post->id . ']');
         return redirect()->route('admin.post.index');
+    }
+
+    /**
+     * Редактировать родителя (форма)
+     *
+     * @param \App\Models\Post $post
+     * @return \Illuminate\View\View
+     */
+    public function editParent(Post $post)
+    {
+        $postsTreeArray = FrontendUility::buildTreeArray();
+        return view('admin.post.edit-parent', compact('post', 'postsTreeArray'));
+    }
+
+    /**
+     * Редактировать родителя (процесс)
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Post $post
+     * @return \Illuminate\Routing\Redirector
+     */
+    public function updateParent(Request $request, Post $post)
+    {
+        // TODO Валидируем форму (она не пускает дальше)
+        $request->validate(
+            ['parent_id' => 'notIn:' . $post->id],
+            ['parent_id.*' => 'Запись не может быть родителем сама себе!']
+        );
+
+        $inputParentId = $request->input('parent_id');
+        $post->parent_id = $inputParentId > 0 ? $inputParentId : null;
+        if ($post->save()) {
+            $request->session()->flash('flash_messages_success', 'Пост [' . $post->id . '] успешно обновлен');
+            return redirect()->back();
+        }
+
+        $request->session()->flash('flash_messages_error', 'Ошибка обновления поста [' . $post->id . ']');
+        return redirect()->route('admin.post.edit', $post->id)->withInput();
     }
 }

@@ -93,9 +93,11 @@ class FileAttachDetachService
         }
 
         // Удаление 1 файла (удаление идет по проверке!)
-        if (intval($this->requst::input($formFieldName . '.delete')) === 1) {
-            if ($this->storage::disk($diskName)->delete($defaultValue)) {
-                return null;
+        if (intval($this->requst::input('files_delete_confirm')) === 1) {
+            if (intval($this->requst::input($formFieldName . '.delete')) === 1) {
+                if ($this->storage::disk($diskName)->delete($defaultValue)) {
+                    return null;
+                }
             }
         }
 
@@ -118,7 +120,8 @@ class FileAttachDetachService
      * @param string $diskName
      * @return string|null
      */
-    public function manyFiles(
+    public
+    function manyFiles(
         string|null $defaultValue = null,
         string $formFieldName = 'images',
         string $savePath = 'site/dir',
@@ -148,11 +151,13 @@ class FileAttachDetachService
         }
 
         // Удаление файлов (удаление идет по проверке!)
-        if ($filesDelete = $this->requst::input($formFieldName . '.delete')) {
-            foreach ($filesDelete as $md5FileDelete => $valueConfirm) {
-                if (key_exists($md5FileDelete, $result) && intval($valueConfirm) === 1) {
-                    if ($this->storage::disk($diskName)->delete($result[$md5FileDelete])) {
-                        unset($result[$md5FileDelete]);
+        if (intval($this->requst::input('files_delete_confirm')) === 1) {
+            if ($filesDelete = $this->requst::input($formFieldName . '.delete')) {
+                foreach ($filesDelete as $md5FileDelete => $valueConfirm) {
+                    if (key_exists($md5FileDelete, $result) && intval($valueConfirm) === 1) {
+                        if ($this->storage::disk($diskName)->delete($result[$md5FileDelete])) {
+                            unset($result[$md5FileDelete]);
+                        }
                     }
                 }
             }

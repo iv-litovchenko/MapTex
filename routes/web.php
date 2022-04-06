@@ -33,10 +33,16 @@ Route::middleware([Authenticate::class, IsMe::class])
         Route::get('tvpositon', \App\Http\Controllers\Admin\TvSignalController::class)->name('tvsignal');
 
         Route::resource('post', PostController::class);
-        Route::get('post/{post}/delete', [PostController::class,'delete'])->name('post.delete');
+        Route::get('post/{post}/delete', [PostController::class, 'delete'])->name('post.delete');
+
+        Route::get('post/{post}/edit/parent', [PostController::class, 'editParent'])->name('post.edit-parent');
+        Route::put('post/{post}/edit/parent', [PostController::class, 'updateParent'])->name('post.update-parent');
+
+        Route::get('post/{post}/edit/sorting', [PostController::class, 'editSorting'])->name('post.edit-sorting');
+        Route::put('post/{post}/edit/sorting', [PostController::class, 'updateSorting'])->name('post.update-sorting');
 
         Route::resource('user', UserController::class);
-        Route::get('user/{user}/delete', [UserController::class,'delete'])->name('user.delete');
+        Route::get('user/{user}/delete', [UserController::class, 'delete'])->name('user.delete');
     });
 
 Auth::routes();

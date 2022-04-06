@@ -44,7 +44,7 @@
                 @include('admin.post.partials.html-select-parent-id',['default'=>$post->parent_id])
             </div>
             <div class="col-sm-3">
-                <a href="" target="_blank" class="btn btn-primary form-control">Сменить родителя</a>
+                <a href="{{ route('admin.post.edit-parent', $post->id) }}" target="_blank" class="btn btn-primary form-control">Сменить родителя</a>
             </div>
         </div>
         <div class="form-group row">
@@ -100,8 +100,10 @@
                                     <img src="{{ asset('storage/'.$image) }}" class="img-thumbnail"
                                          style="height: 100px;">
                                     <br/>
-                                    <input class="form-control" name="post_images[name][{{ md5($image) }}]" disabled value="-- NAME --">
-                                    <input class="form-control" name="post_images[sorting][{{ md5($image) }}]" disabled value="{{ $loop->iteration }}">
+                                    <input class="form-control" name="post_images[name][{{ md5($image) }}]" disabled
+                                           value="-- NAME --">
+                                    <input class="form-control" name="post_images[sorting][{{ md5($image) }}]" disabled
+                                           value="{{ $loop->iteration }}">
                                     <input class="form-check-input handleCommandConfirm"
                                            type="checkbox"
                                            name="post_images[delete][{{ md5($image) }}]"
@@ -124,6 +126,14 @@
                     <input class="form-check-input" type="checkbox" disabled name="branch_stop_flag" value="1"
                         {{ old('branch_stop_flag', $post->branch_stop_flag) == 1 ? 'checked' : '' }}>
                     Продолжить ветку на отдельной странице?
+                </label>
+                <br/>
+                <label class="form-check-label">
+                    Подтвердить удаление файлов (изображений)?
+                </label>
+                <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="files_delete_confirm" value="0" checked> Нет /
+                    <input class="form-check-input" type="radio" name="files_delete_confirm" value="1"> Да
                 </label>
             </div>
         </div>
