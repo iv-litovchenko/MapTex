@@ -29,7 +29,8 @@ class SiteController extends BaseController
      */
     public function home()
     {
-        return view('site.home');
+        $posts = Post::whereParentId(null)->orderBy('sorting')->get();
+        return view('site.home',compact('posts'));
     }
 
     /**
