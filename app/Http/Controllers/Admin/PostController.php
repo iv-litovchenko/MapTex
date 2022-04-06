@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\AdminPostStoreRequest;
 use App\Http\Requests\AdminPostUpdateRequest;
 use App\Models\Post;
-use App\Services\FilePublicAttachOrDetachService;
+use App\Services\FileAttachDetachService;
 use App\Utils\FrontendUility;
 
 /**
@@ -113,16 +113,25 @@ class PostController extends BaseController
         $post->sorting = intval($request->input('sorting'));
 
         // Логотип: загрузка (отсоединение) 1 файла
+        $post->logo_image = $this->fileAttachDetachService->oneFile(
+            $post->logo_image,
+            'logo_image',
+            'site/post/logo'
+        );
+
         // Зарисовка: загрузка (отсоединение) 1 файла
+        $post->figma_image = $this->fileAttachDetachService->oneFile(
+            $post->figma_image,
+            'figma_image',
+            'site/post/figma'
+        );
+
         // Изображения: загрузка нескольких картинок (в базу не пишем)
-        $post->logo_image = new FilePublicAttachOrDetachService(false, 'logo_image', $post->logo_image,
-            'site/post/logo');
-
-        $post->figma_image = new FilePublicAttachOrDetachService(false, 'figma_image', $post->figma_image,
-            'site/post/figma');
-
-        $post->post_images = new FilePublicAttachOrDetachService(true, 'post_images', $post->post_images,
-            'site/post/' . $post->id);
+        $post->post_images = $this->fileAttachDetachService->manyFiles(
+            $post->post_images,
+            'post_images',
+            'site/post/' . $post->id
+        );
 
         if ($post->save()) {
             $request->session()->flash('flash_messages_success', 'Пост [' . $post->id . '] успешно обновлен');

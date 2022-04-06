@@ -58,7 +58,7 @@
             <form action="{{ route('site.pic-store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                    <input type="file" class="form-control" name="upload_image">
+                    <input type="file" class="form-control" name="upload_image[upload]">
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" name="bodytext"

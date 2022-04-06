@@ -29,8 +29,8 @@ class AdminPostUpdateRequest extends FormRequest
             'name' => 'required|min:3|max:255',
             'parent_id' => 'nullable:posts,id',
             'sorting' => 'integer',
-            'logo_image' => 'image',
-            'images.*' => 'image',
+            'logo_image.upload' => 'image',
+            'images.upload.*' => 'image',
             // 'tags_ids' => 'nullable|array',
             // 'tags_ids.*' => 'nullable|integer|exists:posts.id'
         ];
@@ -45,8 +45,8 @@ class AdminPostUpdateRequest extends FormRequest
     {
         return [
             'name.*' => 'Название заполнено не правильно',
-            'logo_image.*' => 'Логотип должен быть картинкой',
-            'images.*' => 'К загрузке доступны только изображения',
+            'logo_image.upload.*' => 'Логотип должен быть картинкой',
+            'images.upload.*' => 'К загрузке доступны только изображения',
         ];
     }
 }

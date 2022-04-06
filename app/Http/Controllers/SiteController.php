@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\FilePublicAttachOrDetachService;
+use App\Services\FileAttachDetachService;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use App\Http\Controllers\BaseController;
@@ -139,11 +139,11 @@ class SiteController extends BaseController
         $request->validate(
             [
                 // 'bodytext' => 'required|min:5',
-                'upload_image' => 'required|image'
+                'upload_image.upload' => 'required|image'
             ],
             [
                 // 'bodytext.*' => 'Поле с комментарием обязательно к заполнению и должно что-то содержать!',
-                'upload_image.*' => 'Необходимо загрузить картинку!'
+                'upload_image.upload.*' => 'Необходимо загрузить картинку!'
             ]
         );
 
@@ -154,10 +154,9 @@ class SiteController extends BaseController
 
         $note->note_type = Note::NOTE_TYPE_PIC;
         $note->bodytext = $request->input('bodytext');
-        $note->upload_image = new FilePublicAttachOrDetachService(
-            false,
-            'upload_image',
+        $note->upload_image = $this->fileAttachDetachService->oneFile(
             $note->upload_image,
+            'upload_image',
             'site/pic'
         );
 

@@ -40,8 +40,11 @@
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Родитель</label>
-            <div class="col-sm-10">
+            <div class="col-sm-7">
                 @include('admin.post.partials.html-select-parent-id',['default'=>$post->parent_id])
+            </div>
+            <div class="col-sm-3">
+                <a href="" target="_blank" class="btn btn-primary form-control">Сменить родителя</a>
             </div>
         </div>
         <div class="form-group row">
@@ -57,14 +60,15 @@
                         <img src="{{ asset('storage/'.$post->logo_image) }}"
                              class="img-thumbnail">
                         <br/>
-                        <input class="form-check-input" type="checkbox" name="logo_image_delete" disabled
-                               value="{{ $post->logo_image }}" onclick="handleCommandConfirm(this)">
+                        <input class="form-check-input handleCommandConfirm"
+                               type="checkbox" name="logo_image[delete]" value="1"
+                        >
                         Удалить изображение?
                     </label>
                 @endif
                 <br/>
                 <div class="form-group">
-                    <input type="file" class="form-control" name="logo_image">
+                    <input type="file" class="form-control" name="logo_image[upload]">
                 </div>
                 <hr/>
                 <b>Изображение зарисовки (figma)</b>
@@ -73,14 +77,15 @@
                         <img src="{{ asset('storage/'.$post->figma_image) }}"
                              class="img-thumbnail">
                         <br/>
-                        <input class="form-check-input" type="checkbox" name="figma_image_delete" disabled
-                               value="{{ $post->figma_image }}" onclick="handleCommandConfirm(this)">
+                        <input class="form-check-input handleCommandConfirm"
+                               type="checkbox" name="figma_image[delete]" value="1"
+                        >
                         Удалить изображение?
                     </label>
                 @endif
                 <br/>
                 <div class="form-group">
-                    <input type="file" class="form-control" name="figma_image">
+                    <input type="file" class="form-control" name="figma_image[upload]">
                 </div>
             </div>
         </div>
@@ -95,15 +100,20 @@
                                     <img src="{{ asset('storage/'.$image) }}" class="img-thumbnail"
                                          style="height: 100px;">
                                     <br/>
-                                    <input class="form-check-input" type="checkbox" name="post_images_delete[]" disabled
-                                           value="{{ $image }}" onclick="handleCommandConfirm(this)">
+                                    <input class="form-control" name="post_images[name][{{ md5($image) }}]" disabled value="-- NAME --">
+                                    <input class="form-control" name="post_images[sorting][{{ md5($image) }}]" disabled value="{{ $loop->iteration }}">
+                                    <input class="form-check-input handleCommandConfirm"
+                                           type="checkbox"
+                                           name="post_images[delete][{{ md5($image) }}]"
+                                           value="1"
+                                    >
                                     Удалить изображение {{ $loop->iteration }}?
                                 </label>
                             </div>
                         @endforeach
                     </div>
                 @endif
-                <input type="file" class="form-control" name="post_images[]" multiple>
+                <input type="file" class="form-control" name="post_images[upload][]" multiple>
             </div>
         </div>
         <div class="form-group row">
