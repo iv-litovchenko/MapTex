@@ -21,5 +21,6 @@ Menu::make('menu.header.left', function ($menu) {
     $top->add('Разные картинки', ['route'  => 'site.pic']);
 
     $menu->add('Зарисовки', ['route'  => 'site.figma']);
+    $menu->add('PHP-тест', 'phptest');
     $menu->add('Книжки', ['route'  => 'site.book']);
 });

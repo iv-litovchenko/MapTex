@@ -1,13 +1,13 @@
 <?php
 
-require_once ('Composition.php');
-require_once ('Aggregation.php');
-require_once ('Ass.php');
-require_once ('DepInj.php');
-require_once ('TestInterface.php');
-require_once ('TestTrait.php');
-require_once ('A.php');
-require_once ('B.php');
+require_once('Composition.php');
+require_once('Aggregation.php');
+require_once('Ass.php');
+require_once('DepInj.php');
+require_once('TestInterface.php');
+require_once('TestTrait.php');
+require_once('A.php');
+require_once('B.php');
 
 // Композиция
 $test1 = new \Test\Composition();
@@ -30,3 +30,13 @@ echo '<br />';
 $object = new \Test\B();
 $test4 = new \Test\DepInj($object);
 echo $test4->run('Test Dep Inj');
+
+class Test {
+    protected const AAA = 1;
+
+}
+$obj = new Test();
+echo Test::AAA;
+
+// Вывод UML-диаграммы
+echo '<br /><img src="/phptest/uml.png" width="50%">';
