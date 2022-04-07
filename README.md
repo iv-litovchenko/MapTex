@@ -7,14 +7,15 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Changelog http://maptex.ru/
+## Изучаем Laravel http://maptex.ru/
 
 - Composer (установка расширений для Laravel)
 - NPM (Note.js) - сборка клиентской части на основе Mix
 - Маршрутизация и контроллеры
 - Модели и миграции
 - Загрузка и извлечение файлов Storage::disk('public');
-  -  php artisan storage:link
+  - php artisan storage:link
+  - посмотри то расширение для работы с картинками
 - TinyMCE (wysiwyg editor) и composer require mews/purifier
 - Request-валидация
 - Шаблонизатор Blade
@@ -26,7 +27,7 @@
 - Гейты и политики (проверка прав доступа)
 - Посредники
 - Разделы сайта
-  - Стрнаницы сайта 
+  - Страницы сайта (типы поста: раздел, страница, фигма, миндпам, шпаргалка) 
   - Страницы администрирования (дашборд, управление записями)
 - Проверка кода на стандарты PSR (инструменты)
 - Документации (генерация документации по классам) 
@@ -38,28 +39,26 @@
 - [todo] Разобраться с теми ссылками на папку ресурсов (зачем она нужна)
 - [todo] Посмотри меню и хлебыне крошки на основе: composer require spatie/laravel-menu
 - return redirect()->back()->withSuccess('Категория была успешно удалена')???
+- laravel backup (базы/файлов) - composer require spatie/laravel-backup 7.8.0
 
 ---
 Маршруты на основе аннотаций?
 Автомиграции?
 
 -- TODO по сайту --
-+ Все таки сделай защиту картинок от удаления!!!
+
 - Добавить роли - выпилить мидлваре isme
-+ Типы (страница, фигма, миндпам, шпаргалка)
 - Выделение зелененьким активного раздела для Mindmap
 - Переделать загрузку картинок... (ее нужно делать после метода save...
-  - Посмотреть разширение для работы с файлами
-  - Сортировка картинок
 - Ajax - попробовать на чем-то
 - Версионирование (история изменения записи)
 - Паттерн репозиторий
 - Авторизация (изучить)
 - Добавить роли
-- Добавить тип записи (раздел, шпаргалка, миндмап, страница)
+- Закрытый (личный, приватный раздел)
+- Прикрепление файла в заметках
 - Кэш компонентов spatie / laravel-partialcache Public archive
-- laravel backup (файлов)
-- laravel backup (базы)
+
 
 --
 - Laravel DataMapper
@@ -75,24 +74,3 @@
 > Перекинуть файл в другую запись
 > Json для файлов?
 
--- TEMP
-
-
-		if ($dirs = Storage::disk('public')->directories('site/post')) {
-			foreach($dirs as $dir){
-				if($dir == 'site/post/figma') continue;
-				if($dir == 'site/post/logo') continue;
-				
-				$id =  basename($dir);
-				$files = Storage::disk('public')->files($dir);
-				$ar = [];
-				foreach($files as $file){
-					#echo $file.'<br />';
-					$ar[] = $file;
-				}
-				echo "\nUPDATE posts SET post_images='".implode(chr(10),$ar)."' WHERE id=".$id.";";
-				//$dirs = Storage::disk('public')->all('site/post/'.$dir)
-				//print 'UPDATE posts set post_images=CONCAT(post_images, \'\n\', \''.$file.'\');<br />';
-			}
-		}
-		exit();
