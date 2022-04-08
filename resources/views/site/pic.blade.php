@@ -25,7 +25,7 @@
                                 </span>
                             </div>
                             <div class="panel-body">
-                                <a href="{{ asset($note->upload_image) }}">
+                                <a href="{{ asset('storage/'.$note->upload_image) }}">
                                     <img src="{{ asset('storage/'.$note->upload_image) }}"
                                          class="img-site-pic"/>
                                 </a>
