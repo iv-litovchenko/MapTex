@@ -75,3 +75,15 @@
 > Перекинуть файл в другую запись
 > Json для файлов?
 
+- Разбрери избранное на Github
+- https://github.com/VanOns/laraberg
+- https://github.com/VanOns/laraberg-demo
+- http://demo.laraberg.io/articles/1706/post.php?post=1&action=edit
+
+-- Блоги
+1) https://jonathanbriehl.com/
+2) https://si-dev.com/ru/blog/validation-with-formrequest
+3) https://laravel.demiart.ru/
+4) ---
+
+Манифест автомиграции

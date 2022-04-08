@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Storage;
 /**
  * Обработка сохранения/удаления файла для модели
  *
+ * PHPCLUB.RU (WMix)
+ * Смотри, все что связано с HTTP обрабатывается только в контроллере.
+ * На уровне сервиса, уже нет ни Request ни HTTP 400, там программа.
+ * Эта "команда" должна быть написана так, чтоб ты в любом месте ее мог вызвать,
+ * без всяких request. Иначе это не сервис а action.
+ *
  * Загрузка файла(ов) на диск, возврат имени файла или null для записи в БД
  * Примеры:
  *
@@ -95,9 +101,10 @@ class FileAttachDetachService
         // Удаление 1 файла (удаление идет по проверке!)
         if (intval($this->requst::input('files_delete_confirm')) === 1) {
             if (intval($this->requst::input($formFieldName . '.delete')) === 1) {
-                if ($this->storage::disk($diskName)->delete($defaultValue)) {
+                // if ($this->storage::disk($diskName)->delete($defaultValue)) {
+                // Физически файл не удаляем (версионизация!)
                     return null;
-                }
+                // }
             }
         }
 
@@ -155,9 +162,10 @@ class FileAttachDetachService
             if ($filesDelete = $this->requst::input($formFieldName . '.delete')) {
                 foreach ($filesDelete as $md5FileDelete => $valueConfirm) {
                     if (key_exists($md5FileDelete, $result) && intval($valueConfirm) === 1) {
-                        if ($this->storage::disk($diskName)->delete($result[$md5FileDelete])) {
+                        // if ($this->storage::disk($diskName)->delete($result[$md5FileDelete])) {
+                        // Физически файл не удаляем (версионизация!)
                             unset($result[$md5FileDelete]);
-                        }
+                        // }
                     }
                 }
             }

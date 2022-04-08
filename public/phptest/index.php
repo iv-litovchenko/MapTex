@@ -31,10 +31,11 @@ $object = new \Test\B();
 $test4 = new \Test\DepInj($object);
 echo $test4->run('Test Dep Inj');
 
-class Test {
-    protected const AAA = 1;
-
+class Test
+{
+    final public const AAA = 1;
 }
+
 $obj = new Test();
 echo Test::AAA;
 

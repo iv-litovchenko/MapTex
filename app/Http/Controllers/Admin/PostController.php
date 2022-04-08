@@ -179,13 +179,13 @@ class PostController extends BaseController
             // Чистим диск (логотип)
             $path = 'site/post/logo/' . $post->logo_image;
             if (Storage::disk('public')->exists($path)) {
-                Storage::disk('public')->delete($path);
+                // Storage::disk('public')->delete($path); Не удаляем (версионизация!)
             }
 
             // Чистим диск (изображения)
             $path = 'site/post/' . $post->id;
             if (Storage::disk('public')->exists($path)) {
-                Storage::disk('public')->deleteDirectory($path);
+                // Storage::disk('public')->deleteDirectory($path); Не удаляем (версионизация!)
             }
 
             $request->session()->flash('flash_messages_success', 'Пост [' . $post->id . '] успешно удален');
