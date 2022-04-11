@@ -53,6 +53,9 @@
 - Переделать загрузку картинок... (ее нужно делать после метода save...
 - Ajax - попробовать на чем-то
 - Версионирование (история изменения записи)
+  - https://github.com/mpociot/versionable
+  - https://github.com/overtrue/laravel-versionable
+  - https://github.com/Antonrom00/laravel-model-changes-history
 - Паттерн репозиторий
 - Авторизация (изучить)
 - Добавить роли
@@ -84,6 +87,12 @@
 1) https://jonathanbriehl.com/
 2) https://si-dev.com/ru/blog/validation-with-formrequest
 3) https://laravel.demiart.ru/
-4) ---
+4) https://badcode.ru/
 
+-------------------------------
 Манифест автомиграции
+-------------------------------
+https://github.com/legodion/lucid
+https://github.com/redbastie/laravel-auto-migrate
+https://github.com/mwakalingajohn/laravel-auto-migrations
+https://github.com/bastinald/laravel-automatic-migrations

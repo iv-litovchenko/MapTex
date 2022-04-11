@@ -15,9 +15,9 @@
 
     <img
         @if($data->post_type == 'directory')
-        src="{{ asset('img/folder.png') }}"
+        src="{{ asset('assets/images/folder.png') }}"
         @else
-        src="{{ asset('img/page.png') }}"
+        src="{{ asset('assets/images/page.png') }}"
         @endif
         height="{{ $height }}"
         style="

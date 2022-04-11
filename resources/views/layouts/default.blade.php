@@ -25,7 +25,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="{{ route('site.home') }}">
-                <img src="{{ asset('img/logo.png') }}" width="20" height="20"
+                <img src="{{ asset('assets/images/logo.png') }}" width="20" height="20"
                      style="display: inline; vertical-align: top;" alt="">
                 IT-заметки
             </a>
