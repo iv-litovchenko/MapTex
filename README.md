@@ -91,3 +91,9 @@
 - https://github.com/mwakalingajohn/laravel-auto-migrations
 - https://github.com/bastinald/laravel-automatic-migrations
 - Образец идеальной модели (vendor/antonrom00/laravel-model-changes-history/src/Models/Change.php)
+
+-------------------------------
+Diff-для истории
+-------------------------------
+- https://github.com/caxy/php-htmldiff
+- https://github.com/vi-kon/laravel-diff

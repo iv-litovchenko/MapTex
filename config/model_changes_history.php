@@ -25,7 +25,7 @@ return [
     |
     */
 
-    'use_only_for_debug' => true,
+    'use_only_for_debug' => false,
 
 
     /*
