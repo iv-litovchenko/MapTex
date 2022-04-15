@@ -8,12 +8,14 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Spatie\Permission\Traits\HasRoles;
 use Kalnoy\Nestedset\NodeTrait;
+use Antonrom\ModelChangesHistory\Traits\HasChangesHistory;
 
 /**
+ * ...
  */
 class Post extends Model
 {
-    use HasFactory, NodeTrait;
+    use HasFactory, NodeTrait, HasChangesHistory;
 
     // HasRoles
 

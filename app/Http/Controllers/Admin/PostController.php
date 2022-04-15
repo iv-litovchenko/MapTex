@@ -3,16 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\BaseController;
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\AdminPostStoreRequest;
 use App\Http\Requests\AdminPostUpdateRequest;
 use App\Models\Post;
-use App\Services\FileAttachDetachService;
 use App\Utils\FrontendUility;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Контроллер - управление постами
@@ -94,12 +90,14 @@ class PostController extends BaseController
      */
     public function edit(Post $post)
     {
+        $postHistoryChanges = $post->historyChanges();
         $postsTreeArray = FrontendUility::buildTreeArray();
         $postTypes = Post::POST_TYPE;
         return view('admin.post.edit', compact(
             'post',
             'postsTreeArray',
-            'postTypes'
+            'postTypes',
+            'postHistoryChanges'
         ));
     }
 

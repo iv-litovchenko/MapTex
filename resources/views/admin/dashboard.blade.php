@@ -21,5 +21,11 @@
         </div>
     @endforeach
 
+    <center>
+        <a href="{{ route('admin.backup') }}" class="btn btn-warning btn-lg">
+            Создать Бэкап проекта (файлы, БД)
+        </a>
+    </center>
+
 @endsection
 

@@ -4,6 +4,31 @@
  * @subpackage    tx_spiderindexing_output
  *
  * This package includes all hook implementations.
+ *
+ * // 1. Ставим префикс для страниц
+// 'defaultToHTMLsuffixOnPrev' => 1,
+// 'acceptHTMLsuffix' => 1,
+
+// 2 добавляем "encodeSpURL_postProc" + "decodeSpURL_preProc"
+// 3 убираем абсолютный путь - ставим ./ typoscript
+// 4 рассоединяем CSS , JS
+
+function user_encodeSpURL_postProc(&$params, &$ref) {
+$params['URL'] = str_replace('http://arclg.iv-litovchenko.ru/','',$params['URL']);
+$params['URL'] = str_replace('/', '@', $params['URL']);
+$params['URL'] = preg_replace('/^.@/is', '', $params['URL']);
+$params['URL'] = "./".$params['URL'];
+}
+
+function user_decodeSpURL_preProc(&$params, &$ref) {
+$params['URL'] = str_replace('@', '/', $params['URL']);
+}
+
+// Настройка realurl
+$TYPO3_CONF_VARS['EXTCONF']['realurl']['encodeSpURL_postProc'] = array('user_encodeSpURL_postProc');
+$TYPO3_CONF_VARS['EXTCONF']['realurl']['decodeSpURL_preProc'] = array('user_decodeSpURL_preProc');
+ *
+ *
  */
 
 ini_set('max_execution_time', 0);
@@ -11,7 +36,7 @@ class tx_spiderindexing
 {
 
     public $content = "";
-    public $allListUrl = [];
+    public $allListUrl = array();
     public $allListUrlWithParent;
     public $allListUrlInfo; // mime_type, http_code
     public $allListUrlDeleted;
@@ -48,9 +73,12 @@ class tx_spiderindexing
 
         $content = $this->crawler_getContent($this->sitestartpage);
         $this->crawler_get_links($content);
-        print "<pre>";
-        print_r($this->allListUrl);
 
+        // Сохраняем страницы
+        #foreach($this->allListUrl as $k => $v){
+        #print 'Save page: '.$v.'<br />';
+        #}
+        print 'Finish';
     }
 
     public function crawler_getContent($url)
@@ -65,14 +93,46 @@ class tx_spiderindexing
         # return file_get_contents($url);
 
         $content = $this->file_get_contents_curl($url);
+
+        $fileName = str_replace('http://arclg.iv-litovchenko.ru/./','',$url);
+        file_put_contents('_site-save_/'.$fileName, $content);
+        print 'Save page: '.$url.'<br />';
+
         return $content;
+    }
+
+    public function dom($content, $tag, $attr)
+    {
+        $dom = new DOMDocument;
+        $dom->loadHtml($content);
+        $result = array();
+        $nodes = $dom->getElementsByTagName($tag);
+        foreach ($nodes as $node) {
+            $value = $node->getAttribute($attr);
+            $result[md5($value)] = str_replace('http://arclg.iv-litovchenko.ru/','./',urldecode($value));
+        }
+        return $result;
     }
 
     public function crawler_get_links($content, $parentUrl = false)
     {
         if (!empty($content)) {
-            preg_match_all('~<a.*?href="(.*?)".*?>~', $content, $links);
-            foreach ($links[1] as $key => $newurl) {
+            // preg_match_all('/(alt|href|src)=("[^"]*")/is', $content, $links);
+
+
+            $result = array();
+            $r1 = $this->dom($content,'a','href');
+            $r2 = $this->dom($content,'img','src');
+            $r3 = $this->dom($content,'link','href');
+            $r4 = $this->dom($content,'script','src');
+
+            $result = $r1 + $r2 + $r3 + $r4;
+
+            #print "<pre>";
+            #print_r($result);
+            #exit();
+
+            foreach ($result as $key => $newurl) {
                 if (!empty($newurl)) {
                     $temp = parse_url($newurl);
 
@@ -84,14 +144,71 @@ class tx_spiderindexing
                     $urlHost = $this->startUrlScheme . "://" . $this->startUrlHost . "/";
                     $resultUrl = $urlHost . preg_replace('/^\//', "", $temp['path']);
 
-                    if ($this->allListUrl[md5($resultUrl)] == null) {
-                        $this->allListUrl[md5($resultUrl)] = $resultUrl;
-                        $content = $this->crawler_getContent($resultUrl);
-                        $this->crawler_get_links($content);
+                    // Проверяем путь по файлу...
+                    $temp2 = parse_url($resultUrl);
+                    $temp2 = $temp2['path'];
+                    $temp2 = trim($temp2,'/'); // удаляем слэш слева если он есть
+                    $temp2 = preg_replace('/^./is','',$temp2);
+                    if (!file_exists($GLOBALS['_SERVER']['DOCUMENT_ROOT'].$temp2)) { // при услови, что по данному адресу не
+
+                        if(preg_match('/.html$/is',$temp2)){
+                            if ($this->allListUrl[md5($resultUrl)] == null) {
+                                $this->allListUrl[md5($resultUrl)] = $resultUrl;
+                                $content = $this->crawler_getContent($resultUrl);
+                                $this->crawler_get_links($content);
+                            }
+                        }
+
+                    } elseif(trim($temp2) != '' && file_exists($GLOBALS['_SERVER']['DOCUMENT_ROOT'].$temp2)) {
+                        $dirName = dirname($GLOBALS['_SERVER']['DOCUMENT_ROOT'].$temp2);
+                        $dirName2 = dirname($temp2);
+                        #$newDirName = $GLOBALS['_SERVER']['DOCUMENT_ROOT'].'/_site-save_'.$dirName2;
+
+                        #print $dirName."<br />";
+                        #print $newDirName."<br />";
+
+                        $origFile = ltrim($temp2,'/');
+                        $newFile = '_site-save_'.$temp2;
+
+                        #print ltrim($origFile,'/')."<br />";
+                        #print $newFile."<br />";
+
+                        // @mkdir($newDirName,777,true);
+                        $this->createUploadDirectories('_site-save_'.$dirName2);
+                        copy($origFile, $newFile);
+                        print 'Copy file: '.$origFile.'<br />';
+
+
+                        if(preg_match('/.css$/is',$temp2)){
+                            if ($this->allListUrl[md5($resultUrl)] == null) {
+                                #$this->allListUrl[md5($resultUrl)] = $resultUrl;
+
+                                #print $content;
+                                #exit();
+                                #$content = $this->crawler_getContent($resultUrl);
+                                #$this->crawler_get_links($content);
+                            }
+                        }
+
                     }
                 }
             }
         }
+    }
+
+    function createUploadDirectories($upload_path=null){
+        if($upload_path==null) return false;
+        $upload_directories = explode('/',$upload_path);
+        $createDirectory = array();
+        foreach ($upload_directories as $upload_directory){
+            $createDirectory[] = $upload_directory;
+            $createDirectoryPath = implode('/',$createDirectory);
+            if(!file_exists($createDirectoryPath)){
+                mkdir($createDirectoryPath);// Create the folde if not exist and giv
+            }
+            // print $createDirectoryPath .'<br />';
+        }
+        return true;
     }
 
     public function file_get_contents_curl($url)
@@ -147,8 +264,8 @@ class tx_spiderindexing
 }
 
 
-$a = new tx_spiderindexing;
-$a->execute('http://arclg.iv-litovchenko.ru/home.html');
+// $a = new tx_spiderindexing;
+// $a->execute('http://arclg.iv-litovchenko.ru/home.html');
 
 
 ?>

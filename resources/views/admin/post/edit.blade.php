@@ -44,7 +44,8 @@
                 @include('admin.post.partials.html-select-parent-id',['default'=>$post->parent_id, 'changeAllow'=>false])
             </div>
             <div class="col-sm-3">
-                <a href="{{ route('admin.post.edit-parent', $post->id) }}" target="_blank" class="btn btn-primary form-control">Сменить родителя</a>
+                <a href="{{ route('admin.post.edit-parent', $post->id) }}" target="_blank"
+                   class="btn btn-primary form-control">Сменить родителя</a>
             </div>
         </div>
         <div class="form-group row">
@@ -140,4 +141,22 @@
         <button type="submit" name="redirect" class="btn btn-primary" value="none">Сохранить</button>
         <button type="submit" name="redirect" class="btn btn-primary" value="show">Сохранить и к просмотру</button>
     </form>
+
+    <h2>История изменений записи</h2>
+    @foreach($postHistoryChanges as $change)
+        <div class="row">
+            <div class="col-sm-2"><h3>Версия №{{ $loop->remaining }}</h3></div>
+            <div class="col-sm-5"><h3>Перед</h3></div>
+            <div class="col-sm-5"><h3>После</h3></div>
+        </div>
+        @foreach(json_decode($change->getAttribute('changes'),true) as $field => $value)
+            <div class="row">
+                <div class="col-sm-2">{{ $field }}</div>
+                <div class="col-sm-5">{{ $value['before'] }}</div>
+                <div class="col-sm-5">{{ $value['after'] }}</div>
+            </div>
+        @endforeach
+        <hr/>
+    @endforeach
+
 @endsection

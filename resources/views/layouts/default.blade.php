@@ -25,9 +25,12 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="{{ route('site.home') }}">
-                <img src="{{ asset('assets/images/logo.png') }}" width="20" height="20"
-                     style="display: inline; vertical-align: top;" alt="">
-                IT-заметки
+                <center>
+                    <img src="{{ asset('assets/images/logo.png') }}" width="20" height="20"
+                         style="display: inline; vertical-align: top;" alt="">
+                    IT-заметки <br/>
+                    <code>MapTex.Ru</code>
+                </center>
             </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">

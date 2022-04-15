@@ -4,8 +4,73 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "35580ef3d5fda3392ab10bc7de451797",
+    "content-hash": "d6a4b10777ee6b6ee89e5b1c0c01969b",
     "packages": [
+        {
+            "name": "antonrom00/laravel-model-changes-history",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Antonrom00/laravel-model-changes-history.git",
+                "reference": "bd6229b979f8a7086e750386d618fdc50e02e8a9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Antonrom00/laravel-model-changes-history/zipball/bd6229b979f8a7086e750386d618fdc50e02e8a9",
+                "reference": "bd6229b979f8a7086e750386d618fdc50e02e8a9",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "laravel/framework": ">=5.8",
+                "php": ">=7.2",
+                "predis/predis": "^1.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.5|^4.2"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Antonrom\\ModelChangesHistory\\Providers\\ModelChangesHistoryServiceProvider"
+                    ],
+                    "aliases": {
+                        "ChangesHistory": "Antonrom\\ModelChangesHistory\\Facade\\HistoryChanges",
+                        "HistoryStorage": "Antonrom\\ModelChangesHistory\\Facade\\HistoryStorage"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Antonrom\\ModelChangesHistory\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Antonrom00",
+                    "email": "anton.romanyuk.2000@gmail.com"
+                }
+            ],
+            "description": "Model changes history for laravel",
+            "keywords": [
+                "changes",
+                "framework",
+                "history",
+                "laravel",
+                "model"
+            ],
+            "support": {
+                "issues": "https://github.com/Antonrom00/laravel-model-changes-history/issues",
+                "source": "https://github.com/Antonrom00/laravel-model-changes-history/tree/master"
+            },
+            "time": "2021-11-04T14:32:25+00:00"
+        },
         {
             "name": "asm89/stack-cors",
             "version": "v2.1.1",
@@ -146,6 +211,57 @@
                 }
             ],
             "time": "2022-02-09T07:52:32+00:00"
+        },
+        {
+            "name": "bastinald/laravel-automatic-migrations",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bastinald/laravel-automatic-migrations.git",
+                "reference": "dc4a5f031860056823e4ec2cdc0efbd189824c6e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bastinald/laravel-automatic-migrations/zipball/dc4a5f031860056823e4ec2cdc0efbd189824c6e",
+                "reference": "dc4a5f031860056823e4ec2cdc0efbd189824c6e",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/dbal": "^3.0",
+                "laravel/framework": "^8.0",
+                "livewire/livewire": "^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Bastinald\\LaravelAutomaticMigrations\\Providers\\LaravelAutomaticMigrationsProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Bastinald\\LaravelAutomaticMigrations\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Dion",
+                    "email": "bastinald@icloud.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Automatic Laravel model migrations.",
+            "homepage": "https://github.com/bastinald/laravel-automatic-migrations",
+            "support": {
+                "issues": "https://github.com/bastinald/laravel-automatic-migrations/issues",
+                "source": "https://github.com/bastinald/laravel-automatic-migrations/tree/3.0.0"
+            },
+            "time": "2021-09-09T23:16:03+00:00"
         },
         {
             "name": "brick/math",
@@ -2511,56 +2627,77 @@
             "time": "2021-11-21T11:48:40+00:00"
         },
         {
-            "name": "legodion/lucid",
-            "version": "1.0.11",
+            "name": "livewire/livewire",
+            "version": "v2.10.5",
             "source": {
                 "type": "git",
-                "url": "https://github.com/legodion/lucid.git",
-                "reference": "e81bcae04422c650394d44dd7765acb11fef6854"
+                "url": "https://github.com/livewire/livewire.git",
+                "reference": "9ea6237760f627b3b6a05d15137880780ac843b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/legodion/lucid/zipball/e81bcae04422c650394d44dd7765acb11fef6854",
-                "reference": "e81bcae04422c650394d44dd7765acb11fef6854",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/9ea6237760f627b3b6a05d15137880780ac843b5",
+                "reference": "9ea6237760f627b3b6a05d15137880780ac843b5",
                 "shasum": ""
             },
             "require": {
-                "doctrine/dbal": "^2.0|^3.0",
-                "laravel/framework": "^7.0|^8.0|^9.0"
+                "illuminate/database": "^7.0|^8.0|^9.0",
+                "illuminate/support": "^7.0|^8.0|^9.0",
+                "illuminate/validation": "^7.0|^8.0|^9.0",
+                "league/mime-type-detection": "^1.9",
+                "php": "^7.2.5|^8.0",
+                "symfony/http-kernel": "^5.0|^6.0"
+            },
+            "require-dev": {
+                "calebporzio/sushi": "^2.1",
+                "laravel/framework": "^7.0|^8.0|^9.0",
+                "mockery/mockery": "^1.3.1",
+                "orchestra/testbench": "^5.0|^6.0|^7.0",
+                "orchestra/testbench-dusk": "^5.2|^6.0|^7.0",
+                "phpunit/phpunit": "^8.4|^9.0",
+                "psy/psysh": "@stable"
             },
             "type": "library",
             "extra": {
                 "laravel": {
                     "providers": [
-                        "Legodion\\Lucid\\Providers\\LucidServiceProvider"
-                    ]
+                        "Livewire\\LivewireServiceProvider"
+                    ],
+                    "aliases": {
+                        "Livewire": "Livewire\\Livewire"
+                    }
                 }
             },
             "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
                 "psr-4": {
-                    "Legodion\\Lucid\\": "src"
+                    "Livewire\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
-            "description": "Declare database migrations and factory definitions inside Laravel models.",
-            "keywords": [
-                "database",
-                "definitions",
-                "eloquent",
-                "factory",
-                "laravel",
-                "migrations",
-                "models",
-                "php"
+            "authors": [
+                {
+                    "name": "Caleb Porzio",
+                    "email": "calebporzio@gmail.com"
+                }
             ],
+            "description": "A front-end framework for Laravel.",
             "support": {
-                "issues": "https://github.com/legodion/lucid/issues",
-                "source": "https://github.com/legodion/lucid/tree/1.0.11"
+                "issues": "https://github.com/livewire/livewire/issues",
+                "source": "https://github.com/livewire/livewire/tree/v2.10.5"
             },
-            "time": "2022-03-26T12:35:27+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/livewire",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-04-07T21:38:12+00:00"
         },
         {
             "name": "maximebf/debugbar",
@@ -3242,6 +3379,72 @@
                 }
             ],
             "time": "2021-12-04T23:24:31+00:00"
+        },
+        {
+            "name": "predis/predis",
+            "version": "v1.1.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/predis/predis.git",
+                "reference": "a2fb02d738bedadcffdbb07efa3a5e7bd57f8d6e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/predis/predis/zipball/a2fb02d738bedadcffdbb07efa3a5e7bd57f8d6e",
+                "reference": "a2fb02d738bedadcffdbb07efa3a5e7bd57f8d6e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.8"
+            },
+            "suggest": {
+                "ext-curl": "Allows access to Webdis when paired with phpiredis",
+                "ext-phpiredis": "Allows faster serialization and deserialization of the Redis protocol"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Predis\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Daniele Alessandri",
+                    "email": "suppakilla@gmail.com",
+                    "homepage": "http://clorophilla.net",
+                    "role": "Creator & Maintainer"
+                },
+                {
+                    "name": "Till Krüss",
+                    "homepage": "https://till.im",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Flexible and feature-complete Redis client for PHP and HHVM",
+            "homepage": "http://github.com/predis/predis",
+            "keywords": [
+                "nosql",
+                "predis",
+                "redis"
+            ],
+            "support": {
+                "issues": "https://github.com/predis/predis/issues",
+                "source": "https://github.com/predis/predis/tree/v1.1.10"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/tillkruss",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-01-05T17:46:08+00:00"
         },
         {
             "name": "psr/cache",
@@ -10146,7 +10349,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "antonrom00/laravel-model-changes-history": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

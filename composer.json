@@ -9,7 +9,9 @@
     "license": "MIT",
     "require": {
         "php": "^8.0",
+        "antonrom00/laravel-model-changes-history": "dev-master",
         "barryvdh/laravel-debugbar": "^3.6",
+        "bastinald/laravel-automatic-migrations": "^3.0",
         "davejamesmiller/laravel-breadcrumbs": "^5.3",
         "doctrine/dbal": "3.3.3",
         "fruitcake/laravel-cors": "^2.0",
@@ -21,7 +23,6 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
         "lavary/laravel-menu": "^1.8",
-        "legodion/lucid": "^1.0",
         "mews/purifier": "^3.3",
         "spatie/laravel-backup": "7.8.0",
         "spatie/laravel-permission": "^5.5"
