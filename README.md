@@ -91,6 +91,13 @@
 - https://github.com/mwakalingajohn/laravel-auto-migrations
 - https://github.com/bastinald/laravel-automatic-migrations
 - Образец идеальной модели (vendor/antonrom00/laravel-model-changes-history/src/Models/Change.php)
+- https://habr.com/ru/post/543190/
+- https://github.sre.pub/mnishihan/Laravel-Generator
+- https://github.com/staudenmeir/laravel-cte
+- "dump sql migration laravel"
+- https://stackoverflow.com/questions/31263637/how-to-convert-laravel-migrations-to-raw-sql-scripts
+- DB::listen) или как там)
+
 
 -------------------------------
 Diff-для истории
