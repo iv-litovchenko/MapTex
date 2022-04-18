@@ -86,6 +86,7 @@
 Манифест автомиграции
 -------------------------------
 
+- https://github.com/NastuzziSamy/laravel-orm/blob/master/src/Traits/HasORM.php
 - https://github.com/legodion/lucid
 - https://github.com/redbastie/laravel-auto-migrate
 - https://github.com/mwakalingajohn/laravel-auto-migrations
