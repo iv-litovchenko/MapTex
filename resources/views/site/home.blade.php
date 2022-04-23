@@ -76,8 +76,8 @@
             <center>
                 @foreach($postsWithLogo as $postLogo)
                     @php /** $postLogo App\Models\Post */ @endphp
-                    <a href="{{ route('site.post', $post->id) }}">
-                        <img src="{{ asset('storage/'.$post->logo_image) }}" height="50">
+                    <a href="{{ route('site.post', $postLogo->id) }}">
+                        <img src="{{ asset('storage/'.$postLogo->logo_image) }}" height="50">
                     </a>
                 @endforeach
             </center>
