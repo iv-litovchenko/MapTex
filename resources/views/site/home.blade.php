@@ -32,15 +32,15 @@
             </a>
         </p>
     </div>
-{{--    <div class="mindmap jumbotron">--}}
-{{--        <div class="node node_root context-menu-one btn btn-neutral">--}}
-{{--            <div class="node__text">--}}
-{{--                <span class="glyphicon glyphicon glyphicon-plane" aria-hidden="true"></span>--}}
-{{--                Карта--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--        <x-post-content-type parent-post-id="root"/>--}}
-{{--    </div>--}}
+    {{--    <div class="mindmap jumbotron">--}}
+    {{--        <div class="node node_root context-menu-one btn btn-neutral">--}}
+    {{--            <div class="node__text">--}}
+    {{--                <span class="glyphicon glyphicon glyphicon-plane" aria-hidden="true"></span>--}}
+    {{--                Карта--}}
+    {{--            </div>--}}
+    {{--        </div>--}}
+    {{--        <x-post-content-type parent-post-id="root"/>--}}
+    {{--    </div>--}}
     <div class="row">
         @foreach($posts as $post)
             <div class="col-sm-4">
@@ -70,4 +70,17 @@
     {{--            </a>--}}
     {{--        </div>--}}
     {{--    </center>--}}
+
+    <div class="row">
+        <div class="col-sm-12">
+            <center>
+                @foreach($postsWithLogo as $postLogo)
+                    @php /** $postLogo App\Models\Post */ @endphp
+                    <a href="{{ route('site.post', $post->id) }}">
+                        <img src="{{ asset('storage/'.$post->logo_image) }}" height="50">
+                    </a>
+                @endforeach
+            </center>
+        </div>
+    </div>
 @stop

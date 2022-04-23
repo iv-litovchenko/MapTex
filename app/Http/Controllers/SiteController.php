@@ -2,16 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\FileAttachDetachService;
-use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
-use App\Http\Controllers\BaseController;
-use Illuminate\Support\Facades\Cookie;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
 use App\Models\Note;
 use App\Models\Post;
-use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Контроллер для обработки страниц frontend-а
@@ -30,7 +24,8 @@ class SiteController extends BaseController
     public function home()
     {
         $posts = Post::whereParentId(null)->orderBy('sorting')->get();
-        return view('site.home',compact('posts'));
+        $postsWithLogo = Post::whereNotNull('logo_image')->get();
+        return view('site.home', compact('posts', 'postsWithLogo'));
     }
 
     /**
