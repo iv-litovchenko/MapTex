@@ -52,11 +52,11 @@ $(document).ready(function () {
     menubar: false,
     height: 500,
     plugins: 'lists advlist table link code codesample',
-    toolbar1: 'undo redo | styleselect backcolor forecolor removeformat codesample code |' + 'bold italic strikethrough underline | ' + 'alignleft aligncenter alignjustify alignright',
+    toolbar1: 'undo redo | formatselect fontselect fontsizeselect | ' + 'styleselect backcolor forecolor removeformat codesample code | ' + 'bold italic strikethrough underline | ' + 'alignleft aligncenter alignjustify alignright',
     toolbar2: 'outdent outdent bullist numlist  | ' + 'quicktable quicklink | table | link ',
     // 'tableprops tablerowprops tablecellprops | ' +
     // 'tableinsertrowbefore tableinsertrowafter | ' +
-    // 'tableinsertcolbefore tableinsertcolafter | link ',
+    // 'tableinsertcolbefore tableinsertcolafter ',
     codesample_languages: [{
       text: 'Plain',
       value: 'plaintext'
