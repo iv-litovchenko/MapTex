@@ -49,11 +49,11 @@ $(document).ready(function () {
   tinymce.baseURL = window.location.protocol + '//' + window.location.host;
   tinymce.init({
     selector: '#tinymce',
-    menubar: false,
+    menubar: true,
     height: 500,
     plugins: 'lists advlist table link code codesample',
-    toolbar1: 'undo redo | formatselect fontselect fontsizeselect | ' + 'styleselect backcolor forecolor removeformat codesample code | ' + 'bold italic strikethrough underline | ' + 'alignleft aligncenter alignjustify alignright',
-    toolbar2: 'outdent outdent bullist numlist  | ' + 'quicktable quicklink | table | link ',
+    toolbar1: 'undo redo | removeformat | formatselect fontselect fontsizeselect |' + 'styleselect backcolor forecolor |' + 'bold italic strikethrough underline |' + 'alignleft aligncenter alignjustify alignright',
+    toolbar2: 'outdent outdent bullist numlist |' + 'quicktable quicklink | table | link codesample code',
     // 'tableprops tablerowprops tablecellprops | ' +
     // 'tableinsertrowbefore tableinsertrowafter | ' +
     // 'tableinsertcolbefore tableinsertcolafter ',
