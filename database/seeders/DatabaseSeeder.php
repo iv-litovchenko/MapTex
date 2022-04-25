@@ -2,9 +2,12 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
-use App\Models\Post;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+
+use function app_path;
+use function app_storage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -30,10 +33,18 @@ class DatabaseSeeder extends Seeder
         foreach ($rows as $row) {
             $model = \App\Models\Post::find($row->id);
             $nodeId = random_int(2, 10); // !!! Cannot move node into itself.
-            if($nodeId !== $row->id){
+            if ($nodeId !== $row->id) {
                 $model->parent_id = $nodeId;
             }
             $model->save();
+        }
+
+        // Копируем картинку (логотип для постов)
+        if (!File::exists(app_path('storage/app/public/logo.png'))) {
+            // File::copy(
+            //     app_path('resources/assets/images/logo.png'),
+            //     app_path('public/storage/logo.png')
+            // );
         }
 
         // Наполнение таблицы сигналов

@@ -25,7 +25,7 @@ class PostFactory extends Factory
             'branch_type' => random_int(0, 1),
             'parent_id' => null,
             'user_id' => 1,
-            'logo_image' => 'images/logo.png'
+            'logo_image' => 'logo.png'
         ];
     }
 }

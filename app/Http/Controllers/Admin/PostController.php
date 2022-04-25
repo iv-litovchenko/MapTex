@@ -112,7 +112,6 @@ class PostController extends BaseController
     {
         $post->post_type = $request->input('post_type') ? $request->input('post_type') : null;
         $post->name = $request->input('name');
-        $post->parent_id = $request->input('parent_id');
         $post->description = $request->input('description');
         $post->sorting = intval($request->input('sorting'));
 
@@ -128,6 +127,13 @@ class PostController extends BaseController
             $post->figma_image,
             'figma_image',
             'site/post/figma'
+        );
+
+        // Зарисовка (исходник): загрузка (отсоединение) 1 файла
+        $post->figma_file = $this->fileAttachDetachService->oneFile(
+            $post->figma_file,
+            'figma_file',
+            'site/post/figma/doc'
         );
 
         // Изображения: загрузка нескольких картинок

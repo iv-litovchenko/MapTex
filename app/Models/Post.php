@@ -61,6 +61,7 @@ class Post extends Model
         $table->text('description')->nullable();
         $table->char('logo_image', 255)->nullable();
         $table->char('figma_image', 255)->nullable();
+        $table->char('figma_file', 255)->nullable();
         $table->text('post_images')->nullable();
         $table->integer('sorting')->default(0);
 

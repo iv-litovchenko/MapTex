@@ -88,6 +88,22 @@
                 <div class="form-group">
                     <input type="file" class="form-control" name="figma_image[upload]">
                 </div>
+                <hr/>
+                <b>Исходник зарисовки (figma)</b>
+                @if($post->figma_file)
+                    <label class="form-check-label">
+                        <a href="{{ asset('storage/'.$post->figma_file) }}">= СКАЧАТЬ =</a>
+                        <br/>
+                        <input class="form-check-input handleCommandConfirm"
+                               type="checkbox" name="figma_file[delete]" value="1"
+                        >
+                        Удалить файл?
+                    </label>
+                @endif
+                <br/>
+                <div class="form-group">
+                    <input type="file" class="form-control" name="figma_file[upload]">
+                </div>
             </div>
         </div>
         <div class="form-group row">

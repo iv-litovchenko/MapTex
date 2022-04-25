@@ -30,7 +30,8 @@ class AdminPostUpdateRequest extends FormRequest
             'parent_id' => 'nullable:posts,id',
             'sorting' => 'integer',
             'logo_image.upload' => 'image',
-            'figma_image.upload' => 'file',
+            'figma_image.upload' => 'image',
+            'figma_file.upload' => 'file',
             'images.upload.*' => 'image',
             // 'tags_ids' => 'nullable|array',
             // 'tags_ids.*' => 'nullable|integer|exists:posts.id'
