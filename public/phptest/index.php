@@ -1,4 +1,6 @@
 <?php
+require_once('AssociationTeam.php');
+require_once('AssociationPlayer.php');
 
 require_once('Composition.php');
 require_once('Aggregation.php');
@@ -8,10 +10,11 @@ require_once('A.php');
 require_once('B.php');
 
 // Ассоциация
-// $object = new \Test\B();
-// $test3 = new \Test\Ass();
-// echo $test3->run($object, 'Test msg ass');
-// echo '<br />';
+$team = new \Test\AssociationTeam('Command 1');
+$player = new \Test\AssociationPlayer();
+$player->setTeam($team);
+echo $player->getTeam()->getName();
+echo '<br />';
 
 // Внедрение зависимостей (DI)
 // Композиция
