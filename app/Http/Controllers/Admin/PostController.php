@@ -38,6 +38,7 @@ class PostController extends BaseController
      */
     public function index()
     {
+        // $this->authorize('view', Post);
         $posts = Post::orderBy('id', 'DESC')->paginate(10);
         return view('admin.post.index', compact('posts'));
     }

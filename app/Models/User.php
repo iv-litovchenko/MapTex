@@ -80,6 +80,7 @@ class User extends Authenticatable
 
     public function getRoles()
     {
+        // Это называется маппинг
         return [
             self::ROLE_ADMIN => 'Админ',
             self::ROLE_READER => 'Читатель'
