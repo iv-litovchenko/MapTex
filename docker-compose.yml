@@ -5,8 +5,8 @@ version: '3'
 # >> docker-compose up -d
 # >> docker exec -it nginx bash # подсоеденится к контейнеру
 services:
-  project_nginx:
-    container_name: project_nginx
+  docker_nginx:
+    container_name: docker_nginx
     image: nginx:latest
     restart: always
     ports:
@@ -15,34 +15,34 @@ services:
     - ./_docker/nginx/conf.d/:/etc/nginx/conf.d/
     - ./:/app
 
-  project_php:
-    container_name: project_php
+  docker_php:
+    container_name: docker_php
     image: php:latest
     restart: always
 
-  project_db_mysql:
-    container_name: project_db_mysql
+  docker_mysql:
+    container_name: docker_mysql
     image: mysql:8.0
     restart: always
     ports:
     - 8181:3306
     environment:
       MYSQL_DATABASE: chat
+      MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: chad
       MYSQL_PASSWORD: char
-      MYSQL_ROOT_PASSWORD: roots
     volumes:
       - ./tmp/db:/var/lib/mysql
-      command: mysqld: --charset-set-server=utf8 --colation-server=utf8_unicode_ci
+    command: mysqld: --charset-set-server=utf8 --colation-server=utf8_unicode_ci
 
-  project_redis:
-    container_name: project_redis
+  docker_redis:
+    container_name: docker_redis
     image: redis
 
-  project_adminer:
-    container_name: project_adminer
+  docker_adminer:
+    container_name: docker_adminer
     image: adminer
     environment:
-      ADMINER_DEFAULT_SERVER: project_db_mysql
+      ADMINER_DEFAULT_SERVER: docker_mysql
     ports:
     - 5114:8080

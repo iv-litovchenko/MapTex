@@ -19,14 +19,14 @@
         "sass": "^1.32.11",
         "sass-loader": "^11.0.1",
         "vue": "^2.6.12",
-        "vue-loader": "^15.9.7",
+        "vue-loader": "^15.9.8",
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
         "bootbox": "^5.5.2",
         "bootstrap": "^3.4.1",
         "highlight.js": "^11.5.0",
-        "jquery": "^1.12.4",
+        "jquery": "^3.6.0",
         "tinymce": "^6.0.1"
     }
 }
