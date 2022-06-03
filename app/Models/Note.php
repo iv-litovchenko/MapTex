@@ -41,7 +41,7 @@ class Note extends Model
      */
     protected static function booted()
     {
-        if (Auth::check()) {
+        if (!Auth::check()) {
             static::addGlobalScope('CLOSE', function (Builder $builder) {
                 $builder->where('is_close', '<>',1);
             });
