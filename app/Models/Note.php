@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
+
 
 /**
  * App\Models\Note
@@ -41,7 +43,7 @@ class Note extends Model
     {
         if (Auth::check()) {
             static::addGlobalScope('CLOSE', function (Builder $builder) {
-                $builder->where('is_close', 1);
+                $builder->where('is_close', '<>',1);
             });
         }
     }
