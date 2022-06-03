@@ -32,6 +32,20 @@ class Note extends Model
     const NOTE_TYPE_PIC = 1;
 
     /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        if (Auth::check()) {
+            static::addGlobalScope('CLOSE', function (Builder $builder) {
+                $builder->where('is_close', 1);
+            });
+        }
+    }
+
+    /**
      * Run the migrations.
      *
      * @param Blueprint $table

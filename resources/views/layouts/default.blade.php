@@ -30,7 +30,7 @@
                     <center>
                         <img src="{{ asset('assets/images/logo.png') }}" width="20" height="20"
                              style="display: inline; vertical-align: top;" alt="">
-                        IT-заметки <br/>
+                        IT-конспекты <br/>
                         <code>MapTex.Ru</code>
                     </center>
                 </a>
