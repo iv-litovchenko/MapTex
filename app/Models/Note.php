@@ -58,7 +58,7 @@ class Note extends Model
     public function migration(Blueprint $table)
     {
         $table->id();
-        $table->integer('post_id')->default(0);
+        $table->integer('post_id')->nullable();
         $table->integer('is_close')->default(0);
         $table->integer('user_id')->nullable();
         $table->integer('note_type')->default(0);
