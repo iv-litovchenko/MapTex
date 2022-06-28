@@ -37,14 +37,55 @@
             {{--                <button class="btn btn-warning" disabled>Редактировать сортировку</button>--}}
             {{--                <button class="btn btn-warning" disabled>Далее</button>--}}
             {{--            </center>--}}
-            <center>
-                <div class="btn-group" role="group">
-                    <a href="{{ route('admin.post.edit-sorting', $post->id) }}"
-                       class="btn btn-default btn-lg" target="_blank">
-                        Изменить сортировку
-                    </a>
+
+            @can('update', $post)
+                <center>
+                    <div class="btn-group" role="group">
+                        <a href="{{ route('admin.post.edit-sorting', $post->id) }}"
+                           class="btn btn-default btn-lg" target="_blank">
+                            Изменить сортировку
+                        </a>
+                    </div>
+                </center>
+                <hr/>
+            @endcan
+
+            @foreach($postNotes as $note)
+                <div class="panel panel-default" style="@if($note->is_close == 1) opacity: 0.2; @endif">
+                    <div class="panel-heading">
+                        #{{ $note->id }} | {{ $note->created_at }}
+                        @if($note->user_id === 1)
+                            <span class="glyphicon glyphicon glyphicon-leaf" aria-hidden="true"></span>
+                        @endif
+                        <span class="label label-default" style="float: right;">
+                        @if($note->is_close == 1)
+                                Спам
+                            @else
+                                Проверено
+                            @endif
+                        </span>
+                    </div>
+                    <div class="panel-body">
+                        {!! clean($note->bodytext, 'default') !!}
+                        @if($note->is_close != 1)
+                            <form action="{{ route('site.note-or-pic-close',$note->id) }}" method="post">
+                                @csrf
+                                <button type="submit" class="btn btn-primary btn-sm">Убрать в спам</button>
+                            </form>
+                        @endif
+                    </div>
                 </div>
-            </center>
+            @endforeach
+
+            <div class="alert alert-success">
+                Здесь можно оставить комментарий!
+            </div>
+
+            @component('components.note.form-note')
+                @slot('route', route('site.post-store', $post->id))
+                @slot('inputPlaceholder', 'Введите комментарий')
+                @slot('btmSubmitName', 'Добавить комментарий')
+            @endcomponent
         </div>
     </div>
 

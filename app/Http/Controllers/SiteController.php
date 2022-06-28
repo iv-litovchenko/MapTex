@@ -36,7 +36,43 @@ class SiteController extends BaseController
      */
     public function post(Post $post)
     {
-        return view('site.post', compact('post'));
+        $postNotes = Note::where('post_id', $post->id)->orderBy('id', 'desc')->get();
+        return view('site.post', compact('post', 'postNotes'));
+    }
+
+    /**
+     * Страница детального просмотра поста (форма добавить запись)
+     *
+     * @param Request $request
+     * @param Post $post
+     * @param Note $note
+     * @return \Illuminate\View\View
+     */
+    public function postNoteStore(Request $request, Post $post, Note $note)
+    {
+        // TODO Валидируем форму (она не пускает дальше)
+        $request->validate(
+            ['bodytext' => 'required|min:10'],
+            ['bodytext.*' => 'Поле обязательно к заполнению и должно что-то содержать!']
+        );
+
+        // Заполняем данными
+        if (auth()->check()) {
+            $note->user_id = auth()->user()->id;
+        }
+
+        $note->post_id = $post->id;
+        $note->note_type = Note::NOTE_TYPE_DEFAULT;
+        $note->bodytext = $request->input('bodytext');
+
+        if ($note->save()) {
+            $request->session()->flash('flash_messages_success',
+                'Комментарий [' . $note->id . '] успешно добавлен!');
+            return redirect()->route('site.post', $post->id);
+        }
+
+        $request->session()->flash('flash_messages_error', 'Ошибка добавления комментария!');
+        return redirect()->route('site.post', $post->id)->withInput();
     }
 
     /**

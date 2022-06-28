@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [SiteController::class, 'home'])->name('site.home');
 Route::get('/p/{post}', [SiteController::class, 'post'])->name('site.post');
+Route::post('/p/{post}', [SiteController::class, 'postNoteStore'])->name('site.post-store');
 
 Route::get('/note', [SiteController::class, 'note'])->name('site.note');
 Route::post('/note', [SiteController::class, 'noteStore'])->name('site.note-store');

@@ -43,15 +43,11 @@
             <div class="alert alert-success">
                 Здесь можно оставить заметки - возможно они попадут в ветки!
             </div>
-            <form action="{{ route('site.note-store') }}" method="post">
-                @csrf
-                <div class="form-group">
-                    <textarea id="tinymce" type="text" class="form-control" name="bodytext"
-                              rows="15" placeholder="Введите барахольный текст"
-                    >{{ old('bodytext') }}</textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Добавить в барахолку</button>
-            </form>
+            @component('components.note.form-note')
+                @slot('route', route('site.note-store'))
+                @slot('inputPlaceholder', 'Введите барахольный текст')
+                @slot('btmSubmitName', 'Добавить в барахолку')
+            @endcomponent
         </div>
     </div>
 
