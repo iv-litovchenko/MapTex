@@ -36,7 +36,7 @@ class SiteController extends BaseController
      */
     public function post(Post $post)
     {
-        $postNotes = Note::where('post_id', $post->id)->orderBy('id', 'desc')->get();
+        $postNotes = Note::where('post_id', $post->id)->orderBy('id', 'asc')->get();
         return view('site.post', compact('post', 'postNotes'));
     }
 
