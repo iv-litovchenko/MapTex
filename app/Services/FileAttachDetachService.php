@@ -27,6 +27,7 @@ use Illuminate\Support\Facades\Storage;
  *
  * <!-- One file-->
  * <input type="file" name="logo_image[upload]">
+ * <input type="file" name="logo_image[upload_url]">
  * <input type="checkbox" name="logo_image[delete]" value="1">
  *
  * <!-- Multi files -->
@@ -50,6 +51,9 @@ class FileAttachDetachService
 
     /** @var \Illuminate\Support\Facades\Storage */
     private $storage;
+
+    private $allowedExtensions = ['csv', 'doc', 'pdf', 'jpg'];
+    private $disallowedExtensions = ['php', 'php3'];
 
     /**
      * Конструктор
@@ -99,6 +103,19 @@ class FileAttachDetachService
 
         // Загрузка 1 файла
         if ($file = $this->requst::file($formFieldName . '.upload')) {
+            $extension = pathinfo($filename, PATHINFO_EXTENSION);
+            if(array_search($extension, $allowedExtensions) === false) {
+                throw new \Exception($extension .' is not allowed');
+            }
+            $fullFilePathAndName = $this->storage::disk($diskName)->putFile($savePath, $file);
+            return $fullFilePathAndName;
+        }
+
+        // Загрузка 1 файла (с URL)
+        if ($file = $this->requst::file($formFieldName . '.upload')) {
+            // file_put_contents($path .'/'. $fileName, file_get_contents($url));
+            // file_put_contents(public_path('datafiles\APPL').'/'.$resume, fopen(REQUEST('cand_resume_url'), 'r'));
+
             $fullFilePathAndName = $this->storage::disk($diskName)->putFile($savePath, $file);
             return $fullFilePathAndName;
         }

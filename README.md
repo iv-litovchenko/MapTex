@@ -123,3 +123,12 @@ Diff-для истории
 -------------------------------
 - https://github.com/caxy/php-htmldiff
 - https://github.com/vi-kon/laravel-diff
+
+-------------------------------
+Идеи
+-------------------------------
+- html CSS вертска (фрейм)
+- json для загрузки файлов
+- автомиграции
+- crud из TYPO3
+- создание связей link, unlink + автосвязи, mediaLink, mediaUnlink

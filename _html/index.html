@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Пример страницы</title>
+  <style>
+  * { border: red 1px solid; box-sizing: border-box; }
+  
+	container-floats { display: block; }
+	container-floats:after { content: ''; clear: both; display: block; }
+	
+	container-float > item-left { display: block; float: left; }
+	container-float > item-right { display: block; float: right; }
+	
+	/* Модуль гибкого контента (идея оси) */
+	container-flex-vert { display: flex; flex-direction: row;  } /* направление оси column */
+	container-flex-horiz { display: flex; flex-direction: column; }
+	
+		/* Реверсивные оси*/
+		container-flex-vert.fb-d-revers { flex-direction: row-reverse; }
+		container-flex-horiz.fb-d-revers { flex-direction: column-reverse; }
+		
+		/* Для того, что бы при переполнении элементы переносились на новую стркоу если не влазят */
+		container-flex-vert,
+		container-flex-horiz { flew-wrap: wrap; }
+		
+		/* Выравнивание относительно основной оси */
+		container-flex-vert.fb-a-left,
+		container-flex-horiz.fb-a-left { justify-content: flex-start; }
+		
+		container-flex-vert.fb-a-center,
+		container-flex-horiz.fb-a-center { justify-content: center; }
+		
+		container-flex-vert.fb-a-right,
+		container-flex-horiz.fb-a-right { justify-content: flex-end; }
+		
+		container-flex-vert.fb-a-sb,
+		container-flex-horiz.fb-a-sb { justify-content: space-between; } /* отодвинуть на одинакове расстояние */
+		
+		container-flex-vert.fb-a-sa,
+		container-flex-horiz.fb-a-sa { justify-content: space-around; } /* одинаковые отступы везде */
+		
+		/* Выравнивание относительно второстепенной оси */
+		container-flex-vert.fb-va-left,
+		container-flex-horiz.fb-va-left { justify-content: flex-start; }
+		
+		container-flex-vert.fb-va-center,
+		container-flex-horiz.fb-va-center { justify-content: center; }
+		
+		container-flex-vert.fb-va-right,
+		container-flex-horiz.fb-va-right { justify-content: flex-end; }
+		
+		container-flex-vert.fb-va-sb,
+		container-flex-horiz.fb-va-sb { justify-content: space-between; } /* отодвинуть на одинакове расстояние */
+		
+		container-flex-vert.fb-va-sa,
+		container-flex-horiz.fb-va-sa { justify-content: space-around; } /* одинаковые отступы везде */
+		
+			/* Сортировка */
+			container-flex-vert > item.fb-order-1 { order: 1 }
+			container-flex-vert > item.fb-order-2 { order: 1 }
+			container-flex-vert > item.fb-order-3 { order: 1 }
+			container-flex-horiz > item.fb-order-1 { order: 1 }
+			container-flex-horiz > item.fb-order-2 { order: 1 }
+			container-flex-horiz > item.fb-order-3 { order: 1 }
+		
+			/* Можно выравнивать отдельно взятый элемент */
+			container-flex-vert > item.fb-va-t { align-self: center }
+			container-flex-vert > item.fb-va-c { align-self: center }
+			container-flex-vert > item.fb-va-b { align-self: center }
+			
+			/* Высота и ширина по содержимому */
+			width: fit-content;
+			height: fit-content;
+	
+	
+	.fb-w-auto { width: auto }
+	.fb-w-100 { width: 100% }
+	.fb-w-50 { width: 50% }
+	.fb-w-40 { width: 40% }
+	.fb-w-33 { width: 33.33% }
+	.fb-w-30 { width: 30% }
+	.fb-w-25 { width: 25% }
+	.fb-w-20 { width: 20% }
+	.fb-w-10 { width: 10% }
+	
+	.fb-h-auto { width: auto }
+	.fb-h-100 { width: 100% }
+	
+	.fb-h-90vh { height: 90vh }
+	
+	.fb-p-0 { padding: 0; }
+	.fb-pT-0 { padding: 0; }
+	.fb-pR-0 { padding: 0; }
+	.fb-pB-0 { padding: 0; }
+	.fb-pL-0 { padding: 0; }
+	.fb-m-0 { padding: 0; }
+  
+  </style>
+ </head>
+ <body>
+
+<container-float>
+	<item-left class="fb-w-50">123</item-left>
+	<item-right class="fb-w-50">fwefew</item-right>
+</container-float>
+
+<container-float>
+	<item-left class="fb-w-25">123</item-left>
+	<item-left class="fb-w-25">123</item-left>
+	<item-left class="fb-w-25">123</item-left>
+	<item-left class="fb-w-25">123</item-left>
+</container-float>
+
+<container-flex-vert class="fb-h-90vh fb-a-center">
+	<item>123</item>
+	<item>123</item>
+	<item>123</item>
+	<item>123</item>
+	<item>123</item>
+</container-flex-vert>
+
+<container-flex-horiz>
+	<item>456</item>
+	<item>456</item>
+	<item>456</item>
+	<item>456</item>
+	<item>456</item>
+</container-flex-horiz>
+
+<container-flex-vert class="fb-d-revers fb-a-sb">
+	<item>123</item>
+	<item>123</item>
+	<item>123</item>
+	<item>123</item>
+	<item>123</item>
+</container-flex-vert>
+
+<container-flex-horiz class="fb-d-revers">
+	<item>S</item>
+	<item>456</item>
+	<item>456</item>
+	<item>456</item>
+	<item>E</item>
+</container-flex-horiz>
+
+
+ </body>
+</html>
+
+

@@ -7,8 +7,8 @@ namespace App\Http\Controllers;
  * Проведите рефакторинг данного кода и предложите максимальное количество улучшений.
  */
 
-use App\Models\Tag;
 use App\Models\Article;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
@@ -18,13 +18,13 @@ use Illuminate\Support\Carbon;
 // Добавить транзакцию (статья + тэги)
 // Создать кастомный класс реквеста для валидации данных запроса
 // Добавить phpdoc-блоки и комментарии
+// Выпилить фасады, сделать их как аругенты в функцию???
 
 class ArticleController extends Controller
 {
     public function update(Request $request, Article $article)
     {
         $this->authorize('update', Article::class);
-
 
         $article->title = $request->title;
         $article->description = $request->description;
