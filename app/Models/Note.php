@@ -33,6 +33,7 @@ class Note extends Model
 
     const NOTE_TYPE_DEFAULT = 0;
     const NOTE_TYPE_PIC = 1;
+    const NOTE_TYPE_POST_COMMENT = 2;
 
     /**
      * The "booted" method of the model.

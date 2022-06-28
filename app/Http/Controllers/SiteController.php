@@ -36,7 +36,10 @@ class SiteController extends BaseController
      */
     public function post(Post $post)
     {
-        $postNotes = Note::where('post_id', $post->id)->orderBy('id', 'asc')->get();
+        $postNotes = Note::where('note_type', Note::NOTE_TYPE_POST_COMMENT)
+            ->where('post_id', $post->id)
+            ->orderBy('id', 'asc')
+            ->get();
         return view('site.post', compact('post', 'postNotes'));
     }
 
@@ -62,7 +65,7 @@ class SiteController extends BaseController
         }
 
         $note->post_id = $post->id;
-        $note->note_type = Note::NOTE_TYPE_DEFAULT;
+        $note->note_type = Note::NOTE_TYPE_POST_COMMENT;
         $note->bodytext = $request->input('bodytext');
 
         if ($note->save()) {
