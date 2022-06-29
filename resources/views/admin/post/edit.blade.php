@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Название/тип</label>
+            <label class="col-sm-2 col-form-label">Имя/тип</label>
             <div class="col-sm-7">
                 <input type="text" class="form-control" name="name" value="{{ old('name', $post->name) }}">
             </div>
@@ -30,6 +30,12 @@
                         </option>
                     @endforeach
                 </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Имя (краткое)</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="name_short" value="{{ old('name_short', $post->name_short) }}">
             </div>
         </div>
         <div class="form-group row">

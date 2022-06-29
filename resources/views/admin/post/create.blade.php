@@ -14,6 +14,12 @@
             </div>
         </div>
         <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Имя (краткое)</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="name_short" value="{{ old('name_short') }}">
+            </div>
+        </div>
+        <div class="form-group row">
             <label class="col-sm-2 col-form-label">Родитель</label>
             <div class="col-sm-10">
                 @include('admin.post.partials.html-select-parent-id', ['default'=>$defaultParentId, 'changeAllow'=>false])

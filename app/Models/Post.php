@@ -57,6 +57,7 @@ class Post extends Model
         #$table->index('user_id');  // <--------
 
         $table->string('name')->nullable();
+        $table->string('name_short')->nullable();
         $table->string('slug')->nullable();
         $table->text('description')->nullable();
         $table->char('logo_image', 255)->nullable();

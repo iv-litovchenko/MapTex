@@ -80,7 +80,7 @@
                     @php /** $postLogo App\Models\Post */ @endphp
                     <a href="{{ route('site.post', $postLogo->id) }}" style="display: inline-block">
                         <img src="{{ asset('storage/'.$postLogo->logo_image) }}" height="100" style="margin: 15px;"><br />
-                        <span class="badge badge-secondary">{{ $postLogo->name }}</span>
+                        <span class="badge badge-secondary">{{ $postLogo->name_short }}</span>
                     </a>
                 @endforeach
             </center>

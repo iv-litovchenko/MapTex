@@ -68,6 +68,7 @@ class PostController extends BaseController
     public function store(AdminPostStoreRequest $request, Post $post)
     {
         $post->name = $request->input('name');
+        $post->name_short = $request->input('name_short');
         $post->parent_id = $request->input('parent_id');
         if ($post->save()) {
             $request->session()->flash('flash_messages_success', 'Пост [' . $post->id . '] успешно создан');
@@ -113,6 +114,7 @@ class PostController extends BaseController
     {
         $post->post_type = $request->input('post_type') ? $request->input('post_type') : null;
         $post->name = $request->input('name');
+        $post->name_short = $request->input('name_short');
         $post->description = $request->input('description');
         $post->sorting = intval($request->input('sorting'));
 
