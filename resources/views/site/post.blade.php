@@ -12,10 +12,10 @@
             <tr>
                 @foreach($postsWithLogo as $postLogo)
                     @php /** $postLogo App\Models\Post */ @endphp
-                    <td>					
+                    <td align="center">					
                     <a href="{{ route('site.post', $postLogo->id) }}" style="display: inline-block">
-                        <img src="{{ asset('storage/'.$postLogo->logo_image) }}" height="38" style="margin: 15px;"><br />
-                        <span class="badge badge-secondary">{{ $postLogo->name_short }}</span>
+                        <img src="{{ asset('storage/'.$postLogo->logo_image) }}" height="38" style="margin: 5px;"><br />
+                        &nbsp;&nbsp;<span class="badge badge-secondary">{{ $postLogo->name_short }}</span>&nbsp;&nbsp;
                     </a>
                     </td>
                 @endforeach
