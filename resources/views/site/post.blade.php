@@ -7,15 +7,21 @@
 @section('LayoutSectionPageContent')
     <div class="row">
         <div class="col-sm-12">
-            <center>
+            <div class="overflow-scroll" style="overflow-x: scroll;">
+            <table>
+            <tr>
                 @foreach($postsWithLogo as $postLogo)
                     @php /** $postLogo App\Models\Post */ @endphp
+                    <td>					
                     <a href="{{ route('site.post', $postLogo->id) }}" style="display: inline-block">
                         <img src="{{ asset('storage/'.$postLogo->logo_image) }}" height="38" style="margin: 15px;"><br />
                         <span class="badge badge-secondary">{{ $postLogo->name_short }}</span>
                     </a>
+                    </td>
                 @endforeach
-            </center>
+            </tr>
+            </table>
+            </div>
         </div>
     </div>
     <hr />
