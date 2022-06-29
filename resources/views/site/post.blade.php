@@ -5,7 +5,20 @@
 @section('LayoutSectionPageBreadcrumb', Breadcrumbs::render('site.post', $post))
 
 @section('LayoutSectionPageContent')
-
+    <div class="row">
+        <div class="col-sm-12">
+            <center>
+                @foreach($postsWithLogo as $postLogo)
+                    @php /** $postLogo App\Models\Post */ @endphp
+                    <a href="{{ route('site.post', $postLogo->id) }}" style="display: inline-block">
+                        <img src="{{ asset('storage/'.$postLogo->logo_image) }}" height="100" style="margin: 15px;"><br />
+                        <span class="badge badge-secondary">{{ $postLogo->name_short }}</span>
+                    </a>
+                @endforeach
+            </center>
+        </div>
+    </div>
+    <hr />
     <div class="row">
         <div class="col-sm-3">
             {{-- https://jonathanbriehl.com/posts/vertical-menu-for-bootstrap-3 --}}
@@ -37,7 +50,6 @@
             {{--                <button class="btn btn-warning" disabled>Редактировать сортировку</button>--}}
             {{--                <button class="btn btn-warning" disabled>Далее</button>--}}
             {{--            </center>--}}
-
             @can('update', $post)
                 <center>
                     <div class="btn-group" role="group">
@@ -49,7 +61,6 @@
                 </center>
                 <hr/>
             @endcan
-
             @foreach($postNotes as $note)
                 <div class="panel panel-default" style="@if($note->is_close == 1) opacity: 0.2; @endif">
                     <div class="panel-heading">
@@ -76,11 +87,9 @@
                     </div>
                 </div>
             @endforeach
-
             <div class="alert alert-success">
                 Здесь можно оставить комментарий!
             </div>
-
             @component('components.note.form-note')
                 @slot('route', route('site.post-store', $post->id))
                 @slot('inputPlaceholder', 'Введите комментарий')
@@ -88,5 +97,4 @@
             @endcomponent
         </div>
     </div>
-
 @endsection

@@ -56,11 +56,12 @@ class SiteController extends BaseController
      */
     public function post(Post $post)
     {
+        $postsWithLogo = Post::whereNotNull('logo_image')->get();
         $postNotes = Note::where('note_type', Note::NOTE_TYPE_POST_COMMENT)
             ->where('post_id', $post->id)
             ->orderBy('id', 'asc')
             ->get();
-        return view('site.post', compact('post', 'postNotes'));
+        return view('site.post', compact('post', 'postNotes', 'postsWithLogo'));
     }
 
     /**
