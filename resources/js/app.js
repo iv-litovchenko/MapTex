@@ -3,10 +3,7 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-global.jquery = global.jQuery = global.$ = require('jquery/dist/jquery');
-require('bootstrap/dist/js/bootstrap'); // Bootstrap
 
-const hljs = require('highlight.js/lib/common'); // Highlight.Js
 const tinymce = require('tinymce/tinymce'); // TinyMCE
 
 require('tinymce/icons/default');
@@ -54,27 +51,3 @@ tinymce.init({
         // {text: 'UML', value: ''} ???
     ]
 });
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-// Подсветка синтаксиса
-// html = hljs.highlight('<h1>Hello World!</h1>', {language: 'xml'}).value
-$("pre[class^='language']").each(function () {
-    var content = $(this).text();
-    var codeLanguage = $(this).attr('class');
-    codeLanguage = codeLanguage.replace('language-', '');
-    var hljsContent = hljs.highlight(content, {language: codeLanguage}).value;
-    $(this).html(hljsContent);
-    $(this).css('border', 'none');
-    $(this).css('border-radius', 'none');
-    // alert(codeLanguage + ' : ' + hljsContent);
-});
-
-// Подсветка текста в разделе поиск
-// var qSearchValue = $('#qSearch').val();
-// $('.backlightText').html(function () {
-//     return $(this).html().replace(new RegExp(qSearchValue + "(?=[^>]*<)", "ig"), "<span class='search-sot'>$&</span>");
-// });
