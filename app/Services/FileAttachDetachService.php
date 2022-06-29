@@ -104,9 +104,9 @@ class FileAttachDetachService
         // Загрузка 1 файла
         if ($file = $this->requst::file($formFieldName . '.upload')) {
             $extension = pathinfo($filename, PATHINFO_EXTENSION);
-            if(array_search($extension, $allowedExtensions) === false) {
-                throw new \Exception($extension .' is not allowed');
-            }
+            // if(array_search($extension, $allowedExtensions) === false) {
+            //     throw new \Exception($extension .' is not allowed');
+            // }
             $fullFilePathAndName = $this->storage::disk($diskName)->putFile($savePath, $file);
             return $fullFilePathAndName;
         }
