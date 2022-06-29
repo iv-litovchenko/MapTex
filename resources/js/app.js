@@ -34,7 +34,7 @@ tinymce.init({
     'styleselect backcolor forecolor |' +
     'bold italic strikethrough underline |' +
     'alignleft aligncenter alignjustify alignright',
-    toolbar2: 'outdent outdent bullist numlist |' +
+    toolbar2: 'outdent indent bullist numlist |' +
     'quicktable quicklink | table | link codesample code',
     // 'tableprops tablerowprops tablecellprops | ' +
     // 'tableinsertrowbefore tableinsertrowafter | ' +

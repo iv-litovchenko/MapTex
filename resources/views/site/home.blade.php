@@ -86,4 +86,18 @@
             </center>
         </div>
     </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <h3>Последние комментарии</h3>
+            <div class="jumbotron">
+                {!! clean($lastNote->bodytext, 'default') !!}
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <h3>Todo-лист</h3>
+            <div class="jumbotron">
+                {!! clean($postTodo->description, 'default') !!}
+            </div>
+        </div>
+    </div>
 @stop
