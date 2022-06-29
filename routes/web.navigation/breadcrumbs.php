@@ -17,6 +17,12 @@ Breadcrumbs::for('site.post', function ($trail, $post) {
     }
 });
 
+// Карта сайта
+Breadcrumbs::for('site.sitemap', function ($trail) {
+    $trail->parent('site.home');
+    $trail->push('Карта сайта');
+});
+
 // Барахолка
 Breadcrumbs::for('site.note', function ($trail) {
     $trail->parent('site.home');
