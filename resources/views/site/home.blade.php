@@ -34,6 +34,7 @@
             {{--</a>--}}
         {{--</p>--}}
     </div>
+    <hr />
     {{--    <div class="mindmap jumbotron">--}}
     {{--        <div class="node node_root context-menu-one btn btn-neutral">--}}
     {{--            <div class="node__text">--}}
@@ -72,7 +73,7 @@
     {{--            </a>--}}
     {{--        </div>--}}
     {{--    </center>--}}
-
+    <hr />
     <div class="row">
         <div class="col-sm-12">
             <center>
@@ -86,6 +87,7 @@
             </center>
         </div>
     </div>
+    <hr />
     <div class="row">
         <div class="col-sm-6">
             <h3>Последние комментарии</h3>

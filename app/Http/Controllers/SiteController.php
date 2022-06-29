@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Note;
 use App\Models\Post;
+use App\Utils\FrontendUility;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -34,6 +35,17 @@ class SiteController extends BaseController
                 'lastNote'
             )
         );
+    }
+
+    /**
+     * Страница карты сайта
+     *
+     * @return \Illuminate\View\View
+     */
+    public function sitemap()
+    {
+        $postsTreeArray = FrontendUility::buildTreeArray();
+        return view('site.sitemap', compact('postsTreeArray'));
     }
 
     /**

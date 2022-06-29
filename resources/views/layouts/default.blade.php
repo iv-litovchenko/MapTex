@@ -75,7 +75,7 @@
             Код пишется для людей. <a href="http://bootstrapessentials.com/fulldocs/components/">Bootstrap
                 компоненты</a><br/>
             <a href="https://github.com/iv-litovchenko/maptex/">Исходники проекта на github</a> |
-            <a href="#" disabled>Оглавление (карта сайта)</a>
+            <a href="{{ route('site.sitemap') }}">Оглавление (карта сайта)</a>
         </p>
     </div>
 </footer>
