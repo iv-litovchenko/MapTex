@@ -71,7 +71,6 @@
 -------------------------------
 
 1) https://jonathanbriehl.com/
-2) https://si-dev.com/ru/blog/validation-with-formrequest
 3) https://laravel.demiart.ru/
 4) https://badcode.ru/
 
