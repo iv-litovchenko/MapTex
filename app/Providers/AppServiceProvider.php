@@ -2,14 +2,11 @@
 
 namespace App\Providers;
 
-use Illuminate\Pagination\PaginationState;
-use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\Facades\File;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Pagination\Paginator;
-use Illuminate\Support\Carbon;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -32,7 +29,8 @@ class AppServiceProvider extends ServiceProvider
             }
 
             $view->with('appDbCountPosts', \App\Models\Post::count());
-            $view->with('appProjectVersion', 1);
+            $view->with('appProjectVersion', $this->getGitLastTag());
+
         });
     }
 
@@ -49,5 +47,19 @@ class AppServiceProvider extends ServiceProvider
 
         // TODO установка локали для дат
         Carbon::setLocale('ru_RU');
+    }
+
+    public static function getGitLastTag()
+    {
+        $HEAD_hash = file_get_contents(base_path().'/.git/refs/heads/master'); // or branch x
+        $files = glob(base_path().'/.git/refs/tags/*');
+        foreach(array_reverse($files) as $file) {
+            $contents = trim(file_get_contents($file));
+            if($HEAD_hash === $contents)
+            {
+                return basename($file); // Current tag is
+            }
+        }
+        return "?.?.?"; // No matching tag
     }
 }

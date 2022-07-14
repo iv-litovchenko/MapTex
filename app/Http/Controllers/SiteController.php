@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SiteDocStoreRequest;
+use App\Http\Requests\SiteBookStoreRequest;
+use App\Models\Book;
+use App\Models\Doc;
 use App\Models\Note;
 use App\Models\Post;
 use App\Utils\FrontendUility;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 /**
  * Контроллер для обработки страниц frontend-а
@@ -119,8 +122,35 @@ class SiteController extends BaseController
      */
     public function book()
     {
-        $images = Storage::disk('public')->files('site/book');
-        return view('site.book', compact('images'));
+        // $images = Storage::disk('public')->files('site/book');
+        $books = Book::orderBy('id', 'asc')->get();
+        return view('site.book', compact('books'));
+    }
+
+    /**
+     * Страница список книг (добавить)
+     *
+     * @param SiteBookStoreRequest $request
+     * @param Book $book
+     * @return \Illuminate\View\View
+     */
+    public function bookStore(SiteBookStoreRequest $request, Book $book)
+    {
+        // $book->bodytext = $request->input('bodytext');
+        $book->image_path = $this->fileAttachDetachService->oneFile(
+            null,
+            'image_path',
+            'site/book',
+            'public'
+        );
+
+        if ($book->save()) {
+            $request->session()->flash('flash_messages_success', 'Книга успешно [' . $book->id . '] добавлена!');
+            return redirect()->route('site.book');
+        }
+
+        $request->session()->flash('flash_messages_error', 'Ошибка добавления книги!');
+        return redirect()->route('site.book')->withInput();
     }
 
     /**
@@ -271,4 +301,55 @@ class SiteController extends BaseController
         return view('site.search', compact('posts', 'q'));
     }
 
+    /**
+     * Страница список документов
+     *
+     * @return \Illuminate\View\View
+     */
+    public function doc()
+    {
+        // $docs = Storage::disk('protected')->files('site/doc');
+        $docs = Doc::orderBy('id', 'asc')->get();
+        return view('site.doc', compact('docs'));
+    }
+
+    /**
+     * Страница список документов (добавить)
+     *
+     * @param SiteDocStoreRequest $request
+     * @param Doc $doc
+     * @return \Illuminate\View\View
+     */
+    public function docStore(SiteDocStoreRequest $request, Doc $doc)
+    {
+        $doc->bodytext = $request->input('bodytext');
+        $doc->file_path = $this->fileAttachDetachService->oneFile(
+            null,
+            'file_path',
+            'site/doc',
+            'protected'
+        );
+
+        if ($doc->save()) {
+            $request->session()->flash('flash_messages_success', 'Документ успешно [' . $doc->id . '] добавлен!');
+            return redirect()->route('site.doc');
+        }
+
+        $request->session()->flash('flash_messages_error', 'Ошибка создания документа!');
+        return redirect()->route('site.doc')->withInput();
+    }
+
+    /**
+     * Страница список документов (скачать)
+     *
+     * @param Doc $doc
+     * @return void
+     */
+    public function docDownload(Doc $doc)
+    {
+        $filePath = storage_path() . '/app/protected/' . $doc->file_path;
+        $fileExt = explode('.', basename($doc->file_path));
+        $fileExt = end($fileExt);
+        return response()->download($filePath, $doc->bodytext . '.' . $fileExt, ['header' => $doc->bodytext]);
+    }
 }

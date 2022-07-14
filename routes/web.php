@@ -22,6 +22,19 @@ Route::middleware([Authenticate::class, IsMe::class])
 
 Route::get('/figma', [SiteController::class, 'figma'])->name('site.figma');
 Route::get('/book', [SiteController::class, 'book'])->name('site.book');
+Route::post('/book', [SiteController::class, 'bookStore'])->name('site.book-store');
+
+Route::get('/doc', [SiteController::class, 'doc'])->name('site.doc');
+Route::post('/doc', [SiteController::class, 'docStore'])->name('site.doc-store');
+
+/**
+ * Закрытая часть
+ */
+Route::middleware([Authenticate::class, IsMe::class])
+    ->group(function () {
+        Route::get('/doc/download/{doc}', [SiteController::class, 'docDownload'])->name('site.doc-download');
+    });
+
 Route::get('/search', [SiteController::class, 'search'])->name('site.search');
 
 /**

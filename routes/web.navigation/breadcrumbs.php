@@ -41,6 +41,12 @@ Breadcrumbs::for('site.figma', function ($trail) {
     $trail->push('Зарисовки');
 });
 
+// Документы
+Breadcrumbs::for('site.doc', function ($trail) {
+    $trail->parent('site.home');
+    $trail->push('Документы');
+});
+
 // Книжки
 Breadcrumbs::for('site.book', function ($trail) {
     $trail->parent('site.home');

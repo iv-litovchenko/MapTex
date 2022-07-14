@@ -27,6 +27,8 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(1)->create();
         \App\Models\Note::factory(100)->create();
         \App\Models\Post::factory(100)->create();
+        \App\Models\Book::factory(30)->create();
+        \App\Models\Doc::factory(10)->create();
 
         // Создание дерева
         $rows = \App\Models\Post::where('id', '>', 7)->get();
