@@ -16,10 +16,6 @@
         <div class="form-group">
             <input type="file" class="form-control" name="file_path[upload]">
         </div>
-        <div class="form-group">
-            <input type="text" class="form-control" name="bodytext"
-                   placeholder="Комментарий" value="{{ old('bodytext') }}">
-        </div>
         <button type="submit" class="btn btn-primary">Добавить документ</button>
     </form>
 @stop

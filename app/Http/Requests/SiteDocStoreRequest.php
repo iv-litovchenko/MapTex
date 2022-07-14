@@ -14,7 +14,7 @@ class SiteDocStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'bodytext' => 'required|min:3|max:255',
+            // 'bodytext' => 'required|min:3|max:255',
             'file_path.upload' => 'required|file',
         ];
     }
@@ -27,7 +27,7 @@ class SiteDocStoreRequest extends FormRequest
     public function messages()
     {
         return [
-            'bodytext.*' => 'Опишите содержимое документа',
+            // 'bodytext.*' => 'Опишите содержимое документа',
             'file_path.upload' => 'Прикрепите файл',
         ];
     }

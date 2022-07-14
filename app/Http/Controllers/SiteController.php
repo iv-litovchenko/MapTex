@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\SiteDocStoreRequest;
 use App\Http\Requests\SiteBookStoreRequest;
+use App\Http\Requests\SiteDocStoreRequest;
 use App\Models\Book;
 use App\Models\Doc;
 use App\Models\Note;
@@ -322,7 +322,12 @@ class SiteController extends BaseController
      */
     public function docStore(SiteDocStoreRequest $request, Doc $doc)
     {
-        $doc->bodytext = $request->input('bodytext');
+        foreach ($request->file('file_path') as $file) {
+            $filename = $file->getClientOriginalName();
+            break;
+        }
+
+        $doc->bodytext = $filename;
         $doc->file_path = $this->fileAttachDetachService->oneFile(
             null,
             'file_path',
