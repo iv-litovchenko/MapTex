@@ -15,10 +15,10 @@ class FrontendUility
     {
         $postsList = Post::orderBy('sorting', 'asc')->get()->toTree();
         $arTree = [];
-        $traverse = function ($categories, $prefix = ' - ') use (&$traverse, &$arTree) {
+        $traverse = function ($categories, $prefix = '-') use (&$traverse, &$arTree) {
             foreach ($categories as $category) {
                 $arTree[$category->id] = $prefix.' '.$category->name;
-                $traverse($category->children, $prefix . ' - ');
+                $traverse($category->children, $prefix . '-');
             }
         };
         $traverse($postsList);

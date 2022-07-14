@@ -5,9 +5,11 @@
 @section('LayoutSectionPageBreadcrumb', Breadcrumbs::render('site.sitemap'))
 
 @section('LayoutSectionPageContent')
+<div style="overflow: scroll; border: red 0px solid;">
     @foreach($postsTreeArray as $postItemId => $postItemName)
 
-        <a href="{{ route('site.post', $postItemId) }}">{{ $postItemName }}</a><br/>
-
+		<a href="{{ route('site.post', $postItemId) }}" style="white-space: nowrap;">{{ $postItemName }}</a><br/>
+		
     @endforeach
+</div>
 @stop
