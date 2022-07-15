@@ -16,7 +16,7 @@ class BookFactory extends Factory
         return [
             'user_id' => random_int(0, 1),
             'bodytext' => $this->faker->name,
-            'image_path' => ''
+            'image_path' => 'example-image.png'
         ];
     }
 }

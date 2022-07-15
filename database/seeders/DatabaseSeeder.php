@@ -5,8 +5,6 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
-
-use function app_path;
 use function app_storage;
 
 class DatabaseSeeder extends Seeder
@@ -24,11 +22,25 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password'),
         ]);*/
 
+        // DB::disableForeignKeyConstrains();
+        DB::statement("SET foreign_key_checks=0");
+
+        \App\Models\User::truncate(); // truncate
         \App\Models\User::factory(1)->create();
+
+        \App\Models\Note::truncate(); // truncate
         \App\Models\Note::factory(100)->create();
+
+        \App\Models\Post::truncate(); // truncate
         \App\Models\Post::factory(100)->create();
+
+        \App\Models\Book::truncate(); // truncate
         \App\Models\Book::factory(30)->create();
+
+        \App\Models\Doc::truncate(); // truncate
         \App\Models\Doc::factory(10)->create();
+
+        DB::statement("SET foreign_key_checks=1");
 
         // Создание дерева
         $rows = \App\Models\Post::where('id', '>', 7)->get();
@@ -42,11 +54,11 @@ class DatabaseSeeder extends Seeder
         }
 
         // Копируем картинку (логотип для постов)
-        if (!File::exists(app_path('storage/app/public/logo.png'))) {
-            // File::copy(
-            //     app_path('resources/assets/images/logo.png'),
-            //     app_path('public/storage/logo.png')
-            // );
+        if (!File::exists('storage/app/public/example-image.png')) {
+            File::copy(
+                'resources/assets/images/example-image.png',
+                'storage/app/public/example-image.png'
+            );
         }
 
         // Наполнение таблицы сигналов
