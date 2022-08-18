@@ -1,114 +1,62 @@
-# Зарезервированная переменная (версия докера)
-version: '3'
+# https://www.section.io/engineering-education/dockerized-php-apache-and-mysql-container-development-environment/
+# https://gist.github.com/huzaifaarain/e40a7916d201a0b1d86a4aa01cd73fad
+# docker stop $(docker ps -a -q)
+# docker rm $(docker ps -a -q)
+# docker-compose up --build -d
 
-# Зарезервированная переменная докера
-# >> docker-compose up -d
-# >> docker exec -it nginx bash # подсоеденится к контейнеру
+version: '3.0'
+
 services:
-  docker_nginx:
-    container_name: docker_nginx
-    image: nginx:latest
+
+  # php -i|grep PDO
+  # http://localhost:8011/
+  # docker exec -it <container_id (php-apache)> bash
+  php-apache:
+    container_name: php-apache
     restart: always
-    ports:
-      - "8876:80"
+    build: ./.docker/php-apache
+    depends_on:
+      - db
     volumes:
-    - ./_docker/nginx/conf.d/:/etc/nginx/conf.d/
-    - ./:/app
-
-  docker_php:
-    container_name: docker_php
-    image: php:latest
-    restart: always
-
-  docker_mysql:
-    container_name: docker_mysql
-    image: mysql:8.0
-    restart: always
+      - '.:/var/www/html'
     ports:
-    - 8181:3306
+      - '8011:80'
+
+  db:
+    image: mysql
+    container_name: db
+    command: [ 'mysqld', '--default-authentication-plugin=mysql_native_password', '--character-set-server=utf8', '--collation-server=utf8_unicode_ci']
+    restart: always
     environment:
-      MYSQL_DATABASE: chat
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: chad
-      MYSQL_PASSWORD: char
+      MYSQL_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
+      MYSQL_DATABASE: MYSQL_DATABASE
+      MYSQL_USER: MYSQL_USER
+      MYSQL_PASSWORD: MYSQL_PASSWORD
     volumes:
       - ./tmp/db:/var/lib/mysql
-    command: mysqld: --charset-set-server=utf8 --colation-server=utf8_unicode_ci
 
-  docker_redis:
-    container_name: docker_redis
-    image: redis
-
-  docker_adminer:
-    container_name: docker_adminer
-    image: adminer
+  # http://localhost:8012/
+  # Пароль: MYSQL_PASSWORD
+  # Нужно создать таблицу "users"
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    depends_on:
+      - db
     environment:
-      ADMINER_DEFAULT_SERVER: docker_mysql
+      - PMA_ARBITRARY=1
+    restart: always
     ports:
-    - 5114:8080
-    
-    
-    
-    
-    
-    
-    # Зарезервированная переменная (версия докера)
-version: '3'
+      - '8012:80'
 
-# Зарезервированная переменная докера
-services:
-  php:
-    build: http
-    container_name: sli_php
-    volumes:
-    - ./http:/app
-
-  node:
-    build: websocket
-
-  nginx:
-    image: nginx:alpine
-    volumes:
-    - ./frontend:/app
-    - ./nginx:/etc/nginx/conf.d
-    - ./log:/log
-    ports:
-    - 5113:80
-
-  maria:
-    image: mariadb
-    volumes:
-    - ./store/maria:/var/lib/mysql
-    environment:
-      MYSQL_DATABASE: chat
-      MYSQL_USER: chad
-      MYSQL_PASSWORD: char
-      MYSQL_ROOT_PASSWORD: roots
-    ports:
-    - 3306:3306
-
-  mongo:
-    image: mongo
-    volumes:
-    - ./store/mongo:/data/db
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: chad
-      MONGO_INITDB_ROOT_PASSWORD: char
-
-  redis:
-    image: redis
-
+  # http://localhost:8013/?server=db&username=MYSQL_USER&db=MYSQL_DATABASE
+  # Пароль: MYSQL_PASSWORD
+  # Нужно создать таблицу "users"
   adminer:
     image: adminer
+    container_name: adminer
+    restart: always
     environment:
-      ADMINER_DEFAULT_SERVER: maria
+      ADMINER_DEFAULT_SERVER: db
     ports:
-    - 5114:8080
-
-  mongo-express:
-    image: mongo-express
-    environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: chad
-      ME_CONFIG_MONGODB_ADMINPASSWORD: char
-    ports:
-    - 5115:8081
+      - '8013:8080'

@@ -3,10 +3,38 @@
 ## Изучаем Laravel http://maptex.ru/
 
 -------------------------------
-Установка
+# Установка
 -------------------------------
 
->> php artisan migrate:auto --seed
+- $ git clone https://github.com/iv-litovchenko/maptex.git
+- $ cd maptex
+
+- $ docker-compose up -d --build
+- $ docker exec -ti php-apache bash
+- $ composer update
+- $ npm update
+- $ npm run dev
+- $ remame .env.example -> .env
+- $ chmod -R 777 .
+
+- $ php artisan storage:link
+- $ php artisan key:generate
+- $ php artisan migrate:auto
+- $ php artisan db:seed
+
+- $ php artisan tinker
+- $ DB::connection()->getDatabaseName();
+
+- Логин и пароль для входа
+- http://localhost:8011/login
+- Login: iv-litovchenko@mail.ru
+- Password: 100
+
+-------------------------------
+Деплой
+-------------------------------
+
+- 0
 
 -------------------------------
 Двигаемся
@@ -66,12 +94,14 @@
 -------------------------------
 Diff-для истории
 -------------------------------
+
 - https://github.com/caxy/php-htmldiff
 - https://github.com/vi-kon/laravel-diff
 
 -------------------------------
 Идеи
 -------------------------------
+
 - html CSS вертска (фрейм)
 - json для загрузки файлов
 - автомиграции
