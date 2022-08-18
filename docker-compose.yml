@@ -21,6 +21,7 @@ services:
       - '.:/var/www/html'
     ports:
       - '8011:80'
+    # command: npm run debug
 
   db:
     image: mysql
