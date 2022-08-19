@@ -27,6 +27,9 @@ Route::post('/book', [SiteController::class, 'bookStore'])->name('site.book-stor
 Route::get('/doc', [SiteController::class, 'doc'])->name('site.doc');
 Route::post('/doc', [SiteController::class, 'docStore'])->name('site.doc-store');
 
+Route::get('/project', [SiteController::class, 'project'])->name('site.project');
+Route::get('/todo', [SiteController::class, 'todo'])->name('site.todo');
+
 /**
  * Закрытая часть
  */

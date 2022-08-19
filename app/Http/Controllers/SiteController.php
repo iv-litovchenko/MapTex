@@ -357,4 +357,25 @@ class SiteController extends BaseController
         $fileExt = end($fileExt);
         return response()->download($filePath, $doc->bodytext . '.' . $fileExt, ['header' => $doc->bodytext]);
     }
+
+    /**
+     * Проект
+     *
+     * @return \Illuminate\View\View
+     */
+    public function project()
+    {
+        return view('site.project');
+    }
+
+    /**
+     * MD TODO
+     *
+     * @return \Illuminate\View\View
+     */
+    public function todo()
+    {
+        $todoHttpLink = 'https://raw.githubusercontent.com/iv-litovchenko/maptex/master/README.md';
+        return view('site.todo', compact('todoHttpLink'));
+    }
 }

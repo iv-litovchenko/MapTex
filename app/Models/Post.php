@@ -65,6 +65,8 @@ class Post extends Model
         $table->char('figma_file', 255)->nullable();
         $table->text('post_images')->nullable();
         $table->integer('sorting')->default(0);
+        $table->string('maptex_content_link', 255)->nullable();
+        $table->string('maptex_content_save', 255)->nullable();
 
         $table->timestamps();
 

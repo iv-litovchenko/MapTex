@@ -17,6 +17,18 @@ Breadcrumbs::for('site.post', function ($trail, $post) {
     }
 });
 
+// Проект
+Breadcrumbs::for('site.project', function ($trail) {
+    $trail->parent('site.home');
+    $trail->push('Проект');
+});
+
+// MD TODO
+Breadcrumbs::for('site.todo', function ($trail) {
+    $trail->parent('site.home');
+    $trail->push('TODO по сайту');
+});
+
 // Карта сайта
 Breadcrumbs::for('site.sitemap', function ($trail) {
     $trail->parent('site.home');

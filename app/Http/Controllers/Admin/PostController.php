@@ -117,6 +117,7 @@ class PostController extends BaseController
         $post->name_short = $request->input('name_short');
         $post->description = $request->input('description');
         $post->sorting = intval($request->input('sorting'));
+        $post->maptex_content_link = $request->input('maptex_content_link');
 
         // Логотип: загрузка (отсоединение) 1 файла
         $post->logo_image = $this->fileAttachDetachService->oneFile(

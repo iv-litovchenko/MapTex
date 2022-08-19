@@ -24,4 +24,6 @@ Menu::make('menu.header.left', function ($menu) {
     $menu->add('PHP-тест', 'phptest');
     $menu->add('Документы', ['route'  => 'site.doc']);
     $menu->add('Книжки', ['route'  => 'site.book']);
+    $menu->add('Проект', ['route'  => 'site.project']);
+    $menu->add('TODO', ['route'  => 'site.todo']);
 });
