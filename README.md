@@ -15,6 +15,7 @@
 - $ > npm install
 - $ > npm run dev
 - $ > exit
+
 - $ copy .env.example -> .env
 - $ chmod 664 node_modules
 - $ chmod 664 vendor
