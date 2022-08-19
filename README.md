@@ -11,19 +11,22 @@
 
 - $ docker-compose up -d --build
 - $ docker exec -ti php-apache bash
-- $ composer update
-- $ npm update
-- $ npm run dev
-- $ remame .env.example -> .env
-- $ chmod -R 777 .
+- $ > composer install
+- $ > npm install
+- $ > npm run dev
+- $ > exit
+- $ copy .env.example -> .env
+- $ chmod 664 node_modules
+- $ chmod 664 vendor
 
-- $ php artisan storage:link
-- $ php artisan key:generate
-- $ php artisan migrate:auto
-- $ php artisan db:seed
-
-- $ php artisan tinker
-- $ DB::connection()->getDatabaseName();
+- $ docker exec -ti php-apache bash
+- $ > php artisan storage:link
+- $ > php artisan key:generate
+- $ > php artisan migrate:auto
+- $ > php artisan db:seed
+- $ > php artisan tinker
+- $ > DB::connection()->getDatabaseName();
+- $ > exit
 
 - Логин и пароль для входа
 - http://localhost:8011/login
