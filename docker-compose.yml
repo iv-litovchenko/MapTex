@@ -31,9 +31,9 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
-      MYSQL_DATABASE: MYSQL_DATABASE
-      MYSQL_USER: MYSQL_USER
-      MYSQL_PASSWORD: MYSQL_PASSWORD
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
     volumes:
       - ./docker-data/database/mysql:/var/lib/mysql
 
@@ -63,32 +63,32 @@ services:
     ports:
       - '8013:8080'
 
-    db:
-        image: postgres:10.1
-        restart: always
-        container_name: db
-        environment:
-            - POSTGRES_DB=${DB_NAME}
-            - POSTGRES_USER=${DB_USER}
-            - POSTGRES_PASSWORD=${DB_PASSWORD}
-            - POSTGRES_HOST=${DB_HOST}
-            - PGDATA:/var/lib/postgresql/data
-        ports:
-            - 5888:5432
-        volumes:
-            # Под инициализацией понимается sql код который создаст нужные таблицы и наполнит какими то данными
-            # При первом поднятии контейнера
-            # Да, это может быть БД с продакшена
-            #            - ./.docker/conf/postgres/:/docker-entrypoint-initdb.d/
-            - ./.docker-data/database/postgres:/var/lib/postgresql/data
+#    db:
+#        image: postgres:10.1
+#        restart: always
+#        container_name: db
+#        environment:
+#            - POSTGRES_DB=${DB_NAME}
+#            - POSTGRES_USER=${DB_USER}
+#            - POSTGRES_PASSWORD=${DB_PASSWORD}
+#            - POSTGRES_HOST=${DB_HOST}
+#            - PGDATA:/var/lib/postgresql/data
+#        ports:
+#            - 5888:5432
+#        volumes:
+#            # Под инициализацией понимается sql код который создаст нужные таблицы и наполнит какими то данными
+#            # При первом поднятии контейнера
+#            # Да, это может быть БД с продакшена
+#            #            - ./.docker/conf/postgres/:/docker-entrypoint-initdb.d/
+#            - ./.docker-data/database/postgres:/var/lib/postgresql/data
 
-    pgadmin:
-        container_name: pgadmin_container
-        image: dpage/pgadmin4
-        restart: always
-        environment:
-            PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
-            PGADMIN_DEFAULT_PASSWORD: admin
-            PGADMIN_CONFIG_SERVER_MODE: 'False'
-        ports:
-            - "8877:80"
+#    pgadmin:
+#        container_name: pgadmin_container
+#        image: dpage/pgadmin4
+#        restart: always
+#        environment:
+#            PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+#            PGADMIN_DEFAULT_PASSWORD: admin
+#            PGADMIN_CONFIG_SERVER_MODE: 'False'
+#        ports:
+#            - "8877:80"
