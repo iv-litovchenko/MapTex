@@ -19,6 +19,7 @@ services:
       - db
     volumes:
       - '.:/var/www/html'
+      - './.docker/conf/php.ini:/usr/local/etc/php/conf.d/php.ini'
     ports:
       - '8011:80'
     # command: npm run debug
@@ -61,3 +62,33 @@ services:
       ADMINER_DEFAULT_SERVER: db
     ports:
       - '8013:8080'
+
+    db:
+        image: postgres:10.1
+        restart: always
+        container_name: db
+        environment:
+            - POSTGRES_DB=${DB_NAME}
+            - POSTGRES_USER=${DB_USER}
+            - POSTGRES_PASSWORD=${DB_PASSWORD}
+            - POSTGRES_HOST=${DB_HOST}
+            - PGDATA:/var/lib/postgresql/data
+        ports:
+            - 5888:5432
+        volumes:
+            # Под инициализацией понимается sql код который создаст нужные таблицы и наполнит какими то данными
+            # При первом поднятии контейнера
+            # Да, это может быть БД с продакшена
+            #            - ./.docker/conf/postgres/:/docker-entrypoint-initdb.d/
+            - ./.docker-data/database/postgres:/var/lib/postgresql/data
+
+    pgadmin:
+        container_name: pgadmin_container
+        image: dpage/pgadmin4
+        restart: always
+        environment:
+            PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+            PGADMIN_DEFAULT_PASSWORD: admin
+            PGADMIN_CONFIG_SERVER_MODE: 'False'
+        ports:
+            - "8877:80"
