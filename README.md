@@ -6,11 +6,12 @@
 # Установка
 -------------------------------
 
-- $ sudo git clone https://github.com/iv-litovchenko/maptex.git
-- $ sudo cd maptex
-- $ sudo cp .env.example .env
-- $ sudo docker-compose up -d --build
-- $ sudo docker exec -ti php-apache bash
+- $ git clone https://github.com/iv-litovchenko/maptex.git
+- $ cd maptex
+- $ cp .env.example .env
+- $ docker-compose up -d --build
+- $ docker exec -ti php-apache bash
+
 - $ > composer install
 - $ > npm install
 - $ > npm run dev
