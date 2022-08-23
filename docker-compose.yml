@@ -1,94 +1,89 @@
-# https://www.section.io/engineering-education/dockerized-php-apache-and-mysql-container-development-environment/
-# https://gist.github.com/huzaifaarain/e40a7916d201a0b1d86a4aa01cd73fad
-# docker stop $(docker ps -a -q)
-# docker rm $(docker ps -a -q)
-# docker-compose up --build -d
-
 version: '3.0'
 
 services:
 
-  # php -i|grep PDO
-  # http://localhost:8011/
-  # docker exec -it <container_id (php-apache)> bash
-  php-apache:
-    container_name: php-apache
-    restart: always
-    build: ./.docker/php-apache
-    depends_on:
-      - db
-    volumes:
-      - '.:/var/www/html'
-      - './.docker/conf/php.ini:/usr/local/etc/php/conf.d/php.ini'
-    ports:
-      - '8011:80'
-    # command: npm run debug
+    # php -i | grep PDO
+    # http://localhost:8011/
+    # docker exec -it <container_id (php-apache)> bash
+    php-apache:
+        container_name: php-apache
+        restart: always
+        build: ./.docker/php-apache
+        depends_on:
+            - db-mysql
+        volumes:
+            - '.:/var/www/html'
+            - './.docker/conf/php.ini:/usr/local/etc/php/conf.d/php.ini'
+        ports:
+            - '8011:80'
+        # command: npm run debug
 
-  db:
-    image: mysql
-    container_name: db
-    command: [ 'mysqld', '--default-authentication-plugin=mysql_native_password', '--character-set-server=utf8', '--collation-server=utf8_unicode_ci']
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
-      MYSQL_DATABASE: ${DB_DATABASE}
-      MYSQL_USER: ${DB_USERNAME}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
-    volumes:
-      - ./docker-data/database/mysql:/var/lib/mysql
+    db-mysql:
+        image: mysql
+        container_name: db-mysql
+        command: [ 'mysqld', '--default-authentication-plugin=mysql_native_password', '--character-set-server=utf8', '--collation-server=utf8_unicode_ci' ]
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_USER: ${DB_USERNAME}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+        volumes:
+            - ./docker-data/database/mysql:/var/lib/mysql
 
-  # http://localhost:8012/
-  # Пароль: MYSQL_PASSWORD
-  # Нужно создать таблицу "users"
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
-    depends_on:
-      - db
-    environment:
-      - PMA_ARBITRARY=1
-    restart: always
-    ports:
-      - '8012:80'
+    # http://localhost:8012/
+    # Пароль: MYSQL_PASSWORD
+    # Нужно создать таблицу "users"
+    web-phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: web-phpmyadmin
+        depends_on:
+            - db-mysql
+        environment:
+            - PMA_ARBITRARY=1
+        restart: always
+        ports:
+            - '8012:80'
 
-  # http://localhost:8013/?server=db&username=MYSQL_USER&db=MYSQL_DATABASE
-  # Пароль: MYSQL_PASSWORD
-  # Нужно создать таблицу "users"
-  adminer:
-    image: adminer
-    container_name: adminer
-    restart: always
-    environment:
-      ADMINER_DEFAULT_SERVER: db
-    ports:
-      - '8013:8080'
+    # http://localhost:8013/?server=db&username=MYSQL_USER&db=MYSQL_DATABASE
+    # Пароль: MYSQL_PASSWORD
+    # Нужно создать таблицу "users"
+    web-adminer:
+        image: adminer
+        container_name: web-adminer
+        restart: always
+        environment:
+            ADMINER_DEFAULT_SERVER: db-mysql
+        ports:
+            - '8013:8080'
 
-#    db:
-#        image: postgres:10.1
-#        restart: always
-#        container_name: db
-#        environment:
-#            - POSTGRES_DB=${DB_NAME}
-#            - POSTGRES_USER=${DB_USER}
-#            - POSTGRES_PASSWORD=${DB_PASSWORD}
-#            - POSTGRES_HOST=${DB_HOST}
-#            - PGDATA:/var/lib/postgresql/data
-#        ports:
-#            - 5888:5432
-#        volumes:
-#            # Под инициализацией понимается sql код который создаст нужные таблицы и наполнит какими то данными
-#            # При первом поднятии контейнера
-#            # Да, это может быть БД с продакшена
-#            #            - ./.docker/conf/postgres/:/docker-entrypoint-initdb.d/
-#            - ./.docker-data/database/postgres:/var/lib/postgresql/data
+    db-postgres:
+        image: postgres:10.1
+        restart: always
+        container_name: db-postgres
+        environment:
+            - POSTGRES_DB=${DB_DATABASE}
+            - POSTGRES_USER=${DB_USERNAME}
+            - POSTGRES_PASSWORD=${DB_PASSWORD}
+            - POSTGRES_HOST=${DB_HOST}
+            - PGDATA:/var/lib/postgresql/data
+        ports:
+            - '8014:5432'
+        volumes:
+            # Под инициализацией понимается sql код который создаст нужные таблицы и наполнит какими то данными
+            # При первом поднятии контейнера
+            # Да, это может быть БД с продакшена
+            # - ./.docker/conf/postgres/:/docker-entrypoint-initdb.d/
+            - ./.docker-data/database/postgres:/var/lib/postgresql/data
 
-#    pgadmin:
-#        container_name: pgadmin_container
-#        image: dpage/pgadmin4
-#        restart: always
-#        environment:
-#            PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
-#            PGADMIN_DEFAULT_PASSWORD: admin
-#            PGADMIN_CONFIG_SERVER_MODE: 'False'
-#        ports:
-#            - "8877:80"
+    # http://localhost:8015/
+    web-pgadmin:
+        container_name: web-pgadmin
+        image: dpage/pgadmin4
+        restart: always
+        environment:
+            PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+            PGADMIN_DEFAULT_PASSWORD: admin
+            PGADMIN_CONFIG_SERVER_MODE: 'False'
+        ports:
+            - "8015:80"
