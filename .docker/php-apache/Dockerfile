@@ -1,7 +1,7 @@
 # https://github.com/veevidify/laravel-apache-docker
-FROM php:8.1-apache 
+FROM php:8.1-apache
 
-# Установка программ и утилит 
+# Установка программ и утилит
 RUN apt-get update && apt-get install -y \
     curl \
     g++ \
@@ -17,6 +17,8 @@ RUN apt-get update && apt-get install -y \
     libreadline-dev \
     sudo \
     unzip \
+    zlib1g-dev \
+    libzip-dev \
     zip \
  && rm -rf /var/lib/apt/lists/*
 
@@ -40,6 +42,7 @@ RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 
 # Установка расширений PHP
 RUN docker-php-ext-install pdo pdo_mysql
+RUN docker-php-ext-install zip
 
 # COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # ARG uid
