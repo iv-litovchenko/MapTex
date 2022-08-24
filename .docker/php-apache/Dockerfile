@@ -3,11 +3,10 @@ FROM php:8.1-apache
 
 # Установка программ и утилит
 RUN apt-get update && apt-get install -y \
+    sudo \
     curl \
     g++ \
     git \
-    nodejs \
-    npm \
     libbz2-dev \
     libfreetype6-dev \
     libicu-dev \
@@ -15,7 +14,6 @@ RUN apt-get update && apt-get install -y \
     libmcrypt-dev \
     libpng-dev \
     libreadline-dev \
-    sudo \
     unzip \
     zlib1g-dev \
     libzip-dev \
@@ -24,12 +22,13 @@ RUN apt-get update && apt-get install -y \
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# RUN curl -sL https://deb.nodesource.com/setup_11.x | sudo bash -
-# RUN apt-get install -y nodejs
+RUN curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
+RUN apt-get install -y nodejs
 
 # Install gulp & bower
-# RUN npm install --global gulp
-# RUN npm install --global bower
+RUN npm install --global gulp
+RUN npm install --global grunt
+RUN npm install --global bower
 
 # Устанавливаем путь к обработке папки "public"
 RUN echo "ServerName laravel-app.local" >> /etc/apache2/apache2.conf
