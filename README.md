@@ -9,7 +9,7 @@
 - $ git clone https://github.com/iv-litovchenko/maptex.git
 - $ cd maptex
 - $ cp .env.example .env
-- $ sudo chmod 664 . -R (толоько для моего проекта)
+- $ sudo chmod 664 . -R (для локальной разработки)
 - $ docker-compose up -d --build
 - $ docker exec -ti php-apache bash
 
