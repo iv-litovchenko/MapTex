@@ -25,6 +25,7 @@
 - $ > exit
 
 - Логин и пароль для входа
+- http://localhost:8011/
 - http://localhost:8011/login
 - Login: iv-litovchenko@mail.ru
 - Password: 100
