@@ -29,7 +29,7 @@ services:
             MYSQL_USER: ${DB_USERNAME}
             MYSQL_PASSWORD: ${DB_PASSWORD}
         volumes:
-            - ./docker-data/database/mysql:/var/lib/mysql
+            - ./.docker-data/database/mysql:/var/lib/mysql
 
     # http://localhost:8012/
     # Пароль: MYSQL_PASSWORD
