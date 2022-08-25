@@ -29,6 +29,8 @@
 - http://localhost:8011/login
 - Login: iv-litovchenko@mail.ru
 - Password: 100
+- http://localhost:8012/
+- http://localhost:8013/
 
 -------------------------------
 Деплой
