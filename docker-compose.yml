@@ -13,7 +13,7 @@ services:
             - db-mysql
         volumes:
             - '.:/var/www/html'
-            - './.docker/conf/php.ini:/usr/local/etc/php/conf.d/php.ini'
+            - '.docker/conf/php.ini:/usr/local/etc/php/conf.d/php.ini'
         ports:
             - '8011:80'
         # command: npm run debug
@@ -29,7 +29,7 @@ services:
             MYSQL_USER: ${DB_USERNAME}
             MYSQL_PASSWORD: ${DB_PASSWORD}
         volumes:
-            - ./.docker-data/database/mysql:/var/lib/mysql
+            - '.docker-data/database/mysql:/var/lib/mysql'
 
     # http://localhost:8012/
     # Пароль: MYSQL_PASSWORD
