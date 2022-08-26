@@ -6,13 +6,14 @@
 # Установка
 -------------------------------
 
-// Настройка прав доступа для Docker-а
+- // Настройка прав доступа для Docker-а
 - $ which docker-compose
 - $ sudo chmod +x /usr/bin/docker-compose;
 - $ sudo usermod -aG docker $USER // to add myself to docker group
 - $ sudo chgrp docker /usr/bin/docker-compose // to give docker-compose to docker group,
 - $ sudo chmod 750 /usr/bin/docker-compose // to allow docker group users to execute it
 
+- // Запуск проекта (часть 1)
 - $ git clone https://github.com/iv-litovchenko/maptex.git
 - $ cd maptex
 - $ cp .env.example .env
@@ -20,6 +21,7 @@
 - $ docker-compose up -d --build
 - $ docker exec -ti php-apache bash
 
+- // Запуск проекта (часть 2 - внутри контейнера сервиса)
 - $ > composer install
 - $ > npm install
 - $ > npm run dev
