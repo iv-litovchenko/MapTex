@@ -6,6 +6,7 @@
 /public/adminer-4.8.1.php
 /storage/*.key
 /vendor
+.bash_history
 .env
 .env.backup
 .phpunit.result.cache
