@@ -142,3 +142,8 @@ Diff-для истории
 - MindMap на основе SVG
 - Вставать мою фотку в йоги Вставить баннер с яндекса Диска Вывести тот баннер приветствие на главной с
 - Создать инсталл баш, создать деплой баш
+
+
+- CI CD
+- мастер слейв (master slave), https://www.digitalocean.com/community/tutorials/how-to-set-up-replication-in-mysql
+- nrock
