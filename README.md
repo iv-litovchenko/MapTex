@@ -6,10 +6,6 @@
 # Установка
 -------------------------------
 
-- // Настройка прав доступа для Docker-а
-- $ which docker-compose
-- $ sudo usermod -aG docker $USER // to add myself to docker group
-
 - // Запуск проекта (часть 1)
 - $ git clone https://github.com/iv-litovchenko/maptex.git
 - $ cd maptex
