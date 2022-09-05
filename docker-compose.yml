@@ -63,6 +63,7 @@ services:
         image: postgres:10.1
         restart: always
         container_name: db-postgres
+        user: '1000:1000'
         environment:
             - POSTGRES_DB=${DB_DATABASE}
             - POSTGRES_USER=${DB_USERNAME}
