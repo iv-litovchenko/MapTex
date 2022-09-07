@@ -91,8 +91,10 @@
 -------------------------------
 
 1) https://jonathanbriehl.com/
-3) https://laravel.demiart.ru/
-4) https://badcode.ru/
+2) https://laravel.demiart.ru/
+3) https://badcode.ru/
+4) https://matthiasnoback.nl/
+5) https://stitcher.io/
 
 -------------------------------
 Diff-для истории
