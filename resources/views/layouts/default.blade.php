@@ -69,11 +69,12 @@
 <footer class="footer">
     <div class="container">
         <hr class="my-12"/>
-        <p class="text-muted">Версия {{ $appProjectVersion }} | {{ config('app.name', 'Laravel') }}</p>
+        <p class="text-muted">Версия {{ $appProjectVersion }} | {{ config('app.name', 'Laravel') }}</p><br />
+        <a href="http://ivan-litovchenko.ru/"><img src="http://ivan-litovchenko.ru/typo3conf/ext/siteivlitovchenko/Resources/Public/Images/Iv.png" width="300"></a>
         <p>
             Над кодом - как это работает? Интерактивный справочник и копилка знаний. <br/>
             Код пишется для людей. Я не ходячая энциклопедия - дайте мне гугл и я найду ответ<br/>
-            <a href="http://bootstrapessentials.com/fulldocs/components/">Bootstrap компоненты</a> |
+            <a href="https://getbootstrap.com/docs/3.4/components/">Bootstrap компоненты</a> |
             <a href="https://github.com/iv-litovchenko/maptex/">Исходники проекта на github</a> |
             <a href="{{ route('site.sitemap') }}">Оглавление (карта сайта)</a>
         </p>

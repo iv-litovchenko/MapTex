@@ -31,11 +31,14 @@ class SiteController extends BaseController
         $postsWithLogo = Post::whereNotNull('logo_image')->get();
         $postTodo = Post::find(72);
         $lastNote = Note::where('note_type', Note::NOTE_TYPE_POST_COMMENT)->orderBy('id', 'desc')->first();
+
+        $todoHttpLink = 'https://raw.githubusercontent.com/iv-litovchenko/maptex/master/README.md';
         return view('site.home', compact(
                 'posts',
                 'postsWithLogo',
                 'postTodo',
-                'lastNote'
+                'lastNote',
+                'todoHttpLink'
             )
         );
     }
@@ -366,16 +369,5 @@ class SiteController extends BaseController
     public function project()
     {
         return view('site.project');
-    }
-
-    /**
-     * MD TODO
-     *
-     * @return \Illuminate\View\View
-     */
-    public function todo()
-    {
-        $todoHttpLink = 'https://raw.githubusercontent.com/iv-litovchenko/maptex/master/README.md';
-        return view('site.todo', compact('todoHttpLink'));
     }
 }

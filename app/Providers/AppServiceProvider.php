@@ -51,15 +51,8 @@ class AppServiceProvider extends ServiceProvider
 
     public static function getGitLastTag()
     {
-        $HEAD_hash = file_get_contents(base_path().'/.git/refs/heads/master'); // or branch x
-        $files = glob(base_path().'/.git/refs/tags/*');
-        foreach(array_reverse($files) as $file) {
-            $contents = trim(file_get_contents($file));
-            if($HEAD_hash === $contents)
-            {
-                return basename($file); // Current tag is
-            }
-        }
-        return "?.?.?"; // No matching tag
+        $command = 'git describe --tags $(git rev-list --tags --max-count=1)';
+        $output = exec($command);
+        return $output; // No matching tag
     }
 }
