@@ -71,8 +71,8 @@
             <div style="position: relative; background: url({{ asset('assets/images/school-board.jpeg') }}); height: 800px; padding: 5%; overflow: scroll; color: wheat;">
                 @can('update', $post)
                     <a href="{{ route('admin.post.edit', $postTodo->id) }}"
-                       class="btn btn-success btn-lg" style="position: absolute; top: 100px; right: 100px;">
-                        Изменить
+                       class="btn btn-success btn-lg" style="position: absolute; top: 50px; right: 50px;">
+                        Изменить TODO
                     </a>
                 @endcan
              {!! clean($postTodo->description, 'default') !!}
