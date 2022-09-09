@@ -34,12 +34,6 @@
             {{--</a>--}}
         {{--</p>--}}
     </div>
-    <hr />
-    <div class="row">
-        <div class="col-sm-12">
-            {!! clean($postTodo->description, 'default') !!}
-        </div>
-    </div>
     {{--    <div class="mindmap jumbotron">--}}
     {{--        <div class="node node_root context-menu-one btn btn-neutral">--}}
     {{--            <div class="node__text">--}}
@@ -70,6 +64,12 @@
                 <div class="clearfix"></div>
             @endif
         @endforeach
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-sm-12">
+            {!! clean($postTodo->description, 'default') !!}
+        </div>
     </div>
     {{--    <center>--}}
     {{--        <div class="btn-group" role="group">--}}
