@@ -70,6 +70,7 @@
     <div class="container">
         <hr class="my-12"/>
         <p class="text-muted">Версия {{ $appProjectVersion }} | {{ config('app.name', 'Laravel') }}</p><br />
+        <img src="{{ asset('assets/images/life.gif') }}" style="width: 130px;text-align: left;margin-right: 15px;" align="left">
         <a href="http://ivan-litovchenko.ru/"><img src="http://ivan-litovchenko.ru/typo3conf/ext/siteivlitovchenko/Resources/Public/Images/Iv.png" width="300"></a>
         <p>
             Над кодом - как это работает? Интерактивный справочник и копилка знаний. <br/>
