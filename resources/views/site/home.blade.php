@@ -35,6 +35,11 @@
         {{--</p>--}}
     </div>
     <hr />
+    <div class="row">
+        <div class="col-sm-12">
+            {!! clean($postTodo->description, 'default') !!}
+        </div>
+    </div>
     {{--    <div class="mindmap jumbotron">--}}
     {{--        <div class="node node_root context-menu-one btn btn-neutral">--}}
     {{--            <div class="node__text">--}}
@@ -44,6 +49,7 @@
     {{--        </div>--}}
     {{--        <x-post-content-type parent-post-id="root"/>--}}
     {{--    </div>--}}
+    <hr />
     <div class="row">
         @foreach($posts as $post)
             <div class="col-sm-4">
