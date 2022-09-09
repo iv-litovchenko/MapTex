@@ -68,7 +68,9 @@
     <hr />
     <div class="row">
         <div class="col-sm-12">
-            {!! clean($postTodo->description, 'default') !!}
+            <div style="background: url({{ asset('assets/images/logo.png') }}); height: 800px; padding: 5%; overflow: scroll; color: wheat;">
+             {!! clean($postTodo->description, 'default') !!}
+            </div>
         </div>
     </div>
     {{--    <center>--}}
