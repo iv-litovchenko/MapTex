@@ -68,7 +68,15 @@
     <hr />
     <div class="row">
         <div class="col-sm-12">
-            <div style="background: url({{ asset('assets/images/school-board.jpeg') }}); height: 800px; padding: 5%; overflow: scroll; color: wheat;">
+            @can('update', $post)
+                <div class="btn-group" role="group">
+                    <a href="{{ route('admin.post.edit', $postTodo->id) }}"
+                       class="btn btn-success btn-lg">
+                        Изменить
+                    </a>
+                </div>
+            @endcan
+            <div style="background: url({{ asset('assets/images/logo.png') }}); height: 800px; padding: 5%; overflow: scroll; color: wheat;">
              {!! clean($postTodo->description, 'default') !!}
             </div>
         </div>
