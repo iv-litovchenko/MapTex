@@ -10,8 +10,8 @@
 - $ git clone https://github.com/iv-litovchenko/maptex.git
 - $ cd maptex
 - $ cp .env.example .env
-- $ COMPOSE_USER_ID="$(id -u)" COMPOSE_GROUP_ID="$(id -g)" docker-compose up -d --build
-- $ COMPOSE_USER_ID="$(id -u)" COMPOSE_GROUP_ID="$(id -g)" docker exec -ti php-apache bash
+- $ docker-compose up -d --build
+- $ docker exec -it php-apache bash
 
 - // Запуск проекта (часть 2 - внутри контейнера сервиса)
 - $ > composer install
