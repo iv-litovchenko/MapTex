@@ -8,6 +8,7 @@ use App\Models\Book;
 use App\Models\Doc;
 use App\Models\Note;
 use App\Models\Post;
+use App\Models\Todo;
 use App\Utils\FrontendUility;
 use Illuminate\Http\Request;
 
@@ -29,16 +30,17 @@ class SiteController extends BaseController
     {
         $posts = Post::whereParentId(null)->orderBy('sorting')->get();
         $postsWithLogo = Post::whereNotNull('logo_image')->get();
-        $postTodo = Post::find(72);
-        $lastNote = Note::where('note_type', Note::NOTE_TYPE_POST_COMMENT)->orderBy('id', 'desc')->first();
 
+        // $postTodo = Post::find(72);
+        // $lastNote = Note::where('note_type', Note::NOTE_TYPE_POST_COMMENT)->orderBy('id', 'desc')->first();
+
+        $todos = Todo::orderBy('created_at', 'desc')->get();
         $todoHttpLink = 'https://raw.githubusercontent.com/iv-litovchenko/maptex/master/README.md';
         return view('site.home', compact(
                 'posts',
                 'postsWithLogo',
-                'postTodo',
-                'lastNote',
-                'todoHttpLink'
+                'todoHttpLink',
+                'todos'
             )
         );
     }

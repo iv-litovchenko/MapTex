@@ -5,17 +5,15 @@ services:
     # php -i | grep PDO
     # http://localhost:8011/
     # docker exec -it <container_id (php-apache)> bash
-    php-apache:
-        container_name: php-apache
+    php-apache-81:
+        container_name: php-apache-81
         restart: always
         build: ./.docker/php-apache
-        depends_on:
-            - db-mysql
         volumes:
             - '.:/var/www/html'
             - '.docker/conf/php.ini:/usr/local/etc/php/conf.d/php.ini'
         ports:
-            - '8011:80'
+            - '8010:80'
         # command: npm run debug
 
     db-mysql:
@@ -37,8 +35,6 @@ services:
     web-phpmyadmin:
         image: phpmyadmin/phpmyadmin
         container_name: web-phpmyadmin
-        depends_on:
-            - db-mysql
         environment:
             - PMA_ARBITRARY=1
         restart: always

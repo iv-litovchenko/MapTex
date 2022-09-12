@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\TodoController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\SiteController;
 use App\Http\Middleware\Authenticate;
@@ -61,6 +62,8 @@ Route::middleware([Authenticate::class, IsMe::class])
 
         Route::resource('user', UserController::class);
         Route::get('user/{user}/delete', [UserController::class, 'delete'])->name('user.delete');
+
+        Route::resource('todo', TodoController::class);
     });
 
 Auth::routes();

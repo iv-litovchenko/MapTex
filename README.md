@@ -11,7 +11,7 @@
 - $ cd maptex
 - $ cp .env.example .env
 - $ docker-compose up -d --build
-- $ docker exec -it php-apache bash
+- $ docker exec -it php-apache-81 bash
 
 - // Запуск проекта (часть 2 - внутри контейнера сервиса)
 - $ > composer install
@@ -26,8 +26,8 @@
 - $ > exit
 
 - Логин и пароль для входа
-- http://localhost:8011/
-- http://localhost:8011/login
+- http://localhost:8010/
+- http://localhost:8010/login
 - Login: iv-litovchenko@mail.ru
 - Password: 100
 - http://localhost:8012/

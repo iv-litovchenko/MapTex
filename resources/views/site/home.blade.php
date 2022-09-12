@@ -5,8 +5,10 @@
 @section('LayoutSectionPageBreadcrumb', Breadcrumbs::render('site.home'))
 
 @section('LayoutSectionPageContent')
-    <a href="http://plitkapro24.tilda.ws/"><img src="http://ivan-litovchenko.ru/typo3conf/ext/siteivlitovchenko/Resources/Public/Images/PlitkaPro24.Ru.png" width="100%" style="border-radius: 6px;"></a>
-    <hr />
+    <a href="http://plitkapro24.tilda.ws/"><img
+            src="http://ivan-litovchenko.ru/typo3conf/ext/siteivlitovchenko/Resources/Public/Images/PlitkaPro24.Ru.png"
+            width="100%" style="border-radius: 6px;"></a>
+    <hr/>
     <div class="jumbotron">
         <h1>PHP: Roadmap backend</h1>
         <p>
@@ -36,16 +38,16 @@
             </a>
         </p>
     </div>
-{{--         <div class="mindmap jumbotron"> --}}
-{{--             <div class="node node_root context-menu-one btn btn-neutral"> --}}
-{{--                 <div class="node__text"> --}}
-{{--                     <span class="glyphicon glyphicon glyphicon-plane" aria-hidden="true"></span> --}}
-{{--                     Карта --}}
-{{--                 </div> --}}
-{{--             </div> --}}
-{{--             <x-post-content-type parent-post-id="root"/> --}}
-{{--         </div> --}}
-    <hr />
+    {{--         <div class="mindmap jumbotron"> --}}
+    {{--             <div class="node node_root context-menu-one btn btn-neutral"> --}}
+    {{--                 <div class="node__text"> --}}
+    {{--                     <span class="glyphicon glyphicon glyphicon-plane" aria-hidden="true"></span> --}}
+    {{--                     Карта --}}
+    {{--                 </div> --}}
+    {{--             </div> --}}
+    {{--             <x-post-content-type parent-post-id="root"/> --}}
+    {{--         </div> --}}
+    <hr/>
     <div class="row">
         @foreach($posts as $post)
             <div class="col-sm-4">
@@ -67,14 +69,15 @@
             @endif
         @endforeach
     </div>
-    <hr />
+    <hr/>
     <div class="row">
         <div class="col-sm-12">
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingOne">
                         <h4 class="panel-title">
-                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                 Maptext: TODO (README.md)
                             </a>
                         </h4>
@@ -87,25 +90,36 @@
                     </div>
                 </div>
             </div>
-            <div style="position: relative; background: url({{ asset('assets/images/school-board.jpeg') }}); height: 800px; padding: 5%; overflow: scroll; color: wheat;">
-                @can('update', $post)
-                    <a href="{{ route('admin.post.edit', $postTodo->id) }}"
-                       class="btn btn-success btn-lg" style="position: absolute; top: 50px; right: 50px;">
-                        Изменить TODO
-                    </a>
-                @endcan
-                {!! clean($postTodo->description, 'default') !!}
+            <div
+                style="position: relative; background: url({{ asset('assets/images/school-board.jpeg') }}); height: 800px; padding: 5%; overflow: scroll; color: wheat;">
+                @component('components.todo.list')
+                    @slot('todo_type', 0)
+                    @slot('todos', $todos)
+                @endcomponent
+                @component('components.todo.list')
+                    @slot('todo_type', 1)
+                    @slot('todos', $todos)
+                @endcomponent
+                @component('components.todo.list')
+                    @slot('todo_type', 2)
+                    @slot('todos', $todos)
+                @endcomponent
+                @component('components.todo.list')
+                    @slot('todo_type', 3)
+                    @slot('todos', $todos)
+                @endcomponent
             </div>
         </div>
     </div>
-    <hr />
+    <hr/>
     <div class="row">
         <div class="col-sm-12">
             <center>
                 @foreach($postsWithLogo as $postLogo)
                     @php /** $postLogo App\Models\Post */ @endphp
                     <a href="{{ route('site.post', $postLogo->id) }}" style="display: inline-block">
-                        <img src="{{ asset('storage/'.$postLogo->logo_image) }}" height="100" style="margin: 15px;"><br />
+                        <img src="{{ asset('storage/'.$postLogo->logo_image) }}" height="100"
+                             style="margin: 15px;"><br/>
                         <span class="badge badge-secondary">{{ $postLogo->name_short }}</span>
                     </a>
                 @endforeach

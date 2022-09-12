@@ -40,6 +40,9 @@ class DatabaseSeeder extends Seeder
         \App\Models\Doc::truncate(); // truncate
         \App\Models\Doc::factory(10)->create();
 
+        \App\Models\Todo::truncate(); // truncate
+        \App\Models\Todo::factory(10)->create();
+
         DB::statement("SET foreign_key_checks=1");
 
         // Создание дерева
