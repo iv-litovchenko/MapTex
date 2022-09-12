@@ -114,6 +114,29 @@
     <hr/>
     <div class="row">
         <div class="col-sm-12">
+            <svg viewBox="0 0 500 100" class="chart" style="background: white; width: 100%; height: 500px; border-left: 1px dotted #555; border-bottom: 1px dotted #555;">
+                <polyline
+                        fill="none"
+                        stroke="#0074d9"
+                        stroke-width="2"
+                        points="
+                   00,120
+                   20,60
+                   40,80
+                   60,20
+                   80,80
+                   100,80
+                   120,60
+                   140,100
+                   160,90
+                 "
+                />
+            </svg>
+        </div>
+    </div>
+    <hr/>
+    <div class="row">
+        <div class="col-sm-12">
             <center>
                 @foreach($postsWithLogo as $postLogo)
                     @php /** $postLogo App\Models\Post */ @endphp
