@@ -13,9 +13,9 @@
         @endif
         <div class="input-group">
             <span class="input-group-addon">
-                <input type="checkbox" @if($todo->is_close == true) checked @endif disabled>
+                <input type="checkbox" @if($todo->is_close == true) checked @endif>
             </span>
-            <input type="text" class="form-control" value="{{ $todo->created_at }} | {{ $todo->bodytext }}" disabled>
+            <input type="text" class="form-control" value="{{ $todo->created_at }} | {{ $todo->bodytext }}">
             @if(auth()->user() && auth()->user()->id == 1)
                 <div class="input-group-btn">
 {{--                     <button type="button" class="btn btn-default" aria-label="Help"><span --}}
