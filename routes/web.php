@@ -33,6 +33,10 @@ Route::get('/deploy', function() {
     return nl2br($process->getOutput());
 });
 
+Route::get('/test', function() {
+    return 1;
+});
+
 Route::get('/liapp', function() {
     $liApp = new App();
     return $liApp->main();
