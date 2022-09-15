@@ -7,6 +7,36 @@ use App\Http\Controllers\SiteController;
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\IsMe;
 use Illuminate\Support\Facades\Route;
+use Litovchenko\Migrationassistant\App;
+use Symfony\Component\Process\Process;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+
+// class DeploymentController extends Controller
+// public function deploy() { }
+Route::get('/deploy', function() {
+    $scriptPath = base_path('.bush/deploy.sh');
+    $process = new Process(['sh', $scriptPath], base_path());
+    $process->run(null, [   //  Adjust to the php-fpm version installed
+        'PHP_PATH' => getenv('DEPLOY_PHP_PATH', 'php'),
+        'BRANCH' => getenv('DEPLOY_GIT_BRANCH','master')
+    ]);
+
+    //  Let's check if the script was executed successfully
+    if ( !$process->isSuccessful() ) {
+
+        //  If the execution failed, let's throw the error
+        throw new ProcessFailedException($process);
+
+    }
+
+    //  Otherwise let's return the output response
+    return $process->getOutput();
+});
+
+Route::get('/liapp', function() {
+    $liApp = new App();
+    return $liApp->main();
+});
 
 Route::get('/', [SiteController::class, 'home'])->name('site.home');
 Route::get('/sitemap', [SiteController::class, 'sitemap'])->name('site.sitemap');

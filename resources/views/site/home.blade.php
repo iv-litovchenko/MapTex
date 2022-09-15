@@ -108,6 +108,10 @@
                     @slot('todo_type', 3)
                     @slot('todos', $todos)
                 @endcomponent
+                @component('components.todo.list')
+                    @slot('todo_type', 4)
+                    @slot('todos', $todos)
+                @endcomponent
             </div>
         </div>
     </div>

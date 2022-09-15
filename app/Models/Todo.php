@@ -16,6 +16,7 @@ class Todo extends Model
     const TODO_TYPE_GREEN = 1;
     const TODO_TYPE_YELLOW = 2;
     const TODO_TYPE_RED = 3;
+    const TODO_TYPE_EDUCATION = 4;
 
     static public function getTypeOptions()
     {
@@ -24,6 +25,7 @@ class Todo extends Model
             self::TODO_TYPE_GREEN => 'Зеленый (актуально)',
             self::TODO_TYPE_YELLOW => 'Желтый (по возможности)',
             self::TODO_TYPE_RED => 'Красный (долгосрок)',
+            self::TODO_TYPE_EDUCATION => 'Образование'
         ];
     }
 
@@ -34,6 +36,7 @@ class Todo extends Model
             self::TODO_TYPE_GREEN => 'success',
             self::TODO_TYPE_YELLOW => 'warning',
             self::TODO_TYPE_RED => 'danger',
+            self::TODO_TYPE_EDUCATION => 'default'
         ];
     }
 
