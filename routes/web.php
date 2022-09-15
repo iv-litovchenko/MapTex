@@ -31,11 +31,7 @@ Route::get('/deploy', function() {
 
     //  Otherwise let's return the output response
     return nl2br($process->getOutput());
-});
-
-Route::get('/test', function() {
-    return 2;
-});
+})->name('deploy');
 
 Route::get('/liapp', function() {
     $liApp = new App();
