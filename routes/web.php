@@ -34,7 +34,7 @@ Route::get('/deploy', function() {
 });
 
 Route::get('/test', function() {
-    return 1;
+    return 2;
 });
 
 Route::get('/liapp', function() {
