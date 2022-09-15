@@ -78,7 +78,7 @@
             Самый ценный навык - быстро научится новой технологии. 3 дня и научился...<br/>
             <a href="https://getbootstrap.com/docs/3.4/components/">Bootstrap компоненты</a> |
             <a href="https://github.com/iv-litovchenko/maptex/">Исходники проекта на github</a> |
-            <a href="{{ route('site.sitemap') }}">Оглавление (карта сайта)</a> 123
+            <a href="{{ route('site.sitemap') }}">Оглавление (карта сайта)</a>
         </p>
     </div>
 </footer>
