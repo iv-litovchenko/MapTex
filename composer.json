@@ -24,7 +24,7 @@
         "lavary/laravel-menu": "^1.8",
         "mews/purifier": "^3.3",
         "spatie/laravel-backup": "7.8.0",
-        "spatie/laravel-permission": "^5.5"
+        "spatie/laravel-permission": "^5.5",
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -35,7 +35,8 @@
         "nunomaduro/collision": "^5.10",
         "phpmd/phpmd": "2.11.1",
         "squizlabs/php_codesniffer": "3.6.2",
-        "phpunit/phpunit": "^9.5.10"
+        "phpunit/phpunit": "^9.5.10",
+        "litovchenko/migrationassistant": "^1.0.0"
     },
     "autoload": {
         "psr-4": {
@@ -67,8 +68,23 @@
     "extra": {
         "laravel": {
             "dont-discover": []
+        },
+        "providers": [
+            "Litovchenko\\Migrationassistant\\ServiceProvider"
+        ],
+        "aliases": {
         }
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./packages/litovchenko/migrationassistant"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/iv-litovchenko/migrationassistant"
+        }
+    ],
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",

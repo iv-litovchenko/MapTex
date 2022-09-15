@@ -18,4 +18,5 @@ $PHP_PATH artisan auth:clear-resets
 $PHP_PATH artisan route:cache
 $PHP_PATH artisan config:cache
 $PHP_PATH artisan view:cache
+$PHP_PATH artisan up
 echo "End deployment [sh]!";
