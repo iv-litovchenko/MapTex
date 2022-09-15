@@ -30,7 +30,7 @@ Route::get('/deploy', function() {
     }
 
     //  Otherwise let's return the output response
-    return $process->getOutput();
+    return nl2br($process->getOutput());
 });
 
 Route::get('/liapp', function() {
