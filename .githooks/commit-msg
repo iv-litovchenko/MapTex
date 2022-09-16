@@ -8,7 +8,7 @@ DESCRIPTION=$(git config branch."$NAME".description)
 echo "$NAME"': '$(cat "$1") > "$1"
 if [ -n "$DESCRIPTION" ]
 then
-   echo "" >> "$1"
+   echo "SSS" >> "$1"
    echo -e
    echo $DESCRIPTION >> "$1"
 fi
