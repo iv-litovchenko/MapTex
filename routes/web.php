@@ -7,7 +7,7 @@ use App\Http\Controllers\SiteController;
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\IsMe;
 use Illuminate\Support\Facades\Route;
-use Litovchenko\Migrationassistant\App;
+use Litovchenko\MigrationAssistant\App;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 

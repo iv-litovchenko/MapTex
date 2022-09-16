@@ -7855,19 +7855,19 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/litovchenko/migrationassistant",
-                "reference": "e88000714953ce692b5feec9eb74467a2d009100"
+                "reference": "cd02666abb1c86797e6f90ea91a254961a31c2fd"
             },
             "type": "project",
             "extra": {
                 "laravel": {
                     "providers": [
-                        "Litovchenko\\Migrationassistant\\Providers\\LaravelProvider"
+                        "Litovchenko\\MigrationAssistant\\Providers\\LaravelProvider"
                     ]
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "Litovchenko\\Migrationassistant\\": "src/"
+                    "Litovchenko\\MigrationAssistant\\": "src/"
                 }
             },
             "license": [
