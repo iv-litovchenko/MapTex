@@ -1,5 +1,5 @@
 #!/bin/bash
-# git config --local core.hooksPath .githooks/
+# git config --local core.hooksPath .gitconfig/hooks/
 
 # This way you can customize which branches should be skipped when
 # prepending commit message.
