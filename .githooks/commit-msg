@@ -6,9 +6,9 @@ NAME=$(git branch | grep '*' | sed 's/* //')
 DESCRIPTION=$(git config branch."$NAME".description)
 
 echo "$NAME"': '$(cat "$1") > "$1"
+echo -e
 if [ -n "$DESCRIPTION" ]
 then
-   echo "SSS" >> "$1"
-   echo -e
+   echo "" >> "$1"
    echo $DESCRIPTION >> "$1"
 fi
