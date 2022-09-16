@@ -91,3 +91,9 @@ html, body {
     font-size: 15px;
     font-color: black;
 }
+
+.alert-default {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
