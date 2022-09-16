@@ -6,24 +6,9 @@
 # Установка
 -------------------------------
 
-- // Запуск проекта (часть 1)
-- $ git clone https://github.com/iv-litovchenko/maptex.git
-- $ cd maptex
-- $ cp .env.example .env
-- $ docker-compose up -d --build
-- $ docker exec -it php-apache-81 bash
-
-- // Запуск проекта (часть 2 - внутри контейнера сервиса)
-- $ > composer install
-- $ > npm install
-- $ > npm run dev
-- $ > php artisan storage:link
-- $ > php artisan key:generate
-- $ > php artisan migrate:auto
-- $ > php artisan db:seed
-- $ > php artisan tinker
-- $ > DB::connection()->getDatabaseName();
-- $ > exit
+$ sh .bush/install.sh
+$ sh .bush/docker-start.sh
+$ sh .bush/docker-stop.sh
 
 - Логин и пароль для входа
 - http://localhost:8010/
@@ -32,12 +17,6 @@
 - Password: 100
 - http://localhost:8012/
 - http://localhost:8013/
-
--------------------------------
-Деплой
--------------------------------
-
-- 0
 
 -------------------------------
 Двигаемся
@@ -125,3 +104,4 @@ Diff-для истории
 - CI CD
 - мастер слейв (master slave), https://www.digitalocean.com/community/tutorials/how-to-set-up-replication-in-mysql
 - nrock
+- Отправить git hook в удаленный репозиторий
