@@ -8,7 +8,7 @@ $PHP_PATH artisan down
 #git clean -df
 git pull origin $BRANCH
 #composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
-#$PHP_PATH artisan optimize
+#composer dump-autoload
 #npm ci
 #npm install
 #npm run production
@@ -21,5 +21,7 @@ $PHP_PATH artisan config:clear
 $PHP_PATH artisan config:cache
 $PHP_PATH artisan view:clear
 $PHP_PATH artisan view:cache
+# php artisan optimize
 $PHP_PATH artisan up
 echo "End deployment [sh]!";
+
