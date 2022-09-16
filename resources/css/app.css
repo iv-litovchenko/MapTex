@@ -94,6 +94,6 @@ html, body {
 
 .alert-default {
     color: #a94442;
-    background-color: #f2dede;
-    border-color: #ebccd1;
+    background-color: #777;
+    border-color: #919191;
 }
