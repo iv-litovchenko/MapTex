@@ -104,4 +104,10 @@ Diff-для истории
 - CI CD
 - мастер слейв (master slave), https://www.digitalocean.com/community/tutorials/how-to-set-up-replication-in-mysql
 - nrock
+- 
 - Отправить git hook в удаленный репозиторий
+- Именование веток (maptex-task-10)
+
+Volume-опрокинуть
+> gosu, su-exec, setpriv, ...
+> но при условии, что переключаешься из root-а в другого пользователя
