@@ -102,6 +102,10 @@ Diff-для истории
 -------------------------------
 
 - CI CD
+- # Собрать отчеты
+- # Сделать копии папок
+- # Креш при тесте...
+
 - мастер слейв (master slave), https://www.digitalocean.com/community/tutorials/how-to-set-up-replication-in-mysql
 - nrock
 - 

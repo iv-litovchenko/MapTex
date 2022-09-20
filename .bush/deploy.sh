@@ -24,4 +24,3 @@ $PHP_PATH artisan view:cache
 # php artisan optimize
 $PHP_PATH artisan up
 echo "End deployment [sh]!";
-
