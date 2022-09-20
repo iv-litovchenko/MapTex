@@ -6,9 +6,9 @@
 # Установка
 -------------------------------
 
-- $ sh .bush/install.sh
-- $ sh .bush/docker-start.sh
-- $ sh .bush/docker-stop.sh
+- $ sh .bash/install.sh
+- $ sh .bash/docker-start.sh
+- $ sh .bash/docker-stop.sh
 
 - Логин и пароль для входа
 - http://localhost:8010/
