@@ -15,7 +15,7 @@ use Symfony\Component\Process\Process;
 // public function deploy() { }
 Route::get('/deploy', function () {
     config(['app.debug' => true]);
-    config(['app.env' => 'local']);
+    config(['app.env' => 'local']); // test
     $scriptPath = base_path('.bush/deploy.sh');
     $process = new Process(['sh', $scriptPath], base_path());
     $process->run(null, [   //  Adjust to the php-fpm version installed
