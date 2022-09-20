@@ -7850,11 +7850,11 @@
             "time": "2022-08-31T16:38:14+00:00"
         },
         {
-            "name": "litovchenko/laravel-migrationassistant",
+            "name": "litovchenko/laravel-migration-assistant",
             "version": "dev-master",
             "dist": {
                 "type": "path",
-                "url": "./packages/litovchenko/laravel-migrationassistant",
+                "url": "./packages/litovchenko/laravel-migration-assistant",
                 "reference": "cd02666abb1c86797e6f90ea91a254961a31c2fd"
             },
             "type": "project",
@@ -7880,7 +7880,7 @@
                     "role": "Developer"
                 }
             ],
-            "homepage": "https://github.com/iv-litovchenko/laravel-migrationassistant",
+            "homepage": "https://github.com/iv-litovchenko/laravel-migration-assistant",
             "transport-options": {
                 "relative": true
             }
