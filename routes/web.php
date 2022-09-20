@@ -8,21 +8,23 @@ use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\IsMe;
 use Illuminate\Support\Facades\Route;
 use Litovchenko\MigrationAssistant\App;
-use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
 
 // class DeploymentController extends Controller
 // public function deploy() { }
-Route::get('/deploy', function() {
+Route::get('/deploy', function () {
+    config(['app.debug' => true]);
+    config(['app.env' => 'local']);
     $scriptPath = base_path('.bush/deploy.sh');
     $process = new Process(['sh', $scriptPath], base_path());
     $process->run(null, [   //  Adjust to the php-fpm version installed
         'PHP_PATH' => getenv('DEPLOY_PHP_PATH', 'php'),
-        'BRANCH' => getenv('DEPLOY_GIT_BRANCH','master')
+        'BRANCH' => getenv('DEPLOY_GIT_BRANCH', 'master')
     ]);
 
     //  Let's check if the script was executed successfully
-    if ( !$process->isSuccessful() ) {
+    if (!$process->isSuccessful()) {
 
         //  If the execution failed, let's throw the error
         throw new ProcessFailedException($process);
@@ -33,7 +35,7 @@ Route::get('/deploy', function() {
     return nl2br($process->getOutput());
 })->name('deploy');
 
-Route::get('/liapp', function() {
+Route::get('/liapp', function () {
     $liApp = new App();
     return $liApp->main();
 });
