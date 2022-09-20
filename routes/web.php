@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\SiteController;
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\IsMe;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Route;
 use Litovchenko\MigrationAssistant\App;
 use Symfony\Component\Process\Exception\ProcessFailedException;
@@ -14,8 +15,8 @@ use Symfony\Component\Process\Process;
 // class DeploymentController extends Controller
 // public function deploy() { }
 Route::get('/deploy', function () {
-    config(['app.debug' => true]);
-    config(['app.env' => 'local']); // test
+    Config::set('app.debug', true);
+    Config::set('app.env', 'local');
     $scriptPath = base_path('.bush/deploy.sh');
     $process = new Process(['sh', $scriptPath], base_path());
     $process->run(null, [   //  Adjust to the php-fpm version installed
