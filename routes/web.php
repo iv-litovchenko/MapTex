@@ -14,7 +14,7 @@ use Symfony\Component\Process\Process;
 
 // class DeploymentController extends Controller
 // public function deploy() { }
-Route::get('/deploy', function () {
+Route::post('/deploy', function () {
     Config::set('app.debug', true);
     Config::set('app.env', 'local');
     $scriptPath = base_path('.bush/deploy.sh');
@@ -29,12 +29,12 @@ Route::get('/deploy', function () {
 
         //  If the execution failed, let's throw the error
         throw new ProcessFailedException($process);
-
     }
 
     //  Otherwise let's return the output response
     return nl2br($process->getOutput());
-})->name('deploy');
+})->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class])
+    ->name('deploy');
 
 Route::get('/liapp', function () {
     $liApp = new App();
