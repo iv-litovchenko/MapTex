@@ -7,8 +7,8 @@
 -------------------------------
 
 - $ sh .bash/install.sh
-- $ sh .bash/docker-start.sh
-- $ sh .bash/docker-stop.sh
+- $ sh .bash/docker-up.sh
+- $ sh .bash/docker-down.sh
 
 - Логин и пароль для входа
 - http://localhost:8010/
