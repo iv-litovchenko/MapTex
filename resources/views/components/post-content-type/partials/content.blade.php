@@ -17,8 +17,8 @@
 @if($post->maptex_content_link)
 
     {{-- Контент --}}
-    {!! nl2br(file_get_contents($post->maptex_content_link)) !!}<br/><br/>
-    <pre class="language-xml">{{ $post->maptex_content_link }}</pre>
+    {!! nl2br($post->maptex_content_save) !!}<br/><br/>
+    <pre class="language-xml">https://raw.githubusercontent.com/iv-litovchenko/maptex_content/master/{{ $post->maptex_content_link }}</pre>
     <hr class="my-12">
 
 @endif
