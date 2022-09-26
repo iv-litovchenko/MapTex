@@ -12,7 +12,7 @@
             <tr>
                 @foreach($postsWithLogo as $postLogo)
                     @php /** $postLogo App\Models\Post */ @endphp
-                    <td align="center" style="padding: 5px;">					
+                    <td align="center" style="padding: 5px;">
                     <a href="{{ route('site.post', $postLogo->id) }}" style="display: inline-block">
                         <img src="{{ asset('storage/'.$postLogo->logo_image) }}" height="38" style="margin: 5px;"><br />
                         <span class="badge badge-secondary">{{ $postLogo->name_short }}</span>
@@ -45,9 +45,9 @@
                     </div><!--/.nav-collapse -->
                 </div>
             </div>
-            {{--            <center>--}}
-            {{--                <button class="btn btn-warning" disabled>Оглавление</button>--}}
-            {{--            </center>--}}
+            <center>
+                <a href="{{ route('site.sitemap') }}" class="btn btn-warning">Оглавление</a>
+            </center>
         </div>
         <div class="col-sm-9">
             <x-post-content-type current-post-id="{{ $post->id }}"/>
