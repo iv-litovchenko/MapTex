@@ -84,8 +84,8 @@
                     </div>
                     <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                         <div class="panel-body">
-                            {!! nl2br(file_get_contents($todoHttpLink)) !!}<br/><br/>
-                            <pre class="language-xml">{{ $todoHttpLink }}</pre>
+                            {!! nl2br($todoReadmeMdContent) !!}<br/><br/>
+                            <pre class="language-xml">README.md</pre>
                         </div>
                     </div>
                 </div>

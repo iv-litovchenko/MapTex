@@ -36,12 +36,12 @@ class SiteController extends BaseController
         // $lastNote = Note::where('note_type', Note::NOTE_TYPE_POST_COMMENT)->orderBy('id', 'desc')->first();
 
         $todos = Todo::orderBy('is_close', 'desc')->orderBy('created_at', 'desc')->get();
-        $todoHttpLink = '../README.md';
+        $todoReadmeMdContent = file_get_contents(base_path('README.md'));
         return view('site.home', compact(
                 'posts',
                 'postsWithLogo',
                 'postsWithStudyStatus',
-                'todoHttpLink',
+                'todoReadmeMdContent',
                 'todos'
             )
         );
