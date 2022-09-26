@@ -9,8 +9,9 @@
         <ol type="I">
             @foreach($postsList as $k => $post)
                 <li>
-                    <a href="{{ route('site.post', $post->id) }}"
-                       style="white-space: nowrap;">{{ $post->name }}</a><br/>
+                    <h3><a href="{{ route('site.post', $post->id) }}"
+                       style="white-space: nowrap;">{{ $post->name }}</a>
+                    </h3>
                     <ol type="I">
                         @foreach($post->children as $k2 => $post2)
                             <li>
