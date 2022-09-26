@@ -140,7 +140,7 @@
         </div>
         <div class="col-sm-4">
             <div style="height: 500px; padding-right: 15px; overflow: auto;">
-                <h3>Стэк технологий:</h3>
+                <h3>Стек технологий:</h3>
                 <div class="list-group">
                     @foreach($postsWithStudyStatus as $postKeySs => $postValueSs)
                         <a href="{{ route('site.post', $postValueSs->id ) }}" class="list-group-item list-group-item-<?=\App\Models\Post::getStudyStatusMapper()[$postValueSs->study_status];?>">
@@ -150,7 +150,7 @@
                                 @slot('height', 20)
                                 @slot('valign', 'top')
                             @endcomponent
-                            {{ $postValueSs->name }}
+                            {{ $postValueSs->name_short }}
                         </a>
                     @endforeach
                 </div>

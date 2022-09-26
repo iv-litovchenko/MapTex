@@ -54,8 +54,8 @@ class SiteController extends BaseController
      */
     public function sitemap()
     {
-        $postsTreeArray = FrontendUility::buildTreeArray();
-        return view('site.sitemap', compact('postsTreeArray'));
+        $postsList = Post::orderBy('sorting', 'asc')->get()->toTree();
+        return view('site.sitemap', compact('postsList'));
     }
 
     /**
