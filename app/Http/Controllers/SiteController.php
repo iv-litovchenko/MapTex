@@ -36,7 +36,7 @@ class SiteController extends BaseController
         // $lastNote = Note::where('note_type', Note::NOTE_TYPE_POST_COMMENT)->orderBy('id', 'desc')->first();
 
         $todos = Todo::orderBy('is_close', 'desc')->orderBy('created_at', 'desc')->get();
-        $todoHttpLink = 'https://raw.githubusercontent.com/iv-litovchenko/maptex/master/README.md';
+        $todoHttpLink = '../README.md';
         return view('site.home', compact(
                 'posts',
                 'postsWithLogo',
