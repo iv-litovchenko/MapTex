@@ -22,7 +22,8 @@ class TodoFactory extends Factory
         return [
             'is_close' => rand(0, 1),
             'bodytext' => $this->faker->name,
-            'todo_type' => rand(0, 3)
+            'todo_type' => rand(0, 3),
+            'what_does_it_cost' => 10.00
         ];
     }
 }

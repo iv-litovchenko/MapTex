@@ -39,6 +39,31 @@ class Post extends Model
     const FIELD_NAME = 'name';
     const FIELD_DESCRIPTION = 'description';
 
+    const STUDY_STATUS_0 = 0;
+    const STUDY_STATUS_1 = 1;
+    const STUDY_STATUS_2 = 2;
+    const STUDY_STATUS_3 = 3;
+
+    static public function getStudyStatusOptions()
+    {
+        return [
+            self::STUDY_STATUS_0 => 'Без статуса',
+            self::STUDY_STATUS_1 => 'Углубиться',
+            self::STUDY_STATUS_2 => 'Можно использовать',
+            self::STUDY_STATUS_3 => 'К изучению'
+        ];
+    }
+
+    static public function getStudyStatusMapper()
+    {
+        return [
+            self::STUDY_STATUS_0 => '',
+            self::STUDY_STATUS_1 => 'info',
+            self::STUDY_STATUS_2 => 'success',
+            self::STUDY_STATUS_3 => 'warning'
+        ];
+    }
+
     /**
      * Run the migrations.
      *
@@ -67,6 +92,7 @@ class Post extends Model
         $table->integer('sorting')->default(0);
         $table->string('maptex_content_link', 255)->nullable();
         $table->string('maptex_content_save', 255)->nullable();
+        $table->integer('study_status')->default(0);
 
         $table->timestamps();
 

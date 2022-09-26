@@ -52,6 +52,7 @@ class Todo extends Model
         $table->integer('is_close')->default(0);
         $table->text('bodytext')->nullable();
         $table->integer('todo_type')->default(0);
+        $table->float('what_does_it_cost')->default(0.00);
         $table->timestamps();
     }
 }

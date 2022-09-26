@@ -30,6 +30,7 @@ class SiteController extends BaseController
     {
         $posts = Post::whereParentId(null)->orderBy('sorting')->get();
         $postsWithLogo = Post::whereNotNull('logo_image')->get();
+        $postsWithStudyStatus = Post::where('study_status', '>', 0)->get();
 
         // $postTodo = Post::find(72);
         // $lastNote = Note::where('note_type', Note::NOTE_TYPE_POST_COMMENT)->orderBy('id', 'desc')->first();
@@ -39,6 +40,7 @@ class SiteController extends BaseController
         return view('site.home', compact(
                 'posts',
                 'postsWithLogo',
+                'postsWithStudyStatus',
                 'todoHttpLink',
                 'todos'
             )

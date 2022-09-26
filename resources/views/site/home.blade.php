@@ -117,13 +117,14 @@
     </div>
     <hr/>
     <div class="row">
-        <div class="col-sm-12">
-            <svg viewBox="0 0 500 100" class="chart" style="background: white; width: 100%; height: 500px; border-left: 1px dotted #555; border-bottom: 1px dotted #555;">
+        <div class="col-sm-8" style="height: 500px;">
+            <svg viewBox="0 0 500 100" class="chart"
+                 style="background: white; width: 100%; height: 500px; border-left: 1px dotted #555; border-bottom: 1px dotted #555;">
                 <polyline
-                        fill="none"
-                        stroke="#0074d9"
-                        stroke-width="2"
-                        points="
+                    fill="none"
+                    stroke="#0074d9"
+                    stroke-width="2"
+                    points="
                    00,120
                    20,60
                    40,80
@@ -136,6 +137,24 @@
                  "
                 />
             </svg>
+        </div>
+        <div class="col-sm-4">
+            <div style="height: 500px; padding-right: 15px; overflow: auto;">
+                <h3>Стэк технологий:</h3>
+                <div class="list-group">
+                    @foreach($postsWithStudyStatus as $postKeySs => $postValueSs)
+                        <a href="{{ route('site.post', $postValueSs->id ) }}" class="list-group-item list-group-item-<?=\App\Models\Post::getStudyStatusMapper()[$postValueSs->study_status];?>">
+{{--                             <span class="label label-default">Default</span> --}}
+                            @component('components.icon')
+                                @slot('data', $postValueSs)
+                                @slot('height', 20)
+                                @slot('valign', 'top')
+                            @endcomponent
+                            {{ $postValueSs->name }}
+                        </a>
+                    @endforeach
+                </div>
+            </div>
         </div>
     </div>
     <hr/>

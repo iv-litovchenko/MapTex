@@ -1,6 +1,6 @@
 <h3>
     @if(auth()->user() && auth()->user()->id == 1)
-    <a href="{{ route('admin.todo.create', ['todo_type'=>$todo_type]) }}"><span class="label label-default">+</span></a>
+        <a href="{{ route('admin.todo.create', ['todo_type'=>$todo_type]) }}"><span class="label label-default">+</span></a>
     @endif
     <span class="label label-<?=\App\Models\Todo::getTypeMapper()[$todo_type];?>">
         <?=\App\Models\Todo::getTypeOptions()[$todo_type];?>
@@ -15,14 +15,15 @@
             <span class="input-group-addon">
                 <input type="checkbox" @if($todo->is_close == true) checked @endif>
             </span>
-            <input type="text" class="form-control" value="{{ $todo->created_at }} | {{ $todo->bodytext }}">
-            @if(auth()->user() && auth()->user()->id == 1)
-                <div class="input-group-btn">
-{{--                     <button type="button" class="btn btn-default" aria-label="Help"><span --}}
-{{--                             class="glyphicon glyphicon-question-sign"></span></button> --}}
+            <input type="text" class="form-control" value="{{ $todo->bodytext }}">
+            <div class="input-group-btn">
+                @if(auth()->user() && auth()->user()->id == 1)
+                    <div class="btn btn-default">@money($todo->what_does_it_cost)</div>
+                    <div class="btn btn-default">{{ $todo->created_at }}</div>
                     <a href="{{ route('admin.todo.edit', $todo->id) }}" class="btn btn-default">Изменить</a>
-                </div>
-            @endif
+                    <button type="button" class="btn btn-default" aria-label="Help"><span class="glyphicon glyphicon-question-sign"></span></button>
+                @endif
+            </div>
         </div><!-- /input-group -->
     @endforeach
 </div>

@@ -39,6 +39,7 @@ class TodoController extends BaseController
         $todo->bodytext = $request->input('bodytext');
         $todo->is_close = $request->input('is_close', 0);
         $todo->todo_type = $request->input('todo_type');
+        $todo->what_does_it_cost = $request->input('what_does_it_cost');
         if ($todo->save()) {
             $request->session()->flash('flash_messages_success', 'TODO [' . $todo->id . '] успешно обновлен');
             return redirect()->route('admin.todo.edit', $todo->id);
