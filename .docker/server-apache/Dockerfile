@@ -4,7 +4,6 @@ FROM php:8.1-apache
 # Установка программ и утилит
 RUN apt-get update && apt-get install -y \
     sudo \
-    supervisor \
     curl \
     wget \
     g++ \
@@ -22,9 +21,10 @@ RUN apt-get update && apt-get install -y \
     zlib1g-dev \
     libzip-dev \
     zip \
+    supervisor \
  && rm -rf /var/lib/apt/lists/*
 
-RUN systemctl enable supervisor --now
+
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 # RUN curl -sL https://deb.nodesource.com/setup_16.x | sudo bash -
 # RUN apt-get install -y nodejs

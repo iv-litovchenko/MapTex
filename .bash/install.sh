@@ -4,7 +4,7 @@ cp .env.example .env
 docker-compose -f ./docker-compose.yml up -d --build
 docker-compose -f ./docker-compose-database.yml up -d --build
 
-docker exec -it php-apache-81 bash
+docker exec -it server-apache-81 bash
 composer install
 npm install
 npm run dev
