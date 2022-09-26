@@ -91,7 +91,7 @@ class Post extends Model
         $table->text('post_images')->nullable();
         $table->integer('sorting')->default(0);
         $table->string('maptex_content_link', 255)->nullable();
-        $table->string('maptex_content_save', 255)->nullable();
+        $table->text('maptex_content_save')->nullable();
         $table->integer('study_status')->default(0);
 
         $table->timestamps();

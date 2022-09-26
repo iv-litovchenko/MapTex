@@ -24,14 +24,14 @@
                     @endif
                     <tr>
                         <td><input type="text" class="form-control" disabled value="{{ $file->path }}"></td>
-                        <td><input type="text" class="form-control" name="name_short" value="{{ old('name_short', $posts[$file->path]['id']) }}"></td>
-                        <td><input type="text" class="form-control" disabled value="{{ $posts[$file->path]['name'] }}"></td>
+                        <td><input type="text" class="form-control" name="sync[{{ $file->path }}]" value="{{ $posts[$file->path]['id'] ?? '' }}"></td>
+                        <td><input type="text" class="form-control" disabled value="{{ $posts[$file->path]['name'] ?? '' }}"></td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
             <div class="panel-heading">
-                <a href="{{ route('admin.post.maptexcontentsync.update') }}" class="btn btn-primary" role="button">Обновить с "https://github.com/iv-litovchenko/maptex_content"</a>
+                <button type="submit" class="btn btn-primary">Обновить с "https://github.com/iv-litovchenko/maptex_content"</button>
             </div>
         </div>
     </form>

@@ -68,8 +68,8 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Описание</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" name="maptex_content_link"
-                       value="{{ old('maptex_content_link', $post->maptex_content_link) }}"
+                <input type="text" class="form-control" name="maptex_content_link" disabled
+                       value="https://raw.githubusercontent.com/iv-litovchenko/maptex_content/master/{{ old('maptex_content_link', $post->maptex_content_link) }}"
                        placeholder="https://raw.githubusercontent.com/iv-litovchenko/maptex_content/master/example.txt">
                 <br />
                 <textarea type="text" class="form-control" name="description" id="tinymce"
