@@ -85,7 +85,7 @@
                     <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                         <div class="panel-body">
                             {!! nl2br($todoReadmeMdContent) !!}<br/><br/>
-                            <pre class="language-xml">https://raw.githubusercontent.com/iv-litovchenko/maptex_content/master/README.md</pre>
+                            <pre class="language-xml">https://raw.githubusercontent.com/iv-litovchenko/maptex/master/README.md</pre>
                         </div>
                     </div>
                 </div>
