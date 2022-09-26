@@ -16,7 +16,17 @@
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Тип</label>
-            <div class="col-sm-10">
+            <div class="col-sm-5">
+                <select class="form-control" name="todo_type_global">
+                    @foreach(\App\Models\Todo::getTypeOptions() as $key => $name)
+                        <option
+                            value="{{ $key }}" {{ (collect(old('todo_type', $todo->todo_type))->contains($key)) ? 'selected' : '' }}>
+                            {{ $name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-sm-5">
                 <select class="form-control" name="todo_type">
                     @foreach(\App\Models\Todo::getTypeOptions() as $key => $name)
                         <option

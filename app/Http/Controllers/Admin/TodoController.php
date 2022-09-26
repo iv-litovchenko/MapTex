@@ -38,6 +38,7 @@ class TodoController extends BaseController
     {
         $todo->bodytext = $request->input('bodytext');
         $todo->is_close = $request->input('is_close', 0);
+        $todo->todo_type_global = $request->input('todo_type_global');
         $todo->todo_type = $request->input('todo_type');
         $todo->what_does_it_cost = $request->input('what_does_it_cost');
         if ($todo->save()) {
