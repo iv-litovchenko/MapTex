@@ -22,6 +22,10 @@
     @endforeach
 
     <center>
+        <a href="{{ route('admin.post.maptexcontentsync') }}" class="btn btn-warning btn-lg">
+            Синхронизировать контент с "maptex_content"
+        </a>
+        |
         <a href="{{ route('admin.backup') }}" class="btn btn-warning btn-lg">
             Создать Бэкап проекта (файлы, БД)
         </a>

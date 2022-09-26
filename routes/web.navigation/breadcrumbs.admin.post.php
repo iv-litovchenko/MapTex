@@ -25,3 +25,9 @@ Breadcrumbs::for('admin.post.delete', function ($trail) {
     $trail->parent('admin.post.index');
     $trail->push('Удалить');
 });
+
+// Главная > Администрирование > Синхронизация содержимого
+Breadcrumbs::for('admin.post.maptexcontentsync', function ($trail) {
+    $trail->parent('admin.dashboard');
+    $trail->push('Синхронизация содержимого', route('admin.post.maptexcontentsync'));
+});
