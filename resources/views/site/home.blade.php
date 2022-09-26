@@ -78,13 +78,14 @@
                         <h4 class="panel-title">
                             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
                                href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Maptext: TODO (README.md)fewfew
+                                Maptext: TODO (README.md)
                             </a>
                         </h4>
                     </div>
                     <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                         <div class="panel-body">
-                            {!! nl2br($todoReadmeMdContent) !!}<br/><br/><!--todo-->
+                            {!! nl2br($todoReadmeMdContent) !!}<br/><br/>
+                            <pre class="language-xml">https://raw.githubusercontent.com/iv-litovchenko/maptex/master/README.md</pre>
                         </div>
                     </div>
                 </div>
