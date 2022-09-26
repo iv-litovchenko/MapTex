@@ -29,7 +29,7 @@ class SiteController extends BaseController
     public function home()
     {
         $posts = Post::whereParentId(null)->orderBy('sorting')->get();
-        $postsWithLogo = Post::whereNotNull('logo_image')->orderBy('sorting', 'desc')->get();
+        $postsWithLogo = Post::whereNotNull('logo_image')->orderBy('sorting', 'asc')->get();
         $postsWithStudyStatus = Post::where('study_status', '>', 0)->get();
 
         // $postTodo = Post::find(72);
