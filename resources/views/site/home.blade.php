@@ -57,7 +57,7 @@
                             @component('components.icon')
                                 @slot('data', $post)
                                 @slot('height', '32')
-                                @slot('valign', 'top')
+                                @slot('valign', 'middle')
                             @endcomponent
                             {{ $post->name }}
                         </h3>
