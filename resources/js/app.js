@@ -8,6 +8,7 @@ require('bootstrap/dist/js/bootstrap'); // Bootstrap
 
 const hljs = require('highlight.js/lib/common'); // Highlight.Js
 const tinymce = require('tinymce/tinymce'); // TinyMCE
+const Vue = require('vue');
 
 require('tinymce/icons/default');
 require('tinymce/models/dom');
@@ -79,7 +80,6 @@ $("pre[class^='language']").each(function () {
 //     return $(this).html().replace(new RegExp(qSearchValue + "(?=[^>]*<)", "ig"), "<span class='search-sot'>$&</span>");
 // });
 
-window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 const app = new Vue({
     el: '#app',
