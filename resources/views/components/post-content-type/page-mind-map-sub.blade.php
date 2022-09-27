@@ -13,6 +13,8 @@
                             @endcomponent
                             {{ Str::limit($subPost->name, 24) }}
                         </a>
+                        <br />
+                        {{ $subPost->description }}
                     </div>
                 </div>
                 @if($subPost->post_type == 'page')
