@@ -14,7 +14,9 @@
                             {{ Str::limit($subPost->name, 24) }}
                         </a>
                         <br />
-                        {{ $subPost->description }}
+                        @if($post->description)
+                            {!! clean($post->description, 'default') !!}
+                        @endif
                     </div>
                 </div>
                 @if($subPost->post_type == 'page')
