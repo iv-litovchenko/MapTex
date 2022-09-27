@@ -14,6 +14,12 @@
 </head>
 <body>
 
+<div id="app">
+
+    ... <example-component />
+
+</div>
+
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">

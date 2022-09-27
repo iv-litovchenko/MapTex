@@ -5,9 +5,12 @@
 </template>
 
 <script>
-    export default {
-        name: "ExampleComponent"
+export default {
+    name: "ExampleComponent",
+    mounted() {
+        console.log("Example component mounted");
     }
+}
 </script>
 
 <style scoped>

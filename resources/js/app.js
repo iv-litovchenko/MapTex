@@ -78,3 +78,9 @@ $("pre[class^='language']").each(function () {
 // $('.backlightText').html(function () {
 //     return $(this).html().replace(new RegExp(qSearchValue + "(?=[^>]*<)", "ig"), "<span class='search-sot'>$&</span>");
 // });
+
+window.Vue = require('vue');
+Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+const app = new Vue({
+    el: '#app',
+});
