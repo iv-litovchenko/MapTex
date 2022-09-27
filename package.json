@@ -15,13 +15,14 @@
     "devDependencies": {
         "@popperjs/core": "^2.10.2",
         "laravel-mix": "^6.0.6",
-        "vue-loader": "^16.8.3"
+        "vue": "^3.2.39",
+        "vue-loader": "^16.8.3",
+        "vue-template-compiler": "^2.7.10"
     },
     "dependencies": {
         "bootstrap": "^3.4.1",
         "highlight.js": "^11.5.0",
         "jquery": "^3.6.0",
-        "tinymce": "^6.1.0",
-        "vue": "^3.2.39"
+        "tinymce": "^6.1.0"
     }
 }

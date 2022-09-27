@@ -1,14 +1,11 @@
 <template>
-    <div>
-        jytjytdiv
-    </div>
+    <div>Hello, Example Component!</div>
 </template>
 
 <script>
 export default {
-    name: "ExampleComponent",
     mounted() {
-        console.log("Example component mounted");
+        console.log('Example component mounted.')
     }
 }
 </script>
