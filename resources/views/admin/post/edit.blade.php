@@ -20,16 +20,6 @@
                 <input type="text" class="form-control" name="name" value="{{ old('name', $post->name) }}">
             </div>
             <div class="col-sm-2">
-                <select class="form-control" name="study_status">
-                    @foreach(\App\Models\Post::getStudyStatusOptions() as $key => $name)
-                        <option
-                            value="{{ $key }}" {{ (collect(old('study_status', $post->study_status))->contains($key)) ? 'selected' : '' }}>
-                            {{ $name }}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-sm-2">
                 <select class="form-control" name="post_type">
                     @foreach($postTypes as $postTypeKey => $postTypeName)
                         <option @if($postTypeKey === 'page-figma') disabled @endif
@@ -37,6 +27,16 @@
                             {{ (collect(old('post_type', $post->post_type))->contains($postTypeKey)) ? 'selected' : '' }}
                         >
                             {{ $postTypeName }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-sm-2">
+                <select class="form-control" name="study_status">
+                    @foreach(\App\Models\Post::getStudyStatusOptions() as $key => $name)
+                        <option
+                            value="{{ $key }}" {{ (collect(old('study_status', $post->study_status))->contains($key)) ? 'selected' : '' }}>
+                            {{ $name }}
                         </option>
                     @endforeach
                 </select>
