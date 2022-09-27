@@ -15,7 +15,7 @@
                     <td align="center" style="padding: 5px;">
                     <a href="{{ route('site.post', $postLogo->id) }}" style="display: inline-block">
                         <img src="{{ asset('storage/'.$postLogo->logo_image) }}" height="38" style="margin: 5px;"><br />
-                        <span class="badge badge-secondary" @if(request()->get('id') == $post->id) style="background: #a4c95b;" @endif>{{ $postLogo->name_short }}</span>
+                        <span class="badge badge-secondary" @if($postLogo->id == $post->id) style="background: #a4c95b;" @endif>{{ $postLogo->name_short }}</span>
                     </a>
                     </td>
                 @endforeach
