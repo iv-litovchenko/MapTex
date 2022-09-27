@@ -11,11 +11,11 @@
                                 @slot('height', 22)
                                 @slot('valign', 'top')
                             @endcomponent
-                            {{ Str::limit($subPost->name, 24) }}
+                            {{ $subPost->name, 24 }}
                         </a>
                         <br />
-                        @if($post->description)
-                            {!! clean($post->description, 'default') !!}
+                        @if($subPost->description)
+                            {!! clean($subPost->description, 'default') !!}
                         @endif
                     </div>
                 </div>
