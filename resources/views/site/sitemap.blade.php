@@ -17,6 +17,14 @@
                             <li>
                                 <a href="{{ route('site.post', $post2->id) }}"
                                    style="white-space: nowrap;">{{ $post2->name }}</a><br/>
+                                <ol type="I">
+                                    @foreach($post2->children as $k3 => $post3)
+                                        <li>
+                                            <a href="{{ route('site.post', $post3->id) }}"
+                                               style="white-space: nowrap;">{{ $post3->name }}</a><br/>
+                                        </li>
+                                    @endforeach
+                                </ol>
                             </li>
                         @endforeach
                     </ol>
