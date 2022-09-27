@@ -5,7 +5,7 @@
             <li class="children__item">
                 <div class="node">
                     <div class="node__text context-menu-one">
-                        <a href="{{ route('site.post', $subPost->id) }}" target="_blank">
+                        <a href="{{ route('site.post', $subPost->id) }}">
                             @component('components.icon')
                                 @slot('data', $subPost)
                                 @slot('height', 22)
