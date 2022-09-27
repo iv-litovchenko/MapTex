@@ -11,7 +11,7 @@
                                 @slot('height', 22)
                                 @slot('valign', 'top')
                             @endcomponent
-                            {{ $subPost->name, 24 }}
+                            {{ $subPost->name }}
                         </a>
                         <br />
                         @if($subPost->description)
