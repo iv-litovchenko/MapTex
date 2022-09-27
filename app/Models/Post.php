@@ -30,7 +30,7 @@ class Post extends Model
         'page' => 'Страница',
         'page-figma' => 'Страница: зарисовка (figma)',
         'page-cheat-sheet' => 'Страница: шпаргалка (sheet)',
-        'page-mind-map' => 'Страница: карта (mindmap)'
+        'page-mind-map' => 'Страница: карта разума (mindmap)'
     ];
 
     // TODO Поля таблицы (интересный способ)
