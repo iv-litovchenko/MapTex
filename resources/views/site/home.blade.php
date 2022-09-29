@@ -5,10 +5,6 @@
 @section('LayoutSectionPageBreadcrumb', Breadcrumbs::render('site.home'))
 
 @section('LayoutSectionPageContent')
-    <a href="http://plitkapro24.tilda.ws/"><img
-            src="http://ivan-litovchenko.ru/typo3conf/ext/siteivlitovchenko/Resources/Public/Images/PlitkaPro24.Ru.png"
-            width="100%" style="border-radius: 6px;"></a>
-    <hr/>
     <div class="jumbotron">
         <h1>PHP: Roadmap backend</h1>
         <p>
