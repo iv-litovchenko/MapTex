@@ -7,6 +7,9 @@
                     {{--                    @auth--}}
                     {{--                        #{{ $row->id }} |--}}
                     {{--                    @endauth--}}
+                    @if(intval($row->is_protected) == true)
+                        [🔒]
+                    @endif
                     @component('components.icon')
                         @slot('data', $row)
                         @slot('height', 20)
