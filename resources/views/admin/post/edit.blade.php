@@ -167,8 +167,8 @@
                 </label>
                 <br/>
                 <label class="form-check-label">
-                    <input class="form-check-input" type="hidden" disabled name="is_protected" value="0">
-                    <input class="form-check-input" type="checkbox" disabled name="is_protected" value="1"
+                    <input class="form-check-input" type="hidden" name="is_protected" value="0">
+                    <input class="form-check-input" type="checkbox" name="is_protected" value="1"
                         {{ old('is_protected', $post->is_protected) == 1 ? 'checked' : '' }}>
                     Закрыть раздел для публичного доступа?
                 </label>
