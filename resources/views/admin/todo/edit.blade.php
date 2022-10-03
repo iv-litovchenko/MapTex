@@ -24,17 +24,13 @@
                             {{ $name }}
                         </option>
                     @endforeach
+                    <option disabled>Здоровье</option>
+                    <option disabled>Семья</option>
+                    <option disabled>И т.д. колесо баланса</option>
                 </select>
             </div>
             <div class="col-sm-5">
-                <select class="form-control" name="todo_type">
-                    @foreach(\App\Models\Todo::getTypeOptions() as $key => $name)
-                        <option
-                            value="{{ $key }}" {{ (collect(old('todo_type', $todo->todo_type))->contains($key)) ? 'selected' : '' }}>
-                            {{ $name }}
-                        </option>
-                    @endforeach
-                </select>
+                --
             </div>
         </div>
         <div class="form-group row">
