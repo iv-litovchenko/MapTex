@@ -15,13 +15,15 @@
                     <ol type="I">
                         @foreach($post->children as $k2 => $post2)
                             <li>
+                                @if(intval($post2->is_protected) == true)[🔒] @endif
                                 <a href="{{ route('site.post', $post2->id) }}"
-                                   style="white-space: nowrap;">@if(intval($post2->is_protected) == true)[🔒] @endif{{ $post2->name }}</a><br/>
+                                   style="white-space: nowrap;">{{ $post2->name }}</a><br/>
                                 <ol type="I">
                                     @foreach($post2->children as $k3 => $post3)
                                         <li>
+                                            @if(intval($post3->is_protected) == true)[🔒] @endif
                                             <a href="{{ route('site.post', $post3->id) }}"
-                                               style="white-space: nowrap;">@if(intval($post3->is_protected) == true)[🔒] @endif{{ $post3->name }}</a><br/>
+                                               style="white-space: nowrap;">{{ $post3->name }}</a><br/>
                                         </li>
                                     @endforeach
                                 </ol>
