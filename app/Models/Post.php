@@ -93,7 +93,7 @@ class Post extends Model
         $table->string('maptex_content_link', 255)->nullable();
         $table->text('maptex_content_save')->nullable();
         $table->integer('study_status')->default(0);
-        $table->increments('is_protected')->default(0);
+        $table->integer('is_protected')->default(0);
 
         $table->timestamps();
 
