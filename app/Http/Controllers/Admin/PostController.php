@@ -119,6 +119,7 @@ class PostController extends BaseController
         $post->sorting = intval($request->input('sorting'));
         // $post->maptex_content_link = $request->input('maptex_content_link');
         $post->study_status = $request->input('study_status');
+        $post->is_protected = $request->input('is_protected', 0);
 
         // Логотип: загрузка (отсоединение) 1 файла
         $post->logo_image = $this->fileAttachDetachService->oneFile(
