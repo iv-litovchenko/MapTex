@@ -72,7 +72,7 @@ class SiteController extends BaseController
             ->orderBy('id', 'asc')
             ->get();
 
-        if (intval($post->is_protected) === 1 && intval(Auth::user()->id) !== 1) { // intval($post->user_id) !== 1
+        if (intval($post->is_protected) === 1 && intval(auth()->user()->id) !== 1) { // intval($post->user_id) !== 1
             return view('site.post-protected');
         }
 
