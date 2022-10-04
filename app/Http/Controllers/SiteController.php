@@ -10,7 +10,6 @@ use App\Models\Note;
 use App\Models\Post;
 use App\Models\Todo;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 /**
  * Контроллер для обработки страниц frontend-а
@@ -72,8 +71,10 @@ class SiteController extends BaseController
             ->orderBy('id', 'asc')
             ->get();
 
-        if (intval($post->is_protected) === 1 && intval(auth()->user()->id) !== 1) { // intval($post->user_id) !== 1
-            return view('site.post-protected');
+        if (auth()->check()) {
+            if (intval($post->is_protected) === 1 && intval(auth()->user()->id) !== 1) { // intval($post->user_id) !== 1
+                return view('site.post-protected');
+            }
         }
 
         return view('site.post', compact('post', 'postNotes', 'postsWithLogo'));
