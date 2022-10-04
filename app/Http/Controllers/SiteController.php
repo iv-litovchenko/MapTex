@@ -9,8 +9,8 @@ use App\Models\Doc;
 use App\Models\Note;
 use App\Models\Post;
 use App\Models\Todo;
-use App\Utils\FrontendUility;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Контроллер для обработки страниц frontend-а
@@ -66,6 +66,10 @@ class SiteController extends BaseController
      */
     public function post(Post $post)
     {
+        if (intval($post->is_protected) === 1 && intval(Auth::user()->id) !== 1) { // intval($post->user_id) !== 1
+            return view('site.post-protected');
+        }
+
         $postsWithLogo = Post::whereNotNull('logo_image')->get();
         $postNotes = Note::where('note_type', Note::NOTE_TYPE_POST_COMMENT)
             ->where('post_id', $post->id)
