@@ -73,9 +73,9 @@ class SiteController extends BaseController
 
         // intval(auth()->user()->id) !== 1
         // intval($post->user_id) !== 1
-        if (intval($post->is_protected) === 1) {
-            return view('site.post-protected');
-        }
+        // if (intval($post->is_protected) === 1) {
+        //     return view('site.post-protected');
+        // }
 
         return view('site.post', compact('post', 'postNotes', 'postsWithLogo'));
     }
