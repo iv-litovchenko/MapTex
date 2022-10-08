@@ -16,6 +16,13 @@
                 <input type="checkbox" @if($todo->is_close == true) checked @endif>
             </span>
             <input type="text" class="form-control" value="{{ $todo->bodytext }}">
+			        @if($todo->pics)
+						<div class="input-group-btn">
+                        @foreach(explode(chr(10),$todo->pics) as $image)
+                            <a type="button" class="btn btn-default" href="{{ asset('storage/'.$image) }}"><span class="glyphicon glyphicon-picture"></span></a>
+                        @endforeach
+						</div>
+                    @endif
             <div class="input-group-btn">
                 @if(auth()->user() && auth()->user()->id == 1)
                     <div class="btn btn-default">@money($todo->what_does_it_cost)</div>
