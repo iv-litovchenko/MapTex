@@ -38,3 +38,43 @@ volumes:
     name: db-data-mysql
   db_data_mysql_backup:
     name: db-data-mysql-backup
+
+    # http://localhost:8012/
+    # Пароль: MYSQL_PASSWORD
+    # Нужно создать таблицу "users"
+
+    # http://localhost:8013/?server=db&username=MYSQL_USER&db=MYSQL_DATABASE
+    # Пароль: MYSQL_PASSWORD
+    # Нужно создать таблицу "users"
+    
+    # db-postgres:
+    #     image: postgres:10.1
+    #     restart: always
+    #     container_name: db-postgres
+    #     environment:
+    #         - POSTGRES_DB=${DB_DATABASE}
+    #         - POSTGRES_USER=${DB_USERNAME}
+    #         - POSTGRES_PASSWORD=${DB_PASSWORD}
+    #         - POSTGRES_HOST=${DB_HOST}
+    #         - PGDATA:/var/lib/postgresql/data
+    #     ports:
+    #         - '8014:5432'
+    #     volumes:
+    #         # Под инициализацией понимается sql код который создаст нужные таблицы и наполнит какими то данными
+    #         # При первом поднятии контейнера
+    #         # Да, это может быть БД с продакшена
+    #         # - ./.docker/conf/postgres/:/docker-entrypoint-initdb.d/
+    #         - ./.docker-data/database/postgres:/var/lib/postgresql/data
+
+    # http://localhost:8015/
+    # web-pgadmin:
+    #     container_name: web-pgadmin
+    #     image: dpage/pgadmin4
+    #     restart: always
+    #     environment:
+    #         PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+    #         PGADMIN_DEFAULT_PASSWORD: admin
+    #         PGADMIN_CONFIG_SERVER_MODE: 'False'
+    #     ports:
+    #         - "8015:80"
+
