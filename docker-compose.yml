@@ -13,7 +13,7 @@ services:
             - '.docker/server-apache/conf/php.ini:/usr/local/etc/php/conf.d/php.ini'
             - '.docker/server-apache/conf:/etc/supervisor/conf.d/supervisord.conf'
         ports:
-            - '8010:80'
+            - '80:80'
         # command: npm run debug
 
 #    mailhog:
