@@ -73,6 +73,6 @@ services:
 
 volumes:
     db_data_mysql:
-        name: 'db-data-mysql-${DB_DATABASE}'
+        name: 'db-data-mysql'
     db_data_mysql_backup:
-        name: 'db-data-mysql-backup-${DB_DATABASE}'
+        name: 'db-data-mysql-backup'
