@@ -33,10 +33,10 @@
 </head>
 <body>
 
-<div id="app">
-    ....
-    <example-component></example-component>
-</div>
+{{--<div id="app">--}}
+{{--    ....--}}
+{{--    <example-component></example-component>--}}
+{{--</div>--}}
 
 <nav class="navbar navbar-default">
     <div class="container-fluid">
