@@ -1,0 +1,86 @@
+# -------------------------------------------------------------------
+# Docker (установка изолированной ОС)
+# -------------------------------------------------------------------
+
+Docker hub (хранилище образов)
+Docker image (образ данных)
+Docker container (список технологий)
+docker-compose.yml (файл с настройками необходимого софта для проекта)
+
+# -------------------------------------------------------------------
+# Настройка прав доступа для Docker-а
+# -------------------------------------------------------------------
+
+$ which docker-compose
+$ sudo chmod +x /usr/bin/docker-compose;
+$ sudo usermod -aG docker $USER // to add myself to docker group
+$ sudo chgrp docker /usr/bin/docker-compose // to give docker-compose to docker group,
+$ sudo chmod 750 /usr/bin/docker-compose // to allow docker group users to execute it
+
+# -------------------------------------------------------------------
+# Команды
+# -------------------------------------------------------------------
+
+$ docker logs localhost
+$ docker ps // список активных процессов
+$ docker ps -a // список активных и не активных процессов
+$ docker stop $(docker ps -a -q) // остановить все процессы
+$ docker rm $(docker ps -a -q) // удалить все процессы
+
+$ docker-compose build // собрать сервисы (поднять) в контейнере
+$ docker-compose up --force-recreate
+$ docker-compose up -d // собрать сервисы (поднять) в контейнере
+$ docker-compose up -d --build //
+$ docker-compose down // остановить контейнер (опустить)
+
+$ docker exec -it <php-apache-ID> bash // провалится в контейнер (exit - выйти)
+$ docker exec -it <php-apache-ID> /bin/sh // провалится в контейнер v2
+$ docker-compose exec -T <php-apache-ID> composer run-script build:app  --- пересобрать проект на докере
+$ docker-compose exec -T <php-apache-ID> php artisan ...
+
+# -------------------------------------------------------------------
+# Сети
+# -------------------------------------------------------------------
+
+$ docker network ls
+$ docker network inspect
+
+# -------------------------------------------------------------------
+# Вольюмы (данные)
+# -------------------------------------------------------------------
+
+$ docker volume ls
+$ docker volume rm $(docker volume ls -q) // удалить все вольюмы
+
+В Docker есть несколько способов хранения данных. Наиболее распространенные:
+
+* [для продакшина] тома хранения данных (docker volumes), В Linux тома находятся по умолчанию в /var/lib/docker/volumes/ Тома могут быть с именами или без — безымянным томам Docker сам присвоит имя
+* монтирование каталогов с хоста (bind mount) - в файловой системе хоста. Это более простая концепция: файл или каталог с хоста просто монтируется в контейнер.
+
+Особые типы хранения:
+* именованные каналы (named pipes, только в Windows),
+* монтирование tmpfs (только в Linux в памяти).  Это некая специально отведённая область в оперативной памяти компьютера.
+
+# -------------------------------------------------------------------
+# ??? Права
+# -------------------------------------------------------------------
+
+$ touch start.sh && sudo chmod +x start.sh && nano start.sh
+DockerFile
+RUN groupadd --gid 1000 <NAME-GROUP>
+RUN useradd --uid 1000 --gid <NAME-GROUP> --shell /bin/bash --create-home <NAME-USER>
+
+WORKDIR /var/www/html
+ADD . /var/www/html
+
+# -------------------------------------------------------------------
+# shell скрипт с выполнением команд внутри контейнера
+# -------------------------------------------------------------------
+
+echo -e "\n\033[32m HOST-TRACKER UP!" && sleep 2 && echo -e "\033[0m\n\033[0m\033[31m PLEASE WAIT!!" &&\
+sleep 5 &&\
+docker-compose up -d --build && sleep 2 &&\
+echo -e "\n\033[32m PRESS CTRL+C TO FINISH!!!" &&\
+echo -e "\n\033[35m ADDRESS: https://localhost:8181" &&\
+docker exec -t domains-check sh domains-check.sh &>/dev/null &
+docker-compose up -d --build && docker exec -t ssl-check sh ssl.sh &>/dev/null &
