@@ -30,4 +30,4 @@ echo $test->run('Test msg aggregation');
 echo '<br />';
 
 // Вывод UML-диаграммы
-echo '<br /><img src="/phptest/uml.png" width="50%">';
+echo '<br /><img src="./interactive/technologies/php/uml.png" width="50%">';

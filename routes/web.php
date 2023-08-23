@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Admin\PostController;
-use App\Http\Controllers\Admin\PostMaptexContentSynchronizeController;
 use App\Http\Controllers\Admin\TodoController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\SiteController;
@@ -63,6 +62,7 @@ Route::get('/doc', [SiteController::class, 'doc'])->name('site.doc');
 Route::post('/doc', [SiteController::class, 'docStore'])->name('site.doc-store');
 
 Route::get('/project', [SiteController::class, 'project'])->name('site.project');
+Route::get('/technology', [SiteController::class, 'technology'])->name('site.technology');
 
 /**
  * Закрытая часть
@@ -82,8 +82,6 @@ Route::middleware([Authenticate::class, IsMe::class])
     ->name('admin.')
     ->group(function () {
         Route::get('dashboard', \App\Http\Controllers\Admin\DashboardController::class)->name('dashboard');
-        Route::get('maptexcontentsync', PostMaptexContentSynchronizeController::class)->name('post.maptexcontentsync');
-        Route::put('maptexcontentsync/update', [PostMaptexContentSynchronizeController::class, 'update'])->name('post.maptexcontentsync.update');
         Route::get('tvpositon', \App\Http\Controllers\Admin\TvSignalController::class)->name('tvsignal');
         Route::get('backup', \App\Http\Controllers\Admin\BackupController::class)->name('backup');
 

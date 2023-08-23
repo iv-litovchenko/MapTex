@@ -65,6 +65,12 @@ Breadcrumbs::for('site.search', function ($trail) {
     $trail->push('Поиск по сайту');
 });
 
+// Изучаем технологии
+Breadcrumbs::for('site.technology', function ($trail) {
+    $trail->parent('site.home');
+    $trail->push('Изучаем технологии');
+});
+
 // Главная > Вход
 Breadcrumbs::for('login', function ($trail) {
     $trail->parent('site.home');

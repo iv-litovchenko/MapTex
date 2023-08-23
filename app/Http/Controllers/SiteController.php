@@ -380,4 +380,36 @@ class SiteController extends BaseController
     {
         return view('site.project');
     }
+
+    /**
+     * Страница "Технологии"
+     *
+     * @return \Illuminate\View\View
+     */
+    public function technology()
+    {
+        $path = public_path('/interactive/technologies/*/index.php');
+        $technologies = glob($path);
+        sort($technologies);
+
+        $content = [];
+        foreach($technologies as $k => $v) {
+            ob_start();
+            include $v;
+            $string = ob_get_clean();
+
+            $pathinfo = pathinfo( $v, PATHINFO_DIRNAME);
+            $pathinfo = explode('/', $pathinfo);
+            $pathinfo = end($pathinfo);
+
+            $content[] = [
+                'name' => $pathinfo,
+                'path' => $v,
+                'content_exec' => $string,
+                'content_file_get' => file_get_contents($v)
+            ];
+        }
+
+        return view('site.technology', compact('content'));
+    }
 }
