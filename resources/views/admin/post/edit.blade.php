@@ -68,9 +68,17 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Описание</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" name="maptex_content_link" disabled
-                       value="https://raw.githubusercontent.com/iv-litovchenko/maptex_content/master/{{ old('maptex_content_link', $post->maptex_content_link) }}"
-                       placeholder="https://raw.githubusercontent.com/iv-litovchenko/maptex_content/master/example.txt">
+                <select class="form-control" name="maptex_content_link">
+                    <option value="">-- Не выбрано --</option>
+                    @foreach($maptex_content_files as $file_key => $file_path)
+                        <option
+                        value="{{ $file_path }}"
+                            {{ (collect(old('maptex_content_link', $post->maptex_content_link))->contains($file_path)) ? 'selected' : '' }}
+                        >
+                            {{ $file_path }}
+                        </option>
+                    @endforeach
+                </select>
                 <br />
                 <textarea type="text" class="form-control" name="description" id="tinymce"
                           rows="15">{{ old('description', $post->description) }}</textarea>

@@ -95,12 +95,33 @@ class PostController extends BaseController
         $postHistoryChanges = $post->historyChanges();
         $postsTreeArray = FrontendUility::buildTreeArray();
         $postTypes = Post::POST_TYPE;
+
+        $path = public_path('/interactive/content_wiki/*.txt');
+        $maptex_content_files = self::rglob($path);
+        sort($maptex_content_files);
+        foreach($maptex_content_files as $k => $v){
+            $maptex_content_files[$k] = str_replace(public_path('/interactive/content_wiki/'), '', $v);
+        }
+
         return view('admin.post.edit', compact(
             'post',
             'postsTreeArray',
             'postTypes',
-            'postHistoryChanges'
+            'postHistoryChanges',
+            'maptex_content_files'
         ));
+    }
+
+    protected static function rglob($pattern, $flags = 0)
+    {
+        $files = glob($pattern, $flags);
+        foreach (glob(dirname($pattern) . '/*', GLOB_ONLYDIR | GLOB_NOSORT) as $dir) {
+            $files = array_merge(
+                [],
+                ...[$files, self::rglob($dir . "/" . basename($pattern), $flags)]
+            );
+        }
+        return $files;
     }
 
     /**
@@ -117,7 +138,7 @@ class PostController extends BaseController
         $post->name_short = $request->input('name_short');
         $post->description = $request->input('description');
         $post->sorting = intval($request->input('sorting'));
-        // $post->maptex_content_link = $request->input('maptex_content_link');
+        $post->maptex_content_link = $request->input('maptex_content_link');
         $post->study_status = $request->input('study_status');
         $post->is_protected = $request->input('is_protected', 0);
 
