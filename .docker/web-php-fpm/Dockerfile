@@ -1,4 +1,5 @@
 FROM cyberduck/php-fpm-laravel:8.1
+WORKDIR /var/www
 
 # RUN docker-php-ext-install opcache
 # ADD .docker/web-php-fpm/opcache.ini /usr/local/etc/php/conf.d/opcache.ini

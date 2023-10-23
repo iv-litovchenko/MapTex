@@ -1,4 +1,5 @@
 FROM node:18
+WORKDIR /var/www
 
 # Install gulp & bower
 RUN npm install --global electron-forge

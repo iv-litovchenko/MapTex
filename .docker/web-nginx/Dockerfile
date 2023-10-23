@@ -1,4 +1,5 @@
 FROM nginx:1.22
+WORKDIR /var/www
 
 # Установка прав доступа (linux ubuntu)
 # su -l www-data -s /bin/bash
