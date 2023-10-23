@@ -31,6 +31,9 @@ $ docker-compose exec -T <php-apache-ID> php artisan ...
 $ docker network ls // сети
 $ docker network inspect
 
+$ docker image ls -a
+$ docker rmi -f $(docker image ls -a -q)
+
 // В Docker есть несколько способов хранения данных. Наиболее распространенные:
 * тома хранения данных (docker volumes /var/lib/docker/volumes/) - для продакшина
 * монтирование каталогов с хоста (bind mount) - в файловой системе хоста (файл или каталог с хоста просто монтируется в контейнер).
