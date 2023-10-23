@@ -5,7 +5,7 @@ services:
   # http://localhost:8001/
   #################################
   phpmyadmin:
-    container_name: gui-${DOCKER_NAME}-phpmyadmin
+    container_name: ${DOCKER_NAME}-gui-phpmyadmin
     image: phpmyadmin/phpmyadmin
     environment:
       PMA_HOST: db-mysql
@@ -21,7 +21,7 @@ services:
   # http://localhost:8002/
   #################################
   adminer:
-    container_name: gui-${DOCKER_NAME}-adminer
+    container_name: ${DOCKER_NAME}-gui-adminer
     image: adminer
     restart: always
     environment:
@@ -35,7 +35,7 @@ services:
   # http://localhost:8003/
   #################################
   pgadmin:
-    container_name: gui-${DOCKER_NAME}-pgadmin
+    container_name: ${DOCKER_NAME}-gui-pgadmin
     image: dpage/pgadmin4
     restart: always
     environment:
@@ -51,7 +51,7 @@ services:
    http://localhost:8004/
   ################################
   redis-commander:
-    container_name: gui-${DOCKER_NAME}-redis-commander
+    container_name: ${DOCKER_NAME}-gui-redis-commander
     image: rediscommander/redis-commander:latest
     ports:
       - '1004:8081'
@@ -64,7 +64,7 @@ services:
   # http://localhost:8005/
   #################################
   memcached-admin:
-    container_name: gui-${DOCKER_NAME}-memcached-admin
+    container_name: ${DOCKER_NAME}-gui-memcached-admin
     image: hatamiarash7/memcached-admin:latest
     ports:
       - "1005:80"
@@ -78,7 +78,7 @@ services:
   # http://localhost:8006/
   #################################
 #  mongoclient:
-#    container_name: gui-${DOCKER_NAME}-mongoclient
+#    container_name: ${DOCKER_NAME}-gui-mongoclient
 #    image: fabianlee/my-mongoclient:3.9
 #    ports:
 #      - "1006:80"
