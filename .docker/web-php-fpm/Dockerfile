@@ -11,4 +11,4 @@ WORKDIR /var/www
 # su -l www-data -s /bin/bash
 RUN usermod -u 1000 www-data
 RUN groupmod -g 1000 www-data
-RUN chown -R www-data:www-data /var/www
+# RUN chown -R www-data:www-data /var/www
