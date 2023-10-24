@@ -4,22 +4,6 @@ services:
   #################################
   # http://localhost:8001/
   #################################
-  phpmyadmin:
-    container_name: ${DOCKER_NAME}-gui-phpmyadmin
-    image: phpmyadmin/phpmyadmin
-    environment:
-      PMA_HOST: db-mysql
-      PMA_PORT: 3306
-      UPLOAD_LIMIT: 1000M
-    restart: always
-    ports:
-      - '1001:80'
-    extra_hosts:
-      - 'host.docker.internal:host-gateway'
-
-  #################################
-  # http://localhost:8002/
-  #################################
   adminer:
     container_name: ${DOCKER_NAME}-gui-adminer
     image: adminer
@@ -27,47 +11,31 @@ services:
     environment:
       ADMINER_DEFAULT_SERVER: db-mysql
     ports:
-      - '1002:8080'
-    extra_hosts:
-      - 'host.docker.internal:host-gateway'
-
-  #################################
-  # http://localhost:8003/
-  #################################
-  pgadmin:
-    container_name: ${DOCKER_NAME}-gui-pgadmin
-    image: dpage/pgadmin4
-    restart: always
-    environment:
-      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
-      PGADMIN_DEFAULT_PASSWORD: admin
-      PGADMIN_CONFIG_SERVER_MODE: 'False'
-    ports:
-      - '1003:80'
+      - '1001:8080'
     extra_hosts:
       - 'host.docker.internal:host-gateway'
 
   ################################
-   http://localhost:8004/
+  # http://localhost:8002/
   ################################
   redis-commander:
     container_name: ${DOCKER_NAME}-gui-redis-commander
     image: rediscommander/redis-commander:latest
     ports:
-      - '1004:8081'
+      - '1002:8081'
     environment:
       REDIS_HOSTS: redis1:maptex-db-redis:6379:0:changeme
     extra_hosts:
       - 'host.docker.internal:host-gateway'
 
   #################################
-  # http://localhost:8005/
+  # http://localhost:8003/
   #################################
   memcached-admin:
     container_name: ${DOCKER_NAME}-gui-memcached-admin
     image: hatamiarash7/memcached-admin:latest
     ports:
-      - "1005:80"
+      - "1003:80"
     environment:
       - MEMCACHED_HOST=maptex-db-memcached
       - MEMCACHED_PORT=11211
@@ -75,12 +43,12 @@ services:
       - 'host.docker.internal:host-gateway'
 
   #################################
-  # http://localhost:8006/
+  # http://localhost:8004/
   #################################
 #  mongoclient:
 #    container_name: ${DOCKER_NAME}-gui-mongoclient
 #    image: fabianlee/my-mongoclient:3.9
 #    ports:
-#      - "1006:80"
+#      - "1004:80"
 #    extra_hosts:
 #      - 'host.docker.internal:host-gateway'

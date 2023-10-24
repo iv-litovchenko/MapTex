@@ -56,20 +56,6 @@ services:
         extra_hosts:
             - "host.docker.internal:host-gateway"
 
-    db-postgres:
-        container_name: ${DOCKER_NAME}-db-postgres
-        image: postgres:10.1
-        environment:
-            POSTGRES_DB: '${DB_DATABASE}'
-            POSTGRES_USER: '${DB_USERNAME}'
-            POSTGRES_PASSWORD: '${DB_PASSWORD}'
-        volumes:
-            - db-postgres:/var/lib/postgresql/data
-        ports:
-            - '5432:5432'
-        extra_hosts:
-            - "host.docker.internal:host-gateway"
-
     db-redis:
         container_name: ${DOCKER_NAME}-db-redis
         image: redis:7.2.1
@@ -106,6 +92,5 @@ services:
 
 volumes:
     db-mysql:
-    db-postgres:
     db-redis:
     db-mongodb:
