@@ -14,16 +14,15 @@ echo "Start deployment [sh]!";
 #sudo /usr/bin/supervisorctl update
 #sudo /usr/bin/supervisorctl stop laravel-worker:*
 
-docker exec  -w /var/www/html -it maptex-web-php-fpm php artisan down
+docker exec -w /var/www/html -it maptex-web-php-fpm php artisan down
 
 git pull origin master
 
-docker exec  -w /var/www/html -it maptex-web-php-fpm composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
+docker exec  -w /var/www/html -it maptex-web-php-fpm composer install
 docker exec  -w /var/www/html -it maptex-web-php-fpm composer dump-autoload
 
-#npm ci
-#npm install
-#npm run production
+docker exec  -w /var/www/html -it maptex-web-node npm install
+docker exec  -w /var/www/html -it maptex-web-node npm run production
 
 docker exec  -w /var/www/html -it maptex-web-php-fpm php artisan migrate:auto --force
 docker exec  -w /var/www/html -it maptex-web-php-fpm php artisan cache:clear
@@ -34,8 +33,8 @@ docker exec  -w /var/www/html -it maptex-web-php-fpm php artisan config:clear
 docker exec  -w /var/www/html -it maptex-web-php-fpm php artisan config:cache
 docker exec  -w /var/www/html -it maptex-web-php-fpm php artisan view:clear
 docker exec  -w /var/www/html -it maptex-web-php-fpm php artisan view:cache
+docker exec  -w /var/www/html -it maptex-web-php-fpm php artisan optimize
 
-# php artisan optimize
 docker exec  -w /var/www/html -it maptex-web-php-fpm php artisan up
 
 echo "End deployment [sh]!";
