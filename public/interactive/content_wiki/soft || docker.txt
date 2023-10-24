@@ -115,3 +115,4 @@ docker exec -w /var/www/html -it <CONTAINER_NAME> php -v
 docker exec -w /var/www/html -it <CONTAINER_NAME> composer install
 docker exec -w /var/www/html -it <CONTAINER_NAME> composer dump-autoload
 
+1 Test
