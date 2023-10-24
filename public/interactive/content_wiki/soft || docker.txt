@@ -111,4 +111,7 @@ Php-Fpm работает внутри контейнера под root=0 его 
 # shell скрипт с выполнением команд внутри контейнера
 # -------------------------------------------------------------------
 
+docker exec -w /var/www/html -it <CONTAINER_NAME> php -v
+docker exec -w /var/www/html -it <CONTAINER_NAME> composer install
+docker exec -w /var/www/html -it <CONTAINER_NAME> composer dump-autoload
 
