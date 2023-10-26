@@ -15,7 +15,7 @@ echo "Start deployment [sh]!";
 #sudo /usr/bin/supervisorctl update
 #sudo /usr/bin/supervisorctl stop laravel-worker:*
 
-php artisan down;
+# php artisan down;
 
 git pull origin master;
 
