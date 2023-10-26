@@ -1,4 +1,5 @@
-echo "Start deployment [sh-script]!";
+echo "Start deployment [sh]!"
+
 ##!/usr/bin/env bash
 #set -x
 #cd /home/forge/domain.com
@@ -14,27 +15,29 @@ echo "Start deployment [sh-script]!";
 #sudo /usr/bin/supervisorctl update
 #sudo /usr/bin/supervisorctl stop laravel-worker:*
 
-docker exec -w /var/www/html -it maptex-web-php-fpm php artisan down
+id
+pwd
+
+php artisan down
 
 git pull origin master
 
-docker exec -w /var/www/html -it maptex-web-php-fpm composer install
-docker exec -w /var/www/html -it maptex-web-php-fpm composer dump-autoload
+composer install
+composer dump-autoload
 
-docker exec -w /var/www/html -it maptex-web-node npm install
-docker exec -w /var/www/html -it maptex-web-node npm run production
+# npm install;
+# npm run production;
 
-docker exec -w /var/www/html -it maptex-web-php-fpm php artisan migrate:auto --force
-docker exec -w /var/www/html -it maptex-web-php-fpm php artisan cache:clear
-docker exec -w /var/www/html -it maptex-web-php-fpm php artisan auth:clear-resets
-docker exec -w /var/www/html -it maptex-web-php-fpm php artisan route:clear
-docker exec -w /var/www/html -it maptex-web-php-fpm php artisan route:cache
-docker exec -w /var/www/html -it maptex-web-php-fpm php artisan config:clear
-docker exec -w /var/www/html -it maptex-web-php-fpm php artisan config:cache
-docker exec -w /var/www/html -it maptex-web-php-fpm php artisan view:clear
-docker exec -w /var/www/html -it maptex-web-php-fpm php artisan view:cache
-docker exec -w /var/www/html -it maptex-web-php-fpm php artisan optimize
+# php artisan migrate:auto --force
+php artisan cache:clear
+php artisan auth:clear-resets
+php artisan route:clear
+php artisan route:cache
+php artisan config:clear
+php artisan config:cache
+php artisan view:clear
+php artisan view:cache
+php artisan optimize
+php artisan up
 
-docker exec -w /var/www/html -it maptex-web-php-fpm php artisan up
-
-echo "End deployment [sh-script]!";
+echo "End deployment [sh]!"
