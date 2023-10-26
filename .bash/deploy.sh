@@ -1,4 +1,4 @@
-echo "Start deployment [sh]!"
+echo "Start deployment [sh]!";
 
 ##!/usr/bin/env bash
 #set -x
