@@ -1,4 +1,4 @@
-echo "Start deployment [sh]!";
+echo "Start deployment [sh-script]!";
 ##!/usr/bin/env bash
 #set -x
 #cd /home/forge/domain.com
@@ -37,4 +37,4 @@ docker exec -w /var/www/html -it maptex-web-php-fpm php artisan optimize
 
 docker exec -w /var/www/html -it maptex-web-php-fpm php artisan up
 
-echo "End deployment [sh]!";
+echo "End deployment [sh-script]!";
