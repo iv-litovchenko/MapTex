@@ -1,4 +1,4 @@
-echo "Start deployment [sh]!"
+echo "Start deployment [sh]!";
 
 ##!/usr/bin/env bash
 #set -x
@@ -14,6 +14,9 @@ echo "Start deployment [sh]!"
 #sudo /usr/bin/supervisorctl reread
 #sudo /usr/bin/supervisorctl update
 #sudo /usr/bin/supervisorctl stop laravel-worker:*
+
+id;
+pwd;
 
 php artisan down;
 
