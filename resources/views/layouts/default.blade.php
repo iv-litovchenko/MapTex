@@ -107,7 +107,7 @@
             <a href="https://getbootstrap.com/docs/3.4/components/">Bootstrap компоненты</a> |
             <a href="https://github.com/iv-litovchenko/maptex/">Исходники проекта на github</a> |
             <a href="{{ route('site.sitemap') }}">Оглавление (карта сайта)</a> |
-            <a href="{{ route('deploy') }}">Deploy</a> <br />
+            <a href="{{ route('deploy') }}">Deploy Ci/Cd</a> <br />
             Когда достижения - то мы, когда косяки - то я. В этом и есть суть ответственности. <br />
             Видеть картину в целом - разностороннее развитие. Пробуй каждый день что-то новое.
             Не ставь личные цели. Цели это рамки ожидания как должно быть. У тех кто мертв тоже были цели ставь ориентиры
