@@ -15,9 +15,6 @@ echo "Start deployment [sh]!"
 #sudo /usr/bin/supervisorctl update
 #sudo /usr/bin/supervisorctl stop laravel-worker:*
 
-id
-pwd
-
 php artisan down
 
 git pull origin master
@@ -28,7 +25,7 @@ composer dump-autoload
 # npm install;
 # npm run production;
 
-# php artisan migrate:auto --force
+php artisan migrate:auto --force
 php artisan cache:clear
 php artisan auth:clear-resets
 php artisan route:clear
