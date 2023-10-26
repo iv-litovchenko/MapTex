@@ -1,4 +1,5 @@
-echo "Start deployment [sh]!";
+echo "Start deployment [sh]!"
+
 ##!/usr/bin/env bash
 #set -x
 #cd /home/forge/domain.com
@@ -14,12 +15,12 @@ echo "Start deployment [sh]!";
 #sudo /usr/bin/supervisorctl update
 #sudo /usr/bin/supervisorctl stop laravel-worker:*
 
-php artisan down;
+php artisan down
 
-git pull origin master;
+git pull origin master
 
-composer install;
-composer dump-autoload;
+composer install
+composer dump-autoload
 
 # npm install;
 # npm run production;
@@ -36,4 +37,4 @@ php artisan view:cache
 php artisan optimize
 php artisan up
 
-echo "End deployment [sh]!";
+echo "End deployment [sh]!"
