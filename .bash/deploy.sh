@@ -14,17 +14,14 @@ echo "Start deployment [sh]!";
 #sudo /usr/bin/supervisorctl update
 #sudo /usr/bin/supervisorctl stop laravel-worker:*
 
-# docker exec -w /var/www/html -it maptex-web-php-fpm php artisan down
+docker exec -w /var/www/html -it maptex-web-php-fpm php artisan down;
 
-id;
-pwd;
 git pull origin master;
 
-docker exec -w /var/www/html -it maptex-web-php-fpm composer install
-docker exec -w /var/www/html -it maptex-web-php-fpm composer dump-autoload
-
-docker exec -w /var/www/html -it maptex-web-node npm install
-docker exec -w /var/www/html -it maptex-web-node npm run production
+docker exec -w /var/www/html -it maptex-web-php-fpm composer install;
+docker exec -w /var/www/html -it maptex-web-php-fpm composer dump-autoload;
+docker exec -w /var/www/html -it maptex-web-node npm install;
+docker exec -w /var/www/html -it maptex-web-node npm run production;
 
 # docker exec -w /var/www/html -it maptex-web-php-fpm php artisan migrate:auto --force
 docker exec -w /var/www/html -it maptex-web-php-fpm php artisan cache:clear
