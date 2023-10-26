@@ -16,8 +16,9 @@ echo "Start deployment [sh]!";
 
 # docker exec -w /var/www/html -it maptex-web-php-fpm php artisan down
 
-pwd
-git pull origin master
+id;
+pwd;
+git pull origin master;
 
 docker exec -w /var/www/html -it maptex-web-php-fpm composer install
 docker exec -w /var/www/html -it maptex-web-php-fpm composer dump-autoload
