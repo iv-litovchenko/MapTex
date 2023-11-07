@@ -13,10 +13,10 @@
                     <a href="{{ route('admin.doc.edit', $doc->id) }}" type="button" class="btn btn-success btn-sm">Изменить</a>
                 @endcan
                 @can('delete', $doc)
-                    <a href="{{ route('admin.doc.edit', $doc->id) }}" type="button" class="btn btn-danger btn-sm">Удалить</a>
+                    <a href="{{ route('admin.doc.delete', $doc->id) }}" type="button" class="btn btn-danger btn-sm">Удалить</a>
                 @endcan
                 <a href="{{ route('site.doc-download', $doc->id) }}">
-                    {!! ($doc->bodytext) !!}
+                    [{{ $doc->id }}] {!! ($doc->bodytext) !!}
                 </a>
                 <hr/>
             @endforeach
