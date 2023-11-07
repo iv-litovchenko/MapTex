@@ -38,7 +38,7 @@ class Doc extends Model
         $table->integer('note_type')->default(0);
         $table->text('bodytext')->nullable();
         $table->text('file_path')->nullable();
-        $table->integer('category')->nullable();
+        $table->integer('category')->nullable()->default(0);
         $table->timestamps();
     }
 }
