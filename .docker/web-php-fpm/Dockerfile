@@ -7,8 +7,19 @@ WORKDIR /var/www
 # ADD .docker/web-php-fpm/supervisord.conf:/etc/supervisor/conf.d/supervisord.conf
 # RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+# Install node, gulp, bower
+RUN curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+RUN apt-get --yes --force-yes install nodejs
+
+RUN npm install --global electron-forge
+RUN npm install --global gulp
+RUN npm install --global grunt
+RUN npm install --global bower
+RUN npm install --global less
+RUN npm install --global sass
+
 # Установка прав доступа (linux ubuntu)
 # su -l www-data -s /bin/bash
 RUN usermod -u 1000 www-data
 RUN groupmod -g 1000 www-data
-# RUN chown -R www-data:www-data /var/www
+RUN chown -R www-data:www-data /var/www

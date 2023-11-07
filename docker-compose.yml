@@ -26,18 +26,6 @@ services:
         volumes:
             - ./:/var/www/html/
 
-    web-node:
-        container_name: ${DOCKER_NAME}-web-node
-        build:
-            context: .
-            dockerfile: .docker/web-node/Dockerfile
-        ports:
-            - 3000:3000
-        stdin_open: true
-        tty: true
-        volumes:
-            - ./:/var/www/html/
-
     db-mysql:
         container_name: ${DOCKER_NAME}-db-mysql
         image: mysql:8.0.25

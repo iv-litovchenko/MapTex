@@ -1,10 +1,5 @@
 echo "Start deployment [sh]!"
 
-##!/usr/bin/env bash
-#set -x
-#cd /home/forge/domain.com
-#cd $FORGE_SITE_PATH
-
 #sudo /usr/bin/supervisorctl reread
 #sudo /usr/bin/supervisorctl update
 #sudo /usr/bin/supervisorctl stop laravel-worker:*
@@ -22,8 +17,8 @@ git pull origin master
 composer install
 composer dump-autoload
 
-# npm install;
-# npm run production;
+npm install
+npm run production
 
 php artisan migrate:auto --force
 php artisan cache:clear
