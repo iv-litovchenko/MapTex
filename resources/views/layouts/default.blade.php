@@ -93,7 +93,7 @@
 <footer class="footer">
     <div class="container">
         <hr class="my-12"/>
-        <p class="text-muted">Версия {{ $appProjectVersion }} | {{ config('app.name', 'Laravel') }}</p><br />
+        <p class="text-muted">{{ config('app.name', 'Laravel') }} | Версия проекта: {{ $appProjectVersion }} | Последний коммит: {{ $appProjectGitLastLog }}</p><br />
         <img src="{{ asset('assets/images/new/Screenshot from 2022-12-20 17-31-32.png') }}" style="text-align: left; margin-right: 15px;" align="left" height="90">
         <img src="{{ asset('assets/images/new/photo_2022-12-20_17-18-00.jpg') }}" style="text-align: left; margin-right: 15px;" align="left" height="90">
         <img src="{{ asset('assets/images/damboldor.png') }}" style="text-align: left; margin-right: 15px;" align="left" height="90">

@@ -8,7 +8,7 @@ WORKDIR /var/www
 # RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Install node, gulp, bower
-RUN curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
 RUN apt-get --yes --force-yes install nodejs
 
 RUN npm install --global electron-forge

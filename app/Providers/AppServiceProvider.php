@@ -31,6 +31,7 @@ class AppServiceProvider extends ServiceProvider
 
             $view->with('appDbCountPosts', \App\Models\Post::count());
             $view->with('appProjectVersion', $this->getGitLastTag());
+            $view->with('appProjectGitLastLog', $this->getGitLatsLog());
 
         });
 
@@ -57,6 +58,13 @@ class AppServiceProvider extends ServiceProvider
     public static function getGitLastTag()
     {
         $command = 'git describe --tags $(git rev-list --tags --max-count=1)';
+        $output = exec($command);
+        return $output; // No matching tag
+    }
+
+    public static function getGitLatsLog()
+    {
+        $command = 'git log  --pretty=oneline -n 1';
         $output = exec($command);
         return $output; // No matching tag
     }
