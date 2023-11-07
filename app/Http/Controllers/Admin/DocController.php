@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\BaseController;
-use App\Http\Requests\AdminPostStoreRequest;
-use App\Http\Requests\AdminPostUpdateRequest;
 use App\Models\Doc;
 use App\Utils\FrontendUility;
 use Illuminate\Http\Request;
@@ -18,9 +16,6 @@ class DocController extends BaseController
 {
     /**
      * Редактировать
-     *
-     * @param \App\Models\Doc $doc
-     * @return \Illuminate\View\View
      */
     public function edit(Doc $doc)
     {
@@ -29,10 +24,6 @@ class DocController extends BaseController
 
     /**
      * Обновить
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Doc $doc
-     * @return \Illuminate\Routing\Redirector
      */
     public function update(Request $request, Doc $doc)
     {
@@ -44,43 +35,24 @@ class DocController extends BaseController
     }
 
     /**
-     * Удалить пост (форма)
-     *
-     * @param \App\Models\Post $post
-     * @return \Illuminate\View\View
+     * Удалить
      */
-    public function delete(Post $post)
+    public function delete(Doc $doc)
     {
-        return view('admin.post.delete', compact('post'));
+        return view('admin.doc.delete', compact('doc'));
     }
 
     /**
-     * Удалить пост (процесс)
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Post $post
-     * @return \Illuminate\Routing\Redirector
+     * Удалить (процесс)
      */
-    public function destroy(Request $request, Post $post)
+    public function destroy(Request $request, Doc $doc)
     {
-        if ($post->delete()) {
+        if ($doc->delete()) {
 
-            // Чистим диск (логотип)
-            $path = 'site/post/logo/' . $post->logo_image;
-            if (Storage::disk('public')->exists($path)) {
-                // Storage::disk('public')->delete($path); Не удаляем (версионизация!)
-            }
-
-            // Чистим диск (изображения)
-            $path = 'site/post/' . $post->id;
-            if (Storage::disk('public')->exists($path)) {
-                // Storage::disk('public')->deleteDirectory($path); Не удаляем (версионизация!)
-            }
-
-            $request->session()->flash('flash_messages_success', 'Пост [' . $post->id . '] успешно удален');
-            return redirect()->route('admin.post.index');
+            $request->session()->flash('flash_messages_success', 'Документ [' . $doc->id . '] успешно удален');
+            return redirect()->route('site.doc');
         }
-        $request->session()->flash('flash_messages_error', 'Ошибка удаления поста [' . $post->id . ']');
-        return redirect()->route('admin.post.index');
+        $request->session()->flash('flash_messages_error', 'Ошибка удаления документа [' . $doc->id . ']');
+        return redirect()->route('site.doc');
     }
 }

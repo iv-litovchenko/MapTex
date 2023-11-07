@@ -22,9 +22,11 @@
             @endforeach
         </div>
         <div class="col-sm-4">
-            @foreach(\App\Models\Doc::getCategories() as $key => $name)
-                <a href="{{ route('site.doc-cat', $key) }}" class="">{{ $key }}. {{ $name }}</a><br />
-            @endforeach
+            <div class="alert alert-success">
+                @foreach(\App\Models\Doc::getCategories() as $key => $name)
+                    <a href="{{ route('site.doc-cat', $key) }}" class="">{{ $key }}. {{ $name }}</a><br />
+                @endforeach
+            </div>
         </div>
     </div>
     <form action="{{ route('site.doc-store') }}" method="post" enctype="multipart/form-data">
