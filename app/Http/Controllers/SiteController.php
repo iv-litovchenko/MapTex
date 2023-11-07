@@ -322,7 +322,7 @@ class SiteController extends BaseController
     public function doc($cat = 0)
     {
         // $docs = Storage::disk('protected')->files('site/doc');
-        if(intval($cat)){
+        if(intval($cat) >= 1){
             $docs = Doc::orderBy('id', 'asc')->where('category', $cat)->get();
         } else {
             $docs = Doc::orderBy('id', 'asc')->where('category', '<', 1)->get();
