@@ -325,7 +325,7 @@ class SiteController extends BaseController
         if(intval($cat) >= 1){
             $docs = Doc::orderBy('id', 'asc')->where('category', $cat)->get();
         } else {
-            $docs = Doc::orderBy('id', 'asc')->where('category', '<', 1)->get();
+            $docs = Doc::orderBy('id', 'asc')->where('category', '<', 1)->orWhereNull('category')->get();
         }
         return view('site.doc', compact('docs'));
     }
