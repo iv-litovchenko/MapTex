@@ -319,10 +319,14 @@ class SiteController extends BaseController
      *
      * @return \Illuminate\View\View
      */
-    public function doc()
+    public function doc($cat = 0)
     {
         // $docs = Storage::disk('protected')->files('site/doc');
-        $docs = Doc::orderBy('id', 'asc')->get();
+        if(intval($cat)){
+            $docs = Doc::orderBy('id', 'asc')->where('category', $cat)->get();
+        } else {
+            $docs = Doc::orderBy('id', 'asc')->get();
+        }
         return view('site.doc', compact('docs'));
     }
 
@@ -341,6 +345,7 @@ class SiteController extends BaseController
         }
 
         $doc->bodytext = $filename;
+        $doc->category = intval($request->input('category'));
         $doc->file_path = $this->fileAttachDetachService->oneFile(
             null,
             'file_path',

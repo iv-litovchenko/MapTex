@@ -12,6 +12,19 @@ class Doc extends Model
 {
     use HasFactory;
 
+    static public function getCategories()
+    {
+        return [
+            '-- Все --',
+            'Документы',
+            'Резюме',
+            'Прошлое',
+            'ПМ-ство',
+            'Книги (изучить)',
+            'Спорт',
+        ];
+    }
+
     /**
      * Run the migrations.
      *
@@ -25,6 +38,7 @@ class Doc extends Model
         $table->integer('note_type')->default(0);
         $table->text('bodytext')->nullable();
         $table->text('file_path')->nullable();
+        $table->integer('category')->nullable();
         $table->timestamps();
     }
 }

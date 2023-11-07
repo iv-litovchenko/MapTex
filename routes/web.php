@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\DocController;
 use App\Http\Controllers\Admin\TodoController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\SiteController;
@@ -60,6 +61,7 @@ Route::post('/book', [SiteController::class, 'bookStore'])->name('site.book-stor
 
 Route::get('/doc', [SiteController::class, 'doc'])->name('site.doc');
 Route::post('/doc', [SiteController::class, 'docStore'])->name('site.doc-store');
+Route::get('/doc/{cat}', [SiteController::class, 'doc'])->name('site.doc-cat');
 
 Route::get('/project', [SiteController::class, 'project'])->name('site.project');
 Route::get('/technology', [SiteController::class, 'technology'])->name('site.technology');
@@ -98,6 +100,9 @@ Route::middleware([Authenticate::class, IsMe::class])
         Route::get('user/{user}/delete', [UserController::class, 'delete'])->name('user.delete');
 
         Route::resource('todo', TodoController::class);
+
+        Route::get('doc/{doc}/edit', [DocController::class, 'edit'])->name('doc.edit');
+        Route::put('doc/{doc}/edit', [DocController::class, 'update'])->name('doc.update');
     });
 
 Auth::routes();
