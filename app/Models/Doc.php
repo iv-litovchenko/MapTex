@@ -14,15 +14,8 @@ class Doc extends Model
 
     static public function getCategories()
     {
-        return [
-            '-- Все --',
-            'Документы',
-            'Резюме',
-            'Прошлое',
-            'ПМ-ство',
-            'Книги (изучить)',
-            'Спорт',
-        ];
+        $content = file_get_contents(app_path('Models/Doc.Cat.txt'));
+        return explode(chr(10), $content);
     }
 
     /**

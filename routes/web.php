@@ -105,7 +105,7 @@ Route::middleware([Authenticate::class, IsMe::class])
         Route::put('doc/{doc}/edit', [DocController::class, 'update'])->name('doc.update');
 
         Route::get('doc/{doc}/delete', [DocController::class, 'delete'])->name('doc.delete');
-        Route::put('doc/{doc}/delete', [DocController::class, 'destroy'])->name('doc.destroy');
+        Route::delete('doc/{doc}/delete', [DocController::class, 'destroy'])->name('doc.destroy');
     });
 
 Auth::routes();
