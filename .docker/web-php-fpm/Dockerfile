@@ -1,11 +1,9 @@
 FROM cyberduck/php-fpm-laravel:8.1
 WORKDIR /var/www
 
-# RUN docker-php-ext-install opcache
-# ADD .docker/web-php-fpm/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
-# ADD .docker/web-php-fpm/php.ini /usr/local/etc/php/php.ini
+ADD .docker/web-php-fpm/php.ini /usr/local/etc/php/php.ini
 # ADD .docker/web-php-fpm/supervisord.conf:/etc/supervisor/conf.d/supervisord.conf
-# RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+# ADD .docker/web-php-fpm/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
 
 # Install node, gulp, bower
 RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
