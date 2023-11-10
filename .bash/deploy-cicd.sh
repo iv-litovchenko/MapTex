@@ -14,11 +14,11 @@ php artisan down
 
 git pull origin master
 
-composer install
-composer dump-autoload
+# composer install
+# composer dump-autoload
 
-npm install
-npm run production
+# npm install
+# npm run production
 
 php artisan migrate:auto --force
 php artisan cache:clear
