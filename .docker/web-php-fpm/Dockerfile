@@ -1,9 +1,9 @@
 FROM cyberduck/php-fpm-laravel:8.1
 WORKDIR /var/www
 
-ADD .docker/web-php-fpm/php.ini /usr/local/etc/php/
-# ADD .docker/web-php-fpm/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
-# ADD .docker/web-php-fpm/supervisord.conf:/etc/supervisor/conf.d/supervisord.conf
+ADD php.ini /usr/local/etc/php/php.ini
+# ADD opcache.ini /usr/local/etc/php/conf.d/opcache.ini
+# ADD upervisord.conf:/etc/supervisor/conf.d/supervisord.conf
 
 # Install node, gulp, bower
 RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
