@@ -1,5 +1,4 @@
 FROM cyberduck/php-fpm-laravel:8.1
-WORKDIR /var/www
 
 ADD php.ini /usr/local/etc/php/php.ini
 # ADD opcache.ini /usr/local/etc/php/conf.d/opcache.ini
@@ -21,3 +20,4 @@ RUN apt-get --yes --force-yes install nodejs
 RUN usermod -u 1000 www-data
 RUN groupmod -g 1000 www-data
 RUN chown -R www-data:www-data /var/www
+WORKDIR /var/www/html
