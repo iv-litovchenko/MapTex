@@ -9,12 +9,12 @@ ADD php.ini /usr/local/etc/php/php.ini
 RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
 RUN apt-get --yes --force-yes install nodejs
 
-RUN npm install --global electron-forge
-RUN npm install --global gulp
-RUN npm install --global grunt
-RUN npm install --global bower
-RUN npm install --global less
-RUN npm install --global sass
+# RUN npm install --global electron-forge
+# RUN npm install --global gulp
+# RUN npm install --global grunt
+# RUN npm install --global bower
+# RUN npm install --global less
+# RUN npm install --global sass
 
 # Установка прав доступа (linux ubuntu)
 # su -l www-data -s /bin/bash
