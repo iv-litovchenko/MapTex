@@ -1,6 +1,6 @@
 FROM cyberduck/php-fpm-laravel:8.1
 
-ADD php.ini /usr/local/etc/php/php.ini
+# ADD php.ini /usr/local/etc/php/php.ini
 # ADD opcache.ini /usr/local/etc/php/conf.d/opcache.ini
 # ADD upervisord.conf:/etc/supervisor/conf.d/supervisord.conf
 
