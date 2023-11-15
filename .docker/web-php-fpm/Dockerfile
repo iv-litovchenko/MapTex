@@ -1,6 +1,6 @@
 FROM cyberduck/php-fpm-laravel:8.1
 
-ADD .docker/web-php-fpm/php.ini /usr/local/etc/php/php.ini
+COPY .docker/web-php-fpm/php.ini /usr/local/etc/php/php.ini
 # ADD .docker/web-php-fpm/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
 # ADD .docker/web-php-fpm/upervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
