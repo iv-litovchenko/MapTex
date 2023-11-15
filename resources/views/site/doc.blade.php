@@ -38,10 +38,9 @@
                         <ul>
                             @foreach(\App\Models\Doc::getCategories() as $key => $name)
                                 <li @if($key == $cat) class="active" @endif>
-                                    <a href="{{ route('site.doc-cat', $key) }}">{{ $key }}. {{ $name }}</a><
+                                    <a href="{{ route('site.doc-cat', $key) }}">{{ $key }}. {{ $name }}</a>
                                 </li>
                             @endforeach
-
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>
