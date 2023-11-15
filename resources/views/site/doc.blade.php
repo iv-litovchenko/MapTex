@@ -38,17 +38,19 @@
                         <ul class="nav navbar-nav">
                             @foreach(\App\Models\Doc::getCategories() as $key => $name)
                                 <li @if($key == $cat) class="active" @endif>
-                                    <img
-                                            src="{{ asset('assets/images/folder.png') }}"
-                                            height="20"
-                                            style="
-                                                    vertical-align: top;
-                                                    padding: 0px;
-                                                    border-radius: 0%;
-                                                    border: gray 0px solid;
-                                                    "
-                                    />
-                                    <a href="{{ route('site.doc-cat', $key) }}">{{ $key }}. {{ $name }}</a>
+                                    <a href="{{ route('site.doc-cat', $key) }}">{
+                                        <img
+                                                src="{{ asset('assets/images/folder.png') }}"
+                                                height="20"
+                                                style="
+                                                        vertical-align: top;
+                                                        padding: 0px;
+                                                        border-radius: 0%;
+                                                        border: gray 0px solid;
+                                                        "
+                                        />
+                                        { $key }}. {{ $name }}
+                                    </a>
                                 </li>
                             @endforeach
                         </ul>
