@@ -45,7 +45,7 @@ $ docker -version: узнать установленную версию Docker;
 $ docker info: получить расширенную информацию об установленном Docker
 
 $ docker images ls -a
-$ docker rmi -f $(docker images ls -a -q)
+$ docker rmi $(docker images -a -q)
 
 $ docker inspect <CONTAINER_NAME>
 $ docker logs <CONTAINER_NAME>
