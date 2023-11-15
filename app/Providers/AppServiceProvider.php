@@ -29,6 +29,11 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('appFilesCount', count($files));
             }
 
+            // Кол-во файлов (документов)
+            if ($files = Storage::disk('protected')->allFiles('site/doc')) {
+                $view->with('appDocFilesCount', count($files));
+            }
+
             $view->with('appDbCountPosts', \App\Models\Post::count());
             $view->with('appProjectVersion', $this->getGitLastTag());
             $view->with('appProjectGitLastLog', $this->getGitLatsLog());
