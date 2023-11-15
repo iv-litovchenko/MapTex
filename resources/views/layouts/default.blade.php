@@ -67,7 +67,7 @@
             @endauth
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="#">Всего знаний: {{ $appDbCountPosts }}/{{ $appFilesCount }}</a>
+                    <a href="#">Всего знаний: {{ $appDbCountPosts }}/{{ $appFilesCount }}/{{ $appDocFilesCount }}</a>
                 </li>
             </ul>
         </div><!--/.nav-collapse -->
