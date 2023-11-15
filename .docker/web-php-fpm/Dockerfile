@@ -1,4 +1,5 @@
 FROM cyberduck/php-fpm-laravel:8.1
+WORKDIR /var/www/html
 
 ADD php.ini /usr/local/etc/php.ini
 # ADD opcache.ini /usr/local/etc/php/conf.d/opcache.ini
