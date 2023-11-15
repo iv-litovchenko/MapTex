@@ -40,6 +40,9 @@
                                 <a href="{{ route('site.doc-cat', 0) }}">-- Все --</a>
                                 <ul class="dropdown-menu menu-sidebar-level-next">
                                     @foreach(\App\Models\Doc::getCategories() as $key => $name)
+                                        @if($key == 0)
+                                            @continue
+                                        @endif
                                         <li @if($key == $cat) class="active" @endif>
                                             <a href="{{ route('site.doc-cat', $key) }}">
                                                 <img
