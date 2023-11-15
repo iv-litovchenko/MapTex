@@ -22,11 +22,30 @@
             @endforeach
         </div>
         <div class="col-sm-4">
-            <div class="alert alert-success">
-                @foreach(\App\Models\Doc::getCategories() as $key => $name)
-                    <a href="{{ route('site.doc-cat', $key) }}" class="">{{ $key }}. {{ $name }}</a><br />
-                @endforeach
-            </div>
+            <div class="sidebar-nav">
+                <div class="navbar navbar-default" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                data-target=".sidebar-navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <span class="visible-xs navbar-brand">Навигация</span>
+                    </div>
+                    <div class="navbar-collapse collapse sidebar-navbar-collapse">
+                        <ul class="{{ $htmlUlClass }}">
+                            @foreach(\App\Models\Doc::getCategories() as $key => $name)
+                                <li @if($key == $cat) class="active" @endif>
+                                    <a href="{{ route('site.doc-cat', $key) }}">{{ $key }}. {{ $name }}</a><
+                                </li>
+                            @endforeach
+
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+
         </div>
     </div>
     <form action="{{ route('site.doc-store') }}" method="post" enctype="multipart/form-data">
@@ -37,7 +56,7 @@
         <div class="form-group">
             <select class="form-control" name="category">
                 @foreach(\App\Models\Doc::getCategories() as $key => $name)
-                    <option value="{{ $key }}">{{ $name }}</option>
+                    <option value="{{ $key }}" @if($key == $cat) selected @endif>{{ $name }}</option>
                 @endforeach
             </select>
         </div>
