@@ -36,8 +36,8 @@
                     </div>
                     <div class="navbar-collapse collapse sidebar-navbar-collapse">
                         <ul class="nav navbar-nav">
-                            <li>
-                                <a>#</a>
+                            <li href="">
+                                <a href="{{ route('site.doc-cat', 0) }}">-- Все --</a>
                                 <ul class="dropdown-menu menu-sidebar-level-next">
                                     @foreach(\App\Models\Doc::getCategories() as $key => $name)
                                         <li @if($key == $cat) class="active" @endif>
