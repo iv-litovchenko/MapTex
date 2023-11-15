@@ -1,4 +1,4 @@
-FROM cyberduck/php-fpm-laravel:8.2
+FROM cyberduck/php-fpm-laravel:8.1
 
 RUN rm /usr/local/etc/php/conf.d/laravel.ini
 COPY .docker/web-php-fpm/php.ini /usr/local/etc/php/php.ini
