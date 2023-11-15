@@ -1,4 +1,4 @@
-FROM cyberduck/php-fpm-laravel:8.1
+FROM cyberduck/php-fpm-laravel:8.2
 
 COPY .docker/web-php-fpm/php.ini /usr/local/etc/php/php.ini
 # COPY .docker/web-php-fpm/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
