@@ -36,23 +36,28 @@
                     </div>
                     <div class="navbar-collapse collapse sidebar-navbar-collapse">
                         <ul class="nav navbar-nav">
-                            @foreach(\App\Models\Doc::getCategories() as $key => $name)
-                                <li @if($key == $cat) class="active" @endif>
-                                    <a href="{{ route('site.doc-cat', $key) }}">
-                                        <img
-                                                src="{{ asset('assets/images/folder.png') }}"
-                                                height="20"
-                                                style="
-                                                        vertical-align: top;
-                                                        padding: 0px;
-                                                        border-radius: 0%;
-                                                        border: gray 0px solid;
-                                                        "
-                                        />
-                                        {{ $key }}. {{ $name }}
-                                    </a>
-                                </li>
-                            @endforeach
+                            <li>
+                                <a>#</a>
+                                <ul class="dropdown-menu menu-sidebar-level-next">
+                                    @foreach(\App\Models\Doc::getCategories() as $key => $name)
+                                        <li @if($key == $cat) class="active" @endif>
+                                            <a href="{{ route('site.doc-cat', $key) }}">
+                                                <img
+                                                        src="{{ asset('assets/images/folder.png') }}"
+                                                        height="20"
+                                                        style="
+                                                                vertical-align: top;
+                                                                padding: 0px;
+                                                                border-radius: 0%;
+                                                                border: gray 0px solid;
+                                                                "
+                                                />
+                                                {{ $key }}. {{ $name }}
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </li>
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>
