@@ -38,7 +38,7 @@
                         <ul class="nav navbar-nav">
                             @foreach(\App\Models\Doc::getCategories() as $key => $name)
                                 <li @if($key == $cat) class="active" @endif>
-                                    <a href="{{ route('site.doc-cat', $key) }}">{
+                                    <a href="{{ route('site.doc-cat', $key) }}">
                                         <img
                                                 src="{{ asset('assets/images/folder.png') }}"
                                                 height="20"
@@ -49,7 +49,7 @@
                                                         border: gray 0px solid;
                                                         "
                                         />
-                                        { $key }}. {{ $name }}
+                                        {{ $key }}. {{ $name }}
                                     </a>
                                 </li>
                             @endforeach
