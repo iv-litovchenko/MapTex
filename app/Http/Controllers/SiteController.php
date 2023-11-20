@@ -10,6 +10,7 @@ use App\Models\Note;
 use App\Models\Post;
 use App\Models\Todo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * Контроллер для обработки страниц frontend-а
@@ -55,6 +56,27 @@ class SiteController extends BaseController
     {
         $postsList = Post::orderBy('sorting', 'asc')->get()->toTree();
         return view('site.sitemap', compact('postsList'));
+    }
+
+    /**
+     * Страница генератор pwd
+     *
+     * @param Request $request
+     * 
+     * @return \Illuminate\View\View
+     */
+    public function pwdgen(Request $request)
+    {
+        if ($request->isMethod('post')){
+            $service_name = $request->input('service_name');
+            $prefix_name = $request->input('prefix_name');
+
+            $pwd = Hash::make($service_name  . $prefix_name);
+            $request->session()->flash('flash_messages_success', $pwd);
+        }
+
+        $test = 1;
+        return view('site.pwdgen', compact('test'));
     }
 
     /**

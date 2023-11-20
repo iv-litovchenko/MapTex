@@ -19,6 +19,7 @@ Menu::make('menu.header.left', function ($menu) {
     ]);
     $top->add('Заметки', ['route'  => 'site.note']);
     $top->add('Разные картинки', ['route'  => 'site.pic']);
+    $top->add('Генератор пароля', ['route'  => 'site.pwdgen']);
 
     $menu->add('Зарисовки', ['route'  => 'site.figma']);
     $menu->add('Технологии', ['route'  => 'site.technology']);

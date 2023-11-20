@@ -51,6 +51,7 @@ Route::get('/note', [SiteController::class, 'note'])->name('site.note');
 Route::post('/note', [SiteController::class, 'noteStore'])->name('site.note-store');
 Route::get('/pic', [SiteController::class, 'pic'])->name('site.pic');
 Route::post('/pic', [SiteController::class, 'picStore'])->name('site.pic-store');
+Route::match(['get', 'post'], '/pwdpgen', [SiteController::class, 'pwdgen'])->name('site.pwdgen');
 
 Route::middleware([Authenticate::class, IsMe::class])
     ->post('/note-or-pic-close/{note}', [SiteController::class, 'noteOrPicClose'])->name('site.note-or-pic-close');

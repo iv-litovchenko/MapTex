@@ -47,6 +47,12 @@ Breadcrumbs::for('site.figma', function ($trail) {
     $trail->push('Зарисовки');
 });
 
+// Генератор пароля
+Breadcrumbs::for('site.pwdgen', function ($trail) {
+    $trail->parent('site.home');
+    $trail->push('Генератор пароля');
+});
+
 // Документы
 Breadcrumbs::for('site.doc', function ($trail) {
     $trail->parent('site.home');
