@@ -19,6 +19,7 @@
 |                - Том (данных)           |                |                        |
 |                - Сеть                   |                |                        |
 |                - Аргументы (проброс)    |                |                        |
+|                - root(0),www-data(1000) |                |                        |
 <----------------------------------------------------------------------------------->
 
 
@@ -42,27 +43,27 @@ $ docker run --name phpmyadmin -d -e PMA_HOST=dbhost -p 8080:80 phpmyadmin
 $ docker -version: узнать установленную версию Docker;
 $ docker info: получить расширенную информацию об установленном Docker
 
-$ docker images ls -a
-$ docker rmi $(docker images -a -q)
-
-$ docker inspect <CONTAINER_NAME>
-$ docker logs <CONTAINER_NAME>
+$ docker image ls -a
+$ docker rmi $(docker image -a -q)
 
 $ docker ps // перечислить все запущенные контейнеры вместе с дополнительной информацией о них;
 $ docker ps -a // перечислить все контейнеры, включая остановленные, вместе с дополнительной информацией о них;
 $ docker stop $(docker ps -a -q) // остановить все процессы
 $ docker rm $(docker ps -a -q) // удалить все процессы
 
-$ docker-compose build // собрать сервисы (поднять) в контейнере
-$ docker-compose up --force-recreate
-$ docker-compose up -d // собрать сервисы (поднять) в контейнере
-$ docker-compose up -d --build //
-$ docker-compose down // остановить контейнер (опустить)
+$ docker inspect <CONTAINER_NAME>
+$ docker logs <CONTAINER_NAME>
 
 $ docker exec -it <php-apache-ID> bash // войти в контейнер (exit - выйти)
 $ docker exec -it <php-apache-ID> /bin/sh // войти в контейнер v2
 $ docker-compose exec -T <php-apache-ID> composer run-script build:app  --- пересобрать проект на докере
 $ docker-compose exec -T <php-apache-ID> php artisan ...
+
+$ docker-compose build // собрать сервисы (поднять) в контейнере
+$ docker-compose up --force-recreate
+$ docker-compose up -d // собрать сервисы (поднять) в контейнере
+$ docker-compose up -d --build //
+$ docker-compose down // остановить контейнер (опустить)
 
 $ docker network ls // сети
 $ docker network inspect
@@ -130,9 +131,9 @@ Php-Fpm работает внутри контейнера под root=0 его 
 # shell скрипт с выполнением команд внутри контейнера
 # -------------------------------------------------------------------
 
-docker exec -w /var/www/html -it <CONTAINER_NAME> php -v
-docker exec -w /var/www/html -it <CONTAINER_NAME> composer install
-docker exec -w /var/www/html -it <CONTAINER_NAME> composer dump-autoload
+$ docker exec -w /var/www/html -it <CONTAINER_NAME> php -v
+$ docker exec -w /var/www/html -it <CONTAINER_NAME> composer install
+$ docker exec -w /var/www/html -it <CONTAINER_NAME> composer dump-autoload
 
 # -------------------------------------------------------------------
 # Сети
