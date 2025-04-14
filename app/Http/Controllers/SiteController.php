@@ -112,6 +112,8 @@ class SiteController extends BaseController
      */
     public function postNoteStore(Request $request, Post $post, Note $note)
     {
+        return false;
+
         // TODO Валидируем форму (она не пускает дальше)
         $request->validate(
             ['bodytext' => 'required|min:10'],
