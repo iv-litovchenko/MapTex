@@ -72,6 +72,19 @@ class PostContentType extends Component
 
         // Сценарий когда текущяя запись
         $this->post = Post::find($this->currentPostId);
+
+        // Добавляем wikiContent ссылку нафайл
+        $path = public_path('/interactive/content_wiki/*');
+        $maptex_content_files = self::rglob($path);
+        sort($maptex_content_files);
+        $wikiContent = '';
+        foreach($maptex_content_files as $k => $v){
+            if(strstr(basename($v), "-id-".$this->post->id.".")){
+                $this->post->maptex_content_link = $v;
+                $this->post->maptex_content_link = str_replace(public_path('/interactive/content_wiki/'), '', $v);
+            }
+        }
+
         switch ($this->post->post_type) {
             case 'directory':
                 return $this->postTypeDirectory();
@@ -129,5 +142,17 @@ class PostContentType extends Component
                 ->get();
         }
         return view('components.post-content-type.page-mind-map-sub', compact('subPosts'));
+    }
+
+    protected static function rglob($pattern, $flags = 0)
+    {
+        $files = glob($pattern, $flags);
+        foreach (glob(dirname($pattern) . '/*', GLOB_ONLYDIR | GLOB_NOSORT) as $dir) {
+            $files = array_merge(
+                [],
+                ...[$files, self::rglob($dir . "/" . basename($pattern), $flags)]
+            );
+        }
+        return $files;
     }
 }
