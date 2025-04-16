@@ -63,11 +63,3 @@ $ npm run dev # собрать js, css-файлы
 $ npm run prod # собрать js, css-файлы для продакшина (комментарии будут вырезаны, файлы сжаты)
 $ npm run watch # отслеживать и пересобирать js, css-файлы в режиме реального времени
 ```
-
-## Скриншоты
-
-![](https://raw.githubusercontent.com/iv-litovchenko/WebNote/main/Uploads/backend.Php.Dm.Npm/hNg2AEyL2zcsO63G5xhSJNLoPQ6vFSqmTL01DrDG.png)
-![](https://raw.githubusercontent.com/iv-litovchenko/WebNote/main/Uploads/backend.Php.Dm.Npm/6dbahu0XHF1N8mVE4LrwegLyogQgs9enSlrgbQsA.png)
-![](https://raw.githubusercontent.com/iv-litovchenko/WebNote/main/Uploads/backend.Php.Dm.Npm/R5RER5TFSJsKrRXmIrrZ8WKWp1xoGhZoNXcQ1cwh.png)
-![](https://raw.githubusercontent.com/iv-litovchenko/WebNote/main/Uploads/backend.Php.Dm.Npm/Grs3BKREr7d9F34vc3OTBbtsA6p0ygpBDqtT9VNl.png)
-![](https://raw.githubusercontent.com/iv-litovchenko/WebNote/main/Uploads/backend.Php.Dm.Npm/jJlZkbhMv3Uhx2dwJ04cLYmDt6uf3mnKZ4doUFCO.png)
