@@ -122,6 +122,7 @@
                                 <x-menu-sidebar
                                         parent-id="0"
                                         html-ul-class="dropdown-menu menu-sidebar-level-next"
+
                                 />
                             </li>
                         </ul>
