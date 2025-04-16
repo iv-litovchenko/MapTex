@@ -26,7 +26,3 @@
 
 - Alpha
 - Beta
-
-## Скриншоты
-
-![](https://raw.githubusercontent.com/iv-litovchenko/WebNote/main/Uploads/procode.SemanticVersioning/pNi74hbAlTqb18xWB522xUl8JzGfDf5C0iK7MeFt.png)

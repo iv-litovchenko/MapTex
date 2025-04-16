@@ -220,30 +220,8 @@ $ git rebase <...BRANCH_NAME...> # берет всю вашу функциона
 Рекомендуется начинать описание коммита со строки длиной до 50 символов, которая обобщает изменения.
 За ней должна следовать пустая строка, а затем более подробное описание коммита.
 
-## Скриншоты
 
-![](https://raw.githubusercontent.com/iv-litovchenko/WebNote/main/Uploads/soft.Git/2GbjmcwhyDpZjX7Xk2pfvXN6FsjLxubKRE05vZ9s.png)
-![](https://raw.githubusercontent.com/iv-litovchenko/WebNote/main/Uploads/soft.Git/6EEzLJQmrbf8Sn5LIN11fg2zTSmzu1DhW4JruvN7.png)
-![](https://raw.githubusercontent.com/iv-litovchenko/WebNote/main/Uploads/soft.Git/JIuh46vCqwe6R4F5pqeyt9t0dTn4oWqY0uISCdpw.png)
-![](https://raw.githubusercontent.com/iv-litovchenko/WebNote/main/Uploads/soft.Git/x9RTA6hwBMEcpoSPsdK9Kulf4MpmvfdVotjVTgZO.png)
-![](https://raw.githubusercontent.com/iv-litovchenko/WebNote/main/Uploads/soft.Git/2darqWP8E4mu4BpTZ6QsmuRbcE9L9mUGYtcSB4Wd.png)
-![](https://raw.githubusercontent.com/iv-litovchenko/WebNote/main/Uploads/soft.Git/1CRJnMHzngLewRJEHyHBzfL0MLgFQXwoPGnK4lk5.png)
-![](https://raw.githubusercontent.com/iv-litovchenko/WebNote/main/Uploads/soft.Git/T0QI8zoINNKjNaS4LNvEdxQrJGMSyQosgX7wY6Ym.png)
-![](https://raw.githubusercontent.com/iv-litovchenko/WebNote/main/Uploads/soft.Git/kDZAnc8N3CNkZr7g8Dafmi9wnztcP9TGTHBRrF3e.png)
-![](https://raw.githubusercontent.com/iv-litovchenko/WebNote/main/Uploads/soft.Git/m0e1y4Del8JUilp3rwR36WSHRrmxTdSvO9ptJ6GK.png)
-![](https://raw.githubusercontent.com/iv-litovchenko/WebNote/main/Uploads/soft.Git/uOuLWpKhQmunsoMVR19sKJNWfmaaJa2WMk0wU78L.png)
-![](https://raw.githubusercontent.com/iv-litovchenko/WebNote/main/Uploads/soft.Git/AtkVC7fZ2afhpEAmvUNjo29BEwKuJ8QhCZHdVbCr.png)
-![](https://raw.githubusercontent.com/iv-litovchenko/WebNote/main/Uploads/soft.Git/kXO8W1u430VrsTeFaVANtFKpFLv295U1Etqkzvb3.jpg)
-
-
-
-
-
-
-
-
-
-
+====================
 
 
 ## Как восстановить коммиты из безымянной ветки?
