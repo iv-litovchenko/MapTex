@@ -49,7 +49,7 @@
                 <a href="{{ route('site.sitemap') }}" class="btn btn-warning">Оглавление</a>
             </center>
         </div>
-        <div class="col-sm-7">
+        <div class="col-sm-10">
             <x-post-content-type current-post-id="{{ $post->id }}"/>
             {{--            <center>--}}
             {{--                <button class="btn btn-warning" disabled>Обратно</button>--}}
@@ -101,33 +101,6 @@
                 @slot('inputPlaceholder', 'Введите комментарий')
                 @slot('btmSubmitName', 'Добавить комментарий')
             @endcomponent
-        </div>
-        <div class="col-sm-2">
-            <div class="sidebar-nav">
-                <div class="navbar navbar-default" role="navigation">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse"
-                                data-target=".sidebar-navbar-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <span class="visible-xs navbar-brand">Навигация</span>
-                    </div>
-                    <div class="navbar-collapse collapse sidebar-navbar-collapse">
-                        <ul class="nav navbar-nav">
-                            <li href="">
-                                <a href="{{ route('site.doc-cat', 0) }}">-- Все --</a>
-                                <x-menu-sidebar parent-id="0" parent-id="{{ $post->id }}"/>
-                                <ul class="dropdown-menu menu-sidebar-level-next">
-                                    x
-                                </ul>
-                            </li>
-                        </ul>
-                    </div><!--/.nav-collapse -->
-                </div>
-            </div>
         </div>
     </div>
 @endsection
