@@ -89,7 +89,7 @@ class PostContentType extends Component
         // intval($post->user_id) !== 1
         if (intval($this->post->is_protected) === 1){
             if(auth()->user()->id !== 1 && auth()->user()->role !== 1){
-                return view('components.page-protected'); //
+                return view('components.post-content-type.page-protected'); //
             }
         }
 
