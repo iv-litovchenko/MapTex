@@ -106,8 +106,8 @@ class SiteController extends BaseController
         $maptexContentLink = 1;
         foreach($maptex_content_files as $k => $v){
             if(strstr(basename($v), "-id-".$post->id.".")){
-                $maptexContentLink = $v;
-                $maptexContentLink = str_replace(public_path('/interactive/content_wiki/'), '', $v);
+                $post->maptex_content_link = $v;
+                $post->maptex_content_link = str_replace(public_path('/interactive/content_wiki/'), '', $v);
             }
         }
 
