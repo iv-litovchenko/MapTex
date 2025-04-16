@@ -17,8 +17,6 @@
 @if($post->maptex_content_link)
 
     {{-- Контент --}}
-    <pre class="language-xml">{!! nl2br(file_get_contents(public_path('/interactive/content_wiki/' . $post->maptex_content_link))) !!}</pre>
-    <pre class="language-xml">/interactive/content_wiki/{{ $post->maptex_content_link }}</pre>
-    <hr class="my-12">
+   {{ $post->maptex_content_link }}
 
 @endif
