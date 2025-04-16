@@ -103,6 +103,7 @@ class SiteController extends BaseController
         $maptex_content_files = self::rglob($path);
         sort($maptex_content_files);
         $wikiContent = '';
+        $maptexContentLink = '';
         foreach($maptex_content_files as $k => $v){
             if(strstr(basename($v), "-id-".$post->id.".")){
                 $maptexContentLink = $v;
@@ -111,7 +112,7 @@ class SiteController extends BaseController
         }
 
 
-        return view('site.post', compact('post', 'postNotes', 'postsWithLogo'));
+        return view('site.post', compact('post', 'postNotes', 'postsWithLogo', 'maptexContentLink'));
     }
 
     protected static function rglob($pattern, $flags = 0)
