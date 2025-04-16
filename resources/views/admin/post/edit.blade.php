@@ -68,8 +68,8 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Описание</label>
             <div class="col-sm-8">
-                <select class="form-control" name="maptex_content_link">
-                    <option value="">-- Не выбрано --</option>
+                <select class="form-control" name="maptex_content_link" disabled>
+                    <option value="">-- Автовыборка по шаблону -id-№.md --</option>
                     @foreach($maptex_content_files as $file_key => $file_path)
                         <option
                         value="{{ $file_path }}"
