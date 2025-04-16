@@ -41,7 +41,7 @@
                         <span class="visible-xs navbar-brand">Навигация</span>
                     </div>
                     <div class="navbar-collapse collapse sidebar-navbar-collapse">
-                        <x-menu-sidebar parent-id="0" current-post-id="{{ $post->id }}"/>
+                        <x-menu-sidebar parent-id="{{ $post->parent_id }}" current-post-id="{{ $post->id }}"/>
                     </div><!--/.nav-collapse -->
                 </div>
             </div>
