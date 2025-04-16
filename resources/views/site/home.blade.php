@@ -156,7 +156,7 @@
     <hr/>
     <div class="row">
         <div class="col-sm-12">
-            <img src="./assets/images/promo.png" width="100%">
+            <img src="./assets/images/promo.jpg" width="100%">
             <hr />
             <center>
                 @foreach($postsWithLogo as $postLogo)
