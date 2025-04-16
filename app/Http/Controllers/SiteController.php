@@ -11,7 +11,6 @@ use App\Models\Post;
 use App\Models\Todo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Faryar76\TlgScrapper;
 
 /**
  * Контроллер для обработки страниц frontend-а
