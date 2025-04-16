@@ -102,7 +102,7 @@
                 @slot('btmSubmitName', 'Добавить комментарий')
             @endcomponent
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             <div class="sidebar-nav">
                 <div class="navbar navbar-default" role="navigation">
                     <div class="navbar-header">
