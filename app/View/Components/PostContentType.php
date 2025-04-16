@@ -5,6 +5,7 @@ namespace App\View\Components;
 use App\Services\PostService;
 use Illuminate\Http\Request;
 use Illuminate\Support\HtmlString;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 use App\Models\Post;
 
@@ -67,15 +68,15 @@ class PostContentType extends Component
         // intval(auth()->user()->id) !== 1
         // intval($post->user_id) !== 1
         if (intval($this->post->is_protected) === 1){
-            if(auth()::check()){
-                if(auth()->user()->id != 1 && auth()->user()->role != 1){
+            if(Auth::check()){
+                if(Auth::user()->id != 1 && auth()->user()->role != 1){
                     $post = $this->post;
                     return view('components.post-content-type.page-protected', compact('post'));
                 }
-            //} else {
-            //    $post = $this->post;
+            } else {
+                $post = $this->post;
                 return view('components.post-content-type.page-protected', compact('post'));
-            //}
+            }
         }
 
         // Добавляем wikiContent ссылку нафайл
