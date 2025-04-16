@@ -72,10 +72,10 @@ class PostContentType extends Component
                     $post = $this->post;
                     return view('components.post-content-type.page-protected', compact('post'));
                 }
-            } else {
-                $post = $this->post;
+            //} else {
+            //    $post = $this->post;
                 return view('components.post-content-type.page-protected', compact('post'));
-            }
+            //}
         }
 
         // Добавляем wikiContent ссылку нафайл
@@ -96,14 +96,6 @@ class PostContentType extends Component
                 return $this->postTypePageCheatSheetSub();
             } else {
                 return $this->postTypePageMindMapSub();
-            }
-        }
-
-        // intval(auth()->user()->id) !== 1
-        // intval($post->user_id) !== 1
-        if (intval($this->post->is_protected) === 1){
-            if(auth()->user()->id !== 1 && auth()->user()->role !== 1){
-                return view('components.post-content-type.page-protected'); //
             }
         }
 
