@@ -116,7 +116,12 @@
                         <span class="visible-xs navbar-brand">Навигация</span>
                     </div>
                     <div class="navbar-collapse collapse sidebar-navbar-collapse">
-                        <x-menu-sidebar parent-id="{{ $post->parent_id }}" current-post-id="{{ $post->id }}"/>
+                        <ul class="nav navbar-nav">
+                            <li href="">
+                                <a href="{{ route('site.doc-cat', 0) }}">-- Все --</a>
+                                <x-menu-sidebar parent-id="{{ $post->parent_id }}" current-post-id="{{ $post->id }}"/>
+                            </li>
+                        </ul>
                     </div><!--/.nav-collapse -->
                 </div>
             </div>
