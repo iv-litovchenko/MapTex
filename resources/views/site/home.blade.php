@@ -170,6 +170,4 @@
             </center>
         </div>
     </div>
-
-    {!! $tlg->getMessages()->first()->text !!}
 @stop
