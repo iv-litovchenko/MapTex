@@ -96,7 +96,7 @@ class PostController extends BaseController
         $postsTreeArray = FrontendUility::buildTreeArray();
         $postTypes = Post::POST_TYPE;
 
-        $path = public_path('/interactive/content_wiki/*.txt');
+        $path = public_path('/interactive/content_wiki/*');
         $maptex_content_files = self::rglob($path);
         sort($maptex_content_files);
         foreach($maptex_content_files as $k => $v){
