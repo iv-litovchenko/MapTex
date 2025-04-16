@@ -12,7 +12,8 @@ echo "Start deployment [sh]!"
 
 php artisan down
 
-git pull origin master
+#git pull origin master
+git --git-dir=../.git --work-tree=../ pull origin master
 
 # composer install
 # composer dump-autoload
