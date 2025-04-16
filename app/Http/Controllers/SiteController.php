@@ -11,6 +11,7 @@ use App\Models\Post;
 use App\Models\Todo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Faryar76\TlgScrapper;
 
 /**
  * Контроллер для обработки страниц frontend-а
@@ -35,6 +36,10 @@ class SiteController extends BaseController
         // $postTodo = Post::find(72);
         // $lastNote = Note::where('note_type', Note::NOTE_TYPE_POST_COMMENT)->orderBy('id', 'desc')->first();
 
+        // Подключаем телеграмм
+        $tlg = new TlgScrapper();
+        $tlg->load('@laravel_pro');
+
         $todos = Todo::orderBy('is_close', 'desc')->orderBy('created_at', 'desc')->get();
         $todoReadmeMdContent = file_get_contents(base_path('README.md'));
         return view('site.home', compact(
@@ -42,7 +47,8 @@ class SiteController extends BaseController
                 'postsWithLogo',
                 'postsWithStudyStatus',
                 'todoReadmeMdContent',
-                'todos'
+                'todos',
+                'tlg'
             )
         );
     }
