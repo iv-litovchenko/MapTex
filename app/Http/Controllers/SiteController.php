@@ -104,8 +104,8 @@ class SiteController extends BaseController
         sort($maptex_content_files);
         $wikiContent = '';
         foreach($maptex_content_files as $k => $v){
-            if(strstr(basename($v, "-id-".$post->id."."))){
-                // $post->maptex_content_link = $v;
+            if(strstr(basename($v), "-id-".$post->id.".")){
+                $post->maptex_content_link = $v;
                 // $maptex_content_files[$k] = str_replace(public_path('/interactive/content_wiki/'), '', $v);
                 print $post->maptex_content_link;
                 exit();
