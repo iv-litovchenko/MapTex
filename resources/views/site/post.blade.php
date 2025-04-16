@@ -120,8 +120,7 @@
                             <li href="">
                                 <a href="{{ route('site.doc-cat', 0) }}">-- Все --</a>
                                 <x-menu-sidebar
-                                        parent-id="{{ $post->parent_id }}"
-                                        current-post-id="{{ $post->id }}"
+                                        parent-id="0"
                                         html-ul-class="dropdown-menu menu-sidebar-level-next"
                                 />
                             </li>
