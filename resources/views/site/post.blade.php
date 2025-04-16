@@ -49,7 +49,7 @@
                 <a href="{{ route('site.sitemap') }}" class="btn btn-warning">Оглавление</a>
             </center>
         </div>
-        <div class="col-sm-7">
+        <div class="col-sm-6">
             <x-post-content-type current-post-id="{{ $post->id }}"/>
             {{--            <center>--}}
             {{--                <button class="btn btn-warning" disabled>Обратно</button>--}}
@@ -102,7 +102,7 @@
                 @slot('btmSubmitName', 'Добавить комментарий')
             @endcomponent
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-3">
             <div class="sidebar-nav">
                 <div class="navbar navbar-default" role="navigation">
                     <div class="navbar-header">
