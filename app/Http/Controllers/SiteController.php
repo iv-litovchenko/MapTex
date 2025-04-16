@@ -99,7 +99,31 @@ class SiteController extends BaseController
         //     return view('site.post-protected');
         // }
 
+        $path = public_path('/interactive/content_wiki/*');
+        $maptex_content_files = self::rglob($path);
+        sort($maptex_content_files);
+        $wikiContent = '';
+        foreach($maptex_content_files as $k => $v){
+            if(strstr(basename($v, "-id-".$post->id."."))){
+                $post->maptex_content_link = $v;
+                // $maptex_content_files[$k] = str_replace(public_path('/interactive/content_wiki/'), '', $v);
+            }
+        }
+
+
         return view('site.post', compact('post', 'postNotes', 'postsWithLogo'));
+    }
+
+    protected static function rglob($pattern, $flags = 0)
+    {
+        $files = glob($pattern, $flags);
+        foreach (glob(dirname($pattern) . '/*', GLOB_ONLYDIR | GLOB_NOSORT) as $dir) {
+            $files = array_merge(
+                [],
+                ...[$files, self::rglob($dir . "/" . basename($pattern), $flags)]
+            );
+        }
+        return $files;
     }
 
     /**
