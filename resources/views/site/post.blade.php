@@ -119,7 +119,7 @@
                         <ul class="nav navbar-nav">
                             <li href="">
                                 <a href="{{ route('site.doc-cat', 0) }}">-- Все --</a>
-                                <x-menu-sidebar parent-id="0" current-post-id="{{ $post->id }}"/>
+                                <x-menu-sidebar parent-id="0" parent-id="{{ $post->id }}"/>
                                 <ul class="dropdown-menu menu-sidebar-level-next">
                                     x
                                 </ul>
