@@ -61,17 +61,20 @@ class PostContentType extends Component
         // $images = $this->serviceFilePublic->files('site/post/' . $post->id);
         // return view('components.post-page-content', compact('posts', 'images'));
 
-        // Сценарий когда есть родитель
-        if ($this->parentPostId == 'root' || $this->parentPostId > 0) {
-            if ($this->htmlHeaderSize > 0) {
-                return $this->postTypePageCheatSheetSub();
-            } else {
-                return $this->postTypePageMindMapSub();
-            }
-        }
-
         // Сценарий когда текущяя запись
         $this->post = Post::find($this->currentPostId);
+
+        // intval(auth()->user()->id) !== 1
+        // intval($post->user_id) !== 1
+        if (intval($this->post->is_protected) === 1){
+            if(auth()::check()){
+                if(auth()->user()->id != 1 && auth()->user()->role != 1){
+                    return view('components.post-content-type.page-protected', compact('post'));
+                }
+            } else {
+                return view('components.post-content-type.page-protected', compact('post'));
+            }
+        }
 
         // Добавляем wikiContent ссылку нафайл
         $path = public_path('/interactive/content_wiki/*');
@@ -82,6 +85,15 @@ class PostContentType extends Component
             if(strstr(basename($v), "-id-".$this->post->id.".")){
                 $this->post->maptex_content_link = $v;
                 $this->post->maptex_content_link = str_replace(public_path('/interactive/content_wiki/'), '', $v);
+            }
+        }
+
+        // Сценарий когда есть родитель
+        if ($this->parentPostId == 'root' || $this->parentPostId > 0) {
+            if ($this->htmlHeaderSize > 0) {
+                return $this->postTypePageCheatSheetSub();
+            } else {
+                return $this->postTypePageMindMapSub();
             }
         }
 
