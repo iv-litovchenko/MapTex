@@ -69,13 +69,14 @@ class PostContentType extends Component
         // intval($post->user_id) !== 1
         if (intval($this->post->is_protected) === 1){
             if(Auth::check()) {
-                if (Auth::user()->id != 1 && auth()->user()->role != 1) {
+                if (Auth::user()->id !== 1) {
                     $post = $this->post;
                     return view('components.post-content-type.page-protected', compact('post'));
                 }
+            } else {
+                $post = $this->post;
+                return view('components.post-content-type.page-protected', compact('post'));
             }
-            $post = $this->post;
-            return view('components.post-content-type.page-protected', compact('post'));
         }
 
         // Добавляем wikiContent ссылку нафайл
