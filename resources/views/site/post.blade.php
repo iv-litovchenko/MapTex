@@ -49,7 +49,7 @@
                 <a href="{{ route('site.sitemap') }}" class="btn btn-warning">Оглавление</a>
             </center>
         </div>
-        <div class="col-sm-10">
+        <div class="col-sm-7">
             <x-post-content-type current-post-id="{{ $post->id }}"/>
             {{--            <center>--}}
             {{--                <button class="btn btn-warning" disabled>Обратно</button>--}}
@@ -101,6 +101,25 @@
                 @slot('inputPlaceholder', 'Введите комментарий')
                 @slot('btmSubmitName', 'Добавить комментарий')
             @endcomponent
+        </div>
+        <div class="col-sm-2">
+            <div class="sidebar-nav">
+                <div class="navbar navbar-default" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                data-target=".sidebar-navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <span class="visible-xs navbar-brand">Навигация</span>
+                    </div>
+                    <div class="navbar-collapse collapse sidebar-navbar-collapse">
+                        <x-menu-sidebar parent-id="0" parent-id="{{ $post->id }}"/>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
         </div>
     </div>
 @endsection
