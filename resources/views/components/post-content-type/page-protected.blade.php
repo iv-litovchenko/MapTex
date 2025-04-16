@@ -5,5 +5,9 @@
 @section('LayoutSectionPageBreadcrumb', Breadcrumbs::render('site.post', $post))
 
 @section('LayoutSectionPageContent')
-fewkjfewklfewkml
+
+    <div class="alert alert-warning" role="alert">
+        Страница не доступна для публичного просмотра!
+    </div>
+
 @endsection
