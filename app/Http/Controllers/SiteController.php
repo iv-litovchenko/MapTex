@@ -46,8 +46,7 @@ class SiteController extends BaseController
                 'postsWithLogo',
                 'postsWithStudyStatus',
                 'todoReadmeMdContent',
-                'todos',
-                'tlg'
+                'todos'
             )
         );
     }
