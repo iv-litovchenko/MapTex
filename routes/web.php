@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DocController;
 use App\Http\Controllers\Admin\TodoController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\BitcoinPriceController;
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\IsMe;
 use Illuminate\Support\Facades\Config;
@@ -66,6 +67,9 @@ Route::get('/doc/{cat}', [SiteController::class, 'doc'])->name('site.doc-cat');
 
 Route::get('/project', [SiteController::class, 'project'])->name('site.project');
 Route::get('/technology', [SiteController::class, 'technology'])->name('site.technology');
+
+Route::get('/bitcoin', [BitcoinPriceController::class, 'index'])->name('site.bitcoin');
+Route::get('/bitcoin/history', [BitcoinPriceController::class, 'history'])->name('site.bitcoin-history');
 
 /**
  * Закрытая часть

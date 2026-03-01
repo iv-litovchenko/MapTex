@@ -77,6 +77,12 @@ Breadcrumbs::for('site.technology', function ($trail) {
     $trail->push('Изучаем технологии');
 });
 
+// Цена биткоина
+Breadcrumbs::for('site.bitcoin', function ($trail) {
+    $trail->parent('site.home');
+    $trail->push('Цена биткоина');
+});
+
 // Главная > Вход
 Breadcrumbs::for('login', function ($trail) {
     $trail->parent('site.home');
